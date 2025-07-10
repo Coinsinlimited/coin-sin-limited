@@ -29,83 +29,7 @@ import {
 } from "lucide-react"
 import { useFormState } from "react-dom"
 import { submitRegistration } from "@/actions/submit-registration"
-
-// Componente separado para el botón de envío
-function SubmitButton({ children }: { children: React.ReactNode }) {
-  const { useFormStatus } = require("react-dom")
-  const { pending } = useFormStatus()
-  const [language, setLanguage] = useState<"es" | "en">("es") // Assuming language state is available or passed down
-
-  const translations = {
-    es: {
-      registering: "Registrando...",
-    },
-    en: {
-      registering: "Registering...",
-    },
-  }
-  const t = translations[language]
-
-  return (
-    <Button
-      type="submit"
-      disabled={pending}
-      className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white h-12 text-lg font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group relative overflow-hidden"
-    >
-      <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-      <div className="relative flex items-center justify-center gap-3">
-        {pending ? (
-          <>
-            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-            <span>{t.registering}</span>
-          </>
-        ) : (
-          <>
-            <svg
-              className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <span>{children}</span>
-          </>
-        )}
-      </div>
-    </Button>
-  )
-}
-
-// Componente separado para el botón pequeño
-function SmallSubmitButton({ children }: { children: React.ReactNode }) {
-  const { useFormStatus } = require("react-dom")
-  const { pending } = useFormStatus()
-  const [language, setLanguage] = useState<"es" | "en">("es") // Assuming language state is available or passed down
-
-  const translations = {
-    es: {
-      registering: "Registrando...",
-    },
-    en: {
-      registering: "Registering...",
-    },
-  }
-  const t = translations[language]
-
-  return (
-    <Button
-      type="submit"
-      disabled={pending}
-      className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white h-10 text-sm font-bold rounded-lg"
-    >
-      {pending ? t.registering : children}
-    </Button>
-  )
-}
+import { SubmitButton, SmallSubmitButton } from "@/components/ui/submit-button" // Import the separated components
 
 const translations = {
   es: {
@@ -453,7 +377,6 @@ const translations = {
       "Your data is always protected with Coin Sin Limited. By completing this form, you agree to receive our marketing emails.",
   },
 }
-
 const countryCodes = [
   { code: "+1", flag: "🇺🇸", country: "United States", name: "Estados Unidos", id: "us" },
   { code: "+1", flag: "🇨🇦", country: "Canada", name: "Canadá", id: "ca" },
@@ -674,7 +597,6 @@ const countryCodes = [
   { code: "+996", flag: "🇰🇬", country: "Kyrgyzstan", name: "Kirguistán", id: "kg" },
   { code: "+998", flag: "🇺🇿", country: "Uzbekistan", name: "Uzbekistán", id: "uz" },
 ]
-
 // Testimonials data
 const testimonials = [
   {
@@ -718,7 +640,6 @@ const testimonials = [
     },
   },
 ]
-
 const faqData = [
   {
     id: 1,
@@ -787,7 +708,6 @@ const faqData = [
     },
   },
 ]
-
 export default function CryptoLanding() {
   const [language, setLanguage] = useState<"es" | "en">("es")
   const [countrySearch, setCountrySearch] = useState("")
@@ -822,34 +742,29 @@ export default function CryptoLanding() {
       _form: undefined,
     },
   })
-
   // Calculate return based on investment and days
   const calculateReturn = (investment: number, days: number) => {
     const dailyRate = 0.2176
     const totalReturn = investment * Math.pow(1 + dailyRate, days)
     return Math.round(totalReturn)
   }
-
   // Calculate percentage gain
   const calculatePercentage = (investment: number, days: number) => {
     const returnAmount = calculateReturn(investment, days)
     return ((returnAmount - investment) / investment) * 100
   }
-
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => {
       const maxIndex = testimonials.length - 3
       return prev + 3 > maxIndex ? 0 : prev + 3
     })
   }
-
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) => {
       const maxIndex = testimonials.length - 3
       return prev - 3 < 0 ? maxIndex : prev - 3
     })
   }
-
   const toggleVideo = () => {
     if (videoRef.current) {
       if (isVideoPlaying) {
@@ -860,7 +775,6 @@ export default function CryptoLanding() {
       setIsVideoPlaying(!isVideoPlaying)
     }
   }
-
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = Number.parseFloat(e.target.value)
     if (videoRef.current) {
@@ -873,14 +787,12 @@ export default function CryptoLanding() {
       }
     }
   }
-
   const toggleMute = () => {
     if (videoRef.current) {
       videoRef.current.muted = !isMuted
       setIsMuted(!isMuted)
     }
   }
-
   const toggleFullScreen = () => {
     if (videoRef.current) {
       if (document.fullscreenElement) {
@@ -890,9 +802,7 @@ export default function CryptoLanding() {
       }
     }
   }
-
   const t = translations[language]
-
   const filteredCountries = useMemo(() => {
     if (!countrySearch) return countryCodes
     const searchTerm = countrySearch.toLowerCase()
@@ -903,17 +813,13 @@ export default function CryptoLanding() {
         country.code.includes(searchTerm),
     )
   }, [countrySearch])
-
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
-
   const handleLanguageChange = (newLanguage: string) => {
     setLanguage(newLanguage as "es" | "en")
   }
-
   const selectedCountry = countryCodes.find((c) => c.code === formData.countryCode)
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 relative overflow-hidden">
       {/* Notification Bar */}
@@ -926,9 +832,8 @@ export default function CryptoLanding() {
           </Badge>
         </div>
       </div>
-
       {/* Floating Crypto Elements */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none hidden sm:block">
         <div
           className="absolute top-20 left-10 w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-80 animate-bounce"
           style={{ animationDelay: "0s" }}
@@ -950,29 +855,32 @@ export default function CryptoLanding() {
           style={{ animationDelay: "1.5s" }}
         ></div>
       </div>
-
       {/* Header */}
-      <header className="relative z-10 flex items-center justify-between p-6">
+      <header className="relative z-10 flex flex-col sm:flex-row items-center justify-between p-4 sm:p-6 gap-4 sm:gap-0">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
-            <TrendingUp className="w-8 h-8 text-orange-400" />
-            <img src="/logo.png" alt="Coin Sin Limited Logo" className="h-16 w-32 object-contain rounded-lg" />
+            <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-orange-400" />
+            <img
+              src="/logo.png"
+              alt="Coin Sin Limited Logo"
+              className="h-12 w-24 sm:h-16 sm:w-32 object-contain rounded-lg"
+            />
           </div>
         </div>
-        <div className="flex items-center gap-6">
-          <div className="text-white text-sm">
+        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
+          <div className="text-white text-sm text-center sm:text-left">
             <div className="text-orange-400 font-semibold">{t.platformBenefit}</div>
             <div className="text-xl font-bold">$466,837,090</div>
           </div>
-          <div className="text-white text-sm">
+          <div className="text-white text-sm text-center sm:text-left">
             <div className="text-orange-400 font-semibold">{t.userIncome}</div>
             <div className="text-xl font-bold">07/10/2025 $193,389</div>
           </div>
-          <div className="text-white text-sm">
+          <div className="text-white text-sm text-center sm:text-left">
             <div className="text-orange-400 font-semibold">{t.slotsLeft}</div>
           </div>
           <Select value={language} onValueChange={handleLanguageChange}>
-            <SelectTrigger className="w-32">
+            <SelectTrigger className="w-full sm:w-32">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -982,22 +890,20 @@ export default function CryptoLanding() {
           </Select>
         </div>
       </header>
-
       {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-6 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+      <div className="relative z-10 container mx-auto px-4 py-8 sm:px-6 sm:py-12">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
             {t.mainTitle}
             <br />
             <span className="text-orange-400">{t.mainTitleHighlight}</span>
           </h1>
-          <p className="text-xl text-gray-300 mb-8">{t.subtitle}</p>
+          <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8">{t.subtitle}</p>
         </div>
-
         {/* Combined Section */}
         <div className="max-w-7xl mx-auto">
-          <div className="bg-blue-600/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-blue-400/20 animate-in slide-in-from-bottom-5 duration-700">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="bg-blue-600/90 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-2xl border border-blue-400/20 animate-in slide-in-from-bottom-5 duration-700">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
               {/* Left Side - Video/Content */}
               <div className="space-y-6">
                 <div className="bg-blue-700/50 text-white p-4 rounded-lg flex items-center gap-3 animate-in slide-in-from-left-5 duration-700">
@@ -1005,12 +911,12 @@ export default function CryptoLanding() {
                   <span className="font-semibold">{t.readyToJoin}</span>
                 </div>
                 <Card className="bg-gray-900/80 border-gray-700 overflow-hidden shadow-2xl border border-gray-600/20">
-                  <CardContent className="p-8">
+                  <CardContent className="p-4 sm:p-8">
                     <div className="text-center space-y-6">
                       <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-500/20 rounded-full mb-4 animate-pulse">
                         <Shield className="w-8 h-8 text-orange-400" />
                       </div>
-                      <h3 className="text-2xl font-bold text-white leading-tight animate-in fade-in-50 duration-500 delay-200">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight animate-in fade-in-50 duration-500 delay-200">
                         {t.motivationalText}
                       </h3>
                       <div className="w-20 h-1 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto rounded-full animate-in slide-in-from-left-5 duration-500 delay-300"></div>
@@ -1019,7 +925,7 @@ export default function CryptoLanding() {
                         <video
                           ref={videoRef}
                           src="/videos/crypto-demo.mp4" // Referencia al video subido a Vercel Blob
-                          className="w-full h-80 object-cover" // Altura más grande
+                          className="w-full h-60 md:h-80 object-cover" // Altura más grande
                           loop
                           onPlay={() => setIsVideoPlaying(true)}
                           onPause={() => setIsVideoPlaying(false)}
@@ -1037,20 +943,20 @@ export default function CryptoLanding() {
                           <Button
                             onClick={toggleVideo}
                             size="lg"
-                            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white h-16 w-16 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 group relative overflow-hidden"
+                            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white h-14 w-14 sm:h-16 sm:w-16 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 group relative overflow-hidden"
                           >
                             <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                             <div className="relative flex items-center justify-center">
                               {isVideoPlaying ? (
-                                <Pause className="w-8 h-8 group-hover:scale-110 transition-transform duration-300" />
+                                <Pause className="w-7 h-7 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform duration-300" />
                               ) : (
-                                <Play className="w-8 h-8 group-hover:scale-110 transition-transform duration-300" />
+                                <Play className="w-7 h-7 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform duration-300" />
                               )}
                             </div>
                           </Button>
                         </div>
                         {/* Video Controls (Volume, Fullscreen) */}
-                        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between bg-black/50 p-2 rounded-lg">
+                        <div className="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4 flex items-center justify-between bg-black/50 p-2 rounded-lg">
                           <div className="flex items-center gap-2">
                             <Button
                               variant="ghost"
@@ -1071,7 +977,7 @@ export default function CryptoLanding() {
                               step="0.01"
                               value={volume}
                               onChange={handleVolumeChange}
-                              className="w-24 h-1 bg-gray-400 rounded-lg appearance-none cursor-pointer"
+                              className="w-20 sm:w-24 h-1 bg-gray-400 rounded-lg appearance-none cursor-pointer"
                             />
                           </div>
                           <Button
@@ -1089,7 +995,6 @@ export default function CryptoLanding() {
                   </CardContent>
                 </Card>
               </div>
-
               {/* Right Side - Registration Form */}
               <div id="registration-form" className="space-y-6">
                 {registrationState.success && (
@@ -1103,8 +1008,8 @@ export default function CryptoLanding() {
                         />
                       </svg>
                     </div>
-                    <h2 className="text-3xl font-bold text-white mb-4">{t.registrationSuccessTitle}</h2>
-                    <p className="text-white/90 text-lg">{registrationState.message}</p>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">{t.registrationSuccessTitle}</h2>
+                    <p className="text-white/90 text-base sm:text-lg">{registrationState.message}</p>
                     <div className="w-20 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto rounded-full"></div>
                   </div>
                 )}
@@ -1117,7 +1022,7 @@ export default function CryptoLanding() {
                       <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-500/20 rounded-full mb-4 animate-pulse">
                         <TrendingUp className="w-8 h-8 text-orange-400" />
                       </div>
-                      <h2 className="text-3xl font-bold text-white mb-2 animate-in fade-in-50 duration-500 delay-200">
+                      <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 animate-in fade-in-50 duration-500 delay-200">
                         {t.improveLife}
                       </h2>
                       <div className="w-20 h-1 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto rounded-full animate-in slide-in-from-left-5 duration-500 delay-300"></div>
@@ -1134,7 +1039,7 @@ export default function CryptoLanding() {
                           value={formData.name}
                           onChange={(e) => handleInputChange("name", e.target.value)}
                           required
-                          className="bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
+                          className="w-full bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
                         />
                         {formData.name && (
                           <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
@@ -1159,7 +1064,7 @@ export default function CryptoLanding() {
                           value={formData.surname}
                           onChange={(e) => handleInputChange("surname", e.target.value)}
                           required
-                          className="bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
+                          className="w-full bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
                         />
                         {formData.surname && (
                           <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
@@ -1185,7 +1090,7 @@ export default function CryptoLanding() {
                           value={formData.email}
                           onChange={(e) => handleInputChange("email", e.target.value)}
                           required
-                          className="bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
+                          className="w-full bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
                         />
                         {formData.email && formData.email.includes("@") && (
                           <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
@@ -1200,8 +1105,8 @@ export default function CryptoLanding() {
                         )}
                       </div>
                       {/* Phone Field */}
-                      <div className="flex gap-3 animate-in slide-in-from-left-3 duration-500 delay-400">
-                        <div className="relative">
+                      <div className="flex flex-col sm:flex-row gap-3 animate-in slide-in-from-left-3 duration-500 delay-400">
+                        <div className="relative w-full sm:w-auto">
                           <Select
                             name="countryCode"
                             value={formData.countryCode}
@@ -1209,7 +1114,7 @@ export default function CryptoLanding() {
                             open={isCountrySelectOpen}
                             onOpenChange={setIsCountrySelectOpen}
                           >
-                            <SelectTrigger className="w-32 bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 border-0 h-12 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center">
+                            <SelectTrigger className="w-full sm:w-32 bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 border-0 h-12 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center">
                               <SelectValue>
                                 <div className="flex items-center gap-2">
                                   <span className="text-lg">{selectedCountry?.flag}</span>
@@ -1225,7 +1130,7 @@ export default function CryptoLanding() {
                                     placeholder={t.searchCountry}
                                     value={countrySearch}
                                     onChange={(e) => setCountrySearch(e.target.value)}
-                                    className="pl-10 h-10 text-sm rounded-lg border border-gray-200 focus:border-blue-400 transition-colors duration-200"
+                                    className="pl-10 h-10 text-sm rounded-lg border border-gray-200 focus:border-blue-400 transition-colors duration-200 w-full"
                                     onClick={(e) => e.stopPropagation()}
                                   />
                                 </div>
@@ -1253,7 +1158,7 @@ export default function CryptoLanding() {
                             </SelectContent>
                           </Select>
                         </div>
-                        <div className="relative flex-1 group">
+                        <div className="relative flex-1 group w-full">
                           <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-blue-500 transition-colors duration-200">
                             <Phone className="w-5 h-5" />
                           </div>
@@ -1263,7 +1168,7 @@ export default function CryptoLanding() {
                             value={formData.phone}
                             onChange={(e) => handleInputChange("phone", e.target.value)}
                             required
-                            className="bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white"
+                            className="w-full bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white"
                           />
                           {formData.phone && formData.phone.length >= 8 && (
                             <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
@@ -1281,7 +1186,7 @@ export default function CryptoLanding() {
                       <input type="hidden" name="language" value={language} />
                       {/* Register Button */}
                       <div className="animate-in slide-in-from-bottom-3 duration-500 delay-500">
-                        <SubmitButton>{t.registerButton}</SubmitButton>
+                        <SubmitButton language={language}>{t.registerButton}</SubmitButton>
                       </div>
                       {/* Terms Checkbox */}
                       <div className="flex items-start gap-4 text-xs text-white animate-in fade-in-50 duration-500 delay-600">
@@ -1323,25 +1228,24 @@ export default function CryptoLanding() {
               </div>
             </div>
           </div>
-
           {/* All Content in Same Screen - Unified */}
-          <div className="max-w-7xl mx-auto mt-16 space-y-16">
+          <div className="max-w-7xl mx-auto mt-12 sm:mt-16 space-y-12 sm:space-y-16">
             {/* CTA Section */}
-            <div className="text-center space-y-8 px-8">
-              <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700">
+            <div className="text-center space-y-6 sm:space-y-8 px-4 sm:px-8">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700">
                 {t.masterTradingTitle}{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">
                   {t.masterTradingHighlight}
                 </span>
               </h2>
-              <div className="grid md:grid-cols-2 gap-8 text-left">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 text-left">
                 <div className="space-y-4 text-white animate-in slide-in-from-left-5 duration-700 delay-300">
-                  <p className="text-lg leading-relaxed">{t.ctaParagraph1}</p>
-                  <p className="text-lg leading-relaxed">{t.ctaParagraph2}</p>
+                  <p className="text-base sm:text-lg leading-relaxed">{t.ctaParagraph1}</p>
+                  <p className="text-base sm:text-lg leading-relaxed">{t.ctaParagraph2}</p>
                 </div>
                 <div className="space-y-4 text-white animate-in slide-in-from-right-5 duration-700 delay-400">
-                  <p className="text-lg leading-relaxed">{t.ctaParagraph3}</p>
-                  <p className="text-lg leading-relaxed font-semibold text-orange-300">{t.ctaParagraph4}</p>
+                  <p className="text-base sm:text-lg leading-relaxed">{t.ctaParagraph3}</p>
+                  <p className="text-base sm:text-lg font-semibold text-orange-300">{t.ctaParagraph4}</p>
                 </div>
               </div>
               <div className="animate-in slide-in-from-bottom-5 duration-700 delay-500">
@@ -1353,13 +1257,13 @@ export default function CryptoLanding() {
                     }
                   }}
                   size="lg"
-                  className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-12 py-4 h-16 text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 group relative overflow-hidden"
+                  className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8 py-3 h-14 sm:px-12 sm:py-4 sm:h-16 text-lg sm:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 group relative overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/30 to-orange-400/30 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                   <div className="relative flex items-center gap-3">
                     <span>{t.startNowButton}</span>
                     <svg
-                      className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300"
+                      className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -1373,13 +1277,12 @@ export default function CryptoLanding() {
                 </Button>
               </div>
             </div>
-
             {/* First Information Block */}
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700 mb-12">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700 mb-8 sm:mb-12">
                 {t.advantagesTitle}
               </h2>
-              <div className="grid md:grid-cols-2 gap-12 text-white text-left">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 text-white text-left">
                 {/* Left Column */}
                 <div className="space-y-6 animate-in slide-in-from-left-5 duration-700 delay-200">
                   <p className="text-base leading-relaxed">{t.advantagesIntro}</p>
@@ -1448,13 +1351,12 @@ export default function CryptoLanding() {
                 </div>
               </div>
             </div>
-
             {/* Second Information Block */}
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700 mb-12">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700 mb-8 sm:mb-12">
                 {t.platformBenefitTitle}
               </h2>
-              <div className="grid md:grid-cols-2 gap-12 text-white text-left">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 text-white text-left">
                 <div className="space-y-6 animate-in slide-in-from-left-5 duration-700 delay-200">
                   <p className="text-base leading-relaxed">{t.platformBenefitText1}</p>
                   <p className="text-base leading-relaxed">{t.platformBenefitText2}</p>
@@ -1479,13 +1381,12 @@ export default function CryptoLanding() {
                 </div>
               </div>
             </div>
-
             {/* Third Information Block */}
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700 mb-12">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700 mb-8 sm:mb-12">
                 {t.investSmartTitle}
               </h2>
-              <div className="grid md:grid-cols-2 gap-12 text-white text-left relative">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 text-white text-left relative">
                 <div className="space-y-6 animate-in slide-in-from-left-5 duration-700 delay-200">
                   <p className="text-base leading-relaxed">{t.investSmartText1}</p>
                   <p className="text-base leading-relaxed">{t.investSmartText2}</p>
@@ -1513,45 +1414,46 @@ export default function CryptoLanding() {
                   <p className="text-base leading-relaxed font-medium text-orange-300">{t.finalInvitation}</p>
                 </div>
                 {/* Bitcoin Symbol */}
-                <div className="absolute bottom-0 right-0 opacity-20 animate-pulse">
+                <div className="absolute bottom-0 right-0 opacity-20 animate-pulse hidden sm:block">
                   <div className="text-8xl text-orange-400 font-bold">₿</div>
                 </div>
               </div>
             </div>
-
             {/* Investment Calculator Section */}
-            <div className="text-center mb-16 mt-20">
+            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
               <div className="max-w-4xl mx-auto">
-                <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 rounded-3xl p-8 shadow-2xl border border-blue-400/30 overflow-hidden">
+                <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 rounded-3xl p-6 sm:p-8 shadow-2xl border border-blue-400/30 overflow-hidden">
                   {/* Floating Coins */}
                   <div
-                    className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-80 animate-bounce"
+                    className="absolute top-4 right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-80 animate-bounce hidden sm:flex items-center justify-center"
                     style={{ animationDelay: "0s" }}
                   >
-                    <div className="w-full h-full flex items-center justify-center text-2xl font-bold text-white">
+                    <div className="w-full h-full flex items-center justify-center text-xl sm:text-2xl font-bold text-white">
                       ₿
                     </div>
                   </div>
                   <div
-                    className="absolute bottom-4 left-4 w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-70 animate-bounce"
+                    className="absolute bottom-4 left-4 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-70 animate-bounce hidden sm:flex items-center justify-center"
                     style={{ animationDelay: "1s" }}
                   >
-                    <div className="w-full h-full flex items-center justify-center text-lg font-bold text-white">₿</div>
+                    <div className="w-full h-full flex items-center justify-center text-base sm:text-lg font-bold text-white">
+                      ₿
+                    </div>
                   </div>
                   <div className="relative z-10">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 leading-tight">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 sm:mb-8 leading-tight">
                       {t.potentialEarningsTitle}
                     </h2>
-                    <div className="grid md:grid-cols-2 gap-8 items-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                       {/* Left Side - Controls */}
                       <div className="space-y-8">
                         {/* Investment Amount */}
                         <div className="space-y-4">
-                          <div className="flex items-center gap-4">
-                            <div className="bg-gradient-to-r from-orange-400 to-orange-500 text-white px-6 py-3 rounded-full font-bold text-lg min-w-[140px] text-center">
+                          <div className="flex flex-col sm:flex-row items-center gap-4">
+                            <div className="bg-gradient-to-r from-orange-400 to-orange-500 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-base sm:text-lg w-full sm:w-auto text-center">
                               {calculatorData.investment.toLocaleString()} USD
                             </div>
-                            <span className="text-white font-semibold text-lg">{t.myInvestment}</span>
+                            <span className="text-white font-semibold text-base sm:text-lg">{t.myInvestment}</span>
                           </div>
                           <div className="relative">
                             <input
@@ -1566,7 +1468,7 @@ export default function CryptoLanding() {
                               }}
                               className="w-full h-3 bg-gradient-to-r from-blue-400 to-purple-500 rounded-lg appearance-none cursor-pointer slider"
                             />
-                            <div className="flex justify-between text-white text-sm mt-2">
+                            <div className="flex justify-between text-white text-xs sm:text-sm mt-2 px-1">
                               <span>250</span>
                               <span>250K</span>
                               <span>500K</span>
@@ -1577,11 +1479,11 @@ export default function CryptoLanding() {
                         </div>
                         {/* Time Period */}
                         <div className="space-y-4">
-                          <div className="flex items-center gap-4">
-                            <div className="bg-gradient-to-r from-orange-400 to-orange-500 text-white px-6 py-3 rounded-full font-bold text-lg min-w-[140px] text-center">
+                          <div className="flex flex-col sm:flex-row items-center gap-4">
+                            <div className="bg-gradient-to-r from-orange-400 to-orange-500 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-base sm:text-lg w-full sm:w-auto text-center">
                               {calculatorData.days} {t.days}
                             </div>
-                            <span className="text-white font-semibold text-lg">{t.usagePeriod}</span>
+                            <span className="text-white font-semibold text-base sm:text-lg">{t.usagePeriod}</span>
                           </div>
                           <div className="relative">
                             <input
@@ -1596,7 +1498,7 @@ export default function CryptoLanding() {
                               }}
                               className="w-full h-3 bg-gradient-to-r from-blue-400 to-purple-500 rounded-lg appearance-none cursor-pointer slider"
                             />
-                            <div className="flex justify-between text-white text-sm mt-2">
+                            <div className="flex justify-between text-white text-xs sm:text-sm mt-2 px-1">
                               <span>10</span>
                               <span>20</span>
                               <span>30</span>
@@ -1608,18 +1510,18 @@ export default function CryptoLanding() {
                       </div>
                       {/* Right Side - Result */}
                       <div className="flex justify-center">
-                        <div className="bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl p-8 text-center min-w-[280px]">
-                          <div className="text-5xl md:text-6xl font-bold text-white mb-2 animate-pulse">
+                        <div className="bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl p-6 sm:p-8 text-center w-full max-w-[280px] sm:max-w-none">
+                          <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-2 animate-pulse">
                             {calculateReturn(calculatorData.investment, calculatorData.days).toLocaleString()} USD
                           </div>
-                          <div className="text-orange-300 font-semibold text-lg">{t.potentialProfit}</div>
-                          <div className="text-green-400 font-bold text-xl mt-2">
+                          <div className="text-orange-300 font-semibold text-base sm:text-lg">{t.potentialProfit}</div>
+                          <div className="text-green-400 font-bold text-lg sm:text-xl mt-2">
                             +{calculatePercentage(calculatorData.investment, calculatorData.days).toFixed(1)}%
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="mt-8 text-center">
+                    <div className="mt-6 sm:mt-8 text-center">
                       <Button
                         onClick={() => {
                           const formElement = document.querySelector("#registration-form")
@@ -1628,13 +1530,13 @@ export default function CryptoLanding() {
                           }
                         }}
                         size="lg"
-                        className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 h-14 text-lg font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 group relative overflow-hidden"
+                        className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 h-12 sm:px-8 sm:py-4 sm:h-14 text-base sm:text-lg font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 group relative overflow-hidden"
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-green-600/30 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                         <div className="relative flex items-center gap-3">
                           <span>{t.startInvestingNowButton}</span>
                           <svg
-                            className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+                            className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >
@@ -1647,21 +1549,20 @@ export default function CryptoLanding() {
                         </div>
                       </Button>
                     </div>
-                    <div className="mt-6 text-white/80 text-sm text-center">
+                    <div className="mt-4 sm:mt-6 text-white/80 text-xs sm:text-sm text-center">
                       <p>{t.disclaimer}</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
             {/* Demo Account Section */}
-            <div className="text-center mb-16 mt-20">
-              <div className="max-w-6xl mx-auto px-8">
-                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-12 animate-in slide-in-from-bottom-5 duration-700">
+            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
+              <div className="max-w-6xl mx-auto px-4 sm:px-8">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8 sm:mb-12 animate-in slide-in-from-bottom-5 duration-700">
                   {t.demoAccountTitle}
                 </h2>
-                <div className="grid md:grid-cols-2 gap-12 text-white text-left mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 text-white text-left mb-8 sm:mb-12">
                   <div className="space-y-6 animate-in slide-in-from-left-5 duration-700 delay-200">
                     <p className="text-base leading-relaxed">{t.demoAccountText1}</p>
                   </div>
@@ -1669,10 +1570,10 @@ export default function CryptoLanding() {
                     <p className="text-base leading-relaxed">{t.demoAccountText2}</p>
                   </div>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-8 animate-in slide-in-from-bottom-5 duration-700 delay-500">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-6 sm:mb-8 animate-in slide-in-from-bottom-5 duration-700 delay-500">
                   {t.notScamTitle}
                 </h3>
-                <div className="grid md:grid-cols-2 gap-12 text-white text-left mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 text-white text-left mb-8 sm:mb-12">
                   <div className="space-y-6 animate-in slide-in-from-left-5 duration-700 delay-600">
                     <p className="text-base leading-relaxed">{t.notScamText1}</p>
                     <p className="text-base leading-relaxed">{t.notScamText2}</p>
@@ -1684,8 +1585,8 @@ export default function CryptoLanding() {
                 </div>
                 {/* Security Lock Icon */}
                 <div className="flex justify-center animate-in fade-in-50 duration-700 delay-800">
-                  <div className="w-24 h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-xl">
-                    <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-xl">
+                    <svg className="w-10 h-10 sm:w-12 sm:h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
                       <path
                         fillRule="evenodd"
                         d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
@@ -1696,21 +1597,22 @@ export default function CryptoLanding() {
                 </div>
               </div>
             </div>
-
             {/* Testimonials Section with Grid Layout */}
-            <div className="text-center mb-16 mt-20">
-              <div className="max-w-7xl mx-auto px-8 relative">
+            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
+              <div className="max-w-7xl mx-auto px-4 sm:px-8 relative">
                 {/* Floating Coin */}
-                <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-80 animate-bounce">
-                  <div className="w-full h-full flex items-center justify-center text-2xl font-bold text-white">₿</div>
+                <div className="absolute top-0 right-0 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-80 animate-bounce hidden sm:flex items-center justify-center">
+                  <div className="w-full h-full flex items-center justify-center text-lg sm:text-2xl font-bold text-white">
+                    ₿
+                  </div>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-12 animate-in slide-in-from-bottom-5 duration-700">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8 sm:mb-12 animate-in slide-in-from-bottom-5 duration-700">
                   {t.testimonialsTitle} <span className="text-orange-400">{t.testimonialsHighlight}</span>{" "}
                   {t.testimonialsTitle2}
                 </h2>
                 {/* Testimonials Grid with Navigation */}
                 <div className="relative">
-                  <div className="grid md:grid-cols-3 gap-6 mb-8">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     {testimonials.slice(currentTestimonial, currentTestimonial + 3).map((testimonial, index) => (
                       <div
                         key={testimonial.id}
@@ -1729,15 +1631,15 @@ export default function CryptoLanding() {
                   {/* Navigation Arrows */}
                   <Button
                     onClick={prevTestimonial}
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-orange-500 hover:bg-orange-600 text-white rounded-full w-12 h-12 p-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-orange-500 hover:bg-orange-600 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 p-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
                   >
-                    <ChevronLeft className="w-6 h-6" />
+                    <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
                   </Button>
                   <Button
                     onClick={nextTestimonial}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-orange-500 hover:bg-orange-600 text-white rounded-full w-12 h-12 p-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-orange-500 hover:bg-orange-600 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 p-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
                   >
-                    <ChevronRight className="w-6 h-6" />
+                    <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
                   </Button>
                   {/* Dots Indicator */}
                   <div className="flex justify-center gap-2 mt-6">
@@ -1746,8 +1648,8 @@ export default function CryptoLanding() {
                         key={index}
                         onClick={() => setCurrentTestimonial(index * 3)}
                         className={`w-3 h-3 rounded-full transition-all duration-300 ${Math.floor(currentTestimonial / 3) === index
-                            ? "bg-orange-400 scale-125"
-                            : "bg-white/30 hover:bg-white/50"
+                          ? "bg-orange-400 scale-125"
+                          : "bg-white/30 hover:bg-white/50"
                           }`}
                       />
                     ))}
@@ -1755,69 +1657,74 @@ export default function CryptoLanding() {
                 </div>
               </div>
             </div>
-
             {/* New Trading Features Section */}
-            <div className="text-center mb-16 mt-20">
-              <div className="max-w-6xl mx-auto px-8 relative">
+            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
+              <div className="max-w-6xl mx-auto px-4 sm:px-8 relative">
                 {/* Bitcoin Logo */}
-                <div className="flex justify-center mb-8">
-                  <div className="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-xl animate-pulse">
-                    <div className="text-3xl font-bold text-white">₿</div>
+                <div className="flex justify-center mb-6 sm:mb-8">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-xl animate-pulse">
+                    <div className="text-2xl sm:text-3xl font-bold text-white">₿</div>
                   </div>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6 animate-in slide-in-from-bottom-5 duration-700">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4 sm:mb-6 animate-in slide-in-from-bottom-5 duration-700">
                   {t.tradingEasyTitle}{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">
                     {t.tradingEasyHighlight}
                   </span>
                 </h2>
-                <p className="text-lg text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">{t.tradingEasyIntro}</p>
+                <p className="text-base sm:text-lg text-white/90 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed">
+                  {t.tradingEasyIntro}
+                </p>
                 {/* Features Grid */}
-                <div className="grid md:grid-cols-2 gap-8 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
                   {/* Feature 1 */}
-                  <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-600/30 animate-in slide-in-from-left-5 duration-700 delay-200">
+                  <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-left-5 duration-700 delay-200">
                     <div className="flex items-start gap-4 mb-6">
-                      <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Percent className="w-8 h-8 text-white" />
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Percent className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                       </div>
                       <div className="text-left">
-                        <h3 className="text-xl font-bold text-orange-400 mb-2">{t.featureAiSelectionsTitle}</h3>
+                        <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">
+                          {t.featureAiSelectionsTitle}
+                        </h3>
                       </div>
                     </div>
                     <p className="text-white text-sm leading-relaxed text-left">{t.featureAiSelectionsText}</p>
                   </div>
                   {/* Feature 2 */}
-                  <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-600/30 animate-in slide-in-from-right-5 duration-700 delay-300">
+                  <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-right-5 duration-700 delay-300">
                     <div className="flex items-start gap-4 mb-6">
-                      <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Percent className="w-8 h-8 text-white" />
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Percent className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                       </div>
                       <div className="text-left">
-                        <h3 className="text-xl font-bold text-orange-400 mb-2">{t.featureAutoTradingTitle}</h3>
+                        <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">
+                          {t.featureAutoTradingTitle}
+                        </h3>
                       </div>
                     </div>
                     <p className="text-white text-sm leading-relaxed text-left">{t.featureAutoTradingText}</p>
                   </div>
                   {/* Feature 3 */}
-                  <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-600/30 animate-in slide-in-from-left-5 duration-700 delay-400">
+                  <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-left-5 duration-700 delay-400">
                     <div className="flex items-start gap-4 mb-6">
-                      <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Headphones className="w-8 h-8 text-white" />
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Headphones className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                       </div>
                       <div className="text-left">
-                        <h3 className="text-xl font-bold text-orange-400 mb-2">{t.featureSupportTitle}</h3>
+                        <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">{t.featureSupportTitle}</h3>
                       </div>
                     </div>
                     <p className="text-white text-sm leading-relaxed text-left">{t.featureSupportText}</p>
                   </div>
                   {/* Feature 4 */}
-                  <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-600/30 animate-in slide-in-from-right-5 duration-700 delay-500">
+                  <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-right-5 duration-700 delay-500">
                     <div className="flex items-start gap-4 mb-6">
-                      <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Users className="w-8 h-8 text-white" />
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Users className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                       </div>
                       <div className="text-left">
-                        <h3 className="text-xl font-bold text-orange-400 mb-2">{t.featureCommunityTitle}</h3>
+                        <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">{t.featureCommunityTitle}</h3>
                       </div>
                     </div>
                     <p className="text-white text-sm leading-relaxed text-left">{t.featureCommunityText}</p>
@@ -1825,16 +1732,20 @@ export default function CryptoLanding() {
                 </div>
                 {/* Decorative Coins */}
                 <div
-                  className="absolute top-20 right-10 w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-60 animate-bounce"
+                  className="absolute top-10 right-4 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-60 animate-bounce hidden sm:flex items-center justify-center"
                   style={{ animationDelay: "1s" }}
                 >
-                  <div className="w-full h-full flex items-center justify-center text-lg font-bold text-white">₿</div>
+                  <div className="w-full h-full flex items-center justify-center text-base sm:text-lg font-bold text-white">
+                    ₿
+                  </div>
                 </div>
                 <div
-                  className="absolute bottom-20 left-10 w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-70 animate-bounce"
+                  className="absolute bottom-10 left-4 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-70 animate-bounce hidden sm:flex items-center justify-center"
                   style={{ animationDelay: "2s" }}
                 >
-                  <div className="w-full h-full flex items-center justify-center text-sm font-bold text-white">₿</div>
+                  <div className="w-full h-full flex items-center justify-center text-xs sm:text-sm font-bold text-white">
+                    ₿
+                  </div>
                 </div>
                 {/* CTA Button */}
                 <div className="animate-in slide-in-from-bottom-5 duration-700 delay-600">
@@ -1846,13 +1757,13 @@ export default function CryptoLanding() {
                       }
                     }}
                     size="lg"
-                    className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-12 py-4 h-16 text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 group relative overflow-hidden"
+                    className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8 py-3 h-14 sm:px-12 sm:py-4 sm:h-16 text-lg sm:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 group relative overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/30 to-orange-400/30 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                     <div className="relative flex items-center gap-3">
                       <span>{t.createAccountButton}</span>
                       <svg
-                        className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300"
+                        className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -1867,74 +1778,76 @@ export default function CryptoLanding() {
                 </div>
               </div>
             </div>
-
             {/* How to Start Section */}
-            <div className="text-center mb-16 mt-20">
-              <div className="max-w-6xl mx-auto px-8">
-                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-16 animate-in slide-in-from-bottom-5 duration-700">
+            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
+              <div className="max-w-6xl mx-auto px-4 sm:px-8">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-12 sm:mb-16 animate-in slide-in-from-bottom-5 duration-700">
                   <span className="text-orange-400">{t.howToStartTitle}</span> {t.howToStartHighlight}
                 </h2>
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {/* Step 1 */}
                   <div className="text-center animate-in slide-in-from-left-5 duration-700 delay-200">
                     <div className="mb-6">
-                      <div className="text-orange-400 text-2xl font-bold mb-4">Paso 1</div>
-                      <div className="w-full h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
+                      <div className="text-orange-400 text-xl sm:text-2xl font-bold mb-4">Paso 1</div>
+                      <div className="w-full h-40 sm:h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
                         <div className="text-white text-center">
-                          <User className="w-16 h-16 mx-auto mb-4 text-orange-400" />
+                          <User className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-orange-400" />
                           <p>{language === "es" ? "Inscripción" : "Registration"}</p>
                         </div>
                       </div>
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-4">{t.step1Title}</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step1Title}</h3>
                     <p className="text-white/80 text-sm leading-relaxed">{t.step1Description}</p>
                   </div>
                   {/* Step 2 */}
                   <div className="text-center animate-in slide-in-from-bottom-5 duration-700 delay-300">
                     <div className="mb-6">
-                      <div className="text-blue-400 text-2xl font-bold mb-4">Paso 2</div>
-                      <div className="w-full h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
+                      <div className="text-blue-400 text-xl sm:text-2xl font-bold mb-4">Paso 2</div>
+                      <div className="w-full h-40 sm:h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
                         <div className="text-white text-center">
-                          <TrendingUp className="w-16 h-16 mx-auto mb-4 text-blue-400" />
+                          <TrendingUp className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-blue-400" />
                           <p>{language === "es" ? "Depósito" : "Deposit"}</p>
                         </div>
                       </div>
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-4">{t.step2Title}</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step2Title}</h3>
                     <p className="text-white/80 text-sm leading-relaxed">{t.step2Description}</p>
                   </div>
                   {/* Step 3 */}
                   <div className="text-center animate-in slide-in-from-right-5 duration-700 delay-400">
                     <div className="mb-6">
-                      <div className="text-green-400 text-2xl font-bold mb-4">Paso 3</div>
-                      <div className="w-full h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
+                      <div className="text-green-400 text-xl sm:text-2xl font-bold mb-4">Paso 3</div>
+                      <div className="w-full h-40 sm:h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
                         <div className="text-white text-center">
-                          <Phone className="w-16 h-16 mx-auto mb-4 text-green-400" />
+                          <Phone className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-green-400" />
                           <p>{language === "es" ? "Llamada" : "Call"}</p>
                         </div>
                       </div>
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-4">{t.step3Title}</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step3Title}</h3>
                     <p className="text-white/80 text-sm leading-relaxed">{t.step3Description}</p>
                   </div>
                 </div>
               </div>
             </div>
-
             {/* FAQ Section */}
-            <div className="text-center mb-16 mt-20">
-              <div className="max-w-4xl mx-auto px-8 relative">
+            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
+              <div className="max-w-4xl mx-auto px-4 sm:px-8 relative">
                 {/* Floating Coins */}
-                <div className="absolute top-10 right-10 w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-60 animate-bounce">
-                  <div className="w-full h-full flex items-center justify-center text-lg font-bold text-white">₿</div>
+                <div className="absolute top-4 right-4 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-60 animate-bounce hidden sm:flex items-center justify-center">
+                  <div className="w-full h-full flex items-center justify-center text-base sm:text-lg font-bold text-white">
+                    ₿
+                  </div>
                 </div>
                 <div
-                  className="absolute bottom-10 left-10 w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-70 animate-bounce"
+                  className="absolute bottom-4 left-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-70 animate-bounce hidden sm:flex items-center justify-center"
                   style={{ animationDelay: "1s" }}
                 >
-                  <div className="w-full h-full flex items-center justify-center text-2xl font-bold text-white">₿</div>
+                  <div className="w-full h-full flex items-center justify-center text-lg sm:text-2xl font-bold text-white">
+                    ₿
+                  </div>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-12 animate-in slide-in-from-bottom-5 duration-700">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8 sm:mb-12 animate-in slide-in-from-bottom-5 duration-700">
                   <span className="text-orange-400">{t.faqTitle}</span> {t.faqHighlight}
                 </h2>
                 <div className="space-y-4">
@@ -1946,13 +1859,13 @@ export default function CryptoLanding() {
                     >
                       <button
                         onClick={() => setExpandedFAQ(expandedFAQ === faq.id ? null : faq.id)}
-                        className="w-full p-6 text-left flex items-center justify-between hover:bg-blue-600/60 transition-all duration-300"
+                        className="w-full p-4 sm:p-6 text-left flex items-center justify-between hover:bg-blue-600/60 transition-all duration-300"
                       >
                         <div className="flex items-center gap-4">
                           <div className="bg-orange-400 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">
                             {String(faq.id).padStart(2, "0")}
                           </div>
-                          <h3 className="text-lg font-semibold text-white">{faq.question[language]}</h3>
+                          <h3 className="text-base sm:text-lg font-semibold text-white">{faq.question[language]}</h3>
                         </div>
                         <div
                           className="text-orange-400 text-2xl font-bold transition-transform duration-300"
@@ -1962,7 +1875,7 @@ export default function CryptoLanding() {
                         </div>
                       </button>
                       {expandedFAQ === faq.id && (
-                        <div className="px-6 pb-6 animate-in slide-in-from-top-2 duration-300">
+                        <div className="px-4 pb-4 sm:px-6 sm:pb-6 animate-in slide-in-from-top-2 duration-300">
                           <p className="text-white/90 leading-relaxed pl-12">{faq.answer[language]}</p>
                         </div>
                       )}
@@ -1971,14 +1884,13 @@ export default function CryptoLanding() {
                 </div>
               </div>
             </div>
-
             {/* Final Section with Smaller Form */}
-            <div className="mb-16 mt-20">
-              <div className="max-w-7xl mx-auto px-8">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="mb-12 sm:mb-16 mt-16 sm:mt-20">
+              <div className="max-w-7xl mx-auto px-4 sm:px-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
                   {/* Left Side - Content */}
                   <div className="space-y-6 animate-in slide-in-from-left-5 duration-700">
-                    <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
                       <span className="text-orange-400">{t.finalSectionTitle}</span>
                     </h2>
                     <div className="text-white text-lg font-semibold mb-4">{t.finalSectionSubtitle}</div>
@@ -1987,7 +1899,7 @@ export default function CryptoLanding() {
                   {/* Right Side - Smaller Form */}
                   <div className="animate-in slide-in-from-right-5 duration-700">
                     <div className="bg-blue-600/90 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-blue-400/20">
-                      <h3 className="text-2xl font-bold text-white text-center mb-6">{t.improveLife}</h3>
+                      <h3 className="text-xl sm:text-2xl font-bold text-white text-center mb-6">{t.improveLife}</h3>
                       <form className="space-y-4" action={registrationAction}>
                         <div className="relative">
                           <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -1997,7 +1909,7 @@ export default function CryptoLanding() {
                             value={formData.name}
                             onChange={(e) => handleInputChange("name", e.target.value)}
                             required
-                            className="bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
+                            className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
                           />
                         </div>
                         <div className="relative">
@@ -2008,7 +1920,7 @@ export default function CryptoLanding() {
                             value={formData.surname}
                             onChange={(e) => handleInputChange("surname", e.target.value)}
                             required
-                            className="bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
+                            className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
                           />
                         </div>
                         <div className="relative">
@@ -2020,16 +1932,16 @@ export default function CryptoLanding() {
                             value={formData.email}
                             onChange={(e) => handleInputChange("email", e.target.value)}
                             required
-                            className="bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
+                            className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
                           />
                         </div>
-                        <div className="flex gap-2">
+                        <div className="flex flex-col sm:flex-row gap-2">
                           <Select
                             name="countryCode"
                             value={formData.countryCode}
                             onValueChange={(value) => handleInputChange("countryCode", value)}
                           >
-                            <SelectTrigger className="w-24 bg-orange-400 border-0 h-10 text-white rounded-lg text-sm flex items-center">
+                            <SelectTrigger className="w-full sm:w-24 bg-orange-400 border-0 h-10 text-white rounded-lg text-sm flex items-center">
                               <SelectValue />
                             </SelectTrigger>
                             <SelectContent>
@@ -2040,7 +1952,7 @@ export default function CryptoLanding() {
                               ))}
                             </SelectContent>
                           </Select>
-                          <div className="relative flex-1">
+                          <div className="relative flex-1 w-full">
                             <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                             <Input
                               name="phone"
@@ -2048,11 +1960,11 @@ export default function CryptoLanding() {
                               value={formData.phone}
                               onChange={(e) => handleInputChange("phone", e.target.value)}
                               required
-                              className="bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
+                              className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
                             />
                           </div>
                         </div>
-                        <SmallSubmitButton>{t.smallFormRegisterButton}</SmallSubmitButton>
+                        <SmallSubmitButton language={language}>{t.smallFormRegisterButton}</SmallSubmitButton>
                         <div className="flex items-start gap-2 text-xs text-white/80">
                           <Checkbox id="terms-small" className="mt-1 w-4 h-4" required />
                           <label htmlFor="terms-small" className="leading-relaxed">
@@ -2068,16 +1980,15 @@ export default function CryptoLanding() {
                 </div>
               </div>
             </div>
-
             {/* Footer */}
-            <footer className="py-12 relative">
-              <div className="max-w-7xl mx-auto px-8">
-                <div className="grid md:grid-cols-2 gap-8 items-center">
+            <footer className="py-8 sm:py-12 relative">
+              <div className="max-w-7xl mx-auto px-4 sm:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-center md:text-left">
                   {/* Company Info */}
                   <div className="space-y-4">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-center md:justify-start gap-2">
                       <TrendingUp className="w-6 h-6 text-orange-400" />
-                      <img src="/logo.png" alt="Coin Sin Limited Logo" className="h-20 w-40 object-contain" />
+                      <img src="/logo.png" alt="Coin Sin Limited Logo" className="h-16 w-32 object-contain" />
                     </div>
                     <p className="text-white/80 text-sm leading-relaxed">{t.footerCompanyInfo}</p>
                   </div>
@@ -2098,7 +2009,6 @@ export default function CryptoLanding() {
               </div>
             </footer>
           </div>
-
           {/* Chat Button */}
           <div className="fixed bottom-6 right-6 z-20">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-14 h-14 p-0">
