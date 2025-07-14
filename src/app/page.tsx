@@ -203,8 +203,7 @@ const translations = {
     smallFormPrivacyText:
       "Tus datos siempre están protegidos con Coin Sin Limited. Al completar este formulario, aceptas recibir nuestros correos electrónicos de marketing.",
     ageConfirmation: "Confirmo que soy mayor de edad.",
-    disclaimerFull: `IMPORTANTE: Exenciones de Responsabilidad de Ingresos y Legales. Los gráficos de ingresos y ganancias creados por smartbitboost.io, también conocido como "Este Sitio Web", se utilizan únicamente como ilustraciones ideales de su potencial de ganancias. El éxito de las personas en testimonios y otros ejemplos son resultados excepcionales, y por lo tanto no tienen la intención de garantizar que usted u otros lograrán lo mismo. Los resultados individuales dependerán de cómo utilice smartbitboost.io. Por lo que haga, este sitio web no tiene responsabilidad. Siempre debe actuar con precaución y diligencia debida porque asume la plena responsabilidad de sus acciones y decisiones al utilizar productos y servicios. Usted acepta que de ninguna manera este sitio web será responsable de los resultados de su uso de nuestros servicios. Consulte nuestros términos de uso para obtener información sobre nuestras exenciones de responsabilidad y otras restricciones. Si bien el trading puede generar beneficios notables, también conlleva el riesgo de perder el capital invertido en parte o en su totalidad, por lo que debe considerar si puede permitirse invertir. ©2025
-AVISO REGULATORIO DE EE. UU.: El trading de Forex, CFD y criptomonedas no está bajo ninguna regulación de EE. UU. La inversión en criptomonedas no está regulada ni supervisada por ninguna agencia financiera o de EE. UU. Cualquier trading no regulado por residentes de EE. UU. se considera ilegal. Este sitio web no acepta clientes ni ciudadanos de EE. UU. Este sitio web no tiene responsabilidad por las acciones de clientes ubicados en o con ciudadanía estadounidense. Los clientes ubicados dentro de los Estados Unidos o con ciudadanía estadounidense asumen la plena responsabilidad de sus acciones y decisiones al utilizar productos y servicios de este Sitio Web. En todas y cada una de las circunstancias, la elección de utilizar el Sitio Web, el Servicio y/o el Software es bajo la exclusiva responsabilidad del Usuario, quien debe cumplir con la legislación vigente.`,
+    disclaimerFull: `IMPORTANTE: Exenciones de Responsabilidad de Ingresos y Legales. Los gráficos de ingresos y ganancias creados por smartbitboost.io, también conocido como "Este Sitio Web", se utilizan únicamente como ilustraciones ideales de su potencial de ganancias. El éxito de las personas en testimonios y otros ejemplos son resultados excepcionales, y por lo tanto no tienen la intención de garantizar que usted u otros lograrán lo mismo. Los resultados individuales dependerán de cómo utilice smartbitboost.io. Por lo que haga, este sitio web no tiene responsabilidad. Siempre debe actuar con precaución y diligencia debida porque asume la plena responsabilidad de sus acciones y decisiones al utilizar productos y servicios. Usted acepta que de ninguna manera este sitio web será responsable de los resultados de su uso de nuestros servicios. Consulte nuestros términos de uso para obtener información sobre nuestras exenciones de responsabilidad y otras restricciones. Si bien el trading puede generar beneficios notables, también conlleva el riesgo de perder el capital invertido en parte o en su totalidad, por lo que debe considerar si puede permitirse invertir. ©2025AVISO REGULATORIO DE EE. UU.: El trading de Forex, CFD y criptomonedas no está bajo ninguna regulación de EE. UU. La inversión en criptomonedas no está regulada ni supervisada por ninguna agencia financiera o de EE. UU. Cualquier trading no regulado por residentes de EE. UU. se considera ilegal. Este sitio web no acepta clientes ni ciudadanos de EE. UU. Este sitio web no tiene responsabilidad por las acciones de clientes ubicados en o con ciudadanía estadounidense. Los clientes ubicados dentro de los Estados Unidos o con ciudadanía estadounidense asumen la plena responsabilidad de sus acciones y decisiones al utilizar productos y servicios de este Sitio Web. En todas y cada una de las circunstancias, la elección de utilizar el Sitio Web, el Servicio y/o el Software es bajo la exclusiva responsabilidad del Usuario, quien debe cumplir con la legislación vigente.`,
   },
   en: {
     notification:
@@ -254,7 +253,7 @@ AVISO REGULATORIO DE EE. UU.: El trading de Forex, CFD y criptomonedas no está 
       "Cryptocurrencies provide an opportunity to diversify your investment portfolio. They provide an alternative asset class that is independent of traditional financial markets. Investing in cryptocurrencies helps diversify risk and protect the portfolio from potential negative influences in one area.",
     focusOnPlatformTitle: "Let's now focus on the Coin Sin Limited platform.",
     focusOnPlatformText1:
-      "Why is artificial intelligence (AI) fundamental to the investment market? AI is faster than the human brain and can analyze data accurately, provided the system is configured correctly. Machine learning has three significant advantages in the investment market.",
+      "Why is artificial intelligence (AI) fundamental to the investment market? AI is faster than the human brain and can analyze data accurately, provided the system is configured correctly. The learning machine has three significant advantages in the investment market.",
     focusOnPlatformText2:
       "Furthermore, artificial intelligence operates in the market 24/7 now. It means real-time global situation awareness, knowledge accumulation about patterns, and immediate creation of profitable strategies. The Coin Sin Limited platform offers an effective profitability achievable by humans. It is a matter of time until machines fully assume this function.",
     focusOnPlatformText3:
@@ -375,7 +374,6 @@ AVISO REGULATORIO DE EE. UU.: El trading de Forex, CFD y criptomonedas no está 
     disclaimerFull: `IMPORTANT: Income and Legal Disclaimers. The income and earnings graphs created by smartbitboost.io, also known as "This Website", are used solely as ideal illustrations of your earning potential. The success of individuals in testimonials and other examples are exceptional results, and therefore are not intended to guarantee that you or others will achieve the same. Individual results will depend on how you use smartbitboost.io. For whatever you do, this website has no responsibility. You should always act with caution and due diligence because you assume full responsibility for your actions and decisions when using products and services. You agree that in no way will this website be responsible for the results of your use of our services. See our terms of use for information on our disclaimers and other restrictions. While trading can generate notable benefits, it also carries the risk of losing invested capital in part or in full, so you should consider whether you can afford to invest. ©2025USA REGULATORY NOTICE: Forex, CFD, and cryptocurrency trading is not under any US regulation. Cryptocurrency investment is not regulated or supervised by any US or financial agency. Any unregulated trading by US residents is considered illegal. This website does not accept US clients or US citizens. This website has no responsibility for the actions of clients located in or with US citizenship. Clients located within the United States or with US citizenship assume full responsibility for their actions and decisions when using products and services from this Website. In any and all circumstances, the choice to use the Website, the Service and/or the Software is under the sole responsibility of the User, who must comply with current legislation.`,
   },
 }
-
 // Testimonials data
 const testimonials = [
   {
@@ -439,7 +437,6 @@ const testimonials = [
     },
   },
 ]
-
 const faqData = [
   {
     id: 1,
@@ -497,7 +494,6 @@ const faqData = [
     },
   },
 ]
-
 const countryCodes = [
   { id: "AF", code: "+93", flag: "🇦🇫", country: "Afghanistan", name: "Afganistán" },
   { id: "AL", code: "+355", flag: "🇦🇱", country: "Albania", name: "Albania" },
@@ -646,7 +642,7 @@ const countryCodes = [
   { id: "MT", code: "+356", flag: "🇲🇹", country: "Malta", name: "Malta" },
   { id: "MH", code: "+692", flag: "🇲🇭", country: "Marshall Islands", name: "Islas Marshall" },
   { id: "MQ", code: "+596", flag: "🇲🇶", country: "Martinique", name: "Martinica" },
-  { id: "MR", code: "+222", flag: "🇲🇷", country: "Mauritania", name: "Mauritania" },
+  { id: "MR", code: "+222", flag: "🇲🇷", country: "Mauritania", name: "Marruecos" },
   { id: "MU", code: "+230", flag: "🇲🇺", country: "Mauritius", name: "Mauricio" },
   { id: "YT", code: "+262", flag: "🇾🇹", country: "Mayotte", name: "Mayotte" },
   { id: "MX", code: "+52", flag: "🇲🇽", country: "Mexico", name: "México" },
@@ -744,7 +740,6 @@ const countryCodes = [
   { id: "ZM", code: "+260", flag: "🇿🇲", country: "Zambia", name: "Zambia" },
   { id: "ZW", code: "+263", flag: "🇿🇼", country: "Zimbabwe", name: "Zimbabue" },
 ]
-
 export default function CryptoLanding() {
   const [language, setLanguage] = useState<"es" | "en">("es")
   const [countrySearch, setCountrySearch] = useState("")
@@ -783,27 +778,22 @@ export default function CryptoLanding() {
       _form: undefined,
     },
   })
-
   useEffect(() => {
     const benefitInterval = setInterval(() => {
       setPlatformNetBenefit((prev) => prev + Math.floor(Math.random() * 1000) + 100) // Increment by 100-1099
     }, 5000) // Update every 5 seconds
-
     const usersInterval = setInterval(() => {
       setNewUsersToday((prev) => prev + Math.floor(Math.random() * 5) + 1) // Increment by 1-5 users
     }, 10000) // Update every 10 seconds
-
     return () => {
       clearInterval(benefitInterval)
       clearInterval(usersInterval)
     }
   }, [])
-
   // Calculate return based on investment and days
   const calculateReturn = (investment: number, days: number) => {
     const initialDailyRate = 0.0936 // This rate ensures 250 -> 612 in 10 days
     const reducedDailyRate = 0.03 // A much lower rate for subsequent days
-
     if (days <= 10) {
       return Math.round(investment * Math.pow(1 + initialDailyRate, days))
     } else {
@@ -812,13 +802,11 @@ export default function CryptoLanding() {
       return Math.round(baseReturnAt10Days * Math.pow(1 + reducedDailyRate, remainingDays))
     }
   }
-
   // Calculate percentage gain
   const calculatePercentage = (investment: number, days: number) => {
     const returnAmount = calculateReturn(investment, days)
     return ((returnAmount - investment) / investment) * 100
   }
-
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => {
       // Ensure maxIndex is calculated correctly for the number of testimonials and items displayed
@@ -826,14 +814,12 @@ export default function CryptoLanding() {
       return prev + 3 > maxIndex ? 0 : prev + 3
     })
   }
-
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) => {
       const maxIndex = testimonials.length - 3 // Displaying 3 testimonials at a time
       return prev - 3 < 0 ? maxIndex : prev - 3
     })
   }
-
   const toggleVideo = () => {
     if (videoRef.current) {
       if (isVideoPlaying) {
@@ -844,7 +830,6 @@ export default function CryptoLanding() {
       setIsVideoPlaying(!isVideoPlaying)
     }
   }
-
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = Number.parseFloat(e.target.value)
     if (videoRef.current) {
@@ -857,7 +842,6 @@ export default function CryptoLanding() {
       }
     }
   }
-
   const toggleFullScreen = () => {
     if (videoRef.current) {
       if (document.fullscreenElement) {
@@ -867,9 +851,7 @@ export default function CryptoLanding() {
       }
     }
   }
-
   const t = translations[language]
-
   const filteredCountries = useMemo(() => {
     if (!countrySearch) return countryCodes
     const searchTerm = countrySearch.toLowerCase()
@@ -880,7 +862,6 @@ export default function CryptoLanding() {
         country.code.includes(searchTerm),
     )
   }, [countrySearch])
-
   const validatePhoneNumber = (phoneNumber: string) => {
     const commonPatterns = [
       /^(\d)\1+$/, // e.g., 1111111111
@@ -894,20 +875,16 @@ export default function CryptoLanding() {
     }
     return null
   }
-
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
     if (field === "phone") {
       setPhoneError(validatePhoneNumber(value))
     }
   }
-
   const handleLanguageChange = (newLanguage: string) => {
     setLanguage(newLanguage as "es" | "en")
   }
-
   const selectedCountry = countryCodes.find((c) => c.code === formData.countryCode)
-
   const toggleMute = () => {
     if (videoRef.current) {
       videoRef.current.muted = !isMuted
@@ -919,7 +896,6 @@ export default function CryptoLanding() {
       }
     }
   }
-
   return (
     <div className="min-h-screen relative overflow-hidden bg-blue-950">
       {/* Section with background image */}
@@ -943,7 +919,7 @@ export default function CryptoLanding() {
               <img
                 src="/logo.png"
                 alt="Coin Sin Limited Logo"
-                className="h-24 w-48 sm:h-28 sm:w-56 object-contain rounded-lg"
+                className="h-24 w-48 sm:h-28 sm:w-56 object-contain rounded-lg max-w-[120px] sm:max-w-none"
               />
             </div>
             {/* Counters Column (centered) */}
@@ -985,7 +961,7 @@ export default function CryptoLanding() {
       </div>
       {/* FIN DEL DIV CON LA IMAGEN DE FONDO */}
       {/* Combined Section - MOVED OUTSIDE THE BACKGROUND IMAGE DIV */}
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Moved "READY TO JOIN" banner here, outside the grid */}
         <div className="bg-blue-700/50 text-white p-4 rounded-lg flex items-center gap-3 mb-6 animate-in slide-in-from-left-5 duration-700">
           <Info className="w-5 h-5" />
@@ -1180,7 +1156,7 @@ export default function CryptoLanding() {
                     </div>
                     {/* Phone Field - Unified */}
                     <div className="flex animate-in slide-in-from-left-3 duration-500 delay-400 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus-within:scale-[1.02] focus-within:bg-white overflow-hidden">
-                      <div className="relative w-1/3">
+                      <div className="relative w-1/2 sm:w-1/3">
                         <Select
                           name="countryCode"
                           value={formData.countryCode}
@@ -1375,7 +1351,7 @@ export default function CryptoLanding() {
             </div>
           </div>
           {/* First Information Block */}
-          <div className="text-center mb-12 sm:mb-16">
+          <div className="text-center mb-12 sm:mb-16 px-4 sm:px-8">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700 mb-8 sm:mb-12">
               {t.advantagesTitle}
             </h2>
@@ -1448,7 +1424,7 @@ export default function CryptoLanding() {
               </div>
             </div>
             {/* Second Information Block */}
-            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
+            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20 px-4 sm:px-8">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700 mb-8 sm:mb-12">
                 {t.platformBenefitTitle}
               </h2>
@@ -1478,7 +1454,7 @@ export default function CryptoLanding() {
               </div>
             </div>
             {/* Third Information Block */}
-            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
+            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20 px-4 sm:px-8">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700 mb-8 sm:mb-12">
                 {t.investSmartTitle}
               </h2>
@@ -1517,7 +1493,7 @@ export default function CryptoLanding() {
             </div>
             {/* Investment Calculator Section */}
             <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
-              <div className="max-w-4xl mx-auto">
+              <div className="max-w-4xl mx-auto px-4 sm:px-8">
                 <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 rounded-3xl p-6 sm:p-8 shadow-2xl border border-blue-400/30 overflow-hidden">
                   <div className="relative z-10">
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 sm:mb-8 leading-tight">
@@ -1986,7 +1962,7 @@ export default function CryptoLanding() {
                                 />
                               </div>
                               <div className="flex animate-in slide-in-from-left-3 duration-500 delay-800 rounded-lg shadow-lg overflow-hidden">
-                                <div className="relative w-1/3">
+                                <div className="relative w-1/2 sm:w-1/3">
                                   <Select
                                     name="countryCode"
                                     value={formData.countryCode}
