@@ -23,11 +23,12 @@ import {
   Volume2,
   VolumeX,
   Maximize,
+  Calendar,
+  Lock,
 } from "lucide-react"
 import { useFormState } from "react-dom"
 import { submitRegistration } from "@/actions/submit-registration"
 import { SubmitButton, SmallSubmitButton } from "@/components/ui/submit-button"
-
 const translations = {
   es: {
     notification:
@@ -47,6 +48,7 @@ const translations = {
     surnamePlaceholder: "Tu apellido",
     emailPlaceholder: "Tu correo electrónico",
     phonePlaceholder: "9 11 2345-6789",
+    dobPlaceholder: "Fecha de Nacimiento", // Nuevo placeholder
     registerButton: "Regístrame",
     searchCountry: "Buscar país...",
     termsText:
@@ -62,7 +64,7 @@ const translations = {
     ctaParagraph2:
       "Ahora imagínate mirando la pantalla de tu teléfono inteligente y siendo testigo de otra ganancia de 1,000$ sin esfuerzo hoy mismo. Suena atractivo, ¿verdad?",
     ctaParagraph3:
-      "Coin Sin Limited lo hace posible. Como una plataforma de inicio impulsada por IA, empoderamos a los nuevos inversores para que se sumerjan en el mundo de las inversiones en criptomonedas, independientemente de su experiencia previa. Al comenzar con una inversión de solo 250 €, puedes aprovechar la oportunidad de multiplicar tus ganancias diarias por x5.",
+      "Coin Sin Limited lo hace posible. Como una plataforma de inicio impulsada por IA, empoderamos a los nuevos inversores para que se sumerjan en el mundo de las inversiones en criptomonedas, independientemente de su experiencia previa. By starting with an investment of just €250, you can seize the opportunity to multiply your daily earnings by x5.",
     ctaParagraph4:
       "¿Listo para unirte a nosotros? ¡Sigue las instrucciones de esta página y emprende tu emocionante viaje hacia una vida estable y sin preocupaciones, llena de abundantes placeres!",
     startNowButton: "Empieza ahora",
@@ -120,7 +122,7 @@ const translations = {
       "La plataforma Coin Sin Limited pasó desapercibida en el momento del lanzamiento del producto. Sin embargo, está provocando la ira y el pánico de bancos centrales y gobiernos de todo el mundo. Mientras los grandes jugadores intentan detener el proyecto de la plataforma Coin Sin Limited, usted puede empezar a ganar mucho dinero ahora.",
     investSmartTitle: "INVIERTE EN CRIPTODIVISAS DE FORMA INTELIGENTE CON LA PLATAFORMA COIN SIN LIMITED",
     investSmartText1:
-      "Los tiempos no son fáciles, y todo a nuestro alrededor va poco a poco hacia abajo. Aunque la situación puede mejorar en el futuro, todo el mundo debería ocuparse hoy de su futuro para no depender de factores externos. Smart tools can help you with esto.",
+      "Los tiempos no son fáciles, y todo a nuestro alrededor va poco a poco hacia abajo. Aunque la situación puede mejorar en el futuro, todo el mundo debería ocuparse hoy de su futuro para no depender de factores externos. Smart tools can help you with this.",
     investSmartText2:
       "La plataforma de inversión Coin Sin Limited le permite hacerlo sin perder tiempo estudiando el mercado de divisas digitales. Puede empezar a invertir hoy mismo en países como Canadá, Australia y otros. El éxito está precalculado, y todo lo que necesita es el deseo de unirse.",
     algorithmToolsIntro: "El algoritmo le proporciona las herramientas para ayudarle:",
@@ -140,21 +142,21 @@ const translations = {
       "* Los resultados mostrados son estimaciones basadas en el rendimiento histórico de la plataforma. Las inversiones conllevan riesgos.",
     demoAccountTitle: "PRUEBE LA CUENTA DE DEMOSTRACIÓN DE COIN SIN LIMITED",
     notScamText2:
-      "Los usuarios tienen acceso a una cuenta demostración virtual donde pueden evaluar sin riesgos las capacidades del sistema antes de invertir fondos reales. La protección del usuario es el principal requisito del proyecto. Los certificados SSL y la encriptación multicapa protegen de forma fiable todos los datos personales.",
+      "Users have access to a virtual demo account where they can risk-free evaluate the system's capabilities before investing real funds. User protection is the main requirement of the project. SSL certificates and multi-layer encryption reliably protect all personal data.",
     notScamTitle: "COIN SIN LIMITED NO ES UNA ESTAFA, Y ESTA ES LA RAZÓN",
     notScamText1:
-      "Es un proyecto de inversión automatizado que ofrece la oportunidad de ganar dinero invirtiendo en criptomonedas populares y proyectos prometedores en el mundo de los activos digitales. El sistema está controlado por ingenieros informáticos y corredores registrados en CySEC. Corredores autorizados llevan a cabo los procesos financieros en el sistema.",
+      "It is an automated investment project that offers the opportunity to earn money by investing in popular cryptocurrencies and promising projects in the world of digital assets. The system is controlled by computer engineers and brokers registered with CySEC. Authorized brokers carry out the financial processes in the system.",
     notScamText3:
-      "Por seguridad, se recomienda cerrar sesión después de cada uso y evitar la conexión al sistema desde redes públicas.",
+      "For security, it is recommended to log out after each use and avoid connecting to the system from public networks.",
     notScamText4:
-      "Coin Sin Limited ofrece beneficios máximos y ganancias sin riesgos, y presenta pruebas de no fraude. También encontrará opiniones sobre Coin Sin Limited a continuación.",
+      "Coin Sin Limited offers maximum benefits and risk-free earnings, and presents proof of non-fraud. You will also find opinions about Coin Sin Limited below.",
     testimonialsTitle: "DESCUBRE LO QUE DICEN LOS MIEMBROS DE",
     testimonialsHighlight: "COIN SIN LIMITED",
-    testimonialsTitle2: "SOBRE ESTA PLATAFORMA DE TRADING:",
+    testimonialsTitle2: "SAY ABOUT THIS TRADING PLATFORM:",
     tradingEasyTitle: "TRADING CON COIN SIN LIMITED ES",
     tradingEasyHighlight: "¡100% FÁCIL Y CÓMODO!",
     tradingEasyIntro:
-      "Al enviar el formulario a continuación con tu información precisa en esta página web, desbloquearás rápidamente el acceso sin restricciones a nuestro sistema de comercio de IA altamente confiable, dedicado e imparcial. Únete a los más de 2,500 inversores astutos que ya se están beneficiando de sus capacidades.",
+      "By submitting the form below with your accurate information on this website, you will quickly unlock unrestricted access to our highly reliable, dedicated, and unbiased AI trading system. Join the more than 2,500 astute investors who are already benefiting from its capabilities.",
     featureAiSelectionsTitle: "SELECCIONES DE INVERSIÓN EXCLUSIVAMENTE RENTABLES REALIZADAS POR IA",
     featureAiSelectionsText:
       "Atrás quedaron los días en que las inversiones estaban reservados para los ricos. Nuestro avanzado sistema informático analiza meticulosamente la liquidez, la volatilidad y el volumen de operaciones, lo que garantiza decisiones de inversión óptimas. Disfruta de ingresos constantes en tu cuenta a través de acciones de empresas de primer nivel, respaldadas por una impresionante garantía de precisión comercial del 99.4%.",
@@ -163,7 +165,7 @@ const translations = {
       "Experimenta la Conveniencia de nuestra función de trading automático, que te permite generar ganancias sin esfuerzo, incluso cuando no estés en tu puesto de trabajo. ¡No se requiere experiencia comercial! Simplemente haz tu inversión inicial y observa cómo el saldo de tu cuenta crece constantemente.",
     featureSupportTitle: "SOPORTE INTEGRAL AL USUARIO",
     featureSupportText:
-      "Como miembro valioso de Coin Sin Limited, nuestro amigable gerente de atención al cliente está a tu disposición, listo para atender cualquier consulta o inquietud que puedas tener.",
+      "As a valuable member of Coin Sin Limited, our friendly customer service manager is at your disposal, ready to address any questions or concerns you may have.",
     featureCommunityTitle: "ACCESO EXCLUSIVO A UNA COMUNIDAD ÚNICA",
     featureCommunityText:
       "Únete a nuestra prestigiosa comunidad Coin Sin Limited y obtén una membresía privilegiada. Considérate afortunado de haber encontrado la oportunidad de registrar. Ten en cuenta que, debido a las limitaciones de capacidad del sistema, solo podemos enviar invitaciones a un número selecto de usuarios. Aprovecha esta oportunidad para resolver tus problemas financieros de una vez por todas.",
@@ -175,10 +177,10 @@ const translations = {
       "El formulario de registro está en esta página. Completa el formulario para convertirte en miembro. Una vez que tu registro sea aprobado, automáticamente te convertirás en un nuevo participante de Coin Sin Limited.",
     step2Title: "DEPOSITA €250 O MÁS",
     step2Description:
-      "Como en cualquier empresa, necesitas un capital inicial. La ventaja de la plataforma Coin Sin Limited es que solo requiere una modesta inversión inicial. Simplemente deposita €250 o más para empezar a ganar dinero.",
+      "As in any business, you need initial capital. The advantage of the Coin Sin Limited platform is that it only requires a modest initial investment. Simply deposit €250 or more to start earning money.",
     step3Title: "ESTATE ATENTO A TU TELÉFONO... ¡PODRÍAS RECIBIR UNA LLAMADA!",
     step3Description:
-      "Después de realizar un pago, nuestro gerente se pondrá en contacto contigo para confirmar todo y activar tu cuenta. Si tienes alguna pregunta, el gerente te proporcionará respuestas detalladas para ayudarte. Ten en cuenta que la llamada puede provenir de un número no identificado.",
+      "After making a payment, our manager will contact you to confirm everything and activate your account. If you have any questions, the manager will provide detailed answers to help you. Please note that the call may come from an unidentified number.",
     faqTitle: "PREGUNTAS",
     faqHighlight: "FRECUENTES",
     finalSectionTitle: "APROVECHA LA OPORTUNIDAD DE CONVERTIRTE EN UN INVERSOR INTELIGENTE HOY Y...",
@@ -197,13 +199,13 @@ const translations = {
     smallFormSurnamePlaceholder: "Tu apellido",
     smallFormEmailPlaceholder: "Tu correo electrónico",
     smallFormPhonePlaceholder: "9 11 2345-6789",
+    smallFormDobPlaceholder: "Fecha de Nacimiento", // Nuevo placeholder para el formulario pequeño
     smallFormRegisterButton: "Regístrame",
-    smallFormTermsText:
-      "Al registrarte, aceptas y estás de acuerdo con los términos de uso y la Política de privacidad del sitio.",
+    smallFormTermsText: "By registering, you accept and agree to the site's terms of use and Privacy Policy.",
     smallFormPrivacyText:
-      "Tus datos siempre están protegidos con Coin Sin Limited. Al completar este formulario, aceptas recibir nuestros correos electrónicos de marketing.",
+      "Your data is always protected with Coin Sin Limited. By completing this form, you agree to receive our marketing emails.",
     ageConfirmation: "Confirmo que soy mayor de edad.",
-    disclaimerFull: `IMPORTANTE: Exenciones de Responsabilidad de Ingresos y Legales. Los gráficos de ingresos y ganancias creados por smartbitboost.io, también conocido como "Este Sitio Web", se utilizan únicamente como ilustraciones ideales de su potencial de ganancias. El éxito de las personas en testimonios y otros ejemplos son resultados excepcionales, y por lo tanto no tienen la intención de garantizar que usted u otros lograrán lo mismo. Los resultados individuales dependerán de cómo utilice smartbitboost.io. Por lo que haga, este sitio web no tiene responsabilidad. Siempre debe actuar con precaución y diligencia debida porque asume la plena responsabilidad de sus acciones y decisiones al utilizar productos y servicios. Usted acepta que de ninguna manera este sitio web será responsable de los resultados de su uso de nuestros servicios. Consulte nuestros términos de uso para obtener información sobre nuestras exenciones de responsabilidad y otras restricciones. Si bien el trading puede generar beneficios notables, también conlleva el riesgo de perder el capital invertido en parte o en su totalidad, por lo que debe considerar si puede permitirse invertir. ©2025AVISO REGULATORIO DE EE. UU.: El trading de Forex, CFD y criptomonedas no está bajo ninguna regulación de EE. UU. La inversión en criptomonedas no está regulada ni supervisada por ninguna agencia financiera o de EE. UU. Cualquier trading no regulado por residentes de EE. UU. se considera ilegal. Este sitio web no acepta clientes ni ciudadanos de EE. UU. Este sitio web no tiene responsabilidad por las acciones de clientes ubicados en o con ciudadanía estadounidense. Los clientes ubicados dentro de los Estados Unidos o con ciudadanía estadounidense asumen la plena responsabilidad de sus acciones y decisiones al utilizar productos y servicios de este Sitio Web. En todas y cada una de las circunstancias, la elección de utilizar el Sitio Web, el Servicio y/o el Software es bajo la exclusiva responsabilidad del Usuario, quien debe cumplir con la legislación vigente.`,
+    disclaimerFull: `IMPORTANTE: Exenciones de Responsabilidad de Ingresos y Legales. Los gráficos de ingresos y ganancias creados por smartbitboost.io, también conocido como "Este Sitio Web", se utilizan únicamente como ilustraciones ideales de su potencial de ganancias. El éxito de las personas en testimonios y otros ejemplos son resultados excepcionales, y por lo tanto no tienen la intención de garantizar que usted u otros lograrán lo mismo. Los resultados individuales dependerán de cómo utilice smartbitboost.io. Por lo que haga, este sitio web no tiene responsabilidad. Siempre debe actuar con precaución y diligencia debida porque asume la plena responsabilidad de sus acciones y decisiones al utilizar productos y servicios. Usted acepta que de ninguna manera este sitio web será responsable de los resultados de su uso de nuestros servicios. Consulte nuestros términos de uso para obtener información sobre nuestras exenciones de responsabilidad y otras restricciones. Si bien el trading puede generar beneficios notables, también conlleva el riesgo de perder el capital invertido en parte o en su totalidad, por lo que debe considerar si puede permitirse invertir. ©2025AVISO REGULATORIO DE EE. UU.: El trading de Forex, CFD y criptomonedas no está bajo ninguna regulación de EE. UU. La inversión en criptomonedas no está regulada ni supervisada por ninguna agencia financiera o de EE. UU. Cualquier trading no regulado por residentes de EE. UU. se considera ilegal. Este sitio web no acepta clientes ni ciudadanos de EE. UU. Este sitio web no tiene responsabilidad por las acciones de clientes ubicados en o con ciudadanía estadounidense. Los clientes ubicados dentro de los Estados Unidos o con ciudadanía estadounidense asumen la plena responsabilidad de sus acciones y decisiones al utilizar productos y servicios from this Website. In any and all circumstances, the choice to use the Website, the Service and/or the Software is under the sole responsibility of the User, who must comply with current legislation.`,
   },
   en: {
     notification:
@@ -223,6 +225,7 @@ const translations = {
     surnamePlaceholder: "Your surname",
     emailPlaceholder: "Your email",
     phonePlaceholder: "9 11 2345-6789",
+    dobPlaceholder: "Date of Birth", // New placeholder
     registerButton: "Register Me",
     searchCountry: "Search country...",
     termsText: "By registering, you accept and agree to the site's terms of use and Privacy Policy.",
@@ -253,7 +256,7 @@ const translations = {
       "Cryptocurrencies provide an opportunity to diversify your investment portfolio. They provide an alternative asset class that is independent of traditional financial markets. Investing in cryptocurrencies helps diversify risk and protect the portfolio from potential negative influences in one area.",
     focusOnPlatformTitle: "Let's now focus on the Coin Sin Limited platform.",
     focusOnPlatformText1:
-      "Why is artificial intelligence (AI) fundamental to the investment market? AI is faster than the human brain and can analyze data accurately, provided the system is configured correctly. The learning machine has three significant advantages in the investment market.",
+      "Why is artificial intelligence (AI) fundamental to the investment market? AI is faster than the human brain and can analyze data accurately, provided the system is configured correctly. Machine learning has three significant advantages in the investment market.",
     focusOnPlatformText2:
       "Furthermore, artificial intelligence operates in the market 24/7 now. It means real-time global situation awareness, knowledge accumulation about patterns, and immediate creation of profitable strategies. The Coin Sin Limited platform offers an effective profitability achievable by humans. It is a matter of time until machines fully assume this function.",
     focusOnPlatformText3:
@@ -263,7 +266,7 @@ const translations = {
     nineReasonsIntro:
       "So, we have nine main reasons why using the Coin Sin Limited platform is beneficial, especially for beginner traders:",
     reason1:
-      "Our trading tools process large amounts of data quickly and efficiently, allowing you to make accurate decisions.",
+      "Our trading tools process large amounts of data quickly and efficiently, allowing you to take accurate decisions.",
     reason2: "AI-based software provides advanced market analysis with accurate data and forecasts.",
     reason3: "Artificial intelligence adapts to current market conditions, suggesting the best investment strategies.",
     reason4: "Investing with an AI-based system is not affected by human errors and provides objective information.",
@@ -326,7 +329,7 @@ const translations = {
       "By submitting the form below with your accurate information on this website, you will quickly unlock unrestricted access to our highly reliable, dedicated, and unbiased AI trading system. Join the more than 2,500 astute investors who are already benefiting from its capabilities.",
     featureAiSelectionsTitle: "EXCLUSIVELY PROFITABLE INVESTMENT SELECTIONS MADE BY AI",
     featureAiSelectionsText:
-      "Gone are the days when investments were reserved for the rich. Our advanced computer system meticulously analyzes liquidity, volatility, and trading volume, ensuring optimal investment decisions. Enjoy consistent income in your account through top-tier company shares, backed by an impressive 99.4% trading accuracy guarantee.",
+      "Gone are the days when investments were reserved for the rich. Our advanced computer system meticulously analyzes liquidity, volatility, and trading volume, which ensures optimal investment decisions. Enjoy consistent income in your account through top-tier company shares, backed by an impressive 99.4% trading accuracy guarantee.",
     featureAutoTradingTitle: "IMPECCABLE AUTOMATIC TRADING FUNCTIONALITY",
     featureAutoTradingText:
       "Experience the convenience of our automatic trading feature, which allows you to effortlessly generate profits, even when you are not at your workstation. No trading experience required! Simply make your initial investment and watch your account balance grow steadily.",
@@ -366,12 +369,13 @@ const translations = {
     smallFormSurnamePlaceholder: "Your surname",
     smallFormEmailPlaceholder: "Your email",
     smallFormPhonePlaceholder: "9 11 2345-6789",
+    smallFormDobPlaceholder: "Date of Birth", // New placeholder for small form
     smallFormRegisterButton: "Register Me",
     smallFormTermsText: "By registering, you accept and agree to the site's terms of use and Privacy Policy.",
     smallFormPrivacyText:
       "Your data is always protected with Coin Sin Limited. By completing this form, you agree to receive our marketing emails.",
     ageConfirmation: "I confirm that I am of legal age.",
-    disclaimerFull: `IMPORTANT: Income and Legal Disclaimers. The income and earnings graphs created by smartbitboost.io, also known as "This Website", are used solely as ideal illustrations of your earning potential. The success of individuals in testimonials and other examples are exceptional results, and therefore are not intended to guarantee that you or others will achieve the same. Individual results will depend on how you use smartbitboost.io. For whatever you do, this website has no responsibility. You should always act with caution and due diligence because you assume full responsibility for your actions and decisions when using products and services. You agree that in no way will this website be responsible for the results of your use of our services. See our terms of use for information on our disclaimers and other restrictions. While trading can generate notable benefits, it also carries the risk of losing invested capital in part or in full, so you should consider whether you can afford to invest. ©2025USA REGULATORY NOTICE: Forex, CFD, and cryptocurrency trading is not under any US regulation. Cryptocurrency investment is not regulated or supervised by any US or financial agency. Any unregulated trading by US residents is considered illegal. This website does not accept US clients or US citizens. This website has no responsibility for the actions of clients located in or with US citizenship. Clients located within the United States or with US citizenship assume full responsibility for their actions and decisions when using products and services from this Website. In any and all circumstances, the choice to use the Website, the Service and/or the Software is under the sole responsibility of the User, who must comply with current legislation.`,
+    disclaimerFull: `IMPORTANT: Income and Legal Disclaimers. The income and earnings graphs created by smartbitboost.io, also known as "This Website", are used solely as ideal illustrations of your earning potential. The success of individuals in testimonials and other examples are exceptional results, and therefore are not intended to guarantee that you or others will achieve the same. Individual results will depend on how you use smartbitboost.io. For whatever you do, this website has no responsibility. You should always act with caution and due diligence because you assume full responsibility for your actions and decisions when using products and services. You agree that in no way will this website be responsible for the results of your use of our services. See our terms of use for information on our disclaimers and other restrictions. While trading can generate notable benefits, it also carries the risk of losing invested capital in part or in full, so you should consider whether you can afford to invest. ©2025USA REGULATORY NOTICE: Forex, CFD, and cryptocurrency trading is not under any US regulation. Cryptocurrency investment is not regulated or supervised by any US or financial agency. Any unregulated trading by US residents is considered illegal. This website does not accept US clients or US citizens. This website has no responsibility for the actions of clients located in or with US citizenship. Clients located within the United States or with US citizenship assume the plena responsabilidad de sus acciones y decisiones al utilizar productos y servicios from this Website. In any and all circumstances, the choice to use the Website, the Service and/or the Software is under the sole responsibility of the User, who must comply with current legislation.`,
   },
 }
 // Testimonials data
@@ -611,7 +615,7 @@ const countryCodes = [
   { id: "IE", code: "+353", flag: "🇮🇪", country: "Ireland", name: "Irlanda" },
   { id: "IM", code: "+44", flag: "🇮🇲", country: "Isle of Man", name: "Isla de Man" },
   { id: "IL", code: "+972", flag: "🇮🇱", country: "Israel", name: "Israel" },
-  { id: "IT", code: "+39", flag: "🇮🇹", country: "Italy", name: "Italia" },
+  { id: "IT", code: "+39", flag: "���🇹", country: "Italy", name: "Italia" },
   { id: "JM", code: "+1-876", flag: "🇯🇲", country: "Jamaica", name: "Jamaica" },
   { id: "JP", code: "+81", flag: "🇯🇵", country: "Japan", name: "Japón" },
   { id: "JE", code: "+44", flag: "🇯🇪", country: "Jersey", name: "Jersey" },
@@ -642,7 +646,7 @@ const countryCodes = [
   { id: "MT", code: "+356", flag: "🇲🇹", country: "Malta", name: "Malta" },
   { id: "MH", code: "+692", flag: "🇲🇭", country: "Marshall Islands", name: "Islas Marshall" },
   { id: "MQ", code: "+596", flag: "🇲🇶", country: "Martinique", name: "Martinica" },
-  { id: "MR", code: "+222", flag: "🇲🇷", country: "Mauritania", name: "Marruecos" },
+  { id: "MR", code: "+222", flag: "🇲🇷", country: "Mauritania", name: "Mauritania" },
   { id: "MU", code: "+230", flag: "🇲🇺", country: "Mauritius", name: "Mauricio" },
   { id: "YT", code: "+262", flag: "🇾🇹", country: "Mayotte", name: "Mayotte" },
   { id: "MX", code: "+52", flag: "🇲🇽", country: "Mexico", name: "México" },
@@ -750,6 +754,7 @@ export default function CryptoLanding() {
     surname: "",
     email: "",
     phone: "",
+    dateOfBirth: "", // Nuevo estado para la fecha de nacimiento
     countryCode: "+34",
   })
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null)
@@ -773,6 +778,7 @@ export default function CryptoLanding() {
       surname: undefined,
       email: undefined,
       phone: undefined,
+      dateOfBirth: undefined, // Añadir al estado de errores
       countryCode: undefined,
       language: undefined,
       _form: undefined,
@@ -919,7 +925,7 @@ export default function CryptoLanding() {
               <img
                 src="/logo.png"
                 alt="Coin Sin Limited Logo"
-                className="h-24 w-48 sm:h-28 sm:w-56 object-contain rounded-lg max-w-[120px] sm:max-w-none"
+                className="h-24 w-48 sm:h-28 sm:w-56 object-contain rounded-lg"
               />
             </div>
             {/* Counters Column (centered) */}
@@ -961,7 +967,7 @@ export default function CryptoLanding() {
       </div>
       {/* FIN DEL DIV CON LA IMAGEN DE FONDO */}
       {/* Combined Section - MOVED OUTSIDE THE BACKGROUND IMAGE DIV */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         {/* Moved "READY TO JOIN" banner here, outside the grid */}
         <div className="bg-blue-700/50 text-white p-4 rounded-lg flex items-center gap-3 mb-6 animate-in slide-in-from-left-5 duration-700">
           <Info className="w-5 h-5" />
@@ -1154,9 +1160,35 @@ export default function CryptoLanding() {
                         </div>
                       )}
                     </div>
+                    {/* Date of Birth Field */}
+                    <div className="relative group animate-in slide-in-from-left-3 duration-500 delay-350">
+                      <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 group-focus-within:text-blue-500 transition-colors duration-200 z-10">
+                        <Calendar className="w-5 h-5" />
+                      </div>
+                      <Input
+                        name="dateOfBirth"
+                        type="date"
+                        placeholder={t.dobPlaceholder}
+                        value={formData.dateOfBirth}
+                        onChange={(e) => handleInputChange("dateOfBirth", e.target.value)}
+                        required
+                        className="w-full bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
+                      />
+                      {formData.dateOfBirth && (
+                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
+                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                              fillRule="evenodd"
+                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
                     {/* Phone Field - Unified */}
                     <div className="flex animate-in slide-in-from-left-3 duration-500 delay-400 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus-within:scale-[1.02] focus-within:bg-white overflow-hidden">
-                      <div className="relative w-1/2 sm:w-1/3">
+                      <div className="relative w-1/3">
                         <Select
                           name="countryCode"
                           value={formData.countryCode}
@@ -1257,7 +1289,7 @@ export default function CryptoLanding() {
                         htmlFor="age-confirm"
                         className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
                       >
-                        <Shield className="w-4 h-4 inline mr-2 text-orange-400" />
+                        <Shield className="w-4 h-4 inline mr-2 text-orange-400 align-middle" />
                         {t.ageConfirmation}
                       </label>
                     </div>
@@ -1274,7 +1306,7 @@ export default function CryptoLanding() {
                         htmlFor="terms"
                         className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
                       >
-                        <Shield className="w-4 h-4 inline mr-2 text-orange-400" />
+                        <Shield className="w-4 h-4 inline mr-2 text-orange-400 align-middle" />
                         {t.termsText}
                       </label>
                     </div>
@@ -1351,7 +1383,7 @@ export default function CryptoLanding() {
             </div>
           </div>
           {/* First Information Block */}
-          <div className="text-center mb-12 sm:mb-16 px-4 sm:px-8">
+          <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700 mb-8 sm:mb-12">
               {t.advantagesTitle}
             </h2>
@@ -1424,7 +1456,7 @@ export default function CryptoLanding() {
               </div>
             </div>
             {/* Second Information Block */}
-            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20 px-4 sm:px-8">
+            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700 mb-8 sm:mb-12">
                 {t.platformBenefitTitle}
               </h2>
@@ -1454,7 +1486,7 @@ export default function CryptoLanding() {
               </div>
             </div>
             {/* Third Information Block */}
-            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20 px-4 sm:px-8">
+            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700 mb-8 sm:mb-12">
                 {t.investSmartTitle}
               </h2>
@@ -1493,7 +1525,7 @@ export default function CryptoLanding() {
             </div>
             {/* Investment Calculator Section */}
             <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
-              <div className="max-w-4xl mx-auto px-4 sm:px-8">
+              <div className="max-w-4xl mx-auto">
                 <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 rounded-3xl p-6 sm:p-8 shadow-2xl border border-blue-400/30 overflow-hidden">
                   <div className="relative z-10">
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 sm:mb-8 leading-tight">
@@ -1635,16 +1667,10 @@ export default function CryptoLanding() {
                         <p className="text-base leading-relaxed">{t.notScamText4}</p>
                       </div>
                     </div>
-                    {/* Security Lock Icon */}
+                    {/* Security Lock Icon - FIXED HERE */}
                     <div className="flex justify-center animate-in fade-in-50 duration-700 delay-800">
                       <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-xl">
-                        <svg className="w-10 h-10 sm:w-12 sm:h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
-                          <path
-                            fillRule="evenodd"
-                            d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2-2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
+                        <Lock className="w-10 h-10 sm:w-12 sm:h-12 text-white" /> {/* Usando el icono Lock */}
                       </div>
                     </div>
                   </div>
@@ -1961,8 +1987,21 @@ export default function CryptoLanding() {
                                   className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
                                 />
                               </div>
+                              {/* Date of Birth Field (Small Form) */}
+                              <div className="relative">
+                                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 w-4 h-4 z-10" />
+                                <Input
+                                  name="dateOfBirth"
+                                  type="date"
+                                  placeholder={t.smallFormDobPlaceholder}
+                                  value={formData.dateOfBirth}
+                                  onChange={(e) => handleInputChange("dateOfBirth", e.target.value)}
+                                  required
+                                  className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
+                                />
+                              </div>
                               <div className="flex animate-in slide-in-from-left-3 duration-500 delay-800 rounded-lg shadow-lg overflow-hidden">
-                                <div className="relative w-1/2 sm:w-1/3">
+                                <div className="relative w-1/3">
                                   <Select
                                     name="countryCode"
                                     value={formData.countryCode}
@@ -2027,7 +2066,7 @@ export default function CryptoLanding() {
                                   htmlFor="age-confirm-small"
                                   className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
                                 >
-                                  <Shield className="w-4 h-4 inline mr-2 text-orange-400" />
+                                  <Shield className="w-4 h-4 inline mr-2 text-orange-400 align-middle" />
                                   {t.ageConfirmation}
                                 </label>
                               </div>
@@ -2044,7 +2083,7 @@ export default function CryptoLanding() {
                                   htmlFor="terms-small"
                                   className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
                                 >
-                                  <Shield className="w-4 h-4 inline mr-2 text-orange-400" />
+                                  <Shield className="w-4 h-4 inline mr-2 text-orange-400 align-middle" />
                                   {t.smallFormTermsText}
                                 </label>
                               </div>
