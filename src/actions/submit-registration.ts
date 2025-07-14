@@ -1,4 +1,5 @@
 "use server"
+
 import nodemailer from "nodemailer"
 import { z } from "zod"
 
@@ -10,6 +11,12 @@ const registrationSchema = z.object({
     phone: z.string().min(8, { message: "Ingrese un teléfono válido" }),
     countryCode: z.string().min(1, { message: "Seleccione un país" }),
     language: z.string().min(1, { message: "Idioma requerido" }),
+    ageConfirmed: z.literal("on", {
+        message: "Debes confirmar que eres mayor de edad.",
+    }),
+    termsAccepted: z.literal("on", {
+        message: "Debes aceptar los términos y condiciones.",
+    }),
 })
 
 export type RegistrationState = {
@@ -20,6 +27,8 @@ export type RegistrationState = {
         phone?: string[]
         countryCode?: string[]
         language?: string[]
+        ageConfirmed?: string[]
+        termsAccepted?: string[]
         _form?: string[]
     }
     success?: boolean
@@ -35,6 +44,10 @@ export async function submitRegistration(prevState: RegistrationState, formData:
     const countryCode = formData.get("countryCode") as string
     const language = formData.get("language") as string
 
+    // Extraer valores de los checkboxes
+    const ageConfirmedValue = formData.get("age-confirm") || formData.get("age-confirm-small")
+    const termsAcceptedValue = formData.get("terms") || formData.get("terms-small")
+
     // Validar datos
     const validationResult = registrationSchema.safeParse({
         name,
@@ -43,12 +56,28 @@ export async function submitRegistration(prevState: RegistrationState, formData:
         phone,
         countryCode,
         language,
+        ageConfirmed: ageConfirmedValue ? "on" : undefined,
+        termsAccepted: termsAcceptedValue ? "on" : undefined,
     })
 
     // Si hay errores de validación, retornarlos
     if (!validationResult.success) {
+        // **CORRECCIÓN AQUÍ: Desestructurar fieldErrors y formErrors**
+        const { fieldErrors, formErrors } = validationResult.error.flatten()
+
         return {
-            errors: validationResult.error.flatten().fieldErrors,
+            errors: {
+                name: fieldErrors.name,
+                surname: fieldErrors.surname,
+                email: fieldErrors.email,
+                phone: fieldErrors.phone,
+                countryCode: fieldErrors.countryCode,
+                language: fieldErrors.language,
+                ageConfirmed: fieldErrors.ageConfirmed,
+                termsAccepted: fieldErrors.termsAccepted,
+                // **CORRECCIÓN AQUÍ: Combinar formErrors con errores de checkboxes si existen**
+                _form: formErrors.length > 0 ? formErrors : fieldErrors.ageConfirmed || fieldErrors.termsAccepted,
+            },
             success: false,
             message: "Por favor, complete todos los campos correctamente.",
         }
@@ -60,14 +89,14 @@ export async function submitRegistration(prevState: RegistrationState, formData:
             service: "gmail",
             auth: {
                 user: process.env.EMAIL_USER || "penteadoa08@gmail.com",
-                pass: process.env.EMAIL_PASSWORD, // Asegúrate de configurar esta variable de entorno
+                pass: process.env.EMAIL_PASSWORD,
             },
         })
 
         // Configurar el email
         const mailOptions = {
             from: `"Coin Sin Limited Registration" <${process.env.EMAIL_USER || "penteadoa08@gmail.com"}>`,
-            to: "constructoraoficialmyn@gmail.com", // Cambia por tu email de destino
+            to: "constructoraoficialmyn@gmail.com",
             subject: `Nueva Registración - ${name} ${surname}`,
             html: `
         <h1>Nueva Registración en Coin Sin Limited</h1>
@@ -76,6 +105,8 @@ export async function submitRegistration(prevState: RegistrationState, formData:
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Teléfono:</strong> ${countryCode} ${phone}</p>
         <p><strong>Idioma:</strong> ${language}</p>
+        <p><strong>Confirmación de edad:</strong> ${ageConfirmedValue ? "Sí" : "No"}</p>
+        <p><strong>Términos aceptados:</strong> ${termsAcceptedValue ? "Sí" : "No"}</p>
         <p><strong>Fecha:</strong> ${new Date().toLocaleString()}</p>
         <hr>
         <p>Este mensaje fue enviado desde el formulario de registro de Coin Sin Limited.</p>

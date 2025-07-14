@@ -1,15 +1,12 @@
 "use client"
-
-import { useState, useMemo, useRef } from "react"
+import { useState, useMemo, useRef, useEffect } from "react"
 import type React from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import {
-  TrendingUp,
   Shield,
   Play,
   Info,
@@ -29,16 +26,15 @@ import {
 } from "lucide-react"
 import { useFormState } from "react-dom"
 import { submitRegistration } from "@/actions/submit-registration"
-import { SubmitButton, SmallSubmitButton } from "@/components/ui/submit-button" // Import the separated components
+import { SubmitButton, SmallSubmitButton } from "@/components/ui/submit-button" // Import both components
 
 const translations = {
   es: {
     notification:
       "¡Actúa ahora! Coin Sin Limited está acelerando las ganancias de los participantes! ¡Asegura tu lugar antes de que caduque la invitación Privada!",
-    platformBenefit: "Beneficio NETO de la Plataforma:",
-    userIncome: "Ingreso total del usuario",
-    slotsLeft: "¡Solamente quedan 13 lugares para nuevos usuarios!",
-    mainTitle: "Ingresos criptográficos inteligentes todos los días para tu nueva",
+    platformBenefit: "Beneficio NETO de Usuarios:",
+    userIncome: "Usuarios nuevos a la fecha",
+    mainTitle: "Ingresos inteligentes todos los días para tu nueva",
     mainTitleHighlight: "vida sin estrés para siempre",
     subtitle: "Nuestros usuarios suelen hacer x2, x5 e incluso x10 en inversiones",
     readyToJoin: "LISTO PARA UNIRTE? INICIA TU REGISTRO EN EL SISTEMA AQUÍ Y AHORA.",
@@ -71,7 +67,7 @@ const translations = {
       "¿Listo para unirte a nosotros? ¡Sigue las instrucciones de esta página y emprende tu emocionante viaje hacia una vida estable y sin preocupaciones, llena de abundantes placeres!",
     startNowButton: "Empieza ahora",
     advantagesTitle:
-      "VENTAJAS DE INVERTIR EN CRIPTODIVISAS POPULARES E INFORMACIÓN ESENCIAL SOBRE LA PLATAFORMA COIN SIN LIMITED",
+      "VENTAJAS DE INVERTIR EN DIVISAS POPULARES E INFORMACIÓN ESENCIAL SOBRE LA PLATAFORMA COIN SIN LIMITED",
     advantagesIntro:
       "Invertir en divisas digitales es una opción atractiva para los inversores. Las criptomonedas reúnen todas las características necesarias para ofrecer una liquidez estable. Dos factores clave determinan los beneficios de esta tipo de inversiones:",
     growthPotentialTitle: "Potencial de crecimiento:",
@@ -99,7 +95,7 @@ const translations = {
       "La inteligencia artificial se adapta a las condiciones actuales del mercado, sugiriendo las mejores estrategias de inversión.",
     reason4:
       "Invertir con un sistema basado en inteligencia artificial no se ve afectado por errores humanos y proporciona información objetiva.",
-    reason5: "Invertir utilizando una máquina es más barato que tomar decisiones humanas y generar más beneficios.",
+    reason5: "Invertir usando una máquina es más barato que tomar decisiones humanas y genera más beneficios.",
     reason6:
       "La inteligencia artificial requiere menos inversión inicial, lo que aumenta la eficiencia de la inversión.",
     reason7:
@@ -146,7 +142,7 @@ const translations = {
     demoAccountText1:
       "¡Siéntase libre del alto costo de entrada en el mundo de la inversión! No necesita gastar decenas de miles de dólares para entender el comercio de criptomonedas, cómo funciona y qué debe hacer para evitar pérdidas. Le ofrecemos la oportunidad de invertir incluso unos pocos cientos de dólares y convertirlos en un negocio rentable.",
     demoAccountText2:
-      "¡Pruebe una herramienta sin riesgos para un comercio rentable! Regístrese, deposite al menos 250 € y obtenga su primer beneficio hoy mismo. Simplemente desplácese hasta la parte inferior de la página y regístrese.",
+      "¡Pruebe una herramienta sin riesgos para un comercio rentable! Regístrese, deposite al menos €250 y obtenga su primer beneficio hoy mismo. Simplemente desplácese hasta la parte inferior de la página y regístrese.",
     notScamTitle: "COIN SIN LIMITED NO ES UNA ESTAFA, Y HE AQUÍ POR QUÉ",
     notScamText1:
       "Es un proyecto de inversión automatizado que ofrece la oportunidad de ganar dinero invirtiendo en criptomonedas populares y proyectos prometedores en el mundo de los activos digitales. El sistema está controlado por ingenieros informáticos y corredores registrados en CySEC. Corredores autorizados llevan a cabo los procesos financieros en el sistema.",
@@ -159,45 +155,48 @@ const translations = {
     testimonialsTitle: "DESCUBRE LO QUE DICEN LOS MIEMBROS DE",
     testimonialsHighlight: "COIN SIN LIMITED",
     testimonialsTitle2: "SOBRE ESTA PLATAFORMA DE TRADING:",
-    tradingEasyTitle: "¡HACER TRADING CON COIN SIN LIMITED ES",
-    tradingEasyHighlight: "100% FÁCIL Y CÓMODO!",
+    tradingEasyTitle: "TRADING CON COIN SIN LIMITED ES",
+    tradingEasyHighlight: "¡100% FÁCIL Y CÓMODO!",
     tradingEasyIntro:
       "Al enviar el formulario a continuación con tu información precisa en esta página web, desbloquearás rápidamente el acceso sin restricciones a nuestro sistema de comercio de IA altamente confiable, dedicado e imparcial. Únete a los más de 2,500 inversores astutos que ya se están beneficiando de sus capacidades.",
     featureAiSelectionsTitle: "SELECCIONES DE INVERSIÓN EXCLUSIVAMENTE RENTABLES REALIZADAS POR IA",
     featureAiSelectionsText:
-      "Atrás quedaron los días en que las inversiones estaban reservadas para los ricos. Nuestro avanzado sistema informático analiza meticulosamente la liquidez, la volatilidad y el volumen de operaciones, lo que garantiza decisiones de inversión óptimas. Disfruta de ingresos constantes en tu cuenta a través de acciones de empresas de primer nivel, respaldadas por una impresionante garantía de precisión comercial del 99,4%.",
+      "Atrás quedaron los días en que las inversiones estaban reservados para los ricos. Nuestro avanzado sistema informático analiza meticulosamente la liquidez, la volatilidad y el volumen de operaciones, lo que garantiza decisiones de inversión óptimas. Disfruta de ingresos constantes en tu cuenta a través de acciones de empresas de primer nivel, respaldadas por una impresionante garantía de precisión comercial del 99.4%.",
     featureAutoTradingTitle: "FUNCIONALIDAD DE COMERCIO AUTOMÁTICO IMPECABLE",
     featureAutoTradingText:
       "Experimenta la Conveniencia de nuestra función de trading automático, que te permite generar ganancias sin esfuerzo, incluso cuando no estés en tu puesto de trabajo. ¡No se requiere experiencia comercial! Simplemente haz tu inversión inicial y observa cómo el saldo de tu cuenta crece constantemente.",
-    featureSupportTitle: "SOPORTE COMPLETO AL USUARIO",
+    featureSupportTitle: "COMPREHENSIVE USER SUPPORT",
     featureSupportText:
       "Como miembro valioso de Coin Sin Limited, nuestro amigable gerente de atención al cliente está a tu disposición, listo para atender cualquier consulta o inquietud que puedas tener.",
-    featureCommunityTitle: "ACCESO EXCLUSIVO A UNA COMUNIDAD ÚNICA",
+    featureCommunityTitle: "EXCLUSIVE ACCESS TO A UNIQUE COMMUNITY",
     featureCommunityText:
-      "Únete a nuestra prestigiosa comunidad Coin Sin Limited y obtén una membresía privilegiada. Considérate afortunado de habernos encontrado y la oportunidad de registrarte. Ten en cuenta que, debido a las limitaciones de capacidad del sistema, solamente podemos enviar invitaciones a un número selecto de usuarios. Aprovecha esta oportunidad para resolver tus problemas económicos de una vez por todas.",
-    createAccountButton: "¡Crea tu cuenta!",
-    howToStartTitle: "¿CÓMO",
+      "Únete a nuestra prestigiosa comunidad Coin Sin Limited y obtén una membresía privilegiada. Considérate afortunado de haber encontrado la oportunidad de registrar. Please note that, due to system capacity limitations, we can only send invitations to a select number of users. Take advantage of this opportunity to solve your financial problems once and for all.",
+    createAccountButton: "Create your account!",
+    howToStartTitle: "CÓMO",
     howToStartHighlight: "EMPEZAR?",
-    step1Title: "INSCRIPCIÓN: COMPLETA EL SIGUIENTE FORMULARIO",
+    step1Title: "REGISTRO: COMPLETA EL FORMULARIO A CONTINUACIÓN",
     step1Description:
-      "El formulario de inscripción se encuentra en esta página. Completa el formulario para convertirte en miembro. Una vez que se apruebe tu registro, te convertirás automáticamente en un nuevo participante de Coin Sin Limited.",
-    step2Title: "DEPOSITA 250 € O MÁS",
+      "El formulario de registro está en esta página. Completa el formulario para convertirte en miembro. Una vez que tu registro sea aprobado, automáticamente te convertirás en un nuevo participante de Coin Sin Limited.",
+    step2Title: "DEPOSITA €250 O MÁS",
     step2Description:
-      "Al igual que en cualquier aventura empresarial, necesitas algo de capital inicial. La ventaja de la plataforma Coin Sin Limited es que solo requiere una inversión inicial modest. Simplemente deposita 250 € o más para empezar a ganar dinero.",
-    step3Title: "VIGILA TU TELÉFONO... ¡PUEDE QUE RECIBAS UNA LLAMADA!",
+      "Como en cualquier empresa, necesitas un capital inicial. La ventaja de la plataforma Coin Sin Limited es que solo requiere una modesta inversión inicial. Simplemente deposita €250 o más para empezar a ganar dinero.",
+    step3Title: "ESTATE ATENTO A TU TELÉFONO... ¡PODRÍAS RECIBIR UNA LLAMADA!",
     step3Description:
-      "Después de realizar un pago, nuestro gerente se comunicará contigo para confirmarlo todo y activar tu cuenta. Si tienes alguna pregunta, el gerente te brindará respuestas detalladas para ayudarte. Ten en cuenta que la llamada puede provenir de un número no identificado.",
+      "Después de realizar un pago, nuestro gerente se pondrá en contacto contigo para confirmar todo y activar tu cuenta. Si tienes alguna pregunta, el gerente te proporcionará respuestas detalladas para ayudarte. Ten en cuenta que la llamada puede provenir de un número no identificado.",
     faqTitle: "PREGUNTAS",
     faqHighlight: "FRECUENTES",
-    finalSectionTitle: "APROVECHA LA OPORTUNIDAD DE CONVERTIRTE EN UN INVERSOR INTELIGENTE HOY MISMO Y...",
-    finalSectionSubtitle: "...DESATA UN MUNDO DE POSIBILIDADES, CON UN MÍNIMO DE $1,000 EN TU CUENTA TODOS LOS DÍAS!",
+    finalSectionTitle: "SEIZE THE OPPORTUNITY TO BECOME A SMART INVESTOR TODAY AND...",
+    finalSectionSubtitle: "...UNLEASH A WORLD OF POSSIBILITIES, WITH A MINIMUM OF $1,000 IN YOUR ACCOUNT EVERY DAY!",
     finalSectionText:
-      "Toma acción ahora proporcionando tu nombre completo y correo electrónico en el formulario a continuación, y desbloquea la oportunidad más excepcional y exclusiva para generar ingresos sustanciales sin esfuerzo. Deja que la IA se encargue del trabajo duro mientras tú cosechas beneficios tangibles al instante. ¡No te lo pierdas!",
+      "Take action now by providing your full name and email in the form below, and unlock the most exceptional and exclusive opportunity to generate substantial income effortlessly. Let AI handle the hard work while you reap tangible benefits instantly. Don't miss out!",
     footerCompanyInfo:
-      "Coin Sin Limited es una empresa que se especializa en proporcionar información y herramientas para la inversión y el comercio de criptomonedas, basadas en inteligencia artificial.",
-    footerContactTitle: "Contacto",
-    footerEmailLabel: "Correo Electrónico:",
-    footerCopyright: "Todos los derechos reservados.",
+      "Coin Sin Limited is a company specializing in providing information and tools for cryptocurrency investment and trading, based on artificial intelligence.",
+    footerContactanos: "Contáctanos",
+    footerPrivacidad: "Privacidad",
+    footerTerminos: "Términos",
+    footerDescargo: "Descargo de Responsabilidad",
+    footerEmailLabel: "Email:",
+    footerCopyright: "All rights reserved.",
     smallFormNamePlaceholder: "Tu nombre",
     smallFormSurnamePlaceholder: "Tu apellido",
     smallFormEmailPlaceholder: "Tu correo electrónico",
@@ -207,102 +206,141 @@ const translations = {
       "Al registrarte, aceptas y estás de acuerdo con los términos de uso y la Política de privacidad del sitio.",
     smallFormPrivacyText:
       "Tus datos siempre están protegidos con Coin Sin Limited. Al completar este formulario, aceptas recibir nuestros correos electrónicos de marketing.",
+    ageConfirmation: "Confirmo que soy mayor de edad.",
+    disclaimerFull: `IMPORTANT: Income and Legal Disclaimers. The income and earnings graphs created by smartbitboost.io, also known as "This Website", are used solely as ideal illustrations of your earning potential. The success of individuals in testimonials and other examples are exceptional results, and therefore are not intended to guarantee that you or others will achieve the same. Individual results will depend on how you use smartbitboost.io. For whatever you do, this website has no responsibility. You should always act with caution and due diligence because you assume full responsibility for your actions and decisions when using products and services. You agree that in no way will this website be responsible for the results of your use of our services. See our terms of use for information on our disclaimers and other restrictions. While trading can generate notable benefits, it also carries the risk of losing invested capital in part or in full, so you should consider whether you can afford to invest. ©2025
+USA REGULATORY NOTICE: Forex, CFD, and cryptocurrency trading is not under any US regulation. Cryptocurrency investment is not regulated or supervised by any US or financial agency. Any unregulated trading by US residents is considered illegal. This website does not accept US clients or US citizens. This website has no responsibility for the actions of clients located in or with US citizenship. Clients located within the United States or with US citizenship assume full responsibility for their actions and decisions when using products and services from this Website. In any and all circumstances, the choice to use the Website, the Service and/or the Software is under the sole responsibility of the User, who must comply with current legislation.`,
+    disclaimerFullContent: `IMPORTANTE: Exenciones de Responsabilidad de Ingresos y Legales. Se ha hecho todo lo posible para representar con precisión este producto y su potencial. Aunque esta industria es una de las pocas en las que uno puede escribir su propio cheque en términos de ganancias, no hay garantía de que gane dinero utilizando las técnicas e ideas de estos materiales. Los ejemplos en estos materiales no deben interpretarse como una promesa o garantía de ganancias. El potencial de ganancias depende completamente de la persona que utiliza nuestro producto, ideas y técnicas. No pretendemos que esto sea un "esquema para hacerse rico".
+
+Cualquier reclamo de ganancias reales o ejemplos de resultados reales puede verificarse previa solicitud. Su nivel de éxito en la obtención de los resultados reclamados en nuestros materiales depende del tiempo que dedique al programa, las ideas y técnicas mencionadas, sus finanzas, conocimientos y diversas habilidades. Dado que estos factores difieren según los individuos, no podemos garantizar su éxito o nivel de ingresos. Tampoco somos responsables de ninguna de sus acciones.
+
+Los materiales de nuestro producto y nuestro sitio web pueden contener información que incluye o se basa en declaraciones prospectivas en el sentido de la Ley de Reforma de Litigios de Valores de 1995. Las declaraciones prospectivas expresan nuestras expectativas o pronósticos de eventos futuros. Puede identificar estas declaraciones por el hecho de que no se relacionan estrictamente con hechos históricos o actuales. Utilizan palabras como "anticipar", "estimar", "esperar", "proyectar", "pretender", "planificar", "creer" y otras palabras y términos de significado similar en relación con una descripción de ganancias potenciales o rendimiento financiero.
+
+Todas y cada una de las declaraciones prospectivas aquí o en cualquiera de nuestros materiales de venta tienen la intención de expresar nuestra opinión sobre el potencial de ganancias. Muchos factores serán importantes para determinar sus resultados reales y no se garantiza que logrará resultados similares a los nuestros o a los de cualquier otra persona; de hecho, no se garantiza que logrará ningún resultado de nuestras ideas y técnicas en nuestro material.
+
+El autor y el editor renuncian a cualquier garantía (expresa o implícita), comerciabilidad o idoneidad para un propósito particular. El autor y el editor en ningún caso serán responsables ante ninguna parte por daños directos, indirectos, punitivos, especiales, incidentales u otros daños consecuentes que surjan directa o indirectamente del uso de este material, que se proporciona "tal cual" y sin garantías.
+
+Como siempre, se debe buscar el consejo de un profesional legal, fiscal, contable u otro profesional competente. El autor y el editor no garantizan el rendimiento, la eficacia o la aplicabilidad de ningún sitio listado o vinculado en este producto.
+
+Todos los enlaces son solo para fines informativos y no están garantizados en cuanto a contenido, precisión o cualquier otro propósito implícito o explícito.
+
+Privacidad
+Mantenemos esta página para demostrar nuestro firme compromiso con los derechos y la privacidad de nuestros usuarios. Esta página explica cómo nuestro sitio recopila información de nuestros miembros.
+
+Boletín gratuito y lista de correo: respetamos la privacidad de nuestros usuarios y, como tal, nunca compartiremos nuestra base de datos de direcciones de correo electrónico y nombres con terceros.
+
+Al confirmar que le gustaría unirse a nuestro boletín, de vez en cuando le enviaremos información gratuita relacionada con los productos que comercializamos, consejos generales relacionados con el marketing en línea y material promocional para otros productos. Su correo electrónico nunca se transmitirá a terceros. Tampoco le enviaremos spam. Puede darse de baja de la lista de correo en cualquier momento.
+
+Información personal que recopilamos y cómo se utiliza: Proveedor de servicios: cuando compra un producto, el pago es procesado por el producto, quien recopilará su nombre, dirección e información de tarjeta de crédito para verificar su pedido. No pueden usar la información para ningún otro propósito. Al realizar el pedido, también recopilamos su nombre y dirección de correo electrónico. Utilizamos esta información para hacer un seguimiento con usted según la sección de boletines anterior.
+
+Recordatorio adicional – Descargo de responsabilidad de ganancias:
+Se ha hecho todo lo posible para representar con precisión este producto y su potencial. Even though this industry is one of the few where one can write their own check in terms of earnings, there is no guarantee that you will earn any money using the techniques and ideas in these materials.
+
+Examples in these materials are not to be taken as a promise or guarantee of earnings. Earning potential is entirely dependent on the person using our product, ideas, techniques and the effort put forth. We do not purport this as a “get rich scheme”, and nor should you view it as such.
+
+Any and all forward looking statements here or on any of our sales material are intended to express our opinion of earnings potential. Many factors will be important in determining your actual results and no guarantees are made that you will achieve results similar to ours or anybody else’s, in fact no guarantees are made that you will achieve any results from our ideas and techniques.
+
+Results vary, and as with any money-making opportunity, you could make more or less. Success in ANY money-making opportunity is a result of hard work, time and a variety of other factors. No express or implied guarantees of income are made by product.
+
+Returns and refunds policy: as stated, if you purchase product, and you do not enjoy the financial freedom that you expected, do not make as much from our methods as you expected, or indeed for any reason, you may claim a refund for the product within 60 days of purchase. On a sidenote we do ask you to put the techniques into use before requesting a refund, for both our benefit: however, our refund policy is unconditional and this is a suggestion, not a requirement. We are aware that some buyers will not achieve their personal goals despite our best efforts to the contrary, and we stand by our refund policy as such. Please forward your receipt number (given to you when you ordered) to us and we will action your refund request as quickly as possible, typically within 24 hours.
+
+Revisions to This Policy: Our company reserves the right to revise, amend, or modify this policy, our Terms Of Service agreement, and our other policies and agreements at any time and in any manner, by updating this posting.
+Copyright © 2025 product | All Rights Reserved
+`,
   },
   en: {
     notification:
       "Act now! Coin Sin Limited is accelerating participants' earnings! Secure your spot before the Private invitation expires!",
-    platformBenefit: "Platform NET Benefit:",
-    userIncome: "Total user income",
-    slotsLeft: "Only 13 spots left for new users!",
-    mainTitle: "Smart cryptocurrency income every day for your new",
+    platformBenefit: "NET User Benefit:",
+    userIncome: "New users to date",
+    mainTitle: "Smart income every day for your new",
     mainTitleHighlight: "stress-free life forever",
-    subtitle: "Our users typically make x2, x5 and even x10 on investments",
-    readyToJoin: "READY TO JOIN? START YOUR REGISTRATION IN THE SYSTEM HERE AND NOW.",
+    subtitle: "Our users typically make x2, x5, and even x10 on investments",
+    readyToJoin: "READY TO JOIN? START YOUR SYSTEM REGISTRATION HERE AND NOW.",
     motivationalText:
-      "YOU ARE ENTITLED TO FINANCIAL INDEPENDENCE, AND IT IS NOT A PRIVILEGE. IT IS YOUR RIGHT, REGARDLESS OF YOUR AGE, ACCOMPLISHMENTS AND SOCIAL STATUS.",
+      "YOU HAVE THE RIGHT TO FINANCIAL INDEPENDENCE, AND IT IS NOT A PRIVILEGE. IT IS YOUR RIGHT, REGARDLESS OF YOUR AGE, ACHIEVEMENTS, AND SOCIAL STATUS.",
     playVideo: "Play Video",
     pauseVideo: "Pause Video",
     improveLife: "IMPROVE YOUR LIFE TODAY",
     namePlaceholder: "Your name",
     surnamePlaceholder: "Your surname",
-    emailPlaceholder: "Your email address",
+    emailPlaceholder: "Your email",
     phonePlaceholder: "9 11 2345-6789",
     registerButton: "Register Me",
     searchCountry: "Search country...",
-    termsText: "By registering, you accept and agree to the terms of use and the site's Privacy Policy.",
+    termsText: "By registering, you accept and agree to the site's terms of use and Privacy Policy.",
     privacyText:
       "Your data is always protected with Coin Sin Limited. By completing this form, you agree to receive our marketing emails. You can change your mind at any time by clicking the unsubscribe link at the bottom of any of our emails.",
     registrationSuccessTitle: "Thank You for Registering!",
     noCountriesFound: "No countries found",
     masterTradingTitle: "MASTER CRYPTOCURRENCY TRADING WITH OUR",
-    masterTradingHighlight: "AI INVESTMENT TOOL WITH 99.4% PRECISION",
+    masterTradingHighlight: "AI INVESTMENT TOOL WITH 99.4% ACCURACY",
     ctaParagraph1:
-      "Imagine a new life where work becomes optional, savings are no longer necessary, and all your bills are paid effortlessly. Imagine the freedom to explore, plan a new car, or even have a house.",
+      "Imagine a new life where work becomes optional, savings are no longer necessary, and all your bills are paid effortlessly. Imagine the freedom to explore, plan a new car, or even own a home.",
     ctaParagraph2:
-      "Now imagine looking at your smartphone screen and witnessing another effortless $1,000 gain today. Sounds attractive, doesn't it?",
+      "Now imagine looking at your smartphone screen and witnessing another effortless $1,000 gain today. Sounds appealing, right?",
     ctaParagraph3:
-      "Coin Sin Limited makes it possible. As an AI-powered startup platform, we empower new investors to dive into the world of cryptocurrency investments, regardless of their previous experience. Starting with an investment of just €250, you can take advantage of the opportunity to multiply your daily earnings by x5.",
+      "Coin Sin Limited makes it possible. As an AI-powered startup platform, we empower new investors to dive into the world of cryptocurrency investments, regardless of their prior experience. By starting with an investment of just €250, you can seize the opportunity to multiply your daily earnings by x5.",
     ctaParagraph4:
-      "Ready to join us? Follow the instructions on this page and embark on your exciting journey towards a stable and worry-free life, full of abundant pleasures!",
-    startNowButton: "Start now",
+      "Ready to join us? Follow the instructions on this page and embark on your exciting journey to a stable, worry-free life, full of abundant pleasures!",
+    startNowButton: "Start Now",
     advantagesTitle:
-      "ADVANTAGES OF INVESTING IN POPULAR CRYPTOCURRENCIES AND ESSENTIAL INFORMATION ABOUT THE COIN SIN LIMITED PLATFORM",
+      "ADVANTAGES OF INVESTING IN POPULAR CURRENCIES AND ESSENTIAL INFORMATION ABOUT THE COIN SIN LIMITED PLATFORM",
     advantagesIntro:
       "Investing in digital currencies is an attractive option for investors. Cryptocurrencies bring together all the necessary characteristics to offer stable liquidity. Two key factors determine the benefits of this type of investment:",
-    growthPotentialTitle: "Growth potential:",
+    growthPotentialTitle: "Growth Potential:",
     growthPotentialText:
       "Some cryptocurrencies have already reached significant value, but many projects have great development potential. Due to their growing popularity, the cryptocurrency market attracts investors who can obtain high returns by investing in digital assets.",
-    diversificationTitle: "Portfolio diversification:",
+    diversificationTitle: "Portfolio Diversification:",
     diversificationText:
-      "Cryptocurrencies provide the opportunity to diversify your investment portfolio. They provide an alternative asset class that is independent of traditional financial markets. Investing in cryptocurrencies helps diversify risk and protect the portfolio from potential negative influences in one area.",
+      "Cryptocurrencies provide an opportunity to diversify your investment portfolio. They provide an alternative asset class that is independent of traditional financial markets. Investing in cryptocurrencies helps diversify risk and protect the portfolio from potential negative influences in one area.",
     focusOnPlatformTitle: "Let's now focus on the Coin Sin Limited platform.",
     focusOnPlatformText1:
-      "Why is artificial intelligence (AI) fundamental for the investment market? AI is faster than the human brain and can analyze data accurately, provided the system is configured correctly. Machine learning has three significant advantages in the investment market.",
+      "Why is artificial intelligence (AI) fundamental to the investment market? AI is faster than the human brain and can analyze data accurately, provided the system is configured correctly. Machine learning has three significant advantages in the investment market.",
     focusOnPlatformText2:
-      "Additionally, artificial intelligence operates in the market 24/7 now. It means real-time global situation awareness, accumulation of pattern knowledge, and immediate creation of profitable strategies. The Coin Sin Limited platform offers effective profitability achievable for humans. It's a matter of time before machines fully assume this function.",
+      "Furthermore, artificial intelligence operates in the market 24/7 now. It means real-time global situation awareness, knowledge accumulation about patterns, and immediate creation of profitable strategies. The Coin Sin Limited platform offers an effective profitability achievable by humans. It is a matter of time until machines fully assume this function.",
     focusOnPlatformText3:
-      "Another factor that makes investment attractive in Canada, Australia and other countries is education. Many people feel that a human can take decisions influenced by emotions, a machine remains objective and rational. It is essential not to forget emotions. Separating rationality from emotion is fundamental, but I realize in the investment sphere, where everything is decided based on pure data and accurate forecasts.",
+      "Another factor that makes investing in Canada, Australia, and other countries attractive is education. Many people feel that a human can make decisions influenced by emotions, a machine remains objective and rational. It is essential not to forget emotions. Segregating rationality from emotion is fundamental, but a realization in the investment sphere, where everything is decided based on pure data and exact forecasts.",
     focusOnPlatformText4:
-      "Furthermore, investing before obtaining income is significantly different. Before a person starts earning income, they spend a significant amount of money on testing, which has benefits, in addition to acquiring situational experience and investment awareness. In contrast, a machine handles this much faster and requires minimal outlay to maximize the income.",
+      "Additionally, investing before earning income is significantly different. Before a person starts earning income, they spend a significant amount of money on testing, which has benefits, in addition to gaining situational experience and investment awareness. In contrast, a machine handles this much faster and requires minimal outlay to maximize income.",
     nineReasonsIntro:
       "So, we have nine main reasons why using the Coin Sin Limited platform is beneficial, especially for beginner traders:",
     reason1:
-      "Our trading tools process large amounts of data quickly and efficiently, allowing you to make precise decisions.",
+      "Our trading tools process large amounts of data quickly and efficiently, allowing you to make accurate decisions.",
     reason2: "AI-based software provides advanced market analysis with accurate data and forecasts.",
     reason3: "Artificial intelligence adapts to current market conditions, suggesting the best investment strategies.",
     reason4: "Investing with an AI-based system is not affected by human errors and provides objective information.",
     reason5: "Investing using a machine is cheaper than making human decisions and generates more profits.",
     reason6: "Artificial intelligence requires less initial investment, which increases investment efficiency.",
-    reason7: "Investing with AI-based tools makes investments affordable in Canada, Australia and other countries.",
-    reason8: "The use of artificial intelligence increases the speed of decision making.",
-    reason9: "Artificial intelligence provides faster decision making to perform better investment actions.",
+    reason7: "Investing with AI-based tools makes investments affordable in Canada, Australia, and other countries.",
+    reason8: "Using artificial intelligence increases the speed of decision-making.",
+    reason9: "Artificial intelligence provides faster decision-making for better investment actions.",
     efficiencyGuarantee:
-      "Thus, artificial intelligence guarantees investment profitability by ensuring system efficiency of at least 95%. Accuracy depends on the specific system, but can reach between 95% and 99.4% for humans. The efficiency of our Coin Sin Limited algorithm-based trading instruments is 99.4%.",
-    platformBenefitTitle: "COIN SIN LIMITED IS A PLATFORM THAT WORKS FOR THE BENEFIT OF THE INVESTOR",
+      "Thus, artificial intelligence guarantees investment profitability by ensuring system effectiveness of at least 95%. Accuracy depends on the specific system, but can reach between 95% and 99.4% for humans. The efficiency of our Coin Sin Limited algorithm-based trading instruments is 99.4%.",
+    platformBenefitTitle: "COIN SIN LIMITED IS A PLATFORM THAT WORKS FOR THE INVESTOR'S BENEFIT",
     platformBenefitText1:
-      "For novice investors, investing in cryptocurrencies can be incredibly complicated. Often, beginners need to understand all the intricacies of this field so as not to lose their small investments in the shortest possible time. This leads them to lose interest in cryptocurrencies and investment in general. However, they need to realize the potential opportunities they are missing.",
+      "For novice investors, investing in cryptocurrencies can be incredibly complicated. Often, beginners need to understand all the ins and outs of this field so as not to lose their small investments in the shortest possible time. This leads them to lose interest in cryptocurrencies and in investing in general. However, they need to realize the potential opportunities they are missing.",
     platformBenefitText2:
-      "The Coin Sin Limited platform allows them to realize their dreams of stable passive income. Based on artificial intelligence, this algorithm works continuously, analyzing the market situation, studying cryptocurrency trends and performing operations that almost always turn out to be profitable. Thousands of people around the world have already generated billions of dollars with Coin Sin Limited.",
-    platformFeaturesTitle: "Coin Sin Limited platform features include:",
+      "The Coin Sin Limited platform allows them to make their dreams of stable passive income come true. Based on artificial intelligence, this algorithm works continuously, analyzing the market situation, studying cryptocurrency trends, and performing operations that are almost always profitable. Thousands of people around the world have already generated billions of dollars with Coin Sin Limited.",
+    platformFeaturesTitle: "The features of the Coin Sin Limited platform include:",
     feature1:
-      "Deep knowledge of the cryptocurrency market and trends in the world of digital assets that are beyond the reach of the human mind.",
+      "A deep understanding of the cryptocurrency market and trends in the world of digital assets that are beyond the reach of the human mind.",
     feature2:
-      "The supercomputer can calculate millions of variations every second and predict trends with maximum precision.",
-    feature3: "Safe operations with benefits for the investor.",
+      "The supercomputer can calculate millions of variations every second and predict trends with maximum accuracy.",
+    feature3: "Secure operations with benefits for the investor.",
     platformUnnoticedText:
-      "The Coin Sin Limited platform went unnoticed at the time of product launch. However, it is causing anger and panic among central banks and governments around the world. While big players try to stop the Coin Sin Limited platform project, you can start making a lot of money now.",
-    investSmartTitle: "INVEST IN CRYPTOCURRENCIES INTELLIGENTLY WITH THE COIN SIN LIMITED PLATFORM",
+      "The Coin Sin Limited platform went unnoticed at the time of product launch. However, it is causing anger and panic among central banks and governments around the world. While big players try to stop the Coin Sin Limited platform project, you can start earning big money now.",
+    investSmartTitle: "INVEST IN CRYPTOCURRENCIES SMARTLY WITH THE COIN SIN LIMITED PLATFORM",
     investSmartText1:
-      "Times are not easy, and everything around us is gradually going downhill. Although the situation may improve in the future, everyone should take care of their future today so as not to depend on external factors. Smart tools can help you with this.",
+      "Times are not easy, and everything around us is slowly going down. Although the situation may improve in the future, everyone should take care of their future today so as not to depend on external factors. Smart tools can help you with this.",
     investSmartText2:
-      "The Coin Sin Limited investment platform allows you to do this without wasting time studying the digital currency market. You can start investing today in countries like Canada, Australia and others. Success is pre-calculated, and all you need is the desire to join.",
-    algorithmToolsIntro: "The algorithm provides you with tools to help you:",
+      "The Coin Sin Limited investment platform allows you to do so without wasting time studying the digital currency market. You can start investing today in countries like Canada, Australia, and others. Success is pre-calculated, and all you need is the desire to join.",
+    algorithmToolsIntro: "The algorithm provides you with the tools to help you:",
     tool1: "Avoid unnecessary risks and losses.",
-    tool2: "Obtain almost completely passive income.",
+    tool2: "Obtain almost totally passive income.",
     tool3: "Work in the market with broad portfolio diversification and parallel risk reduction.",
     tool4: "Receive stable income both short and long term.",
     finalInvitation:
-      "Therefore, we invite you to start writing the first page of your successful investor story today after reading the Coin Sin Limited review!",
+      "Therefore, we invite you to start writing the first page of your success story as an investor today after reading the Coin Sin Limited review!",
     potentialEarningsTitle: "WHAT POTENTIAL EARNINGS CAN I EXPECT WHEN INVESTING WITH COIN SIN LIMITED?",
     myInvestment: "My investment:",
     usagePeriod: "Usage period:",
@@ -310,11 +348,11 @@ const translations = {
     potentialProfit: "Potential Profit",
     startInvestingNowButton: "Start Investing Now!",
     disclaimer:
-      "* Results shown are estimates based on the platform's historical performance. Investments carry risks.",
+      "* The results shown are estimates based on the platform's historical performance. Investments carry risks.",
     demoAccountTitle: "TRY THE COIN SIN LIMITED DEMO ACCOUNT",
     demoAccountText1:
-      "Feel free from the high cost of entry into the investment world! You don't need to spend tens of thousands of dollars to understand cryptocurrency trading, how it works, and what you need to do to avoid losses. We offer you the opportunity to invest even a few hundred dollars and turn them into a profitable business.",
-    demoAccountText2:
+      "Feel free from the high cost of entry into the world of investment! You don't need to spend tens of thousands of dollars to understand cryptocurrency trading, how it works, and what you need to do to avoid losses. We offer you the opportunity to invest even a few hundred dollars and turn them into a profitable business.",
+    demoAccount2:
       "Try a risk-free tool for profitable trading! Register, deposit at least €250, and get your first profit today. Simply scroll to the bottom of the page and register.",
     notScamTitle: "COIN SIN LIMITED IS NOT A SCAM, AND HERE'S WHY",
     notScamText1:
@@ -324,36 +362,36 @@ const translations = {
     notScamText3:
       "For security, it is recommended to log out after each use and avoid connecting to the system from public networks.",
     notScamText4:
-      "Coin Sin Limited offers maximum benefits and risk-free earnings, and presents proof of no fraud. You will also find reviews about Coin Sin Limited below.",
-    testimonialsTitle: "DISCOVER WHAT",
+      "Coin Sin Limited offers maximum benefits and risk-free earnings, and presents proof of non-fraud. You will also find opinions about Coin Sin Limited below.",
+    testimonialsTitle: "DISCOVER WHAT MEMBERS OF",
     testimonialsHighlight: "COIN SIN LIMITED",
-    testimonialsTitle2: "MEMBERS SAY ABOUT THIS TRADING PLATFORM:",
+    testimonialsTitle2: "SAY ABOUT THIS TRADING PLATFORM:",
     tradingEasyTitle: "TRADING WITH COIN SIN LIMITED IS",
-    tradingEasyHighlight: "100% EASY AND CONVENIENT!",
+    tradingEasyHighlight: "100% EASY AND COMFORTABLE!",
     tradingEasyIntro:
-      "By submitting the form below with your accurate information on this webpage, you will quickly unlock unrestricted access to our highly reliable, dedicated, and unbiased AI trading system. Join over 2,500 astute investors who are already benefiting from its capabilities.",
-    featureAiSelectionsTitle: "EXCLUSIVELY PROFITABLE AI-DRIVEN INVESTMENT SELECTIONS",
+      "By submitting the form below with your accurate information on this website, you will quickly unlock unrestricted access to our highly reliable, dedicated, and unbiased AI trading system. Join the more than 2,500 astute investors who are already benefiting from its capabilities.",
+    featureAiSelectionsTitle: "EXCLUSIVELY PROFITABLE INVESTMENT SELECTIONS MADE BY AI",
     featureAiSelectionsText:
-      "Gone are the days when investments were reserved for the wealthy. Our advanced computer system meticulously analyzes liquidity, volatility, and trading volume, ensuring optimal investment decisions. Enjoy consistent income in your account through top-tier company shares, backed by an impressive 99.4% trading accuracy guarantee.",
+      "Gone are the days when investments were reserved for the rich. Our advanced computer system meticulously analyzes liquidity, volatility, and trading volume, ensuring optimal investment decisions. Enjoy consistent income in your account through top-tier company shares, backed by an impressive 99.4% trading accuracy guarantee.",
     featureAutoTradingTitle: "IMPECCABLE AUTOMATIC TRADING FUNCTIONALITY",
     featureAutoTradingText:
-      "Experience the convenience of our automatic trading feature, allowing you to effortlessly generate profits even when you're away from your workstation. No trading experience required! Simply make your initial investment and watch your account balance steadily grow.",
+      "Experience the convenience of our automatic trading feature, which allows you to effortlessly generate profits, even when you are not at your workstation. No trading experience required! Simply make your initial investment and watch your account balance grow steadily.",
     featureSupportTitle: "COMPREHENSIVE USER SUPPORT",
     featureSupportText:
-      "As a valued member of Coin Sin Limited, our friendly customer support manager is at your disposal, ready to address any queries or concerns you may have.",
+      "As a valuable member of Coin Sin Limited, our friendly customer service manager is at your disposal, ready to address any questions or concerns you may have.",
     featureCommunityTitle: "EXCLUSIVE ACCESS TO A UNIQUE COMMUNITY",
     featureCommunityText:
-      "Join our prestigious Coin Sin Limited community and gain privileged membership. Consider yourself fortunate to have found us and the opportunity to register. Please note that due to system capacity limitations, we can only extend invitations to a select number of users. Seize this opportunity to solve your financial problems once and for all.",
+      "Join our prestigious Coin Sin Limited community and gain privileged membership. Consider yourself lucky to have found the opportunity to register. Please note that, due to system capacity limitations, we can only send invitations to a select number of users. Take advantage of this opportunity to solve your financial problems once and for all.",
     createAccountButton: "Create your account!",
-    howToStartTitle: "¿CÓMO",
-    howToStartHighlight: "GET STARTED?",
+    howToStartTitle: "HOW TO",
+    howToStartHighlight: "START?",
     step1Title: "REGISTRATION: COMPLETE THE FORM BELOW",
     step1Description:
       "The registration form is on this page. Complete the form to become a member. Once your registration is approved, you will automatically become a new Coin Sin Limited participant.",
     step2Title: "DEPOSIT €250 OR MORE",
     step2Description:
-      "As with any business venture, you need some initial capital. The advantage of the Coin Sin Limited platform is that it only requires a modest initial investment. Simply deposit €250 or more to start earning money.",
-    step3Title: "KEEP AN EYE ON YOUR PHONE... YOU MIGHT GET A CALL!",
+      "As in any business, you need initial capital. The advantage of the Coin Sin Limited platform is that it only requires a modest initial investment. Simply deposit €250 or more to start earning money.",
+    step3Title: "STAY TUNED TO YOUR PHONE... YOU MIGHT RECEIVE A CALL!",
     step3Description:
       "After making a payment, our manager will contact you to confirm everything and activate your account. If you have any questions, the manager will provide detailed answers to help you. Please note that the call may come from an unidentified number.",
     faqTitle: "FREQUENTLY",
@@ -364,282 +402,123 @@ const translations = {
       "Take action now by providing your full name and email in the form below, and unlock the most exceptional and exclusive opportunity to generate substantial income effortlessly. Let AI handle the hard work while you reap tangible benefits instantly. Don't miss out!",
     footerCompanyInfo:
       "Coin Sin Limited is a company specializing in providing information and tools for cryptocurrency investment and trading, based on artificial intelligence.",
-    footerContactTitle: "Contact",
+    footerContactanos: "Contact Us",
+    footerPrivacidad: "Privacy",
+    footerTerminos: "Terms",
+    footerDescargo: "Disclaimer",
     footerEmailLabel: "Email:",
     footerCopyright: "All rights reserved.",
     smallFormNamePlaceholder: "Your name",
     smallFormSurnamePlaceholder: "Your surname",
-    smallFormEmailPlaceholder: "Your email address",
+    smallFormEmailPlaceholder: "Your email",
     smallFormPhonePlaceholder: "9 11 2345-6789",
     smallFormRegisterButton: "Register Me",
-    smallFormTermsText: "By registering, you accept and agree to the terms of use and the site's Privacy Policy.",
+    smallFormTermsText: "By registering, you accept and agree to the site's terms of use and Privacy Policy.",
     smallFormPrivacyText:
       "Your data is always protected with Coin Sin Limited. By completing this form, you agree to receive our marketing emails.",
+    ageConfirmation: "I confirm that I am of legal age.",
+    disclaimerFull: `IMPORTANT: Income and Legal Disclaimers. The income and earnings graphs created by smartbitboost.io, also known as "This Website", are used solely as ideal illustrations of your earning potential. The success of individuals in testimonials and other examples are exceptional results, and therefore are not intended to guarantee that you or others will achieve the same. Individual results will depend on how you use smartbitboost.io. For whatever you do, this website has no responsibility. You should always act with caution and due diligence because you assume full responsibility for your actions and decisions when using products and services. You agree that in no way will this website be responsible for the results of your use of our services. See our terms of use for information on our disclaimers and other restrictions. While trading can generate notable benefits, it also carries the risk of losing invested capital in part or in full, so you should consider whether you can afford to invest. ©2025
+USA REGULATORY NOTICE: Forex, CFD, and cryptocurrency trading is not under any US regulation. Cryptocurrency investment is not regulated or supervised by any US or financial agency. Any unregulated trading by US residents is considered illegal. This website does not accept US clients or US citizens. This website has no responsibility for the actions of clients located in or with US citizenship. Clients located within the United States or with US citizenship assume full responsibility for their actions and decisions when using products and services from this Website. In any and all circumstances, the choice to use the Website, the Service and/or the Software is under the sole responsibility of the User, who must comply with current legislation.`,
+    disclaimerFullContent: `IMPORTANT: Income and Legal Disclaimers. Every effort has been made to accurately represent this product and its potential. Even though this industry is one of the few where one can write their own check in terms of earnings, there is no guarantee that you will earn any money using the techniques and ideas in these materials. Examples in these materials are not to be taken as a promise or guarantee of earnings. Earning potential is entirely dependent on the person using our product, ideas, techniques and the effort put forth. We do not purport this as a “get rich scheme”, and nor should you view it as such.
+
+Any and all forward looking statements here or on any of our sales material are intended to express our opinion of earnings potential. Many factors will be important in determining your actual results and no guarantees are made that you will achieve results similar to ours or anybody else’s, in fact no guarantees are made that you will achieve any results from our ideas and techniques.
+
+The author and publisher disclaim any warranties (express or implied), merchantability, or fitness for any particular purpose. The author and publisher shall in no event be held liable to any party for any direct, indirect, punitive, special, incidental or other consequential damages arising directly or indirectly from any use of this material, which is provided “as is”, and without warranties.
+
+As always, the advice of a competent legal, tax, accounting or other professional should be sought. The author and publisher do not warrant the performance, effectiveness or applicability of any sites listed or linked to in this product.
+
+All links are for information purposes only and are not warranted for content, accuracy or any other implied or explicit purpose.
+
+Privacy
+We maintain this page to demonstrate our strong commitment to our users' rights and privacy. This page explains how our site collects information from our members.
+
+Free newsletter and mailing list: we respect the privacy of our users and, as such, will never share our database of email addresses and names with third parties.
+
+By confirming that you would like to join our newsletter, from time to time we will send you free information related to the products we market, general tips related to online marketing and promotional material for other products. Your email will never be transmitted to third parties. Nor will we send you spam. You can unsubscribe from the mailing list at any time.
+
+Personal information we collect and how it is used: Service provider: when you purchase a product, payment is processed by the product, who will collect your name, address and credit card information to verify your order. They cannot use the information for any other purpose. When ordering, we also collect your name and email address. We use this information to follow up with you according to the newsletter section above.
+
+Additional reminder – Earnings disclaimer:
+Every effort has been made to accurately represent this product and its potential. Even though this industry is one of the few where one can write their own check in terms of earnings, there is no guarantee that you will earn any money using the techniques and ideas in these materials.
+
+Examples in these materials are not to be taken as a promise or guarantee of earnings. Earning potential is entirely dependent on the person using our product, ideas, techniques and the effort put forth. We do not purport this as a “get rich scheme”, and nor should you view it as such.
+
+Any and all forward looking statements here or on any of our sales material are intended to express our opinion of earnings potential. Many factors will be important in determining your actual results and no guarantees are made that you will achieve results similar to ours or anybody else’s, in fact no guarantees are made that you will achieve any results from our ideas and techniques.
+
+Results vary, and as with any money-making opportunity, you could make more or less. Success in ANY money-making opportunity is a result of hard work, time and a variety of other factors. No express or implied guarantees of income are made by product.
+
+Returns and refunds policy: as stated, if you purchase product, and you do not enjoy the financial freedom that you expected, do not make as much from our methods as you expected, or indeed for any reason, you may claim a refund for the product within 60 days of purchase. On a sidenote we do ask you to put the techniques into use before requesting a refund, for both our benefit: however, our refund policy is unconditional and this is a suggestion, not a requirement. We are aware that some buyers will not achieve their personal goals despite our best efforts to the contrary, and we stand by our refund policy as such. Please forward your receipt number (given to you when you ordered) to us and we will action your refund request as quickly as possible, typically within 24 hours.
+
+Revisions to This Policy: Our company reserves the right to revise, amend, or modify this policy, our Terms Of Service agreement, and our other policies and agreements at any time and in any manner, by updating this posting.
+Copyright © 2025 product | All Rights Reserved
+`,
   },
 }
-const countryCodes = [
-  { code: "+1", flag: "🇺🇸", country: "United States", name: "Estados Unidos", id: "us" },
-  { code: "+1", flag: "🇨🇦", country: "Canada", name: "Canadá", id: "ca" },
-  { code: "+7", flag: "🇷🇺", country: "Russia", name: "Rusia", id: "ru" },
-  { code: "+20", flag: "🇪🇬", country: "Egypt", name: "Egipto", id: "eg" },
-  { code: "+27", flag: "🇿🇦", country: "South Africa", name: "Sudáfrica", id: "za" },
-  { code: "+30", flag: "🇬🇷", country: "Greece", name: "Grecia", id: "gr" },
-  { code: "+31", flag: "🇳🇱", country: "Netherlands", name: "Países Bajos", id: "nl" },
-  { code: "+32", flag: "🇧🇪", country: "Belgium", name: "Bélgica", id: "be" },
-  { code: "+33", flag: "🇫🇷", country: "France", name: "Francia", id: "fr" },
-  { code: "+34", flag: "🇪🇸", country: "Spain", name: "España", id: "es" },
-  { code: "+36", flag: "🇭🇺", country: "Hungary", name: "Hungría", id: "hu" },
-  { code: "+39", flag: "🇮🇹", country: "Italy", name: "Italia", id: "it" },
-  { code: "+40", flag: "🇷🇴", country: "Romania", name: "Rumania", id: "ro" },
-  { code: "+41", flag: "🇨🇭", country: "Switzerland", name: "Suiza", id: "ch" },
-  { code: "+43", flag: "🇦🇹", country: "Austria", name: "Austria", id: "at" },
-  { code: "+44", flag: "🇬🇧", country: "United Kingdom", name: "Reino Unido", id: "gb" },
-  { code: "+45", flag: "🇩🇰", country: "Denmark", name: "Dinamarca", id: "dk" },
-  { code: "+46", flag: "🇸🇪", country: "Sweden", name: "Suecia", id: "se" },
-  { code: "+47", flag: "🇳🇴", country: "Norway", name: "Noruega", id: "no" },
-  { code: "+48", flag: "🇵🇱", country: "Poland", name: "Polonia", id: "pl" },
-  { code: "+49", flag: "🇩🇪", country: "Germany", name: "Alemania", id: "de" },
-  { code: "+51", flag: "🇵🇪", country: "Peru", name: "Perú", id: "pe" },
-  { code: "+52", flag: "🇲🇽", country: "Mexico", name: "México", id: "mx" },
-  { code: "+53", flag: "🇨🇺", country: "Cuba", name: "Cuba", id: "cu" },
-  { code: "+54", flag: "🇦🇷", country: "Argentina", name: "Argentina", id: "ar" },
-  { code: "+55", flag: "🇧🇷", country: "Brazil", name: "Brasil", id: "br" },
-  { code: "+56", flag: "🇨🇱", country: "Chile", name: "Chile", id: "cl" },
-  { code: "+57", flag: "🇨🇴", country: "Colombia", name: "Colombia", id: "co" },
-  { code: "+58", flag: "🇻🇪", country: "Venezuela", name: "Venezuela", id: "ve" },
-  { code: "+60", flag: "🇲🇾", country: "Malaysia", name: "Malasia", id: "my" },
-  { code: "+61", flag: "🇦🇺", country: "Australia", name: "Australia", id: "au" },
-  { code: "+62", flag: "🇮🇩", country: "Indonesia", name: "Indonesia", id: "id" },
-  { code: "+63", flag: "🇵🇭", country: "Philippines", name: "Filipinas", id: "ph" },
-  { code: "+64", flag: "🇳🇿", country: "New Zealand", name: "Nueva Zelanda", id: "nz" },
-  { code: "+65", flag: "🇸🇬", country: "Singapore", name: "Singapur", id: "sg" },
-  { code: "+66", flag: "🇹🇭", country: "Thailand", name: "Tailandia", id: "th" },
-  { code: "+81", flag: "🇯🇵", country: "Japan", name: "Japón", id: "jp" },
-  { code: "+82", flag: "🇰🇷", country: "South Korea", name: "Corea del Sur", id: "kr" },
-  { code: "+84", flag: "🇻🇳", country: "Vietnam", name: "Vietnam", id: "vn" },
-  { code: "+86", flag: "🇨🇳", country: "China", name: "China", id: "cn" },
-  { code: "+90", flag: "🇹🇷", country: "Turkey", name: "Turquía", id: "tr" },
-  { code: "+91", flag: "🇮🇳", country: "India", name: "India", id: "in" },
-  { code: "+92", flag: "🇵🇰", country: "Pakistan", name: "Pakistán", id: "pk" },
-  { code: "+93", flag: "🇦🇫", country: "Afghanistan", name: "Afganistán", id: "af" },
-  { code: "+94", flag: "🇱🇰", country: "Sri Lanka", name: "Sri Lanka", id: "lk" },
-  { code: "+95", flag: "🇲🇲", country: "Myanmar", name: "Myanmar", id: "mm" },
-  { code: "+98", flag: "🇮🇷", country: "Iran", name: "Irán", id: "ir" },
-  { code: "+212", flag: "🇲🇦", country: "Morocco", name: "Marruecos", id: "ma" },
-  { code: "+213", flag: "🇩🇿", country: "Algeria", name: "Argelia", id: "dz" },
-  { code: "+216", flag: "🇹🇳", country: "Tunisia", name: "Túnez", id: "tn" },
-  { code: "+218", flag: "🇱🇾", country: "Libya", name: "Libia", id: "ly" },
-  { code: "+220", flag: "🇬🇲", country: "Gambia", name: "Gambia", id: "gm" },
-  { code: "+221", flag: "🇸🇳", country: "Senegal", name: "Senegal", id: "sn" },
-  { code: "+222", flag: "🇲🇷", country: "Mauritania", name: "Mauritania", id: "mr" },
-  { code: "+223", flag: "🇲🇱", country: "Mali", name: "Malí", id: "ml" },
-  { code: "+224", flag: "🇬🇳", country: "Guinea", name: "Guinea", id: "gn" },
-  { code: "+225", flag: "🇨🇮", country: "Ivory Coast", name: "Costa de Marfil", id: "ci" },
-  { code: "+226", flag: "🇧🇫", country: "Burkina Faso", name: "Burkina Faso", id: "bf" },
-  { code: "+227", flag: "🇳🇪", country: "Niger", name: "Níger", id: "ne" },
-  { code: "+228", flag: "🇹🇬", country: "Togo", name: "Togo", id: "tg" },
-  { code: "+229", flag: "🇧🇯", country: "Benin", name: "Benín", id: "bj" },
-  { code: "+230", flag: "🇲🇺", country: "Mauritius", name: "Mauricio", id: "mu" },
-  { code: "+231", flag: "🇱🇷", country: "Liberia", name: "Liberia", id: "lr" },
-  { code: "+232", flag: "🇸🇱", country: "Sierra Leone", name: "Sierra Leona", id: "sl" },
-  { code: "+233", flag: "🇬🇭", country: "Ghana", name: "Ghana", id: "gh" },
-  { code: "+234", flag: "🇳🇬", country: "Nigeria", name: "Nigeria", id: "ng" },
-  { code: "+235", flag: "🇹🇩", country: "Chad", name: "Chad", id: "td" },
-  { code: "+236", flag: "🇨🇫", country: "Central African Republic", name: "República Centroafricana", id: "cf" },
-  { code: "+237", flag: "🇨🇲", country: "Cameroon", name: "Camerún", id: "cm" },
-  { code: "+238", flag: "🇨🇻", country: "Cape Verde", name: "Cabo Verde", id: "cv" },
-  { code: "+239", flag: "🇸🇹", country: "Sao Tome and Principe", name: "Santo Tomé y Príncipe", id: "st" },
-  { code: "+240", flag: "🇬🇶", country: "Equatorial Guinea", name: "Guinea Ecuatorial", id: "gq" },
-  { code: "+241", flag: "🇬🇦", country: "Gabon", name: "Gabón", id: "ga" },
-  { code: "+242", flag: "🇨🇬", country: "Republic of the Congo", name: "República del Congo", id: "cg" },
-  {
-    code: "+243",
-    flag: "🇨🇩",
-    country: "Democratic Republic of the Congo",
-    name: "República Democrática del Congo",
-    id: "cd",
-  },
-  { code: "+244", flag: "🇦🇴", country: "Angola", name: "Angola", id: "ao" },
-  { code: "+245", flag: "🇬🇼", country: "Guinea-Bissau", name: "Guinea-Bisáu", id: "gw" },
-  {
-    code: "+246",
-    flag: "🇮🇴",
-    country: "British Indian Ocean Territory",
-    name: "Territorio Británico del Océano Índico",
-    id: "io",
-  },
-  { code: "+248", flag: "🇸🇨", country: "Seychelles", name: "Seychelles", id: "sc" },
-  { code: "+249", flag: "🇸🇩", country: "Sudan", name: "Sudán", id: "sd" },
-  { code: "+250", flag: "🇷🇼", country: "Rwanda", name: "Ruanda", id: "rw" },
-  { code: "+251", flag: "🇪🇹", country: "Ethiopia", name: "Etiopía", id: "et" },
-  { code: "+252", flag: "🇸🇴", country: "Somalia", name: "Somalia", id: "so" },
-  { code: "+253", flag: "🇩🇯", country: "Djibouti", name: "Yibuti", id: "dj" },
-  { code: "+254", flag: "🇰🇪", country: "Kenya", name: "Kenia", id: "ke" },
-  { code: "+255", flag: "🇹🇿", country: "Tanzania", name: "Tanzania", id: "tz" },
-  { code: "+256", flag: "🇺🇬", country: "Uganda", name: "Uganda", id: "ug" },
-  { code: "+257", flag: "🇧🇮", country: "Burundi", name: "Burundi", id: "bi" },
-  { code: "+258", flag: "🇲🇿", country: "Mozambique", name: "Mozambique", id: "mz" },
-  { code: "+260", flag: "🇿🇲", country: "Zambia", name: "Zambia", id: "zm" },
-  { code: "+261", flag: "🇲🇬", country: "Madagascar", name: "Madagascar", id: "mg" },
-  { code: "+262", flag: "🇷🇪", country: "Reunion", name: "Reunión", id: "re" },
-  { code: "+263", flag: "🇿🇼", country: "Zimbabwe", name: "Zimbabue", id: "zw" },
-  { code: "+264", flag: "🇳🇦", country: "Namibia", name: "Namibia", id: "na" },
-  { code: "+265", flag: "🇲🇼", country: "Malawi", name: "Malaui", id: "mw" },
-  { code: "+266", flag: "🇱🇸", country: "Lesotho", name: "Lesoto", id: "ls" },
-  { code: "+267", flag: "🇧🇼", country: "Botswana", name: "Botsuana", id: "bw" },
-  { code: "+268", flag: "🇸🇿", country: "Swaziland", name: "Suazilandia", id: "sz" },
-  { code: "+269", flag: "🇰🇲", country: "Comoros", name: "Comoras", id: "km" },
-  { code: "+290", flag: "🇸🇭", country: "Saint Helena", name: "Santa Elena", id: "sh" },
-  { code: "+291", flag: "🇪🇷", country: "Eritrea", name: "Eritrea", id: "er" },
-  { code: "+297", flag: "🇦🇼", country: "Aruba", name: "Aruba", id: "aw" },
-  { code: "+298", flag: "🇫🇴", country: "Faroe Islands", name: "Islas Feroe", id: "fo" },
-  { code: "+299", flag: "🇬🇱", country: "Greenland", name: "Groenlandia", id: "gl" },
-  { code: "+350", flag: "🇬🇮", country: "Gibraltar", name: "Gibraltar", id: "gi" },
-  { code: "+351", flag: "🇵🇹", country: "Portugal", name: "Portugal", id: "pt" },
-  { code: "+352", flag: "🇱🇺", country: "Luxembourg", name: "Luxemburgo", id: "lu" },
-  { code: "+353", flag: "🇮🇪", country: "Ireland", name: "Irlanda", id: "ie" },
-  { code: "+354", flag: "🇮🇸", country: "Iceland", name: "Islandia", id: "is" },
-  { code: "+355", flag: "🇦🇱", country: "Albania", name: "Albania", id: "al" },
-  { code: "+356", flag: "🇲🇹", country: "Malta", name: "Malta", id: "mt" },
-  { code: "+357", flag: "🇨🇾", country: "Cyprus", name: "Chipre", id: "cy" },
-  { code: "+358", flag: "🇫🇮", country: "Finland", name: "Finlandia", id: "fi" },
-  { code: "+359", flag: "🇧🇬", country: "Bulgaria", name: "Bulgaria", id: "bg" },
-  { code: "+370", flag: "🇱🇹", country: "Lithuania", name: "Lituania", id: "lt" },
-  { code: "+371", flag: "🇱🇻", country: "Latvia", name: "Letonia", id: "lv" },
-  { code: "+372", flag: "🇪🇪", country: "Estonia", name: "Estonia", id: "ee" },
-  { code: "+373", flag: "🇲🇩", country: "Moldova", name: "Moldavia", id: "md" },
-  { code: "+374", flag: "🇦🇲", country: "Armenia", name: "Armenia", id: "am" },
-  { code: "+375", flag: "🇧🇾", country: "Belarus", name: "Bielorrusia", id: "by" },
-  { code: "+376", flag: "🇦🇩", country: "Andorra", name: "Andorra", id: "ad" },
-  { code: "+377", flag: "🇲🇨", country: "Monaco", name: "Mónaco", id: "mc" },
-  { code: "+378", flag: "🇸🇲", country: "San Marino", name: "San Marino", id: "sm" },
-  { code: "+380", flag: "🇺🇦", country: "Ukraine", name: "Ucrania", id: "ua" },
-  { code: "+381", flag: "🇷🇸", country: "Serbia", name: "Serbia", id: "rs" },
-  { code: "+382", flag: "🇲🇪", country: "Montenegro", name: "Montenegro", id: "me" },
-  { code: "+383", flag: "🇽🇰", country: "Kosovo", name: "Kosovo", id: "xk" },
-  { code: "+385", flag: "🇭🇷", country: "Croatia", name: "Croacia", id: "hr" },
-  { code: "+386", flag: "🇸🇮", country: "Slovenia", name: "Eslovenia", id: "si" },
-  { code: "+387", flag: "🇧🇦", country: "Bosnia and Herzegovina", name: "Bosnia y Herzegovina", id: "ba" },
-  { code: "+389", flag: "🇲🇰", country: "North Macedonia", name: "Macedonia del Norte", id: "mk" },
-  { code: "+420", flag: "🇨🇿", country: "Czech Republic", name: "República Checa", id: "cz" },
-  { code: "+421", flag: "🇸🇰", country: "Slovakia", name: "Eslovaquia", id: "sk" },
-  { code: "+423", flag: "🇱🇮", country: "Liechtenstein", name: "Liechtenstein", id: "li" },
-  { code: "+500", flag: "🇫🇰", country: "Falkland Islands", name: "Islas Malvinas", id: "fk" },
-  { code: "+501", flag: "🇧🇿", country: "Belize", name: "Belice", id: "bz" },
-  { code: "+502", flag: "🇬🇹", country: "Guatemala", name: "Guatemala", id: "gt" },
-  { code: "+503", flag: "🇸🇻", country: "El Salvador", name: "El Salvador", id: "sv" },
-  { code: "+504", flag: "🇭🇳", country: "Honduras", name: "Honduras", id: "hn" },
-  { code: "+505", flag: "🇳🇮", country: "Nicaragua", name: "Nicaragua", id: "ni" },
-  { code: "+506", flag: "🇨🇷", country: "Costa Rica", name: "Costa Rica", id: "cr" },
-  { code: "+507", flag: "🇵🇦", country: "Panama", name: "Panamá", id: "pa" },
-  { code: "+508", flag: "🇵🇲", country: "Saint Pierre and Miquelon", name: "San Pedro y Miquelón", id: "pm" },
-  { code: "+509", flag: "🇭🇹", country: "Haiti", name: "Haití", id: "ht" },
-  { code: "+590", flag: "🇬🇵", country: "Guadeloupe", name: "Guadalupe", id: "gp" },
-  { code: "+591", flag: "🇧🇴", country: "Bolivia", name: "Bolivia", id: "bo" },
-  { code: "+592", flag: "🇬🇾", country: "Guyana", name: "Guyana", id: "gy" },
-  { code: "+593", flag: "🇪🇨", country: "Ecuador", name: "Ecuador", id: "ec" },
-  { code: "+594", flag: "🇬🇫", country: "French Guiana", name: "Guayana Francesa", id: "gf" },
-  { code: "+595", flag: "🇵🇾", country: "Paraguay", name: "Paraguay", id: "py" },
-  { code: "+596", flag: "🇲🇶", country: "Martinique", name: "Martinica", id: "mq" },
-  { code: "+597", flag: "🇸🇷", country: "Suriname", name: "Surinam", id: "sr" },
-  { code: "+598", flag: "🇺🇾", country: "Uruguay", name: "Uruguay", id: "uy" },
-  { code: "+599", flag: "🇨🇼", country: "Curacao", name: "Curazao", id: "cw" },
-  { code: "+670", flag: "🇹🇱", country: "East Timor", name: "Timor Oriental", id: "tl" },
-  { code: "+672", flag: "🇦🇶", country: "Antarctica", name: "Antártida", id: "aq" },
-  { code: "+673", flag: "🇧🇳", country: "Brunei", name: "Brunéi", id: "bn" },
-  { code: "+674", flag: "🇳🇷", country: "Nauru", name: "Nauru", id: "nr" },
-  { code: "+675", flag: "🇵🇬", country: "Papua New Guinea", name: "Papúa Nueva Guinea", id: "pg" },
-  { code: "+676", flag: "🇹🇴", country: "Tonga", name: "Tonga", id: "to" },
-  { code: "+677", flag: "🇸🇧", country: "Solomon Islands", name: "Islas Salomón", id: "sb" },
-  { code: "+678", flag: "🇻🇺", country: "Vanuatu", name: "Vanuatu", id: "vu" },
-  { code: "+679", flag: "🇫🇯", country: "Fiji", name: "Fiyi", id: "fj" },
-  { code: "+680", flag: "🇵🇼", country: "Palau", name: "Palaos", id: "pw" },
-  { code: "+681", flag: "🇼🇫", country: "Wallis and Futuna", name: "Wallis y Futuna", id: "wf" },
-  { code: "+682", flag: "🇨🇰", country: "Cook Islands", name: "Islas Cook", id: "ck" },
-  { code: "+683", flag: "🇳🇺", country: "Niue", name: "Niue", id: "nu" },
-  { code: "+684", flag: "🇦🇸", country: "American Samoa", name: "Samoa Americana", id: "as" },
-  { code: "+685", flag: "🇼🇸", country: "Samoa", name: "Samoa", id: "ws" },
-  { code: "+686", flag: "🇰🇮", country: "Kiribati", name: "Kiribati", id: "ki" },
-  { code: "+687", flag: "🇳🇨", country: "New Caledonia", name: "Nueva Caledonia", id: "nc" },
-  { code: "+688", flag: "🇹🇻", country: "Tuvalu", name: "Tuvalu", id: "tv" },
-  { code: "+689", flag: "🇵🇫", country: "French Polynesia", name: "Polinesia Francesa", id: "pf" },
-  { code: "+690", flag: "🇹🇰", country: "Tokelau", name: "Tokelau", id: "tk" },
-  { code: "+691", flag: "🇫🇲", country: "Micronesia", name: "Micronesia", id: "fm" },
-  { code: "+692", flag: "🇲🇭", country: "Marshall Islands", name: "Islas Marshall", id: "mh" },
-  { code: "+850", flag: "🇰🇵", country: "North Korea", name: "Corea del Norte", id: "kp" },
-  { code: "+852", flag: "🇭🇰", country: "Hong Kong", name: "Hong Kong", id: "hk" },
-  { code: "+853", flag: "🇲🇴", country: "Macau", name: "Macao", id: "mo" },
-  { code: "+855", flag: "🇰🇭", country: "Cambodia", name: "Camboya", id: "kh" },
-  { code: "+856", flag: "🇱🇦", country: "Laos", name: "Laos", id: "la" },
-  { code: "+880", flag: "🇧🇩", country: "Bangladesh", name: "Bangladés", id: "bd" },
-  { code: "+886", flag: "🇹🇼", country: "Taiwan", name: "Taiwán", id: "tw" },
-  { code: "+960", flag: "🇲🇻", country: "Maldives", name: "Maldivas", id: "mv" },
-  { code: "+961", flag: "🇱🇧", country: "Lebanon", name: "Líbano", id: "lb" },
-  { code: "+962", flag: "🇯🇴", country: "Jordan", name: "Jordania", id: "jo" },
-  { code: "+963", flag: "🇸🇾", country: "Syria", name: "Siria", id: "sy" },
-  { code: "+964", flag: "🇮🇶", country: "Iraq", name: "Irak", id: "iq" },
-  { code: "+965", flag: "🇰🇼", country: "Kuwait", name: "Kuwait", id: "kw" },
-  { code: "+966", flag: "🇸🇦", country: "Saudi Arabia", name: "Arabia Saudí", id: "sa" },
-  { code: "+967", flag: "🇾🇪", country: "Yemen", name: "Yemen", id: "ye" },
-  { code: "+968", flag: "🇴🇲", country: "Oman", name: "Omán", id: "om" },
-  { code: "+970", flag: "🇵🇸", country: "Palestine", name: "Palestina", id: "ps" },
-  { code: "+971", flag: "🇦🇪", country: "United Arab Emirates", name: "Emiratos Árabes Unidos", id: "ae" },
-  { code: "+972", flag: "🇮🇱", country: "Israel", name: "Israel", id: "il" },
-  { code: "+973", flag: "🇧🇭", country: "Bahrain", name: "Baréin", id: "bh" },
-  { code: "+974", flag: "🇶🇦", country: "Qatar", name: "Catar", id: "qa" },
-  { code: "+975", flag: "🇧🇹", country: "Bhutan", name: "Bután", id: "bt" },
-  { code: "+976", flag: "🇲🇳", country: "Mongolia", name: "Mongolia", id: "mn" },
-  { code: "+977", flag: "🇳🇵", country: "Nepal", name: "Nepal", id: "np" },
-  { code: "+992", flag: "🇹🇯", country: "Tajikistan", name: "Tayikistán", id: "tj" },
-  { code: "+993", flag: "🇹🇲", country: "Turkmenistan", name: "Turkmenistán", id: "tm" },
-  { code: "+994", flag: "🇦🇿", country: "Azerbaijan", name: "Azerbaiyán", id: "az" },
-  { code: "+995", flag: "🇬🇪", country: "Georgia", name: "Georgia", id: "ge" },
-  { code: "+996", flag: "🇰🇬", country: "Kyrgyzstan", name: "Kirguistán", id: "kg" },
-  { code: "+998", flag: "🇺🇿", country: "Uzbekistan", name: "Uzbekistán", id: "uz" },
-]
+
 // Testimonials data
 const testimonials = [
   {
     id: 1,
-    name: "Jose",
-    location: { es: "Madrid, 40 años", en: "Madrid, 40 years old" },
+    name: "Sofía",
+    location: { es: "Buenos Aires, 35 años", en: "Buenos Aires, 35 years old" },
     avatar: "/placeholder.svg?height=60&width=60",
     text: {
-      es: "¡No me podía creer lo simple que era ganar dinero con Coin Sin Limited! Siempre me ha faltado el dinero para, cómo se dice, prosperar. Tenía lo justo para vivir, eso es todo. Al fin y al cabo es Madrid, un lugar bastante caro. Pero con Coin Sin Limited, ahora puedo ganar tres veces más cada mes con solo trabajar unas horas desde casa. Es un gran alivio no tener que preocuparme por cuándo me ingresarán la próxima nómina o si podré pagar mis cuentas. ¡Coin Sin Limited realmente ha hecho mi vida mucho más fácil!",
-      en: "I couldn't believe how simple it was to make money with Coin Sin Limited! I've always lacked money to, how do you say, prosper. I only had enough to live, that's all. After all, it's Madrid, a pretty expensive place. But with Coin Sin Limited, I can now earn three times more every month by just working a few hours from home. It's a huge relief not to have to worry about when my next paycheck will be deposited or if I'll be able to pay my bills. Coin Sin Limited has truly made my life much easier!",
+      es: "¡Increíble! Con Coin Sin Limited, mis ingresos han crecido exponencialmente. Antes, el trading me parecía complicado, pero la IA de esta plataforma lo hace todo tan sencillo. Ahora tengo la libertad financiera que siempre soñé. ¡Totalmente recomendado!",
+      en: "Incredible! With Coin Sin Limited, my income has grown exponentially. Before, trading seemed complicated, but this platform's AI makes everything so simple. Now I have the financial freedom I always dreamed of. Totally recommended!",
     },
   },
   {
     id: 2,
-    name: "Mercedes",
-    location: { es: "Barcelona, 33 años", en: "Barcelona, 33 years old" },
+    name: "Ricardo",
+    location: { es: "Ciudad de México, 48 años", en: "Mexico City, 48 years old" },
     avatar: "/placeholder.svg?height=60&width=60",
     text: {
-      es: "Al vivir con mi esposo e hijos, las necesidades de mi familia siempre han sido nuestra principal prioridad. Sin embargo, con dos pequeños que cuidar, ha sido un desafío para mí ayudar a mi marido de manera significativa. Pero ahora, especialmente al regreso de mi marido de su viaje de negocios, estoy emocionada de sorprenderlo haciéndome cargo de las cuentas y comprando nuevos artículos para nuestro hogar. Coin Sin Limited realmente ha transformado nuestras vidas, brindando oportunidades económicas que nunca creí posibles.",
-      en: "Living with my husband and children, my family's needs have always been our top priority. However, with two small ones to care for, it has been challenging for me to significantly help my husband. But now, especially upon my husband's return from his business trip, I'm excited to surprise him by taking care of the bills and buying new items for our home. Coin Sin Limited has truly transformed our lives, providing economic opportunities I never thought possible.",
+      es: "Después de años de trabajo duro, buscaba una forma de asegurar mi jubilación. Coin Sin Limited ha sido la solución. La automatización y la precisión de la IA me permiten generar ganancias sin estrés. Es la mejor decisión financiera que he tomado.",
+      en: "After years of hard work, I was looking for a way to secure my retirement. Coin Sin Limited has been the solution. The automation and AI precision allow me to generate profits without stress. It's the best financial decision I've ever taken.",
     },
   },
   {
     id: 3,
-    name: "Carlos",
-    location: { es: "Valencia, 45 años", en: "Valencia, 45 years old" },
+    name: "Elena",
+    location: { es: "Bogotá, 29 años", en: "Bogota, 29 years old" },
     avatar: "/placeholder.svg?height=60&width=60",
     text: {
-      es: "Después de años trabajando en construcción, mis rodillas ya no aguantan como antes. Coin Sin Limited me ha dado una segunda oportunidad. Ahora puedo generar ingresos desde casa sin el desgaste físico. En solo 3 meses he recuperado mi inversión inicial y sigo ganando. Es increíble cómo la tecnología puede cambiar tu vida cuando menos te lo esperabas.",
-      en: "After years working in construction, my knees can't handle it like they used to. Coin Sin Limited has given me a second chance. Now I can generate income from home without the physical wear and tear. In just 3 months I have recovered my initial investment and continue to earn. It's incredible how technology can change your life when you least expected it.",
+      es: "Como estudiante, necesitaba ingresos extra sin sacrificar mis estudios. Coin Sin Limited me ha dado esa oportunidad. Dedico solo unos minutos al día y veo cómo mi cuenta crece. Es una herramienta poderosa para cualquiera que quiera mejorar sus finanzas.",
+      en: "As a student, I needed extra income without sacrificing my studies. Coin Sin Limited has given me that opportunity. I dedicate only a few minutes a day and watch my account grow. It's a powerful tool for anyone looking to improve their finances.",
     },
   },
   {
     id: 4,
-    name: "Ana",
-    location: { es: "Sevilla, 28 años", en: "Seville, 28 years old" },
+    name: "Andrés",
+    location: { es: "Santiago, 42 años", en: "Santiago, 42 years old" },
     avatar: "/placeholder.svg?height=60&width=60",
     text: {
-      es: "Como madre soltera, siempre busqué maneras de generar ingresos extra sin descuidar a mi hija. Coin Sin Limited ha sido la respuesta perfecta. Puedo trabajar desde casa en mis horarios libres y los resultados han superado mis expectativas. Ya no me preocupo por llegar a fin de mes y puedo darle a mi hija las cosas que se merece.",
-      en: "As a single mother, I always looked for ways to generate extra income without neglecting my daughter. Coin Sin Limited has been the perfect answer. I can work from home in my free hours and the results have exceeded my expectations. I no longer worry about making ends meet and I can give my daughter the things she deserves.",
+      es: "Siempre fui escéptico con las inversiones online, pero Coin Sin Limited me demostró lo contrario. La transparencia y los resultados son reales. He diversificado mi cartera y mis ganancias superan con creces mis expectativas iniciales. ¡Una plataforma de confianza!",
+      en: "I was always skeptical about online investments, but Coin Sin Limited proved me wrong. The transparency and results are real. I've diversified my portfolio, and my earnings far exceed my initial expectations. A trustworthy platform!",
+    },
+  },
+  {
+    id: 5,
+    name: "Valeria",
+    location: { es: "Lima, 31 años", en: "Lima, 31 years old" },
+    avatar: "/placeholder.svg?height=60&width=60",
+    text: {
+      es: "Gracias a Coin Sin Limited, pude pagar mis deudas y empezar a ahorrar para mi casa. La facilidad de uso y el soporte al cliente son excepcionales. Me siento segura invirtiendo aquí, sabiendo que la IA está trabajando para mí 24/7.",
+      en: "Thanks to Coin Sin Limited, I was able to pay off my debts and start saving for my house. The ease of use and customer support are exceptional. I feel secure investing here, knowing that AI is working for me 24/7.",
+    },
+  },
+  {
+    id: 6,
+    name: "Juan",
+    location: { es: "Madrid, 55 años", en: "Madrid, 55 years old" },
+    avatar: "/placeholder.svg?height=60&width=60",
+    text: {
+      es: "Nunca pensé que a mi edad podría entender el mundo de las criptomonedas, pero Coin Sin Limited lo hizo posible. La plataforma es intuitiva y los resultados son consistentes. ¡Es una bendición para mi economía familiar!",
+      en: "I never thought that at my age I could understand the world of cryptocurrencies, but Coin Sin Limited made it possible. The platform is intuitive and the results are consistent. It's a blessing for my family's economy!",
     },
   },
 ]
+
 const faqData = [
   {
     id: 1,
@@ -648,7 +527,7 @@ const faqData = [
       en: "What can I expect in terms of results?",
     },
     answer: {
-      es: "Nuestros miembros generalmente disfrutan de ganancias diarias de al menos $1,000, ganando constantemente aproximadamente $30,000 por mes y $365,000 por año. Tus ingresos son transparentes y visibles dentro de tu cuenta de usuario.",
+      es: "Nuestros miembros generalmente disfrutan de ganancias diarias de al menos $1,000, constantemente ganando aproximadamente $30,000 por mes y $365,000 por año. Tus ingresos son transparentes y visibles dentro de tu cuenta de usuario.",
       en: "Our members generally enjoy daily earnings of at least $1,000, consistently earning approximately $30,000 per month and $365,000 per year. Your income is transparent and visible within your user account.",
     },
   },
@@ -671,7 +550,7 @@ const faqData = [
     },
     answer: {
       es: "No hay límite en tus ganancias potenciales con Coin Sin Limited. Puedes ganar tanto como desees. Ten en cuenta que una mayor inversión inicial puede generar mayores ganancias.",
-      en: "There is no limit to your potential earnings with Coin Sin Limited. You can earn as much as you want. Please note that a larger initial investment can lead to higher profits.",
+      en: "No, there is no limit to your potential earnings with Coin Sin Limited. You can earn as much as you want. Please note that a larger initial investment can lead to higher profits.",
     },
   },
   {
@@ -686,28 +565,265 @@ const faqData = [
     },
   },
   {
-    id: 5,
-    question: {
-      es: "¿Es esto similar a MLM, Marketing de afiliados o Forex?",
-      en: "Is this similar to MLM, Affiliate Marketing, or Forex?",
-    },
-    answer: {
-      es: "No, Coin Sin Limited no es un programa de MLM, marketing de afiliación o Forex. Nuestro software utiliza un nuevo algoritmo con una tasa de precisión del 99,4%.",
-      en: "No, Coin Sin Limited is not an MLM, affiliate marketing, or Forex program. Our software uses a new algorithm with a 99.4% accuracy rate.",
-    },
-  },
-  {
     id: 6,
     question: {
       es: "¿Hay algún cargo adicional?",
       en: "Are there any additional charges?",
     },
     answer: {
-      es: "No, no hay tarifas ocultas o cargos inesperados. Usar Coin Sin Limited es completamente gratis. Simplemente completa el siguiente formulario para",
+      es: "No, no hay tarifas ocultas o cargos inesperadas. Usar Coin Sin Limited es completamente gratis. Simplemente completa el formulario a continuación para",
       en: "No, there are no hidden fees or unexpected charges. Using Coin Sin Limited is completely free. Simply complete the form below to",
     },
   },
 ]
+
+const countryCodes = [
+  { id: "AF", code: "+93", flag: "🇦🇫", country: "Afghanistan", name: "Afganistán" },
+  { id: "AL", code: "+355", flag: "🇦🇱", country: "Albania", name: "Albania" },
+  { id: "DZ", code: "+213", flag: "🇩🇿", country: "Algeria", name: "Argelia" },
+  { id: "AS", code: "+1-684", flag: "🇦🇸", country: "American Samoa", name: "Samoa Americana" },
+  { id: "AD", code: "+376", flag: "🇦🇩", country: "Andorra", name: "Andorra" },
+  { id: "AO", code: "+244", flag: "🇦🇴", country: "Angola", name: "Angola" },
+  { id: "AI", code: "+1-264", flag: "🇦🇮", country: "Anguilla", name: "Anguila" },
+  { id: "AQ", code: "+672", flag: "🇦🇶", country: "Antarctica", name: "Antártida" },
+  { id: "AG", code: "+1-268", flag: "🇦🇬", country: "Antigua and Barbuda", name: "Antigua y Barbuda" },
+  { id: "AR", code: "+54", flag: "🇦🇷", country: "Argentina", name: "Argentina" },
+  { id: "AM", code: "+374", flag: "🇦🇲", country: "Armenia", name: "Armenia" },
+  { id: "AW", code: "+297", flag: "🇦🇼", country: "Aruba", name: "Aruba" },
+  { id: "AU", code: "+61", flag: "🇦🇺", country: "Australia", name: "Australia" },
+  { id: "AT", code: "+43", flag: "🇦🇹", country: "Austria", name: "Austria" },
+  { id: "AZ", code: "+994", flag: "🇦🇿", country: "Azerbaijan", name: "Azerbaiyán" },
+  { id: "BS", code: "+1-242", flag: "🇧🇸", country: "Bahamas", name: "Bahamas" },
+  { id: "BH", code: "+973", flag: "🇧🇭", country: "Bahrain", name: "Bahrein" },
+  { id: "BD", code: "+880", flag: "🇧🇩", country: "Bangladesh", name: "Bangladesh" },
+  { id: "BB", code: "+1-246", flag: "🇧🇧", country: "Barbados", name: "Barbados" },
+  { id: "BY", code: "+375", flag: "🇧🇾", country: "Belarus", name: "Bielorrusia" },
+  { id: "BE", code: "+32", flag: "🇧🇪", country: "Belgium", name: "Bélgica" },
+  { id: "BZ", code: "+501", flag: "🇧🇿", country: "Belize", name: "Belice" },
+  { id: "BJ", code: "+229", flag: "🇧🇯", country: "Benin", name: "Benín" },
+  { id: "BM", code: "+1-441", flag: "🇧🇲", country: "Bermuda", name: "Bermudas" },
+  { id: "BT", code: "+975", flag: "🇧🇹", country: "Bhutan", name: "Bután" },
+  { id: "BO", code: "+591", flag: "🇧🇴", country: "Bolivia", name: "Bolivia" },
+  { id: "BA", code: "+387", flag: "🇧🇦", country: "Bosnia and Herzegovina", name: "Bosnia y Herzegovina" },
+  { id: "BW", code: "+267", flag: "🇧🇼", country: "Botswana", name: "Botsuana" },
+  { id: "BR", code: "+55", flag: "🇧🇷", country: "Brazil", name: "Brasil" },
+  {
+    id: "IO",
+    code: "+246",
+    flag: "🇮🇴",
+    country: "British Indian Ocean Territory",
+    name: "Territorio Británico del Océano Índico",
+  },
+  { id: "VG", code: "+1-284", flag: "🇻🇬", country: "British Virgin Islands", name: "Islas Vírgenes Británicas" },
+  { id: "BN", code: "+673", flag: "🇧🇳", country: "Brunei", name: "Brunéi" },
+  { id: "BG", code: "+359", flag: "🇧🇬", country: "Bulgaria", name: "Bulgaria" },
+  { id: "BF", code: "+226", flag: "🇧🇫", country: "Burkina Faso", name: "Burkina Faso" },
+  { id: "BI", code: "+257", flag: "🇧🇮", country: "Burundi", name: "Burundi" },
+  { id: "KH", code: "+855", flag: "🇰🇭", country: "Cambodia", name: "Camboya" },
+  { id: "CM", code: "+237", flag: "🇨🇲", country: "Cameroon", name: "Camerún" },
+  { id: "CA", code: "+1", flag: "🇨🇦", country: "Canada", name: "Canadá" },
+  { id: "CV", code: "+238", flag: "🇨🇻", country: "Cape Verde", name: "Cabo Verde" },
+  { id: "KY", code: "+1-345", flag: "🇰🇾", country: "Cayman Islands", name: "Islas Caimán" },
+  { id: "CF", code: "+236", flag: "🇨🇫", country: "Central African Republic", name: "República Centroafricana" },
+  { id: "TD", code: "+235", flag: "🇹🇩", country: "Chad", name: "Chad" },
+  { id: "CL", code: "+56", flag: "🇨🇱", country: "Chile", name: "Chile" },
+  { id: "CN", code: "+86", flag: "🇨🇳", country: "China", name: "China" },
+  { id: "CX", code: "+61", flag: "🇨🇽", country: "Christmas Island", name: "Isla de Navidad" },
+  { id: "CC", code: "+61", flag: "🇨🇨", country: "Cocos (Keeling) Islands", name: "Islas Cocos (Keeling)" },
+  { id: "CO", code: "+57", flag: "🇨🇴", country: "Colombia", name: "Colombia" },
+  { id: "KM", code: "+269", flag: "🇰🇲", country: "Comoros", name: "Comoras" },
+  { id: "CG", code: "+242", flag: "🇨🇬", country: "Congo", name: "Congo" },
+  {
+    id: "CD",
+    code: "+243",
+    flag: "🇨🇩",
+    country: "Congo, Democratic Republic of the",
+    name: "Congo, República Democrática del",
+  },
+  { id: "CK", code: "+682", flag: "🇨🇰", country: "Cook Islands", name: "Islas Cook" },
+  { id: "CR", code: "+506", flag: "🇨🇷", country: "Costa Rica", name: "Costa Rica" },
+  { id: "CI", code: "+225", flag: "🇨🇮", country: "Côte d'Ivoire", name: "Costa de Marfil" },
+  { id: "HR", code: "+385", flag: "🇭🇷", country: "Croatia", name: "Croacia" },
+  { id: "CU", code: "+53", flag: "🇨🇺", country: "Cuba", name: "Cuba" },
+  { id: "CW", code: "+599", flag: "🇨🇼", country: "Curacao", name: "Curazao" },
+  { id: "CY", code: "+357", flag: "🇨🇾", country: "Cyprus", name: "Chipre" },
+  { id: "CZ", code: "+420", flag: "🇨🇿", country: "Czech Republic", name: "República Checa" },
+  { id: "DK", code: "+45", flag: "🇩🇰", country: "Denmark", name: "Dinamarca" },
+  { id: "DJ", code: "+253", flag: "🇩🇯", country: "Djibouti", name: "Yibuti" },
+  { id: "DM", code: "+1-767", flag: "🇩🇲", country: "Dominica", name: "Dominica" },
+  { id: "DO", code: "+1-809", flag: "🇩🇴", country: "Dominican Republic", name: "República Dominicana" },
+  { id: "EC", code: "+593", flag: "🇪🇨", country: "Ecuador", name: "Ecuador" },
+  { id: "EG", code: "+20", flag: "🇪🇬", country: "Egypt", name: "Egipto" },
+  { id: "SV", code: "+503", flag: "🇸🇻", country: "El Salvador", name: "El Salvador" },
+  { id: "GQ", code: "+240", flag: "🇬🇶", country: "Equatorial Guinea", name: "Guinea Ecuatorial" },
+  { id: "ER", code: "+291", flag: "🇪🇷", country: "Eritrea", name: "Eritrea" },
+  { id: "EE", code: "+372", flag: "🇪🇪", country: "Estonia", name: "Estonia" },
+  { id: "ET", code: "+251", flag: "🇪🇹", country: "Ethiopia", name: "Etiopía" },
+  { id: "FK", code: "+500", flag: "🇫🇰", country: "Falkland Islands", name: "Islas Malvinas" },
+  { id: "FO", code: "+298", flag: "🇫🇴", country: "Faroe Islands", name: "Islas Feroe" },
+  { id: "FJ", code: "+679", flag: "🇫🇯", country: "Fiji", name: "Fiyi" },
+  { id: "FI", code: "+358", flag: "🇫🇮", country: "Finland", name: "Finlandia" },
+  { id: "FR", code: "+33", flag: "🇫🇷", country: "France", name: "Francia" },
+  { id: "GF", code: "+594", flag: "🇬🇫", country: "French Guiana", name: "Guayana Francesa" },
+  { id: "PF", code: "+689", flag: "🇵🇫", country: "French Polynesia", name: "Polinesia Francesa" },
+  { id: "GA", code: "+241", flag: "🇬🇦", country: "Gabon", name: "Gabón" },
+  { id: "GM", code: "+220", flag: "🇬🇲", country: "Gambia", name: "Gambia" },
+  { id: "GE", code: "+995", flag: "🇬🇪", country: "Georgia", name: "Georgia" },
+  { id: "DE", code: "+49", flag: "🇩🇪", country: "Germany", name: "Alemania" },
+  { id: "GH", code: "+233", flag: "🇬🇭", country: "Ghana", name: "Ghana" },
+  { id: "GI", code: "+350", flag: "🇬🇮", country: "Gibraltar", name: "Gibraltar" },
+  { id: "GR", code: "+30", flag: "🇬🇷", country: "Greece", name: "Grecia" },
+  { id: "GL", code: "+299", flag: "🇬🇱", country: "Greenland", name: "Groenlandia" },
+  { id: "GD", code: "+1-473", flag: "🇬🇩", country: "Grenada", name: "Granada" },
+  { id: "GP", code: "+590", flag: "🇬🇵", country: "Guadeloupe", name: "Guadalupe" },
+  { id: "GU", code: "+1-671", flag: "🇬🇺", country: "Guam", name: "Guam" },
+  { id: "GT", code: "+502", flag: "🇬🇹", country: "Guatemala", name: "Guatemala" },
+  { id: "GG", code: "+44", flag: "🇬🇬", country: "Guernsey", name: "Guernsey" },
+  { id: "GN", code: "+224", flag: "🇬🇳", country: "Guinea", name: "Guinea" },
+  { id: "GW", code: "+245", flag: "🇬🇼", country: "Guinea-Bisáu", name: "Guinea-Bisáu" },
+  { id: "GY", code: "+592", flag: "🇬🇾", country: "Guyana", name: "Guyana" },
+  { id: "HT", code: "+509", flag: "🇭🇹", country: "Haiti", name: "Haití" },
+  { id: "HN", code: "+504", flag: "🇭🇳", country: "Honduras", name: "Honduras" },
+  { id: "HK", code: "+852", flag: "🇭🇰", country: "Hong Kong", name: "Hong Kong" },
+  { id: "HU", code: "+36", flag: "🇭🇺", country: "Hungary", name: "Hungría" },
+  { id: "IS", code: "+354", flag: "🇮🇸", country: "Iceland", name: "Islandia" },
+  { id: "IN", code: "+91", flag: "🇮🇳", country: "India", name: "India" },
+  { id: "ID", code: "+62", flag: "🇮🇩", country: "Indonesia", name: "Indonesia" },
+  { id: "IR", code: "+98", flag: "🇮🇷", country: "Iran", name: "Irán" },
+  { id: "IQ", code: "+964", flag: "🇮🇶", country: "Iraq", name: "Irak" },
+  { id: "IE", code: "+353", flag: "🇮🇪", country: "Ireland", name: "Irlanda" },
+  { id: "IM", code: "+44", flag: "🇮🇲", country: "Isle of Man", name: "Isla de Man" },
+  { id: "IL", code: "+972", flag: "🇮🇱", country: "Israel", name: "Israel" },
+  { id: "IT", code: "+39", flag: "🇮🇹", country: "Italy", name: "Italia" },
+  { id: "JM", code: "+1-876", flag: "🇯🇲", country: "Jamaica", name: "Jamaica" },
+  { id: "JP", code: "+81", flag: "🇯🇵", country: "Japan", name: "Japón" },
+  { id: "JE", code: "+44", flag: "🇯🇪", country: "Jersey", name: "Jersey" },
+  { id: "JO", code: "+962", flag: "🇯🇴", country: "Jordan", name: "Jordania" },
+  { id: "KZ", code: "+7", flag: "🇰🇿", country: "Kazakhstan", name: "Kazajistán" },
+  { id: "KE", code: "+254", flag: "🇰🇪", country: "Kenya", name: "Kenia" },
+  { id: "KI", code: "+686", flag: "🇰🇮", country: "Kiribati", name: "Kiribati" },
+  { id: "KP", code: "+850", flag: "🇰🇵", country: "North Korea", name: "Corea del Norte" },
+  { id: "KR", code: "+82", flag: "🇰🇷", country: "South Korea", name: "Corea del Sur" },
+  { id: "KW", code: "+965", flag: "🇰🇼", country: "Kuwait", name: "Kuwait" },
+  { id: "KG", code: "+996", flag: "🇰🇬", country: "Kyrgyzstan", name: "Kirguistán" },
+  { id: "LA", code: "+856", flag: "🇱🇦", country: "Laos", name: "Laos" },
+  { id: "LV", code: "+371", flag: "🇱🇻", country: "Latvia", name: "Letonia" },
+  { id: "LB", code: "+961", flag: "🇱🇧", country: "Lebanon", name: "Líbano" },
+  { id: "LS", code: "+266", flag: "🇱🇸", country: "Lesotho", name: "Lesoto" },
+  { id: "LR", code: "+231", flag: "🇱🇷", country: "Liberia", name: "Liberia" },
+  { id: "LY", code: "+218", flag: "🇱🇾", country: "Libya", name: "Libia" },
+  { id: "LI", code: "+423", flag: "🇱🇮", country: "Liechtenstein", name: "Liechtenstein" },
+  { id: "LT", code: "+370", flag: "🇱🇹", country: "Lithuania", name: "Lituania" },
+  { id: "LU", code: "+352", flag: "🇱🇺", country: "Luxembourg", name: "Luxemburgo" },
+  { id: "MO", code: "+853", flag: "🇲🇴", country: "Macau", name: "Macao" },
+  { id: "MK", code: "+389", flag: "🇲🇰", country: "North Macedonia", name: "Macedonia del Norte" },
+  { id: "MG", code: "+261", flag: "🇲🇬", country: "Madagascar", name: "Madagascar" },
+  { id: "MW", code: "+265", flag: "🇲🇼", country: "Malawi", name: "Malaui" },
+  { id: "MY", code: "+60", flag: "🇲🇾", country: "Malaysia", name: "Malasia" },
+  { id: "MV", code: "+960", flag: "🇲🇻", country: "Maldives", name: "Maldivas" },
+  { id: "ML", code: "+223", flag: "🇲🇱", country: "Mali", name: "Mali" },
+  { id: "MT", code: "+356", flag: "🇲🇹", country: "Malta", name: "Malta" },
+  { id: "MH", code: "+692", flag: "🇲🇭", country: "Marshall Islands", name: "Islas Marshall" },
+  { id: "MQ", code: "+596", flag: "🇲🇶", country: "Martinique", name: "Martinica" },
+  { id: "MR", code: "+222", flag: "🇲🇷", country: "Mauritania", name: "Mauritania" },
+  { id: "MU", code: "+230", flag: "🇲🇺", country: "Mauritius", name: "Mauricio" },
+  { id: "YT", code: "+262", flag: "🇾🇹", country: "Mayotte", name: "Mayotte" },
+  { id: "MX", code: "+52", flag: "🇲🇽", country: "Mexico", name: "México" },
+  { id: "FM", code: "+691", flag: "🇫🇲", country: "Micronesia", name: "Micronesia" },
+  { id: "MD", code: "+373", flag: "🇲🇩", country: "Moldova", name: "Moldavia" },
+  { id: "MC", code: "+377", flag: "🇲🇨", country: "Monaco", name: "Mónaco" },
+  { id: "MN", code: "+976", flag: "🇲🇳", country: "Mongolia", name: "Mongolia" },
+  { id: "ME", code: "+382", flag: "🇲🇪", country: "Montenegro", name: "Montenegro" },
+  { id: "MS", code: "+1-664", flag: "🇲🇸", country: "Montserrat", name: "Montserrat" },
+  { id: "MA", code: "+212", flag: "🇲🇦", country: "Morocco", name: "Marruecos" },
+  { id: "MZ", code: "+258", flag: "🇲🇿", country: "Mozambique", name: "Mozambique" },
+  { id: "MM", code: "+95", flag: "🇲🇲", country: "Myanmar", name: "Myanmar" },
+  { id: "NA", code: "+264", flag: "🇳🇦", country: "Namibia", name: "Namibia" },
+  { id: "NR", code: "+674", flag: "🇳🇷", country: "Nauru", name: "Nauru" },
+  { id: "NP", code: "+977", flag: "🇳🇵", country: "Nepal", name: "Nepal" },
+  { id: "NL", code: "+31", flag: "🇳🇱", country: "Netherlands", name: "Países Bajos" },
+  { id: "NC", code: "+687", flag: "🇳🇨", country: "New Caledonia", name: "Nueva Caledonia" },
+  { id: "NZ", code: "+64", flag: "🇳🇿", country: "New Zealand", name: "Nueva Zelanda" },
+  { id: "NI", code: "+505", flag: "🇳🇮", country: "Nicaragua", name: "Nicaragua" },
+  { id: "NE", code: "+227", flag: "🇳🇪", country: "Niger", name: "Níger" },
+  { id: "NG", code: "+234", flag: "🇳🇬", country: "Nigeria", name: "Nigeria" },
+  { id: "NU", code: "+683", flag: "🇳🇺", country: "Niue", name: "Niue" },
+  { id: "NF", code: "+672", flag: "🇳🇫", country: "Norfolk Island", name: "Isla Norfolk" },
+  { id: "MP", code: "+1-670", flag: "🇲🇵", country: "Northern Mariana Islands", name: "Islas Marianas del Norte" },
+  { id: "NO", code: "+47", flag: "🇳🇴", country: "Norway", name: "Noruega" },
+  { id: "OM", code: "+968", flag: "🇴🇲", country: "Oman", name: "Omán" },
+  { id: "PK", code: "+92", flag: "🇵🇰", country: "Pakistan", name: "Pakistán" },
+  { id: "PW", code: "+680", flag: "🇵🇼", country: "Palau", name: "Palaos" },
+  { id: "PS", code: "+970", flag: "🇵🇸", country: "Palestine", name: "Palestina" },
+  { id: "PA", code: "+507", flag: "🇵🇦", country: "Panama", name: "Panamá" },
+  { id: "PG", code: "+675", flag: "🇵🇬", country: "Papua New Guinea", name: "Papúa Nueva Guinea" },
+  { id: "PY", code: "+595", flag: "🇵🇾", country: "Paraguay", name: "Paraguay" },
+  { id: "PE", code: "+51", flag: "🇵🇪", country: "Peru", name: "Perú" },
+  { id: "PH", code: "+63", flag: "🇵🇭", country: "Philippines", name: "Filipinas" },
+  { id: "PL", code: "+48", flag: "🇵🇱", country: "Poland", name: "Polonia" },
+  { id: "PT", code: "+351", flag: "🇵🇹", country: "Portugal", name: "Portugal" },
+  { id: "PR", code: "+1-787", flag: "🇵🇷", country: "Puerto Rico", name: "Puerto Rico" },
+  { id: "QA", code: "+974", flag: "🇶🇦", country: "Qatar", name: "Catar" },
+  { id: "RE", code: "+262", flag: "🇷🇪", country: "Reunion", name: "Reunión" },
+  { id: "RO", code: "+40", flag: "🇷🇴", country: "Romania", name: "Rumania" },
+  { id: "RU", code: "+7", flag: "🇷🇺", country: "Russia", name: "Rusia" },
+  { id: "RW", code: "+250", flag: "🇷🇼", country: "Rwanda", name: "Ruanda" },
+  { id: "WS", code: "+685", flag: "🇼🇸", country: "Samoa", name: "Samoa" },
+  { id: "SM", code: "+378", flag: "🇸🇲", country: "San Marino", name: "San Marino" },
+  { id: "ST", code: "+239", flag: "🇸🇹", country: "Sao Tome and Principe", name: "Santo Tomé y Príncipe" },
+  { id: "SA", code: "+966", flag: "🇸🇦", country: "Saudi Arabia", name: "Arabia Saudita" },
+  { id: "SN", code: "+221", flag: "🇸🇳", country: "Senegal", name: "Senegal" },
+  { id: "RS", code: "+381", flag: "🇷🇸", country: "Serbia", name: "Serbia" },
+  { id: "SC", code: "+248", flag: "🇸🇨", country: "Seychelles", name: "Seychelles" },
+  { id: "SL", code: "+232", flag: "🇸🇱", country: "Sierra Leone", name: "Sierra Leona" },
+  { id: "SG", code: "+65", flag: "🇸🇬", country: "Singapore", name: "Singapur" },
+  { id: "SX", code: "+1-721", flag: "🇸🇽", country: "Sint Maarten", name: "Sint Maarten" },
+  { id: "SK", code: "+421", flag: "🇸🇰", country: "Slovakia", name: "Eslovaquia" },
+  { id: "SI", code: "+386", flag: "🇸🇮", country: "Slovenia", name: "Eslovenia" },
+  { id: "SB", code: "+677", flag: "🇸🇧", country: "Solomon Islands", name: "Islas Salomón" },
+  { id: "SO", code: "+252", flag: "🇸🇴", country: "Somalia", name: "Somalia" },
+  { id: "ZA", code: "+27", flag: "🇿🇦", country: "South Africa", name: "Sudáfrica" },
+  { id: "SS", code: "+211", flag: "🇸🇸", country: "South Sudan", name: "Sudán del Sur" },
+  { id: "ES", code: "+34", flag: "🇪🇸", country: "Spain", name: "España" },
+  { id: "LK", code: "+94", flag: "🇱🇰", country: "Sri Lanka", name: "Sri Lanka" },
+  { id: "SD", code: "+249", flag: "🇸🇩", country: "Sudan", name: "Sudán" },
+  { id: "SR", code: "+597", flag: "🇸🇷", country: "Suriname", name: "Surinam" },
+  { id: "SZ", code: "+268", flag: "🇸🇿", country: "Swaziland", name: "Suazilandia" },
+  { id: "SE", code: "+46", flag: "🇸🇪", country: "Sweden", name: "Suecia" },
+  { id: "CH", code: "+41", flag: "🇨🇭", country: "Switzerland", name: "Suiza" },
+  { id: "SY", code: "+963", flag: "🇸🇾", country: "Syria", name: "Siria" },
+  { id: "TW", code: "+886", flag: "🇹🇼", country: "Taiwan", name: "Taiwán" },
+  { id: "TJ", code: "+992", flag: "🇹🇯", country: "Tajikistan", name: "Tayikistán" },
+  { id: "TZ", code: "+255", flag: "🇹🇿", country: "Tanzania", name: "Tanzania" },
+  { id: "TH", code: "+66", flag: "🇹🇭", country: "Thailand", name: "Tailandia" },
+  { id: "TL", code: "+670", flag: "🇹🇱", country: "Timor-Leste", name: "Timor Oriental" },
+  { id: "TG", code: "+228", flag: "🇹🇬", country: "Togo", name: "Togo" },
+  { id: "TK", code: "+690", flag: "🇹🇰", country: "Tokelau", name: "Tokelau" },
+  { id: "TO", code: "+676", flag: "🇹🇴", country: "Tonga", name: "Tonga" },
+  { id: "TT", code: "+1-868", flag: "🇹🇹", country: "Trinidad and Tobago", name: "Trinidad y Tobago" },
+  { id: "TN", code: "+216", flag: "🇹🇳", country: "Tunisia", name: "Túnez" },
+  { id: "TR", code: "+90", flag: "🇹🇷", country: "Turkey", name: "Turquía" },
+  { id: "TM", code: "+993", flag: "🇹🇲", country: "Turkmenistan", name: "Turkmenistán" },
+  { id: "TC", code: "+1-649", flag: "🇹🇨", country: "Turks and Caicos Islands", name: "Islas Turcas y Caicos" },
+  { id: "TV", code: "+688", flag: "🇹🇻", country: "Tuvalu", name: "Tuvalu" },
+  { id: "UG", code: "+256", flag: "🇺🇬", country: "Uganda", name: "Uganda" },
+  { id: "UA", code: "+380", flag: "🇺🇦", country: "Ukraine", name: "Ucrania" },
+  { id: "AE", code: "+971", flag: "🇦🇪", country: "United Arab Emirates", name: "Emiratos Árabes Unidos" },
+  { id: "GB", code: "+44", flag: "🇬🇧", country: "United Kingdom", name: "Reino Unido" },
+  { id: "US", code: "+1", flag: "🇺🇸", country: "United States", name: "Estados Unidos" },
+  { id: "UY", code: "+598", flag: "🇺🇾", country: "Uruguay", name: "Uruguay" },
+  { id: "UZ", code: "+998", flag: "🇺🇿", country: "Uzbekistan", name: "Uzbekistán" },
+  { id: "VU", code: "+678", flag: "🇻🇺", country: "Vanuatu", name: "Vanuatu" },
+  { id: "VA", code: "+379", flag: "🇻🇦", country: "Vatican City", name: "Ciudad del Vaticano" },
+  { id: "VE", code: "+58", flag: "🇻🇪", country: "Venezuela", name: "Venezuela" },
+  { id: "VN", code: "+84", flag: "🇻🇳", country: "Vietnam", name: "Vietnam" },
+  { id: "WF", code: "+681", flag: "🇼🇫", country: "Wallis and Futuna", name: "Wallis y Futuna" },
+  { id: "EH", code: "+212", flag: "🇪🇭", country: "Western Sahara", name: "Sahara Occidental" },
+  { id: "YE", code: "+967", flag: "🇾🇪", country: "Yemen", name: "Yemen" },
+  { id: "ZM", code: "+260", flag: "🇿🇲", country: "Zambia", name: "Zambia" },
+  { id: "ZW", code: "+263", flag: "🇿🇼", country: "Zimbabwe", name: "Zimbabue" },
+]
+
 export default function CryptoLanding() {
   const [language, setLanguage] = useState<"es" | "en">("es")
   const [countrySearch, setCountrySearch] = useState("")
@@ -729,6 +845,10 @@ export default function CryptoLanding() {
     investment: 250,
     days: 10,
   })
+  const [platformNetBenefit, setPlatformNetBenefit] = useState(466837090)
+  const [newUsersToday, setNewUsersToday] = useState(4000)
+  const [ageConfirmed, setAgeConfirmed] = useState(false)
+  const [phoneError, setPhoneError] = useState<string | null>(null)
   const [registrationState, registrationAction] = useFormState(submitRegistration, {
     success: false,
     message: "",
@@ -742,29 +862,57 @@ export default function CryptoLanding() {
       _form: undefined,
     },
   })
+
+  useEffect(() => {
+    const benefitInterval = setInterval(() => {
+      setPlatformNetBenefit((prev) => prev + Math.floor(Math.random() * 1000) + 100) // Increment by 100-1099
+    }, 5000) // Update every 5 seconds
+
+    const usersInterval = setInterval(() => {
+      setNewUsersToday((prev) => prev + Math.floor(Math.random() * 5) + 1) // Increment by 1-5 users
+    }, 10000) // Update every 10 seconds
+
+    return () => {
+      clearInterval(benefitInterval)
+      clearInterval(usersInterval)
+    }
+  }, [])
+
   // Calculate return based on investment and days
   const calculateReturn = (investment: number, days: number) => {
-    const dailyRate = 0.2176
-    const totalReturn = investment * Math.pow(1 + dailyRate, days)
-    return Math.round(totalReturn)
+    const initialDailyRate = 0.0936 // This rate ensures 250 -> 612 in 10 days
+    const reducedDailyRate = 0.03 // A much lower rate for subsequent days
+
+    if (days <= 10) {
+      return Math.round(investment * Math.pow(1 + initialDailyRate, days))
+    } else {
+      const baseReturnAt10Days = investment * Math.pow(1 + initialDailyRate, 10)
+      const remainingDays = days - 10
+      return Math.round(baseReturnAt10Days * Math.pow(1 + reducedDailyRate, remainingDays))
+    }
   }
+
   // Calculate percentage gain
   const calculatePercentage = (investment: number, days: number) => {
     const returnAmount = calculateReturn(investment, days)
     return ((returnAmount - investment) / investment) * 100
   }
+
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => {
-      const maxIndex = testimonials.length - 3
+      // Ensure maxIndex is calculated correctly for the number of testimonials and items displayed
+      const maxIndex = testimonials.length - 3 // Displaying 3 testimonials at a time
       return prev + 3 > maxIndex ? 0 : prev + 3
     })
   }
+
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) => {
-      const maxIndex = testimonials.length - 3
+      const maxIndex = testimonials.length - 3 // Displaying 3 testimonials at a time
       return prev - 3 < 0 ? maxIndex : prev - 3
     })
   }
+
   const toggleVideo = () => {
     if (videoRef.current) {
       if (isVideoPlaying) {
@@ -775,6 +923,7 @@ export default function CryptoLanding() {
       setIsVideoPlaying(!isVideoPlaying)
     }
   }
+
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = Number.parseFloat(e.target.value)
     if (videoRef.current) {
@@ -787,12 +936,7 @@ export default function CryptoLanding() {
       }
     }
   }
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted
-      setIsMuted(!isMuted)
-    }
-  }
+
   const toggleFullScreen = () => {
     if (videoRef.current) {
       if (document.fullscreenElement) {
@@ -802,7 +946,9 @@ export default function CryptoLanding() {
       }
     }
   }
+
   const t = translations[language]
+
   const filteredCountries = useMemo(() => {
     if (!countrySearch) return countryCodes
     const searchTerm = countrySearch.toLowerCase()
@@ -813,546 +959,576 @@ export default function CryptoLanding() {
         country.code.includes(searchTerm),
     )
   }, [countrySearch])
+
+  const validatePhoneNumber = (phoneNumber: string) => {
+    const commonPatterns = [
+      /^(\d)\1+$/, // e.g., 1111111111
+      /^1234567890$/,
+      /^0987654321$/,
+      /^147852369$/,
+      /^(?:0123456789|9876543210)$/, // common sequences
+    ]
+    if (commonPatterns.some((pattern) => pattern.test(phoneNumber))) {
+      return "Por favor, introduce un número de teléfono válido."
+    }
+    return null
+  }
+
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
+    if (field === "phone") {
+      setPhoneError(validatePhoneNumber(value))
+    }
   }
+
   const handleLanguageChange = (newLanguage: string) => {
     setLanguage(newLanguage as "es" | "en")
   }
+
   const selectedCountry = countryCodes.find((c) => c.code === formData.countryCode)
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted
+      setIsMuted(!isMuted)
+      if (!isMuted) {
+        videoRef.current.volume = volume
+      } else {
+        videoRef.current.volume = 0
+      }
+    }
+  }
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 relative overflow-hidden">
-      {/* Notification Bar */}
-      <div className="bg-blue-600 text-white text-center py-2 px-4 text-sm">
-        <div className="flex items-center justify-center gap-2">
-          <Info className="w-4 h-4" />
-          <span>{t.notification}</span>
-          <Badge variant="destructive" className="ml-2">
-            00:00
-          </Badge>
-        </div>
-      </div>
-      {/* Floating Crypto Elements */}
-      <div className="absolute inset-0 pointer-events-none hidden sm:block">
-        <div
-          className="absolute top-20 left-10 w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-80 animate-bounce"
-          style={{ animationDelay: "0s" }}
-        ></div>
-        <div
-          className="absolute top-40 right-20 w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-70 animate-bounce"
-          style={{ animationDelay: "1s" }}
-        ></div>
-        <div
-          className="absolute bottom-40 left-20 w-20 h-20 bg-gradient-to-br from-green-400 to-blue-500 rounded-full opacity-60 animate-bounce"
-          style={{ animationDelay: "2s" }}
-        ></div>
-        <div
-          className="absolute bottom-20 right-40 w-14 h-14 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full opacity-75 animate-bounce"
-          style={{ animationDelay: "0.5s" }}
-        ></div>
-        <div
-          className="absolute top-60 left-1/4 w-10 h-10 bg-gradient-to-br from-red-400 to-yellow-500 rounded-full opacity-65 animate-bounce"
-          style={{ animationDelay: "1.5s" }}
-        ></div>
-      </div>
-      {/* Header */}
-      <header className="relative z-10 flex flex-col sm:flex-row items-center justify-between p-4 sm:p-6 gap-4 sm:gap-0">
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2">
-            <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-orange-400" />
-            <img
-              src="/logo.png"
-              alt="Coin Sin Limited Logo"
-              className="h-12 w-24 sm:h-16 sm:w-32 object-contain rounded-lg"
-            />
-          </div>
-        </div>
-        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
-          <div className="text-white text-sm text-center sm:text-left">
-            <div className="text-orange-400 font-semibold">{t.platformBenefit}</div>
-            <div className="text-xl font-bold">$466,837,090</div>
-          </div>
-          <div className="text-white text-sm text-center sm:text-left">
-            <div className="text-orange-400 font-semibold">{t.userIncome}</div>
-            <div className="text-xl font-bold">07/10/2025 $193,389</div>
-          </div>
-          <div className="text-white text-sm text-center sm:text-left">
-            <div className="text-orange-400 font-semibold">{t.slotsLeft}</div>
-          </div>
-          <Select value={language} onValueChange={handleLanguageChange}>
-            <SelectTrigger className="w-full sm:w-32">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="es">🇪🇸 Español</SelectItem>
-              <SelectItem value="en">🇺🇸 English</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      </header>
-      {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-4 py-8 sm:px-6 sm:py-12">
-        <div className="text-center mb-8 sm:mb-12">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-            {t.mainTitle}
-            <br />
-            <span className="text-orange-400">{t.mainTitleHighlight}</span>
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8">{t.subtitle}</p>
-        </div>
-        {/* Combined Section */}
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-blue-600/90 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-2xl border border-blue-400/20 animate-in slide-in-from-bottom-5 duration-700">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-              {/* Left Side - Video/Content */}
-              <div className="space-y-6">
-                <div className="bg-blue-700/50 text-white p-4 rounded-lg flex items-center gap-3 animate-in slide-in-from-left-5 duration-700">
-                  <Info className="w-5 h-5" />
-                  <span className="font-semibold">{t.readyToJoin}</span>
-                </div>
-                <Card className="bg-gray-900/80 border-gray-700 overflow-hidden shadow-2xl border border-gray-600/20">
-                  <CardContent className="p-4 sm:p-8">
-                    <div className="text-center space-y-6">
-                      <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-500/20 rounded-full mb-4 animate-pulse">
-                        <Shield className="w-8 h-8 text-orange-400" />
-                      </div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight animate-in fade-in-50 duration-500 delay-200">
-                        {t.motivationalText}
-                      </h3>
-                      <div className="w-20 h-1 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto rounded-full animate-in slide-in-from-left-5 duration-500 delay-300"></div>
-                      {/* Video Player */}
-                      <div className="relative bg-black rounded-xl overflow-hidden">
-                        <video
-                          ref={videoRef}
-                          src="/videos/crypto-demo.mp4" // Referencia al video subido a Vercel Blob
-                          className="w-full h-60 md:h-80 object-cover" // Altura más grande
-                          loop
-                          onPlay={() => setIsVideoPlaying(true)}
-                          onPause={() => setIsVideoPlaying(false)}
-                          onVolumeChange={(e) => {
-                            setVolume(e.currentTarget.volume)
-                            setIsMuted(e.currentTarget.muted)
-                          }}
-                        >
-                          {language === "es"
-                            ? "Tu navegador no soporta la etiqueta de video."
-                            : "Your browser does not support the video tag."}
-                        </video>
-                        {/* Custom Play/Pause Button */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <Button
-                            onClick={toggleVideo}
-                            size="lg"
-                            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white h-14 w-14 sm:h-16 sm:w-16 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 group relative overflow-hidden"
-                          >
-                            <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                            <div className="relative flex items-center justify-center">
-                              {isVideoPlaying ? (
-                                <Pause className="w-7 h-7 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform duration-300" />
-                              ) : (
-                                <Play className="w-7 h-7 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform duration-300" />
-                              )}
-                            </div>
-                          </Button>
-                        </div>
-                        {/* Video Controls (Volume, Fullscreen) */}
-                        <div className="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4 flex items-center justify-between bg-black/50 p-2 rounded-lg">
-                          <div className="flex items-center gap-2">
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              onClick={toggleMute}
-                              className="text-white hover:bg-white/20"
-                            >
-                              {isMuted || volume === 0 ? (
-                                <VolumeX className="w-5 h-5" />
-                              ) : (
-                                <Volume2 className="w-5 h-5" />
-                              )}
-                            </Button>
-                            <input
-                              type="range"
-                              min="0"
-                              max="1"
-                              step="0.01"
-                              value={volume}
-                              onChange={handleVolumeChange}
-                              className="w-20 sm:w-24 h-1 bg-gray-400 rounded-lg appearance-none cursor-pointer"
-                            />
-                          </div>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={toggleFullScreen}
-                            className="text-white hover:bg-white/20"
-                          >
-                            <Maximize className="w-5 h-5" />
-                          </Button>
-                        </div>
-                      </div>
-                      <p className="text-white/80 text-sm">{isVideoPlaying ? t.pauseVideo : t.playVideo}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-              {/* Right Side - Registration Form */}
-              <div id="registration-form" className="space-y-6">
-                {registrationState.success && (
-                  <div className="text-center space-y-6 animate-in fade-in-50 duration-500">
-                    <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500/20 rounded-full mb-4">
-                      <svg className="w-10 h-10 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">{t.registrationSuccessTitle}</h2>
-                    <p className="text-white/90 text-base sm:text-lg">{registrationState.message}</p>
-                    <div className="w-20 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto rounded-full"></div>
-                  </div>
-                )}
-                {registrationState.errors?._form && (
-                  <div className="text-red-400 text-sm text-center">{registrationState.errors._form[0]}</div>
-                )}
-                {!registrationState.success && (
-                  <>
-                    <div className="text-center mb-8">
-                      <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-500/20 rounded-full mb-4 animate-pulse">
-                        <TrendingUp className="w-8 h-8 text-orange-400" />
-                      </div>
-                      <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 animate-in fade-in-50 duration-500 delay-200">
-                        {t.improveLife}
-                      </h2>
-                      <div className="w-20 h-1 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto rounded-full animate-in slide-in-from-left-5 duration-500 delay-300"></div>
-                    </div>
-                    <form className="space-y-4" action={registrationAction}>
-                      {/* Name Field */}
-                      <div className="relative group animate-in slide-in-from-left-3 duration-500 delay-100">
-                        <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-blue-500 transition-colors duration-200">
-                          <User className="w-5 h-5" />
-                        </div>
-                        <Input
-                          name="name"
-                          placeholder={t.namePlaceholder}
-                          value={formData.name}
-                          onChange={(e) => handleInputChange("name", e.target.value)}
-                          required
-                          className="w-full bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
-                        />
-                        {formData.name && (
-                          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                              <path
-                                fillRule="evenodd"
-                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                          </div>
-                        )}
-                      </div>
-                      {/* Surname Field */}
-                      <div className="relative group animate-in slide-in-from-left-3 duration-500 delay-200">
-                        <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-blue-500 transition-colors duration-200">
-                          <User className="w-5 h-5" />
-                        </div>
-                        <Input
-                          name="surname"
-                          placeholder={t.surnamePlaceholder}
-                          value={formData.surname}
-                          onChange={(e) => handleInputChange("surname", e.target.value)}
-                          required
-                          className="w-full bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
-                        />
-                        {formData.surname && (
-                          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                              <path
-                                fillRule="evenodd"
-                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                          </div>
-                        )}
-                      </div>
-                      {/* Email Field */}
-                      <div className="relative group animate-in slide-in-from-left-3 duration-500 delay-300">
-                        <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-blue-500 transition-colors duration-200">
-                          <Mail className="w-5 h-5" />
-                        </div>
-                        <Input
-                          name="email"
-                          type="email"
-                          placeholder={t.emailPlaceholder}
-                          value={formData.email}
-                          onChange={(e) => handleInputChange("email", e.target.value)}
-                          required
-                          className="w-full bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
-                        />
-                        {formData.email && formData.email.includes("@") && (
-                          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                              <path
-                                fillRule="evenodd"
-                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                          </div>
-                        )}
-                      </div>
-                      {/* Phone Field */}
-                      <div className="flex flex-col sm:flex-row gap-3 animate-in slide-in-from-left-3 duration-500 delay-400">
-                        <div className="relative w-full sm:w-auto">
-                          <Select
-                            name="countryCode"
-                            value={formData.countryCode}
-                            onValueChange={(value) => handleInputChange("countryCode", value)}
-                            open={isCountrySelectOpen}
-                            onOpenChange={setIsCountrySelectOpen}
-                          >
-                            <SelectTrigger className="w-full sm:w-32 bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 border-0 h-12 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center">
-                              <SelectValue>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-lg">{selectedCountry?.flag}</span>
-                                  <span className="text-sm font-semibold">{selectedCountry?.code}</span>
-                                </div>
-                              </SelectValue>
-                            </SelectTrigger>
-                            <SelectContent className="max-h-80 rounded-xl border-0 shadow-2xl bg-white/95 backdrop-blur-sm">
-                              <div className="p-3 border-b border-gray-100">
-                                <div className="relative">
-                                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                                  <Input
-                                    placeholder={t.searchCountry}
-                                    value={countrySearch}
-                                    onChange={(e) => setCountrySearch(e.target.value)}
-                                    className="pl-10 h-10 text-sm rounded-lg border border-gray-200 focus:border-blue-400 transition-colors duration-200 w-full"
-                                    onClick={(e) => e.stopPropagation()}
-                                  />
-                                </div>
-                              </div>
-                              <div className="max-h-60 overflow-y-auto">
-                                {filteredCountries.map((country) => (
-                                  <SelectItem
-                                    key={country.id}
-                                    value={country.code}
-                                    className="hover:bg-blue-50 transition-colors duration-150 cursor-pointer"
-                                  >
-                                    <div className="flex items-center gap-3 py-1">
-                                      <span className="text-lg">{country.flag}</span>
-                                      <span className="text-sm font-medium">{country.code}</span>
-                                      <span className="text-sm text-gray-600">
-                                        {language === "es" ? country.name : country.country}
-                                      </span>
-                                    </div>
-                                  </SelectItem>
-                                ))}
-                                {filteredCountries.length === 0 && (
-                                  <div className="p-4 text-sm text-gray-500 text-center">{t.noCountriesFound}</div>
-                                )}
-                              </div>
-                            </SelectContent>
-                          </Select>
-                        </div>
-                        <div className="relative flex-1 group w-full">
-                          <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-blue-500 transition-colors duration-200">
-                            <Phone className="w-5 h-5" />
-                          </div>
-                          <Input
-                            name="phone"
-                            placeholder={t.phonePlaceholder}
-                            value={formData.phone}
-                            onChange={(e) => handleInputChange("phone", e.target.value)}
-                            required
-                            className="w-full bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white"
-                          />
-                          {formData.phone && formData.phone.length >= 8 && (
-                            <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
-                              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                  fillRule="evenodd"
-                                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                      <input type="hidden" name="language" value={language} />
-                      {/* Register Button */}
-                      <div className="animate-in slide-in-from-bottom-3 duration-500 delay-500">
-                        <SubmitButton language={language}>{t.registerButton}</SubmitButton>
-                      </div>
-                      {/* Terms Checkbox */}
-                      <div className="flex items-start gap-4 text-xs text-white animate-in fade-in-50 duration-500 delay-600">
-                        <div className="relative">
-                          <Checkbox
-                            id="terms"
-                            required
-                            className="mt-1 border-white/30 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 transition-all duration-200 hover:scale-110"
-                          />
-                        </div>
-                        <label
-                          htmlFor="terms"
-                          className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
-                        >
-                          <Shield className="w-4 h-4 inline mr-2 text-orange-400" />
-                          {t.termsText}
-                        </label>
-                      </div>
-                      {/* Privacy Text */}
-                      <div className="text-xs text-white/80 leading-relaxed animate-in fade-in-50 duration-500 delay-700 bg-white/5 p-4 rounded-lg border border-white/10">
-                        <div className="flex items-start gap-2">
-                          <svg
-                            className="w-4 h-4 text-blue-300 mt-0.5 flex-shrink-0"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                          <span>{t.privacyText}</span>
-                        </div>
-                      </div>
-                    </form>
-                  </>
-                )}
-              </div>
+    <div className="min-h-screen relative overflow-hidden bg-blue-950">
+      {/* Section with background image */}
+      <div className="relative z-10" aria-label="Background image of cryptocurrency charts">
+        <div className="absolute inset-0 bg-[url('/images/image.jpg')] bg-cover bg-center blur-md"></div>
+        <div className="relative z-20">
+          {/* Notification Bar */}
+          <div className="relative z-20 bg-blue-600 text-white text-center py-2 px-4 text-sm">
+            <div className="flex items-center justify-center gap-2">
+              <Info className="w-4 h-4" />
+              <span>{t.notification}</span>
+              <Badge variant="destructive" className="ml-2">
+                00:00
+              </Badge>
             </div>
           </div>
-          {/* All Content in Same Screen - Unified */}
-          <div className="max-w-7xl mx-auto mt-12 sm:mt-16 space-y-12 sm:space-y-16">
-            {/* CTA Section */}
-            <div className="text-center space-y-6 sm:space-y-8 px-4 sm:px-8">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700">
-                {t.masterTradingTitle}{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">
-                  {t.masterTradingHighlight}
-                </span>
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 text-left">
-                <div className="space-y-4 text-white animate-in slide-in-from-left-5 duration-700 delay-300">
-                  <p className="text-base sm:text-lg leading-relaxed">{t.ctaParagraph1}</p>
-                  <p className="text-base sm:text-lg leading-relaxed">{t.ctaParagraph2}</p>
-                </div>
-                <div className="space-y-4 text-white animate-in slide-in-from-right-5 duration-700 delay-400">
-                  <p className="text-base sm:text-lg leading-relaxed">{t.ctaParagraph3}</p>
-                  <p className="text-base sm:text-lg font-semibold text-orange-300">{t.ctaParagraph4}</p>
-                </div>
+          {/* Header */}
+          <header className="relative z-20 grid grid-cols-[auto_1fr_auto] items-center p-4 sm:p-6">
+            {/* Logo Column */}
+            <div className="flex items-center gap-3">
+              <img
+                src="/logo.png"
+                alt="Coin Sin Limited Logo"
+                className="h-24 w-48 sm:h-28 sm:w-56 object-contain rounded-lg"
+              />
+            </div>
+            {/* Counters Column (centered) */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+              <div className="text-white text-sm text-center sm:text-left">
+                <div className="text-orange-400 font-semibold">{t.platformBenefit}</div>
+                <div className="text-xl font-bold">${platformNetBenefit.toLocaleString()}</div>
               </div>
-              <div className="animate-in slide-in-from-bottom-5 duration-700 delay-500">
-                <Button
-                  onClick={() => {
-                    const formElement = document.querySelector("#registration-form")
-                    if (formElement) {
-                      formElement.scrollIntoView({ behavior: "smooth", block: "center" })
-                    }
-                  }}
-                  size="lg"
-                  className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8 py-3 h-14 sm:px-12 sm:py-4 sm:h-16 text-lg sm:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 group relative overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/30 to-orange-400/30 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                  <div className="relative flex items-center gap-3">
-                    <span>{t.startNowButton}</span>
-                    <svg
-                      className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
+              <div className="text-white text-sm text-center sm:text-left">
+                <div className="text-orange-400 font-semibold">{t.userIncome}</div>
+                <div className="text-xl font-bold">{newUsersToday.toLocaleString()}</div>
+              </div>
+            </div>
+            {/* Language Selector Column */}
+            <div className="flex justify-end">
+              <Select value={language} onValueChange={handleLanguageChange}>
+                <SelectTrigger className="w-full sm:w-32 bg-white text-gray-900 [&>span]:text-gray-900 [&>span>span]:text-gray-900 [&>svg]:text-gray-900">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="es">🇪🇸 Español</SelectItem>
+                  <SelectItem value="en">🇺🇸 English</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </header>
+          {/* Main Content (Hero section) */}
+          <div className="relative z-20 container mx-auto px-4 py-8 sm:px-6 sm:py-12">
+            <div className="text-center mb-8 sm:mb-12">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+                {t.mainTitle}
+                <br />
+                <span className="text-orange-400">{t.mainTitleHighlight}</span>
+              </h1>
+              <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8">{t.subtitle}</p>
+            </div>
+          </div>
+        </div>{" "}
+      </div>{" "}
+      {/* FIN DEL DIV CON LA IMAGEN DE FONDO */}
+      {/* Combined Section - MOVED OUTSIDE THE BACKGROUND IMAGE DIV */}
+      <div className="max-w-7xl mx-auto">
+        {/* Moved "READY TO JOIN" banner here, outside the grid */}
+        <div className="bg-blue-700/50 text-white p-4 rounded-lg flex items-center gap-3 mb-6 animate-in slide-in-from-left-5 duration-700">
+          <Info className="w-5 h-5" />
+          <span className="font-semibold">{t.readyToJoin}</span>
+        </div>
+        <div className="rounded-2xl p-6 sm:p-8 shadow-2xl border border-blue-400/20 animate-in slide-in-from-bottom-5 duration-700 glowing-form-shadow">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 items-start">
+            {/* Left Side - Video/Content */}
+            <div className="lg:col-span-2 pt-0">
+              {" "}
+              <div className="text-center space-y-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-500/20 rounded-full mb-4 animate-pulse">
+                  <Shield className="w-8 h-8 text-orange-400" />
+                </div>
+                <div className="w-20 h-1 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto rounded-full animate-in slide-in-from-left-5 duration-500 delay-300"></div>
+                {/* Video Player */}
+                <div className="relative bg-transparent rounded-xl overflow-hidden glowing-form-shadow">
+                  <video
+                    ref={videoRef}
+                    src="/videos/crypto-demo.mp4" // Referencia al video subido a Vercel Blob
+                    className="w-full aspect-video object-cover" // Changed to aspect-video for wider view
+                    loop
+                    onPlay={() => setIsVideoPlaying(true)}
+                    onPause={() => setIsVideoPlaying(false)}
+                    onVolumeChange={(e) => {
+                      setVolume(e.currentTarget.volume)
+                      setIsMuted(e.currentTarget.muted)
+                    }}
+                  >
+                    {language === "es"
+                      ? "Tu navegador no soporta la etiqueta de video."
+                      : "Your browser no longer supports the video tag."}
+                  </video>
+                  {/* Custom Play/Pause Button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Button
+                      onClick={toggleVideo}
+                      size="lg"
+                      className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white h-14 w-14 sm:h-16 sm:w-16 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 group relative overflow-hidden"
                     >
+                      <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                      <div className="relative flex items-center justify-center">
+                        {isVideoPlaying ? (
+                          <Pause className="w-7 h-7 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform duration-300" />
+                        ) : (
+                          <Play className="w-7 h-7 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform duration-300" />
+                        )}
+                      </div>
+                    </Button>
+                  </div>
+                  {/* Video Controls (Volume, Fullscreen) */}
+                  <div className="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4 flex items-center justify-between bg-black/50 p-2 rounded-lg">
+                    <div className="flex items-center gap-2">
+                      <Button variant="ghost" size="icon" onClick={toggleMute} className="text-white hover:bg-white/20">
+                        {isMuted || volume === 0 ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+                      </Button>
+                      <input
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        value={volume}
+                        onChange={handleVolumeChange}
+                        className="w-20 sm:w-24 h-1 bg-gray-400 rounded-lg appearance-none cursor-pointer"
+                      />
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={toggleFullScreen}
+                      className="text-white hover:bg-white/20"
+                    >
+                      <Maximize className="w-5 h-5" />
+                    </Button>
+                  </div>
+                </div>
+                <p className="text-white/80 text-sm">{isVideoPlaying ? t.pauseVideo : t.playVideo}</p>
+              </div>
+            </div>
+            {/* Right Side - Registration Form */}
+            <div id="registration-form" className="space-y-6">
+              {registrationState.success && (
+                <div className="text-center space-y-6 animate-in fade-in-50 duration-500">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500/20 rounded-full mb-4">
+                    <svg className="w-10 h-10 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                       <path
                         fillRule="evenodd"
-                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                         clipRule="evenodd"
                       />
                     </svg>
                   </div>
-                </Button>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">{t.registrationSuccessTitle}</h2>
+                  <p className="text-white/90 text-base sm:text-lg">{registrationState.message}</p>
+                  <div className="w-20 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto rounded-full"></div>
+                </div>
+              )}
+              {registrationState.errors?._form && (
+                <div className="text-red-400 text-sm text-center">{registrationState.errors._form[0]}</div>
+              )}
+              {!registrationState.success && (
+                <>
+                  <div className="text-center mb-8">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-500/20 rounded-full mb-4 animate-pulse">
+                      <img
+                        src="/logo.png"
+                        alt="Coin Sin Limited Logo"
+                        className="h-12 w-24 object-contain rounded-lg"
+                      />
+                    </div>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 animate-in fade-in-50 duration-500 delay-200">
+                      {t.improveLife}
+                    </h2>
+                    <div className="w-20 h-1 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto rounded-full animate-in slide-in-from-left-5 duration-500 delay-300"></div>
+                  </div>
+                  <form className="space-y-4" action={registrationAction}>
+                    {/* Name Field */}
+                    <div className="relative group animate-in slide-in-from-left-3 duration-500 delay-100">
+                      <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 group-focus-within:text-blue-500 transition-colors duration-200 z-10">
+                        <User className="w-5 h-5" />
+                      </div>
+                      <Input
+                        name="name"
+                        placeholder={t.namePlaceholder}
+                        value={formData.name}
+                        onChange={(e) => handleInputChange("name", e.target.value)}
+                        required
+                        className="w-full bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
+                      />
+                      {formData.name && (
+                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
+                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                              fillRule="evenodd"
+                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                    {/* Surname Field */}
+                    <div className="relative group animate-in slide-in-from-left-3 duration-500 delay-200">
+                      <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 group-focus-within:text-blue-500 transition-colors duration-200 z-10">
+                        <User className="w-5 h-5" />
+                      </div>
+                      <Input
+                        name="surname"
+                        placeholder={t.surnamePlaceholder}
+                        value={formData.surname}
+                        onChange={(e) => handleInputChange("surname", e.target.value)}
+                        required
+                        className="w-full bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
+                      />
+                      {formData.surname && (
+                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
+                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                              fillRule="evenodd"
+                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                    {/* Email Field */}
+                    <div className="relative group animate-in slide-in-from-left-3 duration-500 delay-300">
+                      <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 group-focus-within:text-blue-500 transition-colors duration-200 z-10">
+                        <Mail className="w-5 h-5" />
+                      </div>
+                      <Input
+                        name="email"
+                        type="email"
+                        placeholder={t.emailPlaceholder}
+                        value={formData.email}
+                        onChange={(e) => handleInputChange("email", e.target.value)}
+                        required
+                        className="w-full bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
+                      />
+                      {formData.email && formData.email.includes("@") && (
+                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
+                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                              fillRule="evenodd"
+                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                    {/* Phone Field - Unified */}
+                    <div className="flex animate-in slide-in-from-left-3 duration-500 delay-400 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus-within:scale-[1.02] focus-within:bg-white overflow-hidden">
+                      <div className="relative w-1/3">
+                        <Select
+                          name="countryCode"
+                          value={formData.countryCode}
+                          onValueChange={(value) => handleInputChange("countryCode", value)}
+                          open={isCountrySelectOpen}
+                          onOpenChange={setIsCountrySelectOpen}
+                        >
+                          <SelectTrigger className="w-full bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 border-r border-gray-300 h-12 text-white rounded-l-xl rounded-r-none text-sm flex items-center justify-start pl-3 min-h-[48px]">
+                            <SelectValue>
+                              <div className="flex items-center gap-2">
+                                <span className="text-sm font-semibold">
+                                  {selectedCountry?.id.toUpperCase()} {selectedCountry?.code}
+                                </span>
+                              </div>
+                            </SelectValue>
+                          </SelectTrigger>
+                          <SelectContent className="w-[var(--radix-popper-anchor-width)] max-h-80 rounded-xl border-0 shadow-2xl bg-white/95 backdrop-blur-sm">
+                            <div className="p-3 border-b border-gray-100">
+                              <div className="relative">
+                                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                                <Input
+                                  placeholder={t.searchCountry}
+                                  value={countrySearch}
+                                  onChange={(e) => setCountrySearch(e.target.value)}
+                                  className="pl-10 h-10 text-sm rounded-lg border border-gray-200 focus:border-blue-400 transition-colors duration-200 w-full"
+                                  onClick={(e) => e.stopPropagation()}
+                                />
+                              </div>
+                            </div>
+                            <div className="max-h-60 overflow-y-auto">
+                              {filteredCountries.map((country) => (
+                                <SelectItem
+                                  key={country.id}
+                                  value={country.code}
+                                  className="hover:bg-blue-50 transition-colors duration-150 cursor-pointer"
+                                >
+                                  <div className="flex items-center gap-3 py-1">
+                                    <span className="text-lg">{country.flag}</span>
+                                    <span className="text-sm font-medium">{country.code}</span>
+                                    <span className="text-sm text-gray-600">
+                                      {language === "es" ? country.name : country.country}
+                                    </span>
+                                  </div>
+                                </SelectItem>
+                              ))}
+                              {filteredCountries.length === 0 && (
+                                <div className="p-4 text-sm text-gray-500 text-center">{t.noCountriesFound}</div>
+                              )}
+                            </div>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="relative flex-1 group">
+                        <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 group-focus-within:text-blue-500 transition-colors duration-200 z-10">
+                          <Phone className="w-5 h-5" />
+                        </div>
+                        <Input
+                          name="phone"
+                          placeholder={t.phonePlaceholder}
+                          value={formData.phone}
+                          onChange={(e) => handleInputChange("phone", e.target.value)}
+                          required
+                          className="w-full bg-white/95 backdrop-blur-sm border-0 h-12 text-gray-900 placeholder:text-gray-500 pl-12 pr-12 rounded-r-xl rounded-l-none min-h-[48px]"
+                        />
+                        {formData.phone && !phoneError && formData.phone.length >= 8 && (
+                          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                              <path
+                                fillRule="evenodd"
+                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    {phoneError && <p className="text-red-400 text-sm text-left mt-1">{phoneError}</p>}
+                    <input type="hidden" name="language" value={language} />
+                    {/* Register Button */}
+                    <div className="animate-in slide-in-from-bottom-3 duration-500 delay-500">
+                      <SubmitButton language={language} disabled={!ageConfirmed || !!phoneError}>
+                        {t.registerButton}
+                      </SubmitButton>
+                    </div>
+                    {/* Age Confirmation Checkbox */}
+                    <div className="flex items-start gap-4 text-xs text-white animate-in fade-in-50 duration-500 delay-600">
+                      <div className="relative">
+                        <Checkbox
+                          id="age-confirm"
+                          checked={ageConfirmed}
+                          onCheckedChange={(checked) => setAgeConfirmed(!!checked)}
+                          required
+                          className="mt-1 border-white/30 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 transition-all duration-200 hover:scale-110"
+                        />
+                      </div>
+                      <label
+                        htmlFor="age-confirm"
+                        className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
+                      >
+                        <Shield className="w-4 h-4 inline mr-2 text-orange-400" />
+                        {t.ageConfirmation}
+                      </label>
+                    </div>
+                    {/* Terms Checkbox */}
+                    <div className="flex items-start gap-4 text-xs text-white animate-in fade-in-50 duration-500 delay-600">
+                      <div className="relative">
+                        <Checkbox
+                          id="terms"
+                          required
+                          className="mt-1 border-white/30 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 transition-all duration-200 hover:scale-110"
+                        />
+                      </div>
+                      <label
+                        htmlFor="terms"
+                        className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
+                      >
+                        <Shield className="w-4 h-4 inline mr-2 text-orange-400" />
+                        {t.termsText}
+                      </label>
+                    </div>
+                    {/* Privacy Text */}
+                    <div className="text-xs text-white/80 leading-relaxed animate-in fade-in-50 duration-500 delay-700 bg-white/5 p-4 rounded-lg border border-white/10">
+                      <div className="flex items-start gap-2">
+                        <svg
+                          className="w-4 h-4 text-blue-300 mt-0.5 flex-shrink-0"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        <span>{t.privacyText}</span>
+                      </div>
+                    </div>
+                  </form>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+        {/* All Content in Same Screen - Unified */}
+        <div className="max-w-7xl mx-auto mt-12 sm:mt-16 space-y-12 sm:space-y-16">
+          {/* CTA Section */}
+          <div className="text-center space-y-6 sm:space-y-8 px-4 sm:px-8">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700">
+              {t.masterTradingTitle}{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">
+                {t.masterTradingHighlight}
+              </span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 text-left">
+              <div className="space-y-4 text-white animate-in slide-in-from-left-5 duration-700 delay-300">
+                <p className="text-base sm:text-lg leading-relaxed">{t.ctaParagraph1}</p>
+                <p className="text-base sm:text-lg leading-relaxed">{t.ctaParagraph2}</p>
+              </div>
+              <div className="space-y-4 text-white animate-in slide-in-from-right-5 duration-700 delay-400">
+                <p className="text-base sm:text-lg leading-relaxed">{t.ctaParagraph3}</p>
+                <p className="text-base sm:text-lg font-semibold text-orange-300">{t.ctaParagraph4}</p>
               </div>
             </div>
-            {/* First Information Block */}
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700 mb-8 sm:mb-12">
-                {t.advantagesTitle}
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 text-white text-left">
-                {/* Left Column */}
-                <div className="space-y-6 animate-in slide-in-from-left-5 duration-700 delay-200">
-                  <p className="text-base leading-relaxed">{t.advantagesIntro}</p>
-                  <div className="space-y-4">
-                    <div>
-                      <h3 className="text-lg font-semibold text-orange-400 mb-2">{t.growthPotentialTitle}</h3>
-                      <p className="text-base leading-relaxed">{t.growthPotentialText}</p>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-orange-400 mb-2">{t.diversificationTitle}</h3>
-                      <p className="text-base leading-relaxed">{t.diversificationText}</p>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-orange-400 mb-2">{t.focusOnPlatformTitle}</h3>
-                      <p className="text-base leading-relaxed">{t.focusOnPlatformText1}</p>
-                    </div>
-                    <p className="text-base leading-relaxed">{t.focusOnPlatformText2}</p>
-                    <p className="text-base leading-relaxed">{t.focusOnPlatformText3}</p>
-                    <p className="text-base leading-relaxed">{t.focusOnPlatformText4}</p>
+            <div className="animate-in slide-in-from-bottom-5 duration-700 delay-500">
+              <Button
+                onClick={() => {
+                  const formElement = document.querySelector("#registration-form")
+                  if (formElement) {
+                    formElement.scrollIntoView({ behavior: "smooth", block: "center" })
+                  }
+                }}
+                size="lg"
+                className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8 py-3 h-14 sm:px-12 sm:py-4 sm:h-16 text-lg sm:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 group relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/30 to-orange-400/30 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+
+                <div className="relative flex items-center gap-3">
+                  <svg
+                    className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span>{t.startNowButton}</span>
+                </div>
+              </Button>
+            </div>
+          </div>
+          {/* First Information Block */}
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700 mb-8 sm:mb-12">
+              {t.advantagesTitle}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 text-white text-left">
+              {/* Left Column */}
+              <div className="space-y-6 animate-in slide-in-from-left-5 duration-700 delay-200">
+                <p className="text-base leading-relaxed">{t.advantagesIntro}</p>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-lg font-semibold text-orange-400 mb-2">{t.growthPotentialTitle}</h3>
+                    <p className="text-base leading-relaxed">{t.growthPotentialText}</p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-orange-400 mb-2">{t.diversificationTitle}</h3>
+                    <p className="text-base leading-relaxed">{t.diversificationText}</p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-orange-400 mb-2">{t.focusOnPlatformTitle}</h3>
+                    <p className="text-base leading-relaxed">{t.focusOnPlatformText1}</p>
+                  </div>
+                  <p className="text-base leading-relaxed">{t.focusOnPlatformText2}</p>
+                  <p className="text-base leading-relaxed">{t.focusOnPlatformText3}</p>
+                  <p className="text-base leading-relaxed">{t.focusOnPlatformText4}</p>
+                </div>
+              </div>
+              {/* Right Column */}
+              <div className="space-y-6 animate-in slide-in-from-right-5 duration-700 delay-300">
+                <p className="text-base leading-relaxed">{t.nineReasonsIntro}</p>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-base leading-relaxed">{t.reason1}</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-base leading-relaxed">{t.reason2}</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-base leading-relaxed">{t.reason3}</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-base leading-relaxed">{t.reason4}</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-base leading-relaxed">{t.reason5}</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-base leading-relaxed">{t.reason6}</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-base leading-relaxed">{t.reason7}</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-base leading-relaxed">{t.reason8}</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-base leading-relaxed">{t.reason9}</p>
                   </div>
                 </div>
-                {/* Right Column */}
-                <div className="space-y-6 animate-in slide-in-from-right-5 duration-700 delay-300">
-                  <p className="text-base leading-relaxed">{t.nineReasonsIntro}</p>
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-base leading-relaxed">{t.reason1}</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-base leading-relaxed">{t.reason2}</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-base leading-relaxed">{t.reason3}</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-base leading-relaxed">{t.reason4}</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-base leading-relaxed">{t.reason5}</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-base leading-relaxed">{t.reason6}</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-base leading-relaxed">{t.reason7}</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-base leading-relaxed">{t.reason8}</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-base leading-relaxed">{t.reason9}</p>
-                    </div>
-                  </div>
-                  <div className="bg-blue-800/50 p-6 rounded-lg border border-blue-600/30 mt-8">
-                    <p className="text-base leading-relaxed font-medium">{t.efficiencyGuarantee}</p>
-                  </div>
+                <div className="bg-blue-800/50 p-6 rounded-lg border border-blue-600/30 mt-8">
+                  <p className="text-base leading-relaxed font-medium">{t.efficiencyGuarantee}</p>
                 </div>
               </div>
             </div>
             {/* Second Information Block */}
-            <div className="text-center mb-12 sm:mb-16">
+            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700 mb-8 sm:mb-12">
                 {t.platformBenefitTitle}
               </h2>
@@ -1382,7 +1558,7 @@ export default function CryptoLanding() {
               </div>
             </div>
             {/* Third Information Block */}
-            <div className="text-center mb-12 sm:mb-16">
+            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-in slide-in-from-bottom-5 duration-700 mb-8 sm:mb-12">
                 {t.investSmartTitle}
               </h2>
@@ -1423,23 +1599,6 @@ export default function CryptoLanding() {
             <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
               <div className="max-w-4xl mx-auto">
                 <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 rounded-3xl p-6 sm:p-8 shadow-2xl border border-blue-400/30 overflow-hidden">
-                  {/* Floating Coins */}
-                  <div
-                    className="absolute top-4 right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-80 animate-bounce hidden sm:flex items-center justify-center"
-                    style={{ animationDelay: "0s" }}
-                  >
-                    <div className="w-full h-full flex items-center justify-center text-xl sm:text-2xl font-bold text-white">
-                      ₿
-                    </div>
-                  </div>
-                  <div
-                    className="absolute bottom-4 left-4 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-70 animate-bounce hidden sm:flex items-center justify-center"
-                    style={{ animationDelay: "1s" }}
-                  >
-                    <div className="w-full h-full flex items-center justify-center text-base sm:text-lg font-bold text-white">
-                      ₿
-                    </div>
-                  </div>
                   <div className="relative z-10">
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 sm:mb-8 leading-tight">
                       {t.potentialEarningsTitle}
@@ -1554,495 +1713,510 @@ export default function CryptoLanding() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            {/* Demo Account Section */}
-            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
-              <div className="max-w-6xl mx-auto px-4 sm:px-8">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8 sm:mb-12 animate-in slide-in-from-bottom-5 duration-700">
-                  {t.demoAccountTitle}
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 text-white text-left mb-8 sm:mb-12">
-                  <div className="space-y-6 animate-in slide-in-from-left-5 duration-700 delay-200">
-                    <p className="text-base leading-relaxed">{t.demoAccountText1}</p>
-                  </div>
-                  <div className="space-y-6 animate-in slide-in-from-right-5 duration-700 delay-300">
-                    <p className="text-base leading-relaxed">{t.demoAccountText2}</p>
-                  </div>
-                </div>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-6 sm:mb-8 animate-in slide-in-from-bottom-5 duration-700 delay-500">
-                  {t.notScamTitle}
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 text-white text-left mb-8 sm:mb-12">
-                  <div className="space-y-6 animate-in slide-in-from-left-5 duration-700 delay-600">
-                    <p className="text-base leading-relaxed">{t.notScamText1}</p>
-                    <p className="text-base leading-relaxed">{t.notScamText2}</p>
-                  </div>
-                  <div className="space-y-6 animate-in slide-in-from-right-5 duration-700 delay-700">
-                    <p className="text-base leading-relaxed">{t.notScamText3}</p>
-                    <p className="text-base leading-relaxed">{t.notScamText4}</p>
-                  </div>
-                </div>
-                {/* Security Lock Icon */}
-                <div className="flex justify-center animate-in fade-in-50 duration-700 delay-800">
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-xl">
-                    <svg className="w-10 h-10 sm:w-12 sm:h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path
-                        fillRule="evenodd"
-                        d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Testimonials Section with Grid Layout */}
-            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
-              <div className="max-w-7xl mx-auto px-4 sm:px-8 relative">
-                {/* Floating Coin */}
-                <div className="absolute top-0 right-0 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-80 animate-bounce hidden sm:flex items-center justify-center">
-                  <div className="w-full h-full flex items-center justify-center text-lg sm:text-2xl font-bold text-white">
-                    ₿
-                  </div>
-                </div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8 sm:mb-12 animate-in slide-in-from-bottom-5 duration-700">
-                  {t.testimonialsTitle} <span className="text-orange-400">{t.testimonialsHighlight}</span>{" "}
-                  {t.testimonialsTitle2}
-                </h2>
-                {/* Testimonials Grid with Navigation */}
-                <div className="relative">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    {testimonials.slice(currentTestimonial, currentTestimonial + 3).map((testimonial, index) => (
-                      <div
-                        key={testimonial.id}
-                        className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 border border-blue-600/30 animate-in fade-in-50 duration-500 hover:bg-blue-800/60 transition-all duration-300"
-                        style={{ animationDelay: `${index * 100}ms` }}
-                      >
-                        <div className="text-4xl text-orange-400 mb-3">"</div>
-                        <p className="text-white text-sm leading-relaxed mb-4">{testimonial.text[language]}</p>
-                        <div className="text-center">
-                          <h3 className="text-lg font-bold text-white">{testimonial.name}</h3>
-                          <p className="text-orange-300 text-sm">{testimonial.location[language]}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  {/* Navigation Arrows */}
-                  <Button
-                    onClick={prevTestimonial}
-                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-orange-500 hover:bg-orange-600 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 p-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
-                  >
-                    <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </Button>
-                  <Button
-                    onClick={nextTestimonial}
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-orange-500 hover:bg-orange-600 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 p-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
-                  >
-                    <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </Button>
-                  {/* Dots Indicator */}
-                  <div className="flex justify-center gap-2 mt-6">
-                    {Array.from({ length: Math.ceil(testimonials.length / 3) }).map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentTestimonial(index * 3)}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${Math.floor(currentTestimonial / 3) === index
-                          ? "bg-orange-400 scale-125"
-                          : "bg-white/30 hover:bg-white/50"
-                          }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* New Trading Features Section */}
-            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
-              <div className="max-w-6xl mx-auto px-4 sm:px-8 relative">
-                {/* Bitcoin Logo */}
-                <div className="flex justify-center mb-6 sm:mb-8">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-xl animate-pulse">
-                    <div className="text-2xl sm:text-3xl font-bold text-white">₿</div>
-                  </div>
-                </div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4 sm:mb-6 animate-in slide-in-from-bottom-5 duration-700">
-                  {t.tradingEasyTitle}{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">
-                    {t.tradingEasyHighlight}
-                  </span>
-                </h2>
-                <p className="text-base sm:text-lg text-white/90 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed">
-                  {t.tradingEasyIntro}
-                </p>
-                {/* Features Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
-                  {/* Feature 1 */}
-                  <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-left-5 duration-700 delay-200">
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Percent className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
-                      </div>
-                      <div className="text-left">
-                        <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">
-                          {t.featureAiSelectionsTitle}
-                        </h3>
-                      </div>
-                    </div>
-                    <p className="text-white text-sm leading-relaxed text-left">{t.featureAiSelectionsText}</p>
-                  </div>
-                  {/* Feature 2 */}
-                  <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-right-5 duration-700 delay-300">
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Percent className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
-                      </div>
-                      <div className="text-left">
-                        <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">
-                          {t.featureAutoTradingTitle}
-                        </h3>
-                      </div>
-                    </div>
-                    <p className="text-white text-sm leading-relaxed text-left">{t.featureAutoTradingText}</p>
-                  </div>
-                  {/* Feature 3 */}
-                  <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-left-5 duration-700 delay-400">
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Headphones className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
-                      </div>
-                      <div className="text-left">
-                        <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">{t.featureSupportTitle}</h3>
-                      </div>
-                    </div>
-                    <p className="text-white text-sm leading-relaxed text-left">{t.featureSupportText}</p>
-                  </div>
-                  {/* Feature 4 */}
-                  <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-right-5 duration-700 delay-500">
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Users className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
-                      </div>
-                      <div className="text-left">
-                        <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">{t.featureCommunityTitle}</h3>
-                      </div>
-                    </div>
-                    <p className="text-white text-sm leading-relaxed text-left">{t.featureCommunityText}</p>
-                  </div>
-                </div>
-                {/* Decorative Coins */}
-                <div
-                  className="absolute top-10 right-4 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-60 animate-bounce hidden sm:flex items-center justify-center"
-                  style={{ animationDelay: "1s" }}
-                >
-                  <div className="w-full h-full flex items-center justify-center text-base sm:text-lg font-bold text-white">
-                    ₿
-                  </div>
-                </div>
-                <div
-                  className="absolute bottom-10 left-4 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-70 animate-bounce hidden sm:flex items-center justify-center"
-                  style={{ animationDelay: "2s" }}
-                >
-                  <div className="w-full h-full flex items-center justify-center text-xs sm:text-sm font-bold text-white">
-                    ₿
-                  </div>
-                </div>
-                {/* CTA Button */}
-                <div className="animate-in slide-in-from-bottom-5 duration-700 delay-600">
-                  <Button
-                    onClick={() => {
-                      const formElement = document.querySelector("#registration-form")
-                      if (formElement) {
-                        formElement.scrollIntoView({ behavior: "smooth", block: "center" })
-                      }
-                    }}
-                    size="lg"
-                    className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8 py-3 h-14 sm:px-12 sm:py-4 sm:h-16 text-lg sm:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 group relative overflow-hidden"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/30 to-orange-400/30 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                    <div className="relative flex items-center gap-3">
-                      <span>{t.createAccountButton}</span>
-                      <svg
-                        className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                  </Button>
-                </div>
-              </div>
-            </div>
-            {/* How to Start Section */}
-            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
-              <div className="max-w-6xl mx-auto px-4 sm:px-8">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-12 sm:mb-16 animate-in slide-in-from-bottom-5 duration-700">
-                  <span className="text-orange-400">{t.howToStartTitle}</span> {t.howToStartHighlight}
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {/* Step 1 */}
-                  <div className="text-center animate-in slide-in-from-left-5 duration-700 delay-200">
-                    <div className="mb-6">
-                      <div className="text-orange-400 text-xl sm:text-2xl font-bold mb-4">Paso 1</div>
-                      <div className="w-full h-40 sm:h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
-                        <div className="text-white text-center">
-                          <User className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-orange-400" />
-                          <p>{language === "es" ? "Inscripción" : "Registration"}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step1Title}</h3>
-                    <p className="text-white/80 text-sm leading-relaxed">{t.step1Description}</p>
-                  </div>
-                  {/* Step 2 */}
-                  <div className="text-center animate-in slide-in-from-bottom-5 duration-700 delay-300">
-                    <div className="mb-6">
-                      <div className="text-blue-400 text-xl sm:text-2xl font-bold mb-4">Paso 2</div>
-                      <div className="w-full h-40 sm:h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
-                        <div className="text-white text-center">
-                          <TrendingUp className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-blue-400" />
-                          <p>{language === "es" ? "Depósito" : "Deposit"}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step2Title}</h3>
-                    <p className="text-white/80 text-sm leading-relaxed">{t.step2Description}</p>
-                  </div>
-                  {/* Step 3 */}
-                  <div className="text-center animate-in slide-in-from-right-5 duration-700 delay-400">
-                    <div className="mb-6">
-                      <div className="text-green-400 text-xl sm:text-2xl font-bold mb-4">Paso 3</div>
-                      <div className="w-full h-40 sm:h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
-                        <div className="text-white text-center">
-                          <Phone className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-green-400" />
-                          <p>{language === "es" ? "Llamada" : "Call"}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step3Title}</h3>
-                    <p className="text-white/80 text-sm leading-relaxed">{t.step3Description}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* FAQ Section */}
-            <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
-              <div className="max-w-4xl mx-auto px-4 sm:px-8 relative">
-                {/* Floating Coins */}
-                <div className="absolute top-4 right-4 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-60 animate-bounce hidden sm:flex items-center justify-center">
-                  <div className="w-full h-full flex items-center justify-center text-base sm:text-lg font-bold text-white">
-                    ₿
-                  </div>
-                </div>
-                <div
-                  className="absolute bottom-4 left-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-70 animate-bounce hidden sm:flex items-center justify-center"
-                  style={{ animationDelay: "1s" }}
-                >
-                  <div className="w-full h-full flex items-center justify-center text-lg sm:text-2xl font-bold text-white">
-                    ₿
-                  </div>
-                </div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8 sm:mb-12 animate-in slide-in-from-bottom-5 duration-700">
-                  <span className="text-orange-400">{t.faqTitle}</span> {t.faqHighlight}
-                </h2>
-                <div className="space-y-4">
-                  {faqData.map((faq, index) => (
-                    <div
-                      key={faq.id}
-                      className="bg-blue-600/80 backdrop-blur-sm rounded-2xl border border-blue-400/30 overflow-hidden animate-in slide-in-from-bottom-3 duration-500"
-                      style={{ animationDelay: `${index * 100}ms` }}
-                    >
-                      <button
-                        onClick={() => setExpandedFAQ(expandedFAQ === faq.id ? null : faq.id)}
-                        className="w-full p-4 sm:p-6 text-left flex items-center justify-between hover:bg-blue-600/60 transition-all duration-300"
-                      >
-                        <div className="flex items-center gap-4">
-                          <div className="bg-orange-400 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">
-                            {String(faq.id).padStart(2, "0")}
-                          </div>
-                          <h3 className="text-base sm:text-lg font-semibold text-white">{faq.question[language]}</h3>
-                        </div>
-                        <div
-                          className="text-orange-400 text-2xl font-bold transition-transform duration-300"
-                          style={{ transform: expandedFAQ === faq.id ? "rotate(45deg)" : "rotate(0deg)" }}
-                        >
-                          +
-                        </div>
-                      </button>
-                      {expandedFAQ === faq.id && (
-                        <div className="px-4 pb-4 sm:px-6 sm:pb-6 animate-in slide-in-from-top-2 duration-300">
-                          <p className="text-white/90 leading-relaxed pl-12">{faq.answer[language]}</p>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            {/* Final Section with Smaller Form */}
-            <div className="mb-12 sm:mb-16 mt-16 sm:mt-20">
-              <div className="max-w-7xl mx-auto px-4 sm:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-                  {/* Left Side - Content */}
-                  <div className="space-y-6 animate-in slide-in-from-left-5 duration-700">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                      <span className="text-orange-400">{t.finalSectionTitle}</span>
+                {/* Demo Account Section */}
+                <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
+                  <div className="max-w-6xl mx-auto px-4 sm:px-8">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8 sm:mb-12 animate-in slide-in-from-bottom-5 duration-700">
+                      {t.demoAccountTitle}
                     </h2>
-                    <div className="text-white text-lg font-semibold mb-4">{t.finalSectionSubtitle}</div>
-                    <p className="text-white/90 leading-relaxed">{t.finalSectionText}</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 text-white text-left mb-8 sm:mb-12">
+                      <div className="space-y-6 animate-in slide-in-from-left-5 duration-700 delay-200">
+                        <p className="text-base leading-relaxed">{t.demoAccountText1}</p>
+                      </div>
+                      <div className="space-y-6 animate-in slide-in-from-right-5 duration-700 delay-300">
+                        <p className="text-base leading-relaxed">{t.demoAccountText1}</p>
+                      </div>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-6 sm:mb-8 animate-in slide-in-from-bottom-5 duration-700 delay-500">
+                      {t.notScamTitle}
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 text-white text-left mb-8 sm:mb-12">
+                      <div className="space-y-6 animate-in slide-in-from-left-5 duration-700 delay-600">
+                        <p className="text-base leading-relaxed">{t.notScamText1}</p>
+                      </div>
+                      <div className="space-y-6 animate-in slide-in-from-right-5 duration-700 delay-700">
+                        <p className="text-base leading-relaxed">{t.notScamText3}</p>
+                        <p className="text-base leading-relaxed">{t.notScamText4}</p>
+                      </div>
+                    </div>
+                    {/* Security Lock Icon */}
+                    <div className="flex justify-center animate-in fade-in-50 duration-700 delay-800">
+                      <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-xl">
+                        <svg className="w-10 h-10 sm:w-12 sm:h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path
+                            fillRule="evenodd"
+                            d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2-2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
-                  {/* Right Side - Smaller Form */}
-                  <div className="animate-in slide-in-from-right-5 duration-700">
-                    <div className="bg-blue-600/90 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-blue-400/20">
-                      <h3 className="text-xl sm:text-2xl font-bold text-white text-center mb-6">{t.improveLife}</h3>
-                      <form className="space-y-4" action={registrationAction}>
-                        <div className="relative">
-                          <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                          <Input
-                            name="name"
-                            placeholder={t.smallFormNamePlaceholder}
-                            value={formData.name}
-                            onChange={(e) => handleInputChange("name", e.target.value)}
-                            required
-                            className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
-                          />
-                        </div>
-                        <div className="relative">
-                          <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                          <Input
-                            name="surname"
-                            placeholder={t.smallFormSurnamePlaceholder}
-                            value={formData.surname}
-                            onChange={(e) => handleInputChange("surname", e.target.value)}
-                            required
-                            className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
-                          />
-                        </div>
-                        <div className="relative">
-                          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                          <Input
-                            name="email"
-                            type="email"
-                            placeholder={t.smallFormEmailPlaceholder}
-                            value={formData.email}
-                            onChange={(e) => handleInputChange("email", e.target.value)}
-                            required
-                            className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
-                          />
-                        </div>
-                        <div className="flex flex-col sm:flex-row gap-2">
-                          <Select
-                            name="countryCode"
-                            value={formData.countryCode}
-                            onValueChange={(value) => handleInputChange("countryCode", value)}
+                </div>
+                {/* Testimonials Section with Grid Layout */}
+                <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
+                  <div className="max-w-7xl mx-auto px-4 sm:px-8 relative">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8 sm:mb-12 animate-in slide-in-from-bottom-5 duration-700">
+                      {t.testimonialsTitle} <span className="text-orange-400">{t.testimonialsHighlight}</span>{" "}
+                      {t.testimonialsTitle2}
+                    </h2>
+                    {/* Testimonials Grid with Navigation */}
+                    <div className="relative">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        {testimonials.slice(currentTestimonial, currentTestimonial + 3).map((testimonial, index) => (
+                          <div
+                            key={testimonial.id}
+                            className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 border border-blue-600/30 animate-in fade-in-50 duration-500 hover:bg-blue-800/60 transition-all duration-300"
+                            style={{ animationDelay: `${index * 100}ms` }}
                           >
-                            <SelectTrigger className="w-full sm:w-24 bg-orange-400 border-0 h-10 text-white rounded-lg text-sm flex items-center">
-                              <SelectValue />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {countryCodes.map((country) => (
-                                <SelectItem key={country.id} value={country.code}>
-                                  {country.flag} {country.code}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                          <div className="relative flex-1 w-full">
-                            <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                            <Input
-                              name="phone"
-                              placeholder={t.smallFormPhonePlaceholder}
-                              value={formData.phone}
-                              onChange={(e) => handleInputChange("phone", e.target.value)}
-                              required
-                              className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
-                            />
+                            <div className="text-4xl text-orange-400 mb-3">"</div>
+                            <p className="text-white text-sm leading-relaxed mb-4">{testimonial.text[language]}</p>
+                            <div className="text-center">
+                              <h3 className="text-lg font-bold text-white">{testimonial.name}</h3>
+                              <p className="text-orange-300 text-sm">{testimonial.location[language]}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      {/* Navigation Arrows */}
+                      <Button
+                        onClick={prevTestimonial}
+                        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-orange-500 hover:bg-orange-600 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 p-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+                      >
+                        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+                      </Button>
+                      <Button
+                        onClick={nextTestimonial}
+                        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-orange-500 hover:bg-orange-600 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 p-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+                      >
+                        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+                      </Button>
+                      {/* Dots Indicator */}
+                      <div className="flex justify-center gap-2 mt-6">
+                        {Array.from({ length: Math.ceil(testimonials.length / 3) }).map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setCurrentTestimonial(index * 3)}
+                            className={`w-3 h-3 rounded-full transition-all duration-300 ${Math.floor(currentTestimonial / 3) === index
+                              ? "bg-orange-400 scale-125"
+                              : "bg-white/30 hover:bg-white/50"
+                              }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* New Trading Features Section */}
+                <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
+                  <div className="max-w-6xl mx-auto px-4 sm:px-8 relative">
+                    {/* Bitcoin Logo */}
+                    <div className="flex justify-center mb-6 sm:mb-8">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-xl animate-pulse">
+                        <div className="text-2xl sm:text-3xl font-bold text-white">₿</div>
+                      </div>
+                    </div>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4 sm:mb-6 animate-in slide-in-from-bottom-5 duration-700">
+                      {t.tradingEasyTitle}{" "}
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">
+                        {t.tradingEasyHighlight}
+                      </span>
+                    </h2>
+                    <p className="text-base sm:text-lg text-white/90 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed">
+                      {t.tradingEasyIntro}
+                    </p>
+                    {/* Features Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
+                      {/* Feature 1 */}
+                      <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-left-5 duration-700 delay-200">
+                        <div className="flex items-start gap-4 mb-6">
+                          <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <Percent className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+                          </div>
+                          <div className="text-left">
+                            <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">
+                              {t.featureAiSelectionsTitle}
+                            </h3>
                           </div>
                         </div>
-                        <SmallSubmitButton language={language}>{t.smallFormRegisterButton}</SmallSubmitButton>
-                        <div className="flex items-start gap-2 text-xs text-white/80">
-                          <Checkbox id="terms-small" className="mt-1 w-4 h-4" required />
-                          <label htmlFor="terms-small" className="leading-relaxed">
-                            {t.smallFormTermsText}
-                          </label>
+                        <p className="text-white text-sm leading-relaxed text-left">{t.featureAiSelectionsText}</p>
+                      </div>
+                      {/* Feature 2 */}
+                      <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-right-5 duration-700 delay-300">
+                        <div className="flex items-start gap-4 mb-6">
+                          <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <Percent className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+                          </div>
+                          <div className="text-left">
+                            <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">
+                              {t.featureAutoTradingTitle}
+                            </h3>
+                          </div>
                         </div>
-                        <div className="text-xs text-white/70 leading-relaxed bg-white/5 p-3 rounded-lg">
-                          {t.smallFormPrivacyText}
+                        <p className="text-white text-sm leading-relaxed text-left">{t.featureAutoTradingText}</p>
+                      </div>
+                      {/* Feature 3 */}
+                      <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-left-5 duration-700 delay-400">
+                        <div className="flex items-start gap-4 mb-6">
+                          <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <Headphones className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+                          </div>
+                          <div className="text-left">
+                            <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">
+                              {t.featureSupportTitle}
+                            </h3>
+                          </div>
                         </div>
-                      </form>
+                        <p className="text-white text-sm leading-relaxed text-left">{t.featureSupportText}</p>
+                      </div>
+                      {/* Feature 4 */}
+                      <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-right-5 duration-700 delay-500">
+                        <div className="flex items-start gap-4 mb-6">
+                          <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <Users className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+                          </div>
+                          <div className="text-left">
+                            <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">
+                              {t.featureCommunityTitle}
+                            </h3>
+                          </div>
+                        </div>
+                        <p className="text-white text-sm leading-relaxed text-left">{t.featureCommunityText}</p>
+                      </div>
+                    </div>
+                    {/* CTA Button */}
+                    <div className="animate-in slide-in-from-bottom-5 duration-700 delay-600">
+                      <Button
+                        onClick={() => {
+                          const formElement = document.querySelector("#registration-form")
+                          if (formElement) {
+                            formElement.scrollIntoView({ behavior: "smooth", block: "center" })
+                          }
+                        }}
+                        size="lg"
+                        className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8 py-3 h-14 sm:px-12 sm:py-4 sm:h-16 text-lg sm:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 group relative overflow-hidden"
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/30 to-orange-400/30 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                        <div className="relative flex items-center gap-3">
+                          <span>{t.createAccountButton}</span>
+                          <svg
+                            className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                      </Button>
                     </div>
                   </div>
                 </div>
+                {/* How to Start Section */}
+                <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
+                  <div className="max-w-6xl mx-auto px-4 sm:px-8">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-12 sm:mb-16 animate-in slide-in-from-bottom-5 duration-700">
+                      <span className="text-orange-400">{t.howToStartTitle}</span> {t.howToStartHighlight}
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                      {/* Step 1 */}
+                      <div className="text-center animate-in slide-in-from-left-5 duration-700 delay-200">
+                        <div className="mb-6">
+                          <div className="text-orange-400 text-xl sm:text-2xl font-bold mb-4">Paso 1</div>
+                          <div className="w-full h-40 sm:h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
+                            <div className="text-white text-center">
+                              <User className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-orange-400" />
+                              <p>{language === "es" ? "Inscripción" : "Registration"}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step1Title}</h3>
+                        <p className="text-white/80 text-sm leading-relaxed">{t.step1Description}</p>
+                      </div>
+                      {/* Step 2 */}
+                      <div className="text-center animate-in slide-in-from-bottom-5 duration-700 delay-300">
+                        <div className="mb-6">
+                          <div className="text-blue-400 text-xl sm:text-2xl font-bold mb-4">Paso 2</div>
+                          <div className="w-full h-40 sm:h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
+                            <div className="text-white text-center">
+                              <img
+                                src="/logo.png"
+                                alt="Coin Sin Limited Logo"
+                                className="h-12 w-24 object-contain rounded-lg mx-auto mb-4"
+                              />
+                              <p>{language === "es" ? "Depósito" : "Deposit"}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step2Title}</h3>
+                        <p className="text-white/80 text-sm leading-relaxed">{t.step2Description}</p>
+                      </div>
+                      {/* Step 3 */}
+                      <div className="text-center animate-in slide-in-from-right-5 duration-700 delay-400">
+                        <div className="mb-6">
+                          <div className="text-green-400 text-xl sm:text-2xl font-bold mb-4">Paso 3</div>
+                          <div className="w-full h-40 sm:h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
+                            <div className="text-white text-center">
+                              <Phone className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-green-400" />
+                              <p>{language === "es" ? "Llamada" : "Call"}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step3Title}</h3>
+                        <p className="text-white/80 text-sm leading-relaxed">{t.step3Description}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* FAQ Section */}
+                <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
+                  <div className="max-w-4xl mx-auto px-4 sm:px-8 relative">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8 sm:mb-12 animate-in slide-in-from-bottom-5 duration-700">
+                      <span className="text-orange-400">{t.faqTitle}</span> {t.faqHighlight}
+                    </h2>
+                    <div className="space-y-4">
+                      {faqData.map((faq, index) => (
+                        <div
+                          key={faq.id}
+                          className="bg-blue-600/80 backdrop-blur-sm rounded-2xl border border-blue-400/30 overflow-hidden animate-in slide-in-from-bottom-3 duration-500"
+                          style={{ animationDelay: `${index * 100}ms` }}
+                        >
+                          <button
+                            onClick={() => setExpandedFAQ(expandedFAQ === faq.id ? null : faq.id)}
+                            className="w-full p-4 sm:p-6 text-left flex items-center justify-between hover:bg-blue-600/60 transition-all duration-300"
+                          >
+                            <div className="flex items-center gap-4">
+                              <div className="bg-orange-400 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">
+                                {String(faq.id).padStart(2, "0")}
+                              </div>
+                              <h3 className="text-base sm:text-lg font-semibold text-white">
+                                {faq.question[language]}
+                              </h3>
+                            </div>
+                            <div
+                              className="text-orange-400 text-2xl font-bold transition-transform duration-300"
+                              style={{ transform: expandedFAQ === faq.id ? "rotate(45deg)" : "rotate(0deg)" }}
+                            >
+                              +
+                            </div>
+                          </button>
+                          {expandedFAQ === faq.id && (
+                            <div className="px-4 pb-4 sm:px-6 sm:pb-6 animate-in slide-in-from-top-2 duration-300">
+                              <p className="text-white/90 leading-relaxed pl-12">{faq.answer[language]}</p>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                {/* Final Section with Smaller Form */}
+                <div className="mb-12 sm:mb-16 mt-16 sm:mt-20">
+                  <div className="max-w-7xl mx-auto px-4 sm:px-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+                      {/* Left Side - Content */}
+                      <div className="space-y-6 animate-in slide-in-from-left-5 duration-700">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                          <span className="text-orange-400">{t.finalSectionTitle}</span>
+                        </h2>
+                        <div className="text-white text-lg font-semibold mb-4">{t.finalSectionSubtitle}</div>
+                        <p className="text-white/90 leading-relaxed">{t.finalSectionText}</p>
+                      </div>
+                      {/* Right Side - Smaller Form */}
+                      <div className="animate-in slide-in-from-right-5 duration-700">
+                        <div className="bg-blue-600/90 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-blue-400/20">
+                          <h3 className="text-xl sm:text-2xl font-bold text-white text-center mb-6">{t.improveLife}</h3>
+                          <form className="space-y-4" action={registrationAction}>
+                            <div className="relative">
+                              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 w-4 h-4 z-10" />
+                              <Input
+                                name="name"
+                                placeholder={t.smallFormNamePlaceholder}
+                                value={formData.name}
+                                onChange={(e) => handleInputChange("name", e.target.value)}
+                                required
+                                className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
+                              />
+                            </div>
+                            <div className="relative">
+                              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 w-4 h-4 z-10" />
+                              <Input
+                                name="surname"
+                                placeholder={t.smallFormSurnamePlaceholder}
+                                value={formData.surname}
+                                onChange={(e) => handleInputChange("surname", e.target.value)}
+                                required
+                                className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
+                              />
+                            </div>
+                            <div className="flex animate-in slide-in-from-left-3 duration-500 delay-800 rounded-lg shadow-lg overflow-hidden">
+                              <div className="relative w-1/3">
+                                <Select
+                                  name="countryCode"
+                                  value={formData.countryCode}
+                                  onValueChange={(value) => handleInputChange("countryCode", value)}
+                                >
+                                  <SelectTrigger
+                                    className="w-full bg-orange-400 border-r border-gray-300 text-white rounded-l-lg rounded-r-none text-sm flex items-center justify-start pl-3"
+                                    style={{ minHeight: "40px", height: "40px" }}
+                                  >
+                                    <SelectValue>
+                                      <div className="flex items-center gap-2">
+                                        <span className="text-sm">
+                                          {selectedCountry?.id.toUpperCase()} {selectedCountry?.code}
+                                        </span>
+                                      </div>
+                                    </SelectValue>
+                                  </SelectTrigger>
+                                  <SelectContent className="w-[var(--radix-popper-anchor-width)] max-h-80 rounded-xl border-0 shadow-2xl bg-white/95 backdrop-blur-sm">
+                                    {filteredCountries.map((country) => (
+                                      <SelectItem key={country.id} value={country.code}>
+                                        {country.flag} {country.code}{" "}
+                                        {language === "es" ? country.name : country.country}
+                                      </SelectItem>
+                                    ))}
+                                    {filteredCountries.length === 0 && (
+                                      <div className="p-2 text-sm text-gray-500 text-center">{t.noCountriesFound}</div>
+                                    )}
+                                  </SelectContent>
+                                </Select>
+                              </div>
+                              <div className="relative flex-1">
+                                <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 w-4 h-4 z-10" />
+                                <Input
+                                  name="phone"
+                                  placeholder={t.smallFormPhonePlaceholder}
+                                  value={formData.phone}
+                                  onChange={(e) => handleInputChange("phone", e.target.value)}
+                                  required
+                                  className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-r-lg rounded-l-none text-sm min-h-[40px]"
+                                />
+                              </div>
+                            </div>
+                            {phoneError && <p className="text-red-400 text-sm text-left mt-1">{phoneError}</p>}
+                            <input type="hidden" name="language" value={language} />
+                            <SmallSubmitButton language={language} disabled={!ageConfirmed || !!phoneError}>
+                              {t.smallFormRegisterButton}
+                            </SmallSubmitButton>
+                            {/* Age Confirmation Checkbox (Small Form) */}
+                            <div className="flex items-start gap-4 text-xs text-white animate-in fade-in-50 duration-500 delay-600">
+                              <div className="relative">
+                                <Checkbox
+                                  id="age-confirm-small"
+                                  checked={ageConfirmed}
+                                  onCheckedChange={(checked) => setAgeConfirmed(!!checked)}
+                                  required
+                                  className="mt-1 border-white/30 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 transition-all duration-200 hover:scale-110"
+                                />
+                              </div>
+                              <label
+                                htmlFor="age-confirm-small"
+                                className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
+                              >
+                                <Shield className="w-4 h-4 inline mr-2 text-orange-400" />
+                                {t.ageConfirmation}
+                              </label>
+                            </div>
+                            {/* Terms Checkbox (Small Form) */}
+                            <div className="flex items-start gap-4 text-xs text-white animate-in fade-in-50 duration-500 delay-600">
+                              <div className="relative">
+                                <Checkbox
+                                  id="terms-small"
+                                  required
+                                  className="mt-1 border-white/30 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 transition-all duration-200 hover:scale-110"
+                                />
+                              </div>
+                              <label
+                                htmlFor="terms-small"
+                                className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
+                              >
+                                <Shield className="w-4 h-4 inline mr-2 text-orange-400" />
+                                {t.smallFormTermsText}
+                              </label>
+                            </div>
+                            {/* Privacy Text (Small Form) */}
+                            <div className="text-xs text-white/80 leading-relaxed animate-in fade-in-50 duration-500 delay-700 bg-white/5 p-4 rounded-lg border border-white/10">
+                              <div className="flex items-start gap-2">
+                                <svg
+                                  className="w-4 h-4 text-blue-300 mt-0.5 flex-shrink-0"
+                                  fill="currentColor"
+                                  viewBox="0 0 20 20"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                                <span>{t.smallFormPrivacyText}</span>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Footer */}
+                <footer className="bg-blue-900 text-white py-8 sm:py-12 mt-16 sm:mt-20">
+                  <div className="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
+                    {/* Company Info */}
+                    <div className="space-y-4 text-sm">
+                      <img
+                        src="/logo.png"
+                        alt="Coin Sin Limited Logo"
+                        className="h-20 w-40 object-contain rounded-lg mb-2"
+                      />
+                      <p className="leading-relaxed">{t.footerCompanyInfo}</p>
+                    </div>
+                    {/* Quick Links */}
+                    <div className="space-y-4">
+                      <h3 className="text-lg font-bold text-orange-400 mb-2">Enlaces Rápidos</h3>
+                      <ul className="space-y-2 text-sm">
+                        <li>
+                          <a href="#" className="hover:text-orange-300 transition-colors duration-200">
+                            {t.footerContactanos}
+                          </a>
+                        </li>
+                        <li>
+                          <a href="/privacy" className="hover:text-orange-300 transition-colors duration-200">
+                            {t.footerPrivacidad}
+                          </a>
+                        </li>
+                        <li>
+                          <a href="/terms" className="hover:text-orange-300 transition-colors duration-200">
+                            {t.footerTerminos}
+                          </a>
+                        </li>
+                        <li>
+                          <a href="/disclaimer" className="hover:text-orange-300 transition-colors duration-200">
+                            {t.footerDescargo}
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    {/* Contact Info */}
+                    <div className="space-y-4 text-sm">
+                      <h3 className="text-lg font-bold text-orange-400 mb-2">Contacto</h3>
+                      <p>
+                        <span className="font-semibold">{t.footerEmailLabel}</span> info@coinsinlimited.com
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-xs text-white/70 mt-8 text-center px-4 sm:px-8">
+                    <p>{t.footerCopyright} Coin Sin Limited.</p>
+                  </div>
+                  <div className="text-xs text-white/50 mt-4 text-center px-4 sm:px-8 leading-relaxed">
+                    <p>{t.disclaimerFull}</p>
+                  </div>
+                </footer>
               </div>
             </div>
-            {/* Footer */}
-            <footer className="py-8 sm:py-12 relative">
-              <div className="max-w-7xl mx-auto px-4 sm:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-center md:text-left">
-                  {/* Company Info */}
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-center md:justify-start gap-2">
-                      <TrendingUp className="w-6 h-6 text-orange-400" />
-                      <img src="/logo.png" alt="Coin Sin Limited Logo" className="h-16 w-32 object-contain" />
-                    </div>
-                    <p className="text-white/80 text-sm leading-relaxed">{t.footerCompanyInfo}</p>
-                  </div>
-                  {/* Contact */}
-                  <div className="space-y-4 text-center md:text-right">
-                    <h4 className="text-white font-semibold">{t.footerContactTitle}</h4>
-                    <div className="space-y-2">
-                      <p className="text-white/70 text-sm">{t.footerEmailLabel}</p>
-                      <p className="text-orange-400 text-sm">info@coinsinlimited.io</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="border-t border-white/10 mt-8 pt-8 text-center">
-                  <p className="text-white/60 text-sm">
-                    &copy; {new Date().getFullYear()} Coin Sin Limited. {t.footerCopyright}
-                  </p>
-                </div>
-              </div>
-            </footer>
-          </div>
-          {/* Chat Button */}
-          <div className="fixed bottom-6 right-6 z-20">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-14 h-14 p-0">
-              💬
-            </Button>
           </div>
         </div>
-        <style jsx>{`
-          .slider::-webkit-slider-thumb {
-            appearance: none;
-            height: 24px;
-            width: 24px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #f59e0b, #f97316);
-            cursor: pointer;
-            border: 2px solid white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-          }
-          .slider::-moz-range-thumb {
-            height: 24px;
-            width: 24px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #f59e0b, #f97316);
-            cursor: pointer;
-            border: 2px solid white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-          }
-          .line-clamp-4 {
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-          }
-        `}</style>
       </div>
     </div>
   )
