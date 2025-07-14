@@ -26,7 +26,7 @@ import {
 } from "lucide-react"
 import { useFormState } from "react-dom"
 import { submitRegistration } from "@/actions/submit-registration"
-import { SubmitButton, SmallSubmitButton } from "@/components/ui/submit-button" // Import both components
+import { SubmitButton, SmallSubmitButton } from "@/components/ui/submit-button"
 
 const translations = {
   es: {
@@ -120,7 +120,7 @@ const translations = {
       "La plataforma Coin Sin Limited pasó desapercibida en el momento del lanzamiento del producto. Sin embargo, está provocando la ira y el pánico de bancos centrales y gobiernos de todo el mundo. Mientras los grandes jugadores intentan detener el proyecto de la plataforma Coin Sin Limited, usted puede empezar a ganar mucho dinero ahora.",
     investSmartTitle: "INVIERTE EN CRIPTODIVISAS DE FORMA INTELIGENTE CON LA PLATAFORMA COIN SIN LIMITED",
     investSmartText1:
-      "Los tiempos no son fáciles, y todo a nuestro alrededor va poco a poco hacia abajo. Aunque la situación puede mejorar en el futuro, todo el mundo debería ocuparse hoy de su futuro para no depender de factores externos. Las herramientas inteligentes pueden ayudarle con esto.",
+      "Los tiempos no son fáciles, y todo a nuestro alrededor va poco a poco hacia abajo. Aunque la situación puede mejorar en el futuro, todo el mundo debería ocuparse hoy de su futuro para no depender de factores externos. Smart tools can help you with esto.",
     investSmartText2:
       "La plataforma de inversión Coin Sin Limited le permite hacerlo sin perder tiempo estudiando el mercado de divisas digitales. Puede empezar a invertir hoy mismo en países como Canadá, Australia y otros. El éxito está precalculado, y todo lo que necesita es el deseo de unirse.",
     algorithmToolsIntro: "El algoritmo le proporciona las herramientas para ayudarle:",
@@ -139,15 +139,11 @@ const translations = {
     disclaimer:
       "* Los resultados mostrados son estimaciones basadas en el rendimiento histórico de la plataforma. Las inversiones conllevan riesgos.",
     demoAccountTitle: "PRUEBE LA CUENTA DE DEMOSTRACIÓN DE COIN SIN LIMITED",
-    demoAccountText1:
-      "¡Siéntase libre del alto costo de entrada en el mundo de la inversión! No necesita gastar decenas de miles de dólares para entender el comercio de criptomonedas, cómo funciona y qué debe hacer para evitar pérdidas. Le ofrecemos la oportunidad de invertir incluso unos pocos cientos de dólares y convertirlos en un negocio rentable.",
-    demoAccountText2:
-      "¡Pruebe una herramienta sin riesgos para un comercio rentable! Regístrese, deposite al menos €250 y obtenga su primer beneficio hoy mismo. Simplemente desplácese hasta la parte inferior de la página y regístrese.",
-    notScamTitle: "COIN SIN LIMITED NO ES UNA ESTAFA, Y HE AQUÍ POR QUÉ",
-    notScamText1:
-      "Es un proyecto de inversión automatizado que ofrece la oportunidad de ganar dinero invirtiendo en criptomonedas populares y proyectos prometedores en el mundo de los activos digitales. El sistema está controlado por ingenieros informáticos y corredores registrados en CySEC. Corredores autorizados llevan a cabo los procesos financieros en el sistema.",
     notScamText2:
       "Los usuarios tienen acceso a una cuenta demostración virtual donde pueden evaluar sin riesgos las capacidades del sistema antes de invertir fondos reales. La protección del usuario es el principal requisito del proyecto. Los certificados SSL y la encriptación multicapa protegen de forma fiable todos los datos personales.",
+    notScamTitle: "COIN SIN LIMITED NO ES UNA ESTAFA, Y ESTA ES LA RAZÓN",
+    notScamText1:
+      "Es un proyecto de inversión automatizado que ofrece la oportunidad de ganar dinero invirtiendo en criptomonedas populares y proyectos prometedores en el mundo de los activos digitales. El sistema está controlado por ingenieros informáticos y corredores registrados en CySEC. Corredores autorizados llevan a cabo los procesos financieros en el sistema.",
     notScamText3:
       "Por seguridad, se recomienda cerrar sesión después de cada uso y evitar la conexión al sistema desde redes públicas.",
     notScamText4:
@@ -165,13 +161,13 @@ const translations = {
     featureAutoTradingTitle: "FUNCIONALIDAD DE COMERCIO AUTOMÁTICO IMPECABLE",
     featureAutoTradingText:
       "Experimenta la Conveniencia de nuestra función de trading automático, que te permite generar ganancias sin esfuerzo, incluso cuando no estés en tu puesto de trabajo. ¡No se requiere experiencia comercial! Simplemente haz tu inversión inicial y observa cómo el saldo de tu cuenta crece constantemente.",
-    featureSupportTitle: "COMPREHENSIVE USER SUPPORT",
+    featureSupportTitle: "SOPORTE INTEGRAL AL USUARIO",
     featureSupportText:
       "Como miembro valioso de Coin Sin Limited, nuestro amigable gerente de atención al cliente está a tu disposición, listo para atender cualquier consulta o inquietud que puedas tener.",
-    featureCommunityTitle: "EXCLUSIVE ACCESS TO A UNIQUE COMMUNITY",
+    featureCommunityTitle: "ACCESO EXCLUSIVO A UNA COMUNIDAD ÚNICA",
     featureCommunityText:
-      "Únete a nuestra prestigiosa comunidad Coin Sin Limited y obtén una membresía privilegiada. Considérate afortunado de haber encontrado la oportunidad de registrar. Please note that, due to system capacity limitations, we can only send invitations to a select number of users. Take advantage of this opportunity to solve your financial problems once and for all.",
-    createAccountButton: "Create your account!",
+      "Únete a nuestra prestigiosa comunidad Coin Sin Limited y obtén una membresía privilegiada. Considérate afortunado de haber encontrado la oportunidad de registrar. Ten en cuenta que, debido a las limitaciones de capacidad del sistema, solo podemos enviar invitaciones a un número selecto de usuarios. Aprovecha esta oportunidad para resolver tus problemas financieros de una vez por todas.",
+    createAccountButton: "¡Crea tu cuenta!",
     howToStartTitle: "CÓMO",
     howToStartHighlight: "EMPEZAR?",
     step1Title: "REGISTRO: COMPLETA EL FORMULARIO A CONTINUACIÓN",
@@ -185,18 +181,18 @@ const translations = {
       "Después de realizar un pago, nuestro gerente se pondrá en contacto contigo para confirmar todo y activar tu cuenta. Si tienes alguna pregunta, el gerente te proporcionará respuestas detalladas para ayudarte. Ten en cuenta que la llamada puede provenir de un número no identificado.",
     faqTitle: "PREGUNTAS",
     faqHighlight: "FRECUENTES",
-    finalSectionTitle: "SEIZE THE OPPORTUNITY TO BECOME A SMART INVESTOR TODAY AND...",
-    finalSectionSubtitle: "...UNLEASH A WORLD OF POSSIBILITIES, WITH A MINIMUM OF $1,000 IN YOUR ACCOUNT EVERY DAY!",
+    finalSectionTitle: "APROVECHA LA OPORTUNIDAD DE CONVERTIRTE EN UN INVERSOR INTELIGENTE HOY Y...",
+    finalSectionSubtitle: "...¡DESATA UN MUNDO DE POSIBILIDADES, CON UN MÍNIMO DE $1,000 EN TU CUENTA CADA DÍA!",
     finalSectionText:
-      "Take action now by providing your full name and email in the form below, and unlock the most exceptional and exclusive opportunity to generate substantial income effortlessly. Let AI handle the hard work while you reap tangible benefits instantly. Don't miss out!",
+      "Actúa ahora proporcionando tu nombre completo y correo electrónico en el formulario a continuación, y desbloquea la oportunidad más excepcional y exclusiva para generar ingresos sustanciales sin esfuerzo. Deja que la IA se encargue del trabajo duro mientras tú obtienes beneficios tangibles al instante. ¡No te lo pierdas!",
     footerCompanyInfo:
-      "Coin Sin Limited is a company specializing in providing information and tools for cryptocurrency investment and trading, based on artificial intelligence.",
+      "Coin Sin Limited es una empresa especializada en proporcionar información y herramientas para la inversión y el comercio de criptomonedas, basadas en inteligencia artificial.",
     footerContactanos: "Contáctanos",
     footerPrivacidad: "Privacidad",
     footerTerminos: "Términos",
     footerDescargo: "Descargo de Responsabilidad",
     footerEmailLabel: "Email:",
-    footerCopyright: "All rights reserved.",
+    footerCopyright: "Todos los derechos reservados. Coin Sin Limited.",
     smallFormNamePlaceholder: "Tu nombre",
     smallFormSurnamePlaceholder: "Tu apellido",
     smallFormEmailPlaceholder: "Tu correo electrónico",
@@ -207,45 +203,8 @@ const translations = {
     smallFormPrivacyText:
       "Tus datos siempre están protegidos con Coin Sin Limited. Al completar este formulario, aceptas recibir nuestros correos electrónicos de marketing.",
     ageConfirmation: "Confirmo que soy mayor de edad.",
-    disclaimerFull: `IMPORTANT: Income and Legal Disclaimers. The income and earnings graphs created by smartbitboost.io, also known as "This Website", are used solely as ideal illustrations of your earning potential. The success of individuals in testimonials and other examples are exceptional results, and therefore are not intended to guarantee that you or others will achieve the same. Individual results will depend on how you use smartbitboost.io. For whatever you do, this website has no responsibility. You should always act with caution and due diligence because you assume full responsibility for your actions and decisions when using products and services. You agree that in no way will this website be responsible for the results of your use of our services. See our terms of use for information on our disclaimers and other restrictions. While trading can generate notable benefits, it also carries the risk of losing invested capital in part or in full, so you should consider whether you can afford to invest. ©2025
-USA REGULATORY NOTICE: Forex, CFD, and cryptocurrency trading is not under any US regulation. Cryptocurrency investment is not regulated or supervised by any US or financial agency. Any unregulated trading by US residents is considered illegal. This website does not accept US clients or US citizens. This website has no responsibility for the actions of clients located in or with US citizenship. Clients located within the United States or with US citizenship assume full responsibility for their actions and decisions when using products and services from this Website. In any and all circumstances, the choice to use the Website, the Service and/or the Software is under the sole responsibility of the User, who must comply with current legislation.`,
-    disclaimerFullContent: `IMPORTANTE: Exenciones de Responsabilidad de Ingresos y Legales. Se ha hecho todo lo posible para representar con precisión este producto y su potencial. Aunque esta industria es una de las pocas en las que uno puede escribir su propio cheque en términos de ganancias, no hay garantía de que gane dinero utilizando las técnicas e ideas de estos materiales. Los ejemplos en estos materiales no deben interpretarse como una promesa o garantía de ganancias. El potencial de ganancias depende completamente de la persona que utiliza nuestro producto, ideas y técnicas. No pretendemos que esto sea un "esquema para hacerse rico".
-
-Cualquier reclamo de ganancias reales o ejemplos de resultados reales puede verificarse previa solicitud. Su nivel de éxito en la obtención de los resultados reclamados en nuestros materiales depende del tiempo que dedique al programa, las ideas y técnicas mencionadas, sus finanzas, conocimientos y diversas habilidades. Dado que estos factores difieren según los individuos, no podemos garantizar su éxito o nivel de ingresos. Tampoco somos responsables de ninguna de sus acciones.
-
-Los materiales de nuestro producto y nuestro sitio web pueden contener información que incluye o se basa en declaraciones prospectivas en el sentido de la Ley de Reforma de Litigios de Valores de 1995. Las declaraciones prospectivas expresan nuestras expectativas o pronósticos de eventos futuros. Puede identificar estas declaraciones por el hecho de que no se relacionan estrictamente con hechos históricos o actuales. Utilizan palabras como "anticipar", "estimar", "esperar", "proyectar", "pretender", "planificar", "creer" y otras palabras y términos de significado similar en relación con una descripción de ganancias potenciales o rendimiento financiero.
-
-Todas y cada una de las declaraciones prospectivas aquí o en cualquiera de nuestros materiales de venta tienen la intención de expresar nuestra opinión sobre el potencial de ganancias. Muchos factores serán importantes para determinar sus resultados reales y no se garantiza que logrará resultados similares a los nuestros o a los de cualquier otra persona; de hecho, no se garantiza que logrará ningún resultado de nuestras ideas y técnicas en nuestro material.
-
-El autor y el editor renuncian a cualquier garantía (expresa o implícita), comerciabilidad o idoneidad para un propósito particular. El autor y el editor en ningún caso serán responsables ante ninguna parte por daños directos, indirectos, punitivos, especiales, incidentales u otros daños consecuentes que surjan directa o indirectamente del uso de este material, que se proporciona "tal cual" y sin garantías.
-
-Como siempre, se debe buscar el consejo de un profesional legal, fiscal, contable u otro profesional competente. El autor y el editor no garantizan el rendimiento, la eficacia o la aplicabilidad de ningún sitio listado o vinculado en este producto.
-
-Todos los enlaces son solo para fines informativos y no están garantizados en cuanto a contenido, precisión o cualquier otro propósito implícito o explícito.
-
-Privacidad
-Mantenemos esta página para demostrar nuestro firme compromiso con los derechos y la privacidad de nuestros usuarios. Esta página explica cómo nuestro sitio recopila información de nuestros miembros.
-
-Boletín gratuito y lista de correo: respetamos la privacidad de nuestros usuarios y, como tal, nunca compartiremos nuestra base de datos de direcciones de correo electrónico y nombres con terceros.
-
-Al confirmar que le gustaría unirse a nuestro boletín, de vez en cuando le enviaremos información gratuita relacionada con los productos que comercializamos, consejos generales relacionados con el marketing en línea y material promocional para otros productos. Su correo electrónico nunca se transmitirá a terceros. Tampoco le enviaremos spam. Puede darse de baja de la lista de correo en cualquier momento.
-
-Información personal que recopilamos y cómo se utiliza: Proveedor de servicios: cuando compra un producto, el pago es procesado por el producto, quien recopilará su nombre, dirección e información de tarjeta de crédito para verificar su pedido. No pueden usar la información para ningún otro propósito. Al realizar el pedido, también recopilamos su nombre y dirección de correo electrónico. Utilizamos esta información para hacer un seguimiento con usted según la sección de boletines anterior.
-
-Recordatorio adicional – Descargo de responsabilidad de ganancias:
-Se ha hecho todo lo posible para representar con precisión este producto y su potencial. Even though this industry is one of the few where one can write their own check in terms of earnings, there is no guarantee that you will earn any money using the techniques and ideas in these materials.
-
-Examples in these materials are not to be taken as a promise or guarantee of earnings. Earning potential is entirely dependent on the person using our product, ideas, techniques and the effort put forth. We do not purport this as a “get rich scheme”, and nor should you view it as such.
-
-Any and all forward looking statements here or on any of our sales material are intended to express our opinion of earnings potential. Many factors will be important in determining your actual results and no guarantees are made that you will achieve results similar to ours or anybody else’s, in fact no guarantees are made that you will achieve any results from our ideas and techniques.
-
-Results vary, and as with any money-making opportunity, you could make more or less. Success in ANY money-making opportunity is a result of hard work, time and a variety of other factors. No express or implied guarantees of income are made by product.
-
-Returns and refunds policy: as stated, if you purchase product, and you do not enjoy the financial freedom that you expected, do not make as much from our methods as you expected, or indeed for any reason, you may claim a refund for the product within 60 days of purchase. On a sidenote we do ask you to put the techniques into use before requesting a refund, for both our benefit: however, our refund policy is unconditional and this is a suggestion, not a requirement. We are aware that some buyers will not achieve their personal goals despite our best efforts to the contrary, and we stand by our refund policy as such. Please forward your receipt number (given to you when you ordered) to us and we will action your refund request as quickly as possible, typically within 24 hours.
-
-Revisions to This Policy: Our company reserves the right to revise, amend, or modify this policy, our Terms Of Service agreement, and our other policies and agreements at any time and in any manner, by updating this posting.
-Copyright © 2025 product | All Rights Reserved
-`,
+    disclaimerFull: `IMPORTANTE: Exenciones de Responsabilidad de Ingresos y Legales. Los gráficos de ingresos y ganancias creados por smartbitboost.io, también conocido como "Este Sitio Web", se utilizan únicamente como ilustraciones ideales de su potencial de ganancias. El éxito de las personas en testimonios y otros ejemplos son resultados excepcionales, y por lo tanto no tienen la intención de garantizar que usted u otros lograrán lo mismo. Los resultados individuales dependerán de cómo utilice smartbitboost.io. Por lo que haga, este sitio web no tiene responsabilidad. Siempre debe actuar con precaución y diligencia debida porque asume la plena responsabilidad de sus acciones y decisiones al utilizar productos y servicios. Usted acepta que de ninguna manera este sitio web será responsable de los resultados de su uso de nuestros servicios. Consulte nuestros términos de uso para obtener información sobre nuestras exenciones de responsabilidad y otras restricciones. Si bien el trading puede generar beneficios notables, también conlleva el riesgo de perder el capital invertido en parte o en su totalidad, por lo que debe considerar si puede permitirse invertir. ©2025
+AVISO REGULATORIO DE EE. UU.: El trading de Forex, CFD y criptomonedas no está bajo ninguna regulación de EE. UU. La inversión en criptomonedas no está regulada ni supervisada por ninguna agencia financiera o de EE. UU. Cualquier trading no regulado por residentes de EE. UU. se considera ilegal. Este sitio web no acepta clientes ni ciudadanos de EE. UU. Este sitio web no tiene responsabilidad por las acciones de clientes ubicados en o con ciudadanía estadounidense. Los clientes ubicados dentro de los Estados Unidos o con ciudadanía estadounidense asumen la plena responsabilidad de sus acciones y decisiones al utilizar productos y servicios de este Sitio Web. En todas y cada una de las circunstancias, la elección de utilizar el Sitio Web, el Servicio y/o el Software es bajo la exclusiva responsabilidad del Usuario, quien debe cumplir con la legislación vigente.`,
   },
   en: {
     notification:
@@ -320,7 +279,7 @@ Copyright © 2025 product | All Rights Reserved
     platformBenefitText1:
       "For novice investors, investing in cryptocurrencies can be incredibly complicated. Often, beginners need to understand all the ins and outs of this field so as not to lose their small investments in the shortest possible time. This leads them to lose interest in cryptocurrencies and in investing in general. However, they need to realize the potential opportunities they are missing.",
     platformBenefitText2:
-      "The Coin Sin Limited platform allows them to make their dreams of stable passive income come true. Based on artificial intelligence, this algorithm works continuously, analyzing the market situation, studying cryptocurrency trends, and performing operations that are almost always profitable. Thousands of people around the world have already generated billions of dollars with Coin Sin Limited.",
+      "The Coin Sin Limited platform allows them to make their dreams of stable passive income come true. Based on artificial intelligence, this algorithm works continuously, analyzing the market situation, studying cryptocurrency trends, and performing operations that almost always result in profits. Thousands of people around the world have already generated billions of dollars with Coin Sin Limited.",
     platformFeaturesTitle: "The features of the Coin Sin Limited platform include:",
     feature1:
       "A deep understanding of the cryptocurrency market and trends in the world of digital assets that are beyond the reach of the human mind.",
@@ -350,15 +309,11 @@ Copyright © 2025 product | All Rights Reserved
     disclaimer:
       "* The results shown are estimates based on the platform's historical performance. Investments carry risks.",
     demoAccountTitle: "TRY THE COIN SIN LIMITED DEMO ACCOUNT",
-    demoAccountText1:
-      "Feel free from the high cost of entry into the world of investment! You don't need to spend tens of thousands of dollars to understand cryptocurrency trading, how it works, and what you need to do to avoid losses. We offer you the opportunity to invest even a few hundred dollars and turn them into a profitable business.",
-    demoAccount2:
-      "Try a risk-free tool for profitable trading! Register, deposit at least €250, and get your first profit today. Simply scroll to the bottom of the page and register.",
+    notScamText2:
+      "Users have access to a virtual demo account where they can risk-free evaluate the system's capabilities before investing real funds. User protection is the main requirement of the project. SSL certificates and multi-layer encryption reliably protect all personal data.",
     notScamTitle: "COIN SIN LIMITED IS NOT A SCAM, AND HERE'S WHY",
     notScamText1:
       "It is an automated investment project that offers the opportunity to earn money by investing in popular cryptocurrencies and promising projects in the world of digital assets. The system is controlled by computer engineers and brokers registered with CySEC. Authorized brokers carry out the financial processes in the system.",
-    notScamText2:
-      "Users have access to a virtual demo account where they can risk-free evaluate the system's capabilities before investing real funds. User protection is the main requirement of the project. SSL certificates and multi-layer encryption reliably protect all personal data.",
     notScamText3:
       "For security, it is recommended to log out after each use and avoid connecting to the system from public networks.",
     notScamText4:
@@ -407,7 +362,7 @@ Copyright © 2025 product | All Rights Reserved
     footerTerminos: "Terms",
     footerDescargo: "Disclaimer",
     footerEmailLabel: "Email:",
-    footerCopyright: "All rights reserved.",
+    footerCopyright: "All rights reserved. Coin Sin Limited.",
     smallFormNamePlaceholder: "Your name",
     smallFormSurnamePlaceholder: "Your surname",
     smallFormEmailPlaceholder: "Your email",
@@ -417,41 +372,7 @@ Copyright © 2025 product | All Rights Reserved
     smallFormPrivacyText:
       "Your data is always protected with Coin Sin Limited. By completing this form, you agree to receive our marketing emails.",
     ageConfirmation: "I confirm that I am of legal age.",
-    disclaimerFull: `IMPORTANT: Income and Legal Disclaimers. The income and earnings graphs created by smartbitboost.io, also known as "This Website", are used solely as ideal illustrations of your earning potential. The success of individuals in testimonials and other examples are exceptional results, and therefore are not intended to guarantee that you or others will achieve the same. Individual results will depend on how you use smartbitboost.io. For whatever you do, this website has no responsibility. You should always act with caution and due diligence because you assume full responsibility for your actions and decisions when using products and services. You agree that in no way will this website be responsible for the results of your use of our services. See our terms of use for information on our disclaimers and other restrictions. While trading can generate notable benefits, it also carries the risk of losing invested capital in part or in full, so you should consider whether you can afford to invest. ©2025
-USA REGULATORY NOTICE: Forex, CFD, and cryptocurrency trading is not under any US regulation. Cryptocurrency investment is not regulated or supervised by any US or financial agency. Any unregulated trading by US residents is considered illegal. This website does not accept US clients or US citizens. This website has no responsibility for the actions of clients located in or with US citizenship. Clients located within the United States or with US citizenship assume full responsibility for their actions and decisions when using products and services from this Website. In any and all circumstances, the choice to use the Website, the Service and/or the Software is under the sole responsibility of the User, who must comply with current legislation.`,
-    disclaimerFullContent: `IMPORTANT: Income and Legal Disclaimers. Every effort has been made to accurately represent this product and its potential. Even though this industry is one of the few where one can write their own check in terms of earnings, there is no guarantee that you will earn any money using the techniques and ideas in these materials. Examples in these materials are not to be taken as a promise or guarantee of earnings. Earning potential is entirely dependent on the person using our product, ideas, techniques and the effort put forth. We do not purport this as a “get rich scheme”, and nor should you view it as such.
-
-Any and all forward looking statements here or on any of our sales material are intended to express our opinion of earnings potential. Many factors will be important in determining your actual results and no guarantees are made that you will achieve results similar to ours or anybody else’s, in fact no guarantees are made that you will achieve any results from our ideas and techniques.
-
-The author and publisher disclaim any warranties (express or implied), merchantability, or fitness for any particular purpose. The author and publisher shall in no event be held liable to any party for any direct, indirect, punitive, special, incidental or other consequential damages arising directly or indirectly from any use of this material, which is provided “as is”, and without warranties.
-
-As always, the advice of a competent legal, tax, accounting or other professional should be sought. The author and publisher do not warrant the performance, effectiveness or applicability of any sites listed or linked to in this product.
-
-All links are for information purposes only and are not warranted for content, accuracy or any other implied or explicit purpose.
-
-Privacy
-We maintain this page to demonstrate our strong commitment to our users' rights and privacy. This page explains how our site collects information from our members.
-
-Free newsletter and mailing list: we respect the privacy of our users and, as such, will never share our database of email addresses and names with third parties.
-
-By confirming that you would like to join our newsletter, from time to time we will send you free information related to the products we market, general tips related to online marketing and promotional material for other products. Your email will never be transmitted to third parties. Nor will we send you spam. You can unsubscribe from the mailing list at any time.
-
-Personal information we collect and how it is used: Service provider: when you purchase a product, payment is processed by the product, who will collect your name, address and credit card information to verify your order. They cannot use the information for any other purpose. When ordering, we also collect your name and email address. We use this information to follow up with you according to the newsletter section above.
-
-Additional reminder – Earnings disclaimer:
-Every effort has been made to accurately represent this product and its potential. Even though this industry is one of the few where one can write their own check in terms of earnings, there is no guarantee that you will earn any money using the techniques and ideas in these materials.
-
-Examples in these materials are not to be taken as a promise or guarantee of earnings. Earning potential is entirely dependent on the person using our product, ideas, techniques and the effort put forth. We do not purport this as a “get rich scheme”, and nor should you view it as such.
-
-Any and all forward looking statements here or on any of our sales material are intended to express our opinion of earnings potential. Many factors will be important in determining your actual results and no guarantees are made that you will achieve results similar to ours or anybody else’s, in fact no guarantees are made that you will achieve any results from our ideas and techniques.
-
-Results vary, and as with any money-making opportunity, you could make more or less. Success in ANY money-making opportunity is a result of hard work, time and a variety of other factors. No express or implied guarantees of income are made by product.
-
-Returns and refunds policy: as stated, if you purchase product, and you do not enjoy the financial freedom that you expected, do not make as much from our methods as you expected, or indeed for any reason, you may claim a refund for the product within 60 days of purchase. On a sidenote we do ask you to put the techniques into use before requesting a refund, for both our benefit: however, our refund policy is unconditional and this is a suggestion, not a requirement. We are aware that some buyers will not achieve their personal goals despite our best efforts to the contrary, and we stand by our refund policy as such. Please forward your receipt number (given to you when you ordered) to us and we will action your refund request as quickly as possible, typically within 24 hours.
-
-Revisions to This Policy: Our company reserves the right to revise, amend, or modify this policy, our Terms Of Service agreement, and our other policies and agreements at any time and in any manner, by updating this posting.
-Copyright © 2025 product | All Rights Reserved
-`,
+    disclaimerFull: `IMPORTANT: Income and Legal Disclaimers. The income and earnings graphs created by smartbitboost.io, also known as "This Website", are used solely as ideal illustrations of your earning potential. The success of individuals in testimonials and other examples are exceptional results, and therefore are not intended to guarantee that you or others will achieve the same. Individual results will depend on how you use smartbitboost.io. For whatever you do, this website has no responsibility. You should always act with caution and due diligence because you assume full responsibility for your actions and decisions when using products and services. You agree that in no way will this website be responsible for the results of your use of our services. See our terms of use for information on our disclaimers and other restrictions. While trading can generate notable benefits, it also carries the risk of losing invested capital in part or in full, so you should consider whether you can afford to invest. ©2025USA REGULATORY NOTICE: Forex, CFD, and cryptocurrency trading is not under any US regulation. Cryptocurrency investment is not regulated or supervised by any US or financial agency. Any unregulated trading by US residents is considered illegal. This website does not accept US clients or US citizens. This website has no responsibility for the actions of clients located in or with US citizenship. Clients located within the United States or with US citizenship assume full responsibility for their actions and decisions when using products and services from this Website. In any and all circumstances, the choice to use the Website, the Service and/or the Software is under the sole responsibility of the User, who must comply with current legislation.`,
   },
 }
 
@@ -484,7 +405,7 @@ const testimonials = [
     avatar: "/placeholder.svg?height=60&width=60",
     text: {
       es: "Como estudiante, necesitaba ingresos extra sin sacrificar mis estudios. Coin Sin Limited me ha dado esa oportunidad. Dedico solo unos minutos al día y veo cómo mi cuenta crece. Es una herramienta poderosa para cualquiera que quiera mejorar sus finanzas.",
-      en: "As a student, I needed extra income without sacrificing my studies. Coin Sin Limited has given me that opportunity. I dedicate only a few minutes a day and watch my account grow. It's a powerful tool for anyone looking to improve their finances.",
+      en: "As a student, I needed extra income without sacrificing my studies. Coin Sin Limited has given me that opportunity. I dedicate only a few minutes a day and watch my account grow. It's a powerful tool for anyone looking to improve your finances.",
     },
   },
   {
@@ -791,9 +712,9 @@ const countryCodes = [
   { id: "SZ", code: "+268", flag: "🇸🇿", country: "Swaziland", name: "Suazilandia" },
   { id: "SE", code: "+46", flag: "🇸🇪", country: "Sweden", name: "Suecia" },
   { id: "CH", code: "+41", flag: "🇨🇭", country: "Switzerland", name: "Suiza" },
-  { id: "SY", code: "+963", flag: "🇸🇾", country: "Syria", name: "Siria" },
+  { id: "SY", code: "+963", flag: "🇸🇾", country: "Siria", name: "Siria" },
   { id: "TW", code: "+886", flag: "🇹🇼", country: "Taiwan", name: "Taiwán" },
-  { id: "TJ", code: "+992", flag: "🇹🇯", country: "Tajikistan", name: "Tayikistán" },
+  { id: "TJ", code: "+992", flag: "🇹🇯", country: "Tajikistán", name: "Tayikistán" },
   { id: "TZ", code: "+255", flag: "🇹🇿", country: "Tanzania", name: "Tanzania" },
   { id: "TH", code: "+66", flag: "🇹🇭", country: "Thailand", name: "Tailandia" },
   { id: "TL", code: "+670", flag: "🇹🇱", country: "Timor-Leste", name: "Timor Oriental" },
@@ -1060,8 +981,8 @@ export default function CryptoLanding() {
               <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8">{t.subtitle}</p>
             </div>
           </div>
-        </div>{" "}
-      </div>{" "}
+        </div>
+      </div>
       {/* FIN DEL DIV CON LA IMAGEN DE FONDO */}
       {/* Combined Section - MOVED OUTSIDE THE BACKGROUND IMAGE DIV */}
       <div className="max-w-7xl mx-auto">
@@ -1298,7 +1219,7 @@ export default function CryptoLanding() {
                                 >
                                   <div className="flex items-center gap-3 py-1">
                                     <span className="text-lg">{country.flag}</span>
-                                    <span className="text-sm font-medium">{country.code}</span>
+                                    <span className="text-sm font-semibold">{country.code}</span>
                                     <span className="text-sm text-gray-600">
                                       {language === "es" ? country.name : country.country}
                                     </span>
@@ -1436,7 +1357,6 @@ export default function CryptoLanding() {
                 className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8 py-3 h-14 sm:px-12 sm:py-4 sm:h-16 text-lg sm:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 group relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/30 to-orange-400/30 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-
                 <div className="relative flex items-center gap-3">
                   <svg
                     className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300"
@@ -1721,10 +1641,10 @@ export default function CryptoLanding() {
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 text-white text-left mb-8 sm:mb-12">
                       <div className="space-y-6 animate-in slide-in-from-left-5 duration-700 delay-200">
-                        <p className="text-base leading-relaxed">{t.demoAccountText1}</p>
+                        <p className="text-base leading-relaxed">{t.notScamText2}</p>
                       </div>
                       <div className="space-y-6 animate-in slide-in-from-right-5 duration-700 delay-300">
-                        <p className="text-base leading-relaxed">{t.demoAccountText1}</p>
+                        <p className="text-base leading-relaxed">{t.notScamText2}</p>
                       </div>
                     </div>
                     <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-6 sm:mb-8 animate-in slide-in-from-bottom-5 duration-700 delay-500">
@@ -1798,421 +1718,440 @@ export default function CryptoLanding() {
                             key={index}
                             onClick={() => setCurrentTestimonial(index * 3)}
                             className={`w-3 h-3 rounded-full transition-all duration-300 ${Math.floor(currentTestimonial / 3) === index
-                              ? "bg-orange-400 scale-125"
-                              : "bg-white/30 hover:bg-white/50"
+                                ? "bg-orange-400 scale-125"
+                                : "bg-white/30 hover:bg-white/50"
                               }`}
                           />
                         ))}
                       </div>
                     </div>
                   </div>
-                </div>
-                {/* New Trading Features Section */}
-                <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
-                  <div className="max-w-6xl mx-auto px-4 sm:px-8 relative">
-                    {/* Bitcoin Logo */}
-                    <div className="flex justify-center mb-6 sm:mb-8">
-                      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-xl animate-pulse">
-                        <div className="text-2xl sm:text-3xl font-bold text-white">₿</div>
-                      </div>
-                    </div>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4 sm:mb-6 animate-in slide-in-from-bottom-5 duration-700">
-                      {t.tradingEasyTitle}{" "}
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">
-                        {t.tradingEasyHighlight}
-                      </span>
-                    </h2>
-                    <p className="text-base sm:text-lg text-white/90 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed">
-                      {t.tradingEasyIntro}
-                    </p>
-                    {/* Features Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
-                      {/* Feature 1 */}
-                      <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-left-5 duration-700 delay-200">
-                        <div className="flex items-start gap-4 mb-6">
-                          <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                            <Percent className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
-                          </div>
-                          <div className="text-left">
-                            <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">
-                              {t.featureAiSelectionsTitle}
-                            </h3>
-                          </div>
+                  {/* New Trading Features Section */}
+                  <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
+                    <div className="max-w-6xl mx-auto px-4 sm:px-8 relative">
+                      {/* Bitcoin Logo */}
+                      <div className="flex justify-center mb-6 sm:mb-8">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-xl animate-pulse">
+                          <div className="text-2xl sm:text-3xl font-bold text-white">₿</div>
                         </div>
-                        <p className="text-white text-sm leading-relaxed text-left">{t.featureAiSelectionsText}</p>
                       </div>
-                      {/* Feature 2 */}
-                      <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-right-5 duration-700 delay-300">
-                        <div className="flex items-start gap-4 mb-6">
-                          <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                            <Percent className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
-                          </div>
-                          <div className="text-left">
-                            <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">
-                              {t.featureAutoTradingTitle}
-                            </h3>
-                          </div>
-                        </div>
-                        <p className="text-white text-sm leading-relaxed text-left">{t.featureAutoTradingText}</p>
-                      </div>
-                      {/* Feature 3 */}
-                      <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-left-5 duration-700 delay-400">
-                        <div className="flex items-start gap-4 mb-6">
-                          <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                            <Headphones className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
-                          </div>
-                          <div className="text-left">
-                            <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">
-                              {t.featureSupportTitle}
-                            </h3>
-                          </div>
-                        </div>
-                        <p className="text-white text-sm leading-relaxed text-left">{t.featureSupportText}</p>
-                      </div>
-                      {/* Feature 4 */}
-                      <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-right-5 duration-700 delay-500">
-                        <div className="flex items-start gap-4 mb-6">
-                          <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                            <Users className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
-                          </div>
-                          <div className="text-left">
-                            <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">
-                              {t.featureCommunityTitle}
-                            </h3>
-                          </div>
-                        </div>
-                        <p className="text-white text-sm leading-relaxed text-left">{t.featureCommunityText}</p>
-                      </div>
-                    </div>
-                    {/* CTA Button */}
-                    <div className="animate-in slide-in-from-bottom-5 duration-700 delay-600">
-                      <Button
-                        onClick={() => {
-                          const formElement = document.querySelector("#registration-form")
-                          if (formElement) {
-                            formElement.scrollIntoView({ behavior: "smooth", block: "center" })
-                          }
-                        }}
-                        size="lg"
-                        className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8 py-3 h-14 sm:px-12 sm:py-4 sm:h-16 text-lg sm:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 group relative overflow-hidden"
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/30 to-orange-400/30 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                        <div className="relative flex items-center gap-3">
-                          <span>{t.createAccountButton}</span>
-                          <svg
-                            className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        </div>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-                {/* How to Start Section */}
-                <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
-                  <div className="max-w-6xl mx-auto px-4 sm:px-8">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-12 sm:mb-16 animate-in slide-in-from-bottom-5 duration-700">
-                      <span className="text-orange-400">{t.howToStartTitle}</span> {t.howToStartHighlight}
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                      {/* Step 1 */}
-                      <div className="text-center animate-in slide-in-from-left-5 duration-700 delay-200">
-                        <div className="mb-6">
-                          <div className="text-orange-400 text-xl sm:text-2xl font-bold mb-4">Paso 1</div>
-                          <div className="w-full h-40 sm:h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
-                            <div className="text-white text-center">
-                              <User className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-orange-400" />
-                              <p>{language === "es" ? "Inscripción" : "Registration"}</p>
+                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4 sm:mb-6 animate-in slide-in-from-bottom-5 duration-700">
+                        {t.tradingEasyTitle}{" "}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">
+                          {t.tradingEasyHighlight}
+                        </span>
+                      </h2>
+                      <p className="text-base sm:text-lg text-white/90 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed">
+                        {t.tradingEasyIntro}
+                      </p>
+                      {/* Features Grid */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
+                        {/* Feature 1 */}
+                        <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-left-5 duration-700 delay-200">
+                          <div className="flex items-start gap-4 mb-6">
+                            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                              <Percent className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                             </div>
-                          </div>
-                        </div>
-                        <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step1Title}</h3>
-                        <p className="text-white/80 text-sm leading-relaxed">{t.step1Description}</p>
-                      </div>
-                      {/* Step 2 */}
-                      <div className="text-center animate-in slide-in-from-bottom-5 duration-700 delay-300">
-                        <div className="mb-6">
-                          <div className="text-blue-400 text-xl sm:text-2xl font-bold mb-4">Paso 2</div>
-                          <div className="w-full h-40 sm:h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
-                            <div className="text-white text-center">
-                              <img
-                                src="/logo.png"
-                                alt="Coin Sin Limited Logo"
-                                className="h-12 w-24 object-contain rounded-lg mx-auto mb-4"
-                              />
-                              <p>{language === "es" ? "Depósito" : "Deposit"}</p>
-                            </div>
-                          </div>
-                        </div>
-                        <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step2Title}</h3>
-                        <p className="text-white/80 text-sm leading-relaxed">{t.step2Description}</p>
-                      </div>
-                      {/* Step 3 */}
-                      <div className="text-center animate-in slide-in-from-right-5 duration-700 delay-400">
-                        <div className="mb-6">
-                          <div className="text-green-400 text-xl sm:text-2xl font-bold mb-4">Paso 3</div>
-                          <div className="w-full h-40 sm:h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
-                            <div className="text-white text-center">
-                              <Phone className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-green-400" />
-                              <p>{language === "es" ? "Llamada" : "Call"}</p>
-                            </div>
-                          </div>
-                        </div>
-                        <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step3Title}</h3>
-                        <p className="text-white/80 text-sm leading-relaxed">{t.step3Description}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* FAQ Section */}
-                <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
-                  <div className="max-w-4xl mx-auto px-4 sm:px-8 relative">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8 sm:mb-12 animate-in slide-in-from-bottom-5 duration-700">
-                      <span className="text-orange-400">{t.faqTitle}</span> {t.faqHighlight}
-                    </h2>
-                    <div className="space-y-4">
-                      {faqData.map((faq, index) => (
-                        <div
-                          key={faq.id}
-                          className="bg-blue-600/80 backdrop-blur-sm rounded-2xl border border-blue-400/30 overflow-hidden animate-in slide-in-from-bottom-3 duration-500"
-                          style={{ animationDelay: `${index * 100}ms` }}
-                        >
-                          <button
-                            onClick={() => setExpandedFAQ(expandedFAQ === faq.id ? null : faq.id)}
-                            className="w-full p-4 sm:p-6 text-left flex items-center justify-between hover:bg-blue-600/60 transition-all duration-300"
-                          >
-                            <div className="flex items-center gap-4">
-                              <div className="bg-orange-400 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">
-                                {String(faq.id).padStart(2, "0")}
-                              </div>
-                              <h3 className="text-base sm:text-lg font-semibold text-white">
-                                {faq.question[language]}
+                            <div className="text-left">
+                              <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">
+                                {t.featureAiSelectionsTitle}
                               </h3>
                             </div>
-                            <div
-                              className="text-orange-400 text-2xl font-bold transition-transform duration-300"
-                              style={{ transform: expandedFAQ === faq.id ? "rotate(45deg)" : "rotate(0deg)" }}
+                          </div>
+                          <p className="text-white text-sm leading-relaxed text-left">{t.featureAiSelectionsText}</p>
+                        </div>
+                        {/* Feature 2 */}
+                        <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-right-5 duration-700 delay-300">
+                          <div className="flex items-start gap-4 mb-6">
+                            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                              <Percent className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+                            </div>
+                            <div className="text-left">
+                              <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">
+                                {t.featureAutoTradingTitle}
+                              </h3>
+                            </div>
+                          </div>
+                          <p className="text-white text-sm leading-relaxed text-left">{t.featureAutoTradingText}</p>
+                        </div>
+                        {/* Feature 3 */}
+                        <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-left-5 duration-700 delay-400">
+                          <div className="flex items-start gap-4 mb-6">
+                            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                              <Headphones className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+                            </div>
+                            <div className="text-left">
+                              <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">
+                                {t.featureSupportTitle}
+                              </h3>
+                            </div>
+                          </div>
+                          <p className="text-white text-sm leading-relaxed text-left">{t.featureSupportText}</p>
+                        </div>
+                        {/* Feature 4 */}
+                        <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-right-5 duration-700 delay-500">
+                          <div className="flex items-start gap-4 mb-6">
+                            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                              <Users className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+                            </div>
+                            <div className="text-left">
+                              <h3 className="text-lg sm:text-xl font-bold text-orange-400 mb-2">
+                                {t.featureCommunityTitle}
+                              </h3>
+                            </div>
+                          </div>
+                          <p className="text-white text-sm leading-relaxed text-left">{t.featureCommunityText}</p>
+                        </div>
+                      </div>
+                      {/* CTA Button */}
+                      <div className="animate-in slide-in-from-bottom-5 duration-700 delay-600">
+                        <Button
+                          onClick={() => {
+                            const formElement = document.querySelector("#registration-form")
+                            if (formElement) {
+                              formElement.scrollIntoView({ behavior: "smooth", block: "center" })
+                            }
+                          }}
+                          size="lg"
+                          className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8 py-3 h-14 sm:px-12 sm:py-4 sm:h-16 text-lg sm:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 group relative overflow-hidden"
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/30 to-orange-400/30 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                          <div className="relative flex items-center gap-3">
+                            <span>{t.createAccountButton}</span>
+                            <svg
+                              className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
                             >
-                              +
-                            </div>
-                          </button>
-                          {expandedFAQ === faq.id && (
-                            <div className="px-4 pb-4 sm:px-6 sm:pb-6 animate-in slide-in-from-top-2 duration-300">
-                              <p className="text-white/90 leading-relaxed pl-12">{faq.answer[language]}</p>
-                            </div>
-                          )}
-                        </div>
-                      ))}
+                              <path
+                                fillRule="evenodd"
+                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </div>
+                        </Button>
+                      </div>
                     </div>
                   </div>
-                </div>
-                {/* Final Section with Smaller Form */}
-                <div className="mb-12 sm:mb-16 mt-16 sm:mt-20">
-                  <div className="max-w-7xl mx-auto px-4 sm:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-                      {/* Left Side - Content */}
-                      <div className="space-y-6 animate-in slide-in-from-left-5 duration-700">
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                          <span className="text-orange-400">{t.finalSectionTitle}</span>
-                        </h2>
-                        <div className="text-white text-lg font-semibold mb-4">{t.finalSectionSubtitle}</div>
-                        <p className="text-white/90 leading-relaxed">{t.finalSectionText}</p>
-                      </div>
-                      {/* Right Side - Smaller Form */}
-                      <div className="animate-in slide-in-from-right-5 duration-700">
-                        <div className="bg-blue-600/90 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-blue-400/20">
-                          <h3 className="text-xl sm:text-2xl font-bold text-white text-center mb-6">{t.improveLife}</h3>
-                          <form className="space-y-4" action={registrationAction}>
-                            <div className="relative">
-                              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 w-4 h-4 z-10" />
-                              <Input
-                                name="name"
-                                placeholder={t.smallFormNamePlaceholder}
-                                value={formData.name}
-                                onChange={(e) => handleInputChange("name", e.target.value)}
-                                required
-                                className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
-                              />
-                            </div>
-                            <div className="relative">
-                              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 w-4 h-4 z-10" />
-                              <Input
-                                name="surname"
-                                placeholder={t.smallFormSurnamePlaceholder}
-                                value={formData.surname}
-                                onChange={(e) => handleInputChange("surname", e.target.value)}
-                                required
-                                className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
-                              />
-                            </div>
-                            <div className="flex animate-in slide-in-from-left-3 duration-500 delay-800 rounded-lg shadow-lg overflow-hidden">
-                              <div className="relative w-1/3">
-                                <Select
-                                  name="countryCode"
-                                  value={formData.countryCode}
-                                  onValueChange={(value) => handleInputChange("countryCode", value)}
-                                >
-                                  <SelectTrigger
-                                    className="w-full bg-orange-400 border-r border-gray-300 text-white rounded-l-lg rounded-r-none text-sm flex items-center justify-start pl-3"
-                                    style={{ minHeight: "40px", height: "40px" }}
-                                  >
-                                    <SelectValue>
-                                      <div className="flex items-center gap-2">
-                                        <span className="text-sm">
-                                          {selectedCountry?.id.toUpperCase()} {selectedCountry?.code}
-                                        </span>
-                                      </div>
-                                    </SelectValue>
-                                  </SelectTrigger>
-                                  <SelectContent className="w-[var(--radix-popper-anchor-width)] max-h-80 rounded-xl border-0 shadow-2xl bg-white/95 backdrop-blur-sm">
-                                    {filteredCountries.map((country) => (
-                                      <SelectItem key={country.id} value={country.code}>
-                                        {country.flag} {country.code}{" "}
-                                        {language === "es" ? country.name : country.country}
-                                      </SelectItem>
-                                    ))}
-                                    {filteredCountries.length === 0 && (
-                                      <div className="p-2 text-sm text-gray-500 text-center">{t.noCountriesFound}</div>
-                                    )}
-                                  </SelectContent>
-                                </Select>
+                  {/* How to Start Section */}
+                  <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
+                    <div className="max-w-6xl mx-auto px-4 sm:px-8">
+                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-12 sm:mb-16 animate-in slide-in-from-bottom-5 duration-700">
+                        <span className="text-orange-400">{t.howToStartTitle}</span> {t.howToStartHighlight}
+                      </h2>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {/* Step 1 */}
+                        <div className="text-center animate-in slide-in-from-left-5 duration-700 delay-200">
+                          <div className="mb-6">
+                            <div className="text-orange-400 text-xl sm:text-2xl font-bold mb-4">Paso 1</div>
+                            <div className="w-full h-40 sm:h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
+                              <div className="text-white text-center">
+                                <User className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-orange-400" />
+                                <p>{language === "es" ? "Inscripción" : "Registration"}</p>
                               </div>
-                              <div className="relative flex-1">
-                                <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 w-4 h-4 z-10" />
+                            </div>
+                          </div>
+                          <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step1Title}</h3>
+                          <p className="text-white/80 text-sm leading-relaxed">{t.step1Description}</p>
+                        </div>
+                        {/* Step 2 */}
+                        <div className="text-center animate-in slide-in-from-bottom-5 duration-700 delay-300">
+                          <div className="mb-6">
+                            <div className="text-blue-400 text-xl sm:text-2xl font-bold mb-4">Paso 2</div>
+                            <div className="w-full h-40 sm:h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
+                              <div className="text-white text-center">
+                                <img
+                                  src="/logo.png"
+                                  alt="Coin Sin Limited Logo"
+                                  className="h-12 w-24 object-contain rounded-lg mx-auto mb-4"
+                                />
+                                <p>{language === "es" ? "Depósito" : "Deposit"}</p>
+                              </div>
+                            </div>
+                          </div>
+                          <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step2Title}</h3>
+                          <p className="text-white/80 text-sm leading-relaxed">{t.step2Description}</p>
+                        </div>
+                        {/* Step 3 */}
+                        <div className="text-center animate-in slide-in-from-right-5 duration-700 delay-400">
+                          <div className="mb-6">
+                            <div className="text-green-400 text-xl sm:text-2xl font-bold mb-4">Paso 3</div>
+                            <div className="w-full h-40 sm:h-48 bg-blue-800/30 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
+                              <div className="text-white text-center">
+                                <Phone className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-green-400" />
+                                <p>{language === "es" ? "Llamada" : "Call"}</p>
+                              </div>
+                            </div>
+                          </div>
+                          <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step3Title}</h3>
+                          <p className="text-white/80 text-sm leading-relaxed">{t.step3Description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* FAQ Section */}
+                  <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-8 relative">
+                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8 sm:mb-12 animate-in slide-in-from-bottom-5 duration-700">
+                        <span className="text-orange-400">{t.faqTitle}</span> {t.faqHighlight}
+                      </h2>
+                      <div className="space-y-4">
+                        {faqData.map((faq, index) => (
+                          <div
+                            key={faq.id}
+                            className="bg-blue-600/80 backdrop-blur-sm rounded-2xl border border-blue-400/30 overflow-hidden animate-in slide-in-from-bottom-3 duration-500"
+                            style={{ animationDelay: `${index * 100}ms` }}
+                          >
+                            <button
+                              onClick={() => setExpandedFAQ(expandedFAQ === faq.id ? null : faq.id)}
+                              className="w-full p-4 sm:p-6 text-left flex items-center justify-between hover:bg-blue-600/60 transition-all duration-300"
+                            >
+                              <div className="flex items-center gap-4">
+                                <div className="bg-orange-400 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">
+                                  {String(faq.id).padStart(2, "0")}
+                                </div>
+                                <h3 className="text-base sm:text-lg font-semibold text-white">
+                                  {faq.question[language]}
+                                </h3>
+                              </div>
+                              <div
+                                className="text-orange-400 text-2xl font-bold transition-transform duration-300"
+                                style={{ transform: expandedFAQ === faq.id ? "rotate(45deg)" : "rotate(0deg)" }}
+                              >
+                                +
+                              </div>
+                            </button>
+                            {expandedFAQ === faq.id && (
+                              <div className="px-4 pb-4 sm:px-6 sm:pb-6 animate-in slide-in-from-top-2 duration-300">
+                                <p className="text-white/90 leading-relaxed pl-12">{faq.answer[language]}</p>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  {/* Final Section with Smaller Form */}
+                  <div className="mb-12 sm:mb-16 mt-16 sm:mt-20">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-8">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+                        {/* Left Side - Content */}
+                        <div className="space-y-6 animate-in slide-in-from-left-5 duration-700">
+                          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                            <span className="text-orange-400">{t.finalSectionTitle}</span>
+                          </h2>
+                          <div className="text-white text-lg font-semibold mb-4">{t.finalSectionSubtitle}</div>
+                          <p className="text-white/90 leading-relaxed">{t.finalSectionText}</p>
+                        </div>
+                        {/* Right Side - Smaller Form */}
+                        <div className="animate-in slide-in-from-right-5 duration-700">
+                          <div className="bg-blue-600/90 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-blue-400/20">
+                            <h3 className="text-xl sm:text-2xl font-bold text-white text-center mb-6">
+                              {t.improveLife}
+                            </h3>
+                            <form className="space-y-4" action={registrationAction}>
+                              <div className="relative">
+                                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 w-4 h-4 z-10" />
                                 <Input
-                                  name="phone"
-                                  placeholder={t.smallFormPhonePlaceholder}
-                                  value={formData.phone}
-                                  onChange={(e) => handleInputChange("phone", e.target.value)}
+                                  name="name"
+                                  placeholder={t.smallFormNamePlaceholder}
+                                  value={formData.name}
+                                  onChange={(e) => handleInputChange("name", e.target.value)}
                                   required
-                                  className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-r-lg rounded-l-none text-sm min-h-[40px]"
+                                  className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
                                 />
                               </div>
-                            </div>
-                            {phoneError && <p className="text-red-400 text-sm text-left mt-1">{phoneError}</p>}
-                            <input type="hidden" name="language" value={language} />
-                            <SmallSubmitButton language={language} disabled={!ageConfirmed || !!phoneError}>
-                              {t.smallFormRegisterButton}
-                            </SmallSubmitButton>
-                            {/* Age Confirmation Checkbox (Small Form) */}
-                            <div className="flex items-start gap-4 text-xs text-white animate-in fade-in-50 duration-500 delay-600">
                               <div className="relative">
-                                <Checkbox
-                                  id="age-confirm-small"
-                                  checked={ageConfirmed}
-                                  onCheckedChange={(checked) => setAgeConfirmed(!!checked)}
+                                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 w-4 h-4 z-10" />
+                                <Input
+                                  name="surname"
+                                  placeholder={t.smallFormSurnamePlaceholder}
+                                  value={formData.surname}
+                                  onChange={(e) => handleInputChange("surname", e.target.value)}
                                   required
-                                  className="mt-1 border-white/30 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 transition-all duration-200 hover:scale-110"
+                                  className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
                                 />
                               </div>
-                              <label
-                                htmlFor="age-confirm-small"
-                                className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
-                              >
-                                <Shield className="w-4 h-4 inline mr-2 text-orange-400" />
-                                {t.ageConfirmation}
-                              </label>
-                            </div>
-                            {/* Terms Checkbox (Small Form) */}
-                            <div className="flex items-start gap-4 text-xs text-white animate-in fade-in-50 duration-500 delay-600">
                               <div className="relative">
-                                <Checkbox
-                                  id="terms-small"
+                                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 w-4 h-4 z-10" />
+                                <Input
+                                  name="email"
+                                  type="email"
+                                  placeholder={t.smallFormEmailPlaceholder}
+                                  value={formData.email}
+                                  onChange={(e) => handleInputChange("email", e.target.value)}
                                   required
-                                  className="mt-1 border-white/30 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 transition-all duration-200 hover:scale-110"
+                                  className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-lg text-sm"
                                 />
                               </div>
-                              <label
-                                htmlFor="terms-small"
-                                className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
-                              >
-                                <Shield className="w-4 h-4 inline mr-2 text-orange-400" />
-                                {t.smallFormTermsText}
-                              </label>
-                            </div>
-                            {/* Privacy Text (Small Form) */}
-                            <div className="text-xs text-white/80 leading-relaxed animate-in fade-in-50 duration-500 delay-700 bg-white/5 p-4 rounded-lg border border-white/10">
-                              <div className="flex items-start gap-2">
-                                <svg
-                                  className="w-4 h-4 text-blue-300 mt-0.5 flex-shrink-0"
-                                  fill="currentColor"
-                                  viewBox="0 0 20 20"
-                                >
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                                    clipRule="evenodd"
+                              <div className="flex animate-in slide-in-from-left-3 duration-500 delay-800 rounded-lg shadow-lg overflow-hidden">
+                                <div className="relative w-1/3">
+                                  <Select
+                                    name="countryCode"
+                                    value={formData.countryCode}
+                                    onValueChange={(value) => handleInputChange("countryCode", value)}
+                                  >
+                                    <SelectTrigger
+                                      className="w-full bg-orange-400 border-r border-gray-300 text-white rounded-l-lg rounded-r-none text-sm flex items-center justify-start pl-3"
+                                      style={{ minHeight: "40px", height: "40px" }}
+                                    >
+                                      <SelectValue>
+                                        <div className="flex items-center gap-2">
+                                          <span className="text-sm">
+                                            {selectedCountry?.id.toUpperCase()} {selectedCountry?.code}
+                                          </span>
+                                        </div>
+                                      </SelectValue>
+                                    </SelectTrigger>
+                                    <SelectContent className="w-[var(--radix-popper-anchor-width)] max-h-80 rounded-xl border-0 shadow-2xl bg-white/95 backdrop-blur-sm">
+                                      {filteredCountries.map((country) => (
+                                        <SelectItem key={country.id} value={country.code}>
+                                          {country.flag} {country.code}{" "}
+                                          {language === "es" ? country.name : country.country}
+                                        </SelectItem>
+                                      ))}
+                                      {filteredCountries.length === 0 && (
+                                        <div className="p-2 text-sm text-gray-500 text-center">
+                                          {t.noCountriesFound}
+                                        </div>
+                                      )}
+                                    </SelectContent>
+                                  </Select>
+                                </div>
+                                <div className="relative flex-1">
+                                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 w-4 h-4 z-10" />
+                                  <Input
+                                    name="phone"
+                                    placeholder={t.smallFormPhonePlaceholder}
+                                    value={formData.phone}
+                                    onChange={(e) => handleInputChange("phone", e.target.value)}
+                                    required
+                                    className="w-full bg-white/95 border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 rounded-r-lg rounded-l-none text-sm min-h-[40px]"
                                   />
-                                </svg>
-                                <span>{t.smallFormPrivacyText}</span>
+                                </div>
                               </div>
-                            </div>
-                          </form>
+                              {phoneError && <p className="text-red-400 text-sm text-left mt-1">{phoneError}</p>}
+                              <input type="hidden" name="language" value={language} />
+                              <SmallSubmitButton language={language} disabled={!ageConfirmed || !!phoneError}>
+                                {t.smallFormRegisterButton}
+                              </SmallSubmitButton>
+                              {/* Age Confirmation Checkbox (Small Form) */}
+                              <div className="flex items-start gap-4 text-xs text-white animate-in fade-in-50 duration-500 delay-600">
+                                <div className="relative">
+                                  <Checkbox
+                                    id="age-confirm-small"
+                                    checked={ageConfirmed}
+                                    onCheckedChange={(checked) => setAgeConfirmed(!!checked)}
+                                    required
+                                    className="mt-1 border-white/30 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 transition-all duration-200 hover:scale-110"
+                                  />
+                                </div>
+                                <label
+                                  htmlFor="age-confirm-small"
+                                  className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
+                                >
+                                  <Shield className="w-4 h-4 inline mr-2 text-orange-400" />
+                                  {t.ageConfirmation}
+                                </label>
+                              </div>
+                              {/* Terms Checkbox (Small Form) */}
+                              <div className="flex items-start gap-4 text-xs text-white animate-in fade-in-50 duration-500 delay-600">
+                                <div className="relative">
+                                  <Checkbox
+                                    id="terms-small"
+                                    required
+                                    className="mt-1 border-white/30 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 transition-all duration-200 hover:scale-110"
+                                  />
+                                </div>
+                                <label
+                                  htmlFor="terms-small"
+                                  className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
+                                >
+                                  <Shield className="w-4 h-4 inline mr-2 text-orange-400" />
+                                  {t.smallFormTermsText}
+                                </label>
+                              </div>
+                              {/* Privacy Text (Small Form) */}
+                              <div className="text-xs text-white/80 leading-relaxed animate-in fade-in-50 duration-500 delay-700 bg-white/5 p-4 rounded-lg border border-white/10">
+                                <div className="flex items-start gap-2">
+                                  <svg
+                                    className="w-4 h-4 text-blue-300 mt-0.5 flex-shrink-0"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                  >
+                                    <path
+                                      fillRule="evenodd"
+                                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                      clipRule="evenodd"
+                                    />
+                                  </svg>
+                                  <span>{t.smallFormPrivacyText}</span>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                  {/* Footer */}
+                  <footer className="bg-blue-900 text-white py-8 sm:py-12 mt-16 sm:mt-20">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
+                      {/* Company Info */}
+                      <div className="space-y-4 text-sm">
+                        <img
+                          src="/logo.png"
+                          alt="Coin Sin Limited Logo"
+                          className="h-20 w-40 object-contain rounded-lg mb-2"
+                        />
+                        <p className="leading-relaxed">{t.footerCompanyInfo}</p>
+                      </div>
+                      {/* Quick Links */}
+                      <div className="space-y-4">
+                        <h3 className="text-lg font-bold text-orange-400 mb-2">Enlaces Rápidos</h3>
+                        <ul className="space-y-2 text-sm">
+                          <li>
+                            <a
+                              href="#registration-form"
+                              className="hover:text-orange-300 transition-colors duration-200"
+                            >
+                              {t.footerContactanos}
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/privacy" className="hover:text-orange-300 transition-colors duration-200">
+                              {t.footerPrivacidad}
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/terms" className="hover:text-orange-300 transition-colors duration-200">
+                              {t.footerTerminos}
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/disclaimer" className="hover:text-orange-300 transition-colors duration-200">
+                              {t.footerDescargo}
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      {/* Contact Info */}
+                      <div className="space-y-4 text-sm">
+                        <h3 className="text-lg font-bold text-orange-400 mb-2">Contacto</h3>
+                        <p>
+                          <span className="font-semibold">{t.footerEmailLabel}</span> info@coinsinlimited.com
+                        </p>
+                      </div>
+                    </div>
+                    <div className="text-xs text-white/70 mt-8 text-center px-4 sm:px-8">
+                      <p>{t.footerCopyright}</p>
+                    </div>
+                    <div className="text-xs text-white/50 mt-4 text-center px-4 sm:px-8 leading-relaxed">
+                      <p>{t.disclaimerFull}</p>
+                    </div>
+                  </footer>
                 </div>
-                {/* Footer */}
-                <footer className="bg-blue-900 text-white py-8 sm:py-12 mt-16 sm:mt-20">
-                  <div className="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
-                    {/* Company Info */}
-                    <div className="space-y-4 text-sm">
-                      <img
-                        src="/logo.png"
-                        alt="Coin Sin Limited Logo"
-                        className="h-20 w-40 object-contain rounded-lg mb-2"
-                      />
-                      <p className="leading-relaxed">{t.footerCompanyInfo}</p>
-                    </div>
-                    {/* Quick Links */}
-                    <div className="space-y-4">
-                      <h3 className="text-lg font-bold text-orange-400 mb-2">Enlaces Rápidos</h3>
-                      <ul className="space-y-2 text-sm">
-                        <li>
-                          <a href="#" className="hover:text-orange-300 transition-colors duration-200">
-                            {t.footerContactanos}
-                          </a>
-                        </li>
-                        <li>
-                          <a href="/privacy" className="hover:text-orange-300 transition-colors duration-200">
-                            {t.footerPrivacidad}
-                          </a>
-                        </li>
-                        <li>
-                          <a href="/terms" className="hover:text-orange-300 transition-colors duration-200">
-                            {t.footerTerminos}
-                          </a>
-                        </li>
-                        <li>
-                          <a href="/disclaimer" className="hover:text-orange-300 transition-colors duration-200">
-                            {t.footerDescargo}
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                    {/* Contact Info */}
-                    <div className="space-y-4 text-sm">
-                      <h3 className="text-lg font-bold text-orange-400 mb-2">Contacto</h3>
-                      <p>
-                        <span className="font-semibold">{t.footerEmailLabel}</span> info@coinsinlimited.com
-                      </p>
-                    </div>
-                  </div>
-                  <div className="text-xs text-white/70 mt-8 text-center px-4 sm:px-8">
-                    <p>{t.footerCopyright} Coin Sin Limited.</p>
-                  </div>
-                  <div className="text-xs text-white/50 mt-4 text-center px-4 sm:px-8 leading-relaxed">
-                    <p>{t.disclaimerFull}</p>
-                  </div>
-                </footer>
               </div>
             </div>
           </div>

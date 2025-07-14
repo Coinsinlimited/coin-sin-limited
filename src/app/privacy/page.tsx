@@ -1,5 +1,6 @@
 "use client"
 import { useState, useMemo } from "react"
+import Link from "next/link" // Import Link for navigation
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Info } from "lucide-react"
@@ -186,8 +187,7 @@ const translations = {
         smallFormPrivacyText:
             "Tus datos siempre están protegidos con Coin Sin Limited. Al completar este formulario, aceptas recibir nuestros correos electrónicos de marketing.",
         ageConfirmation: "Confirmo que soy mayor de edad.",
-        disclaimerFull: `IMPORTANTE: Exenciones de Responsabilidad de Ingresos y Legales. Las gráficas de ingresos y ganancias creadas por smartbitboost.io, también conocido como "Este Sitio Web", se utilizan únicamente como ilustraciones ideales de su potencial de ganancias. El éxito de las personas en testimonios y otros ejemplos son resultados excepcionales, por lo que no están destinados a garantizar que usted u otros logren lo mismo. Los resultados individuales dependerán de cómo use smartbitboost.io. Por lo que haga, este sitio web no tiene responsabilidad. Siempre debe actuar con precaución y diligencia debida porque asume toda la responsabilidad por sus acciones y decisiones al utilizar productos y servicios. Acepta que de ninguna manera este sitio web será responsable de los resultados de su uso de nuestros servicios. Consulte nuestros términos de uso para obtener información sobre nuestras exenciones de responsabilidad y otras restricciones. Si bien el comercio puede generar beneficios notables, también conlleva el riesgo de perder el capital invertido en parte o en su totalidad, por lo que debe considerar si puede permitirse invertir. ©2025
-AVISO DE REGULACIÓN EN USA: El comercio de Forex, CFDs y criptomonedas no está bajo ninguna regulación estadounidense. La inversión en criptomonedas no está regulada ni supervisada por ninguna agencia financiera o de EE. UU. Cualquier comercio que no sea regulado por residentes estadounidenses se considera ilegal. Este sitio web no acepta clientes estadounidenses o ciudadanos estadounidenses. Este sitio web no tiene responsabilidad por las acciones de los clientes ubicados o con ciudadanía estadounidense. Los clientes ubicados dentro de los Estados Unidos o con ciudadanía estadounidense asumen toda la responsabilidad por sus acciones y decisiones al usar productos y servicios de este Sitio Web. En cualquier y todas las circunstancias, la elección de utilizar el Sitio Web, el Servicio y/o el Software es bajo la total responsabilidad del Usuario, quien debe cumplir con la legislación vigente.`,
+        disclaimerFull: `IMPORTANTE: Exenciones de Responsabilidad de Ingresos y Legales. Las gráficas de ingresos y ganancias creadas por smartbitboost.io, también conocido como "Este Sitio Web", se utilizan únicamente como ilustraciones ideales de su potencial de ganancias. El éxito de las personas en testimonios y otros ejemplos son resultados excepcionales, por lo que no están destinados a garantizar que usted u otros logren lo mismo. Los resultados individuales dependerán de cómo use smartbitboost.io. Por lo que haga, este sitio web no tiene responsabilidad. Siempre debe actuar con precaución y diligencia debida porque asume toda la responsabilidad por sus acciones y decisiones al utilizar productos y servicios. Acepta que de ninguna manera este sitio web será responsable de los resultados de su uso de nuestros servicios. Consulte nuestros términos de uso para obtener información sobre nuestras exenciones de responsabilidad y otras restricciones. Si bien el comercio puede generar beneficios notables, también conlleva el riesgo de perder el capital invertido en parte o en su totalidad, por lo que debe considerar si puede permitirse invertir. ©2025AVISO DE REGULACIÓN EN USA: El comercio de Forex, CFDs y criptomonedas no está bajo ninguna regulación estadounidense. La inversión en criptomonedas no está regulada ni supervisada por ninguna agencia financiera o de EE. UU. Cualquier comercio que no sea regulado por residentes estadounidenses se considera ilegal. Este sitio web no acepta clientes estadounidenses o ciudadanos estadounidenses. Este sitio web no tiene responsabilidad por las acciones de los clientes ubicados o con ciudadanía estadounidense. Los clientes ubicados dentro de los Estados Unidos o con ciudadanía estadounidense asumen toda la responsabilidad por sus acciones y decisiones al usar productos y servicios de este Sitio Web. En cualquier y todas las circunstancias, la elección de utilizar el Sitio Web, el Servicio y/o el Software es bajo la total responsabilidad del Usuario, quien debe cumplir con la legislación vigente.`,
         privacyPolicyContent: {
             title: "Política de Privacidad",
             general: {
@@ -214,7 +214,7 @@ AVISO DE REGULACIÓN EN USA: El comercio de Forex, CFDs y criptomonedas no está
                 p1: "El procesamiento de datos personales se realiza automáticamente. El procesamiento de datos personales es automático; este proceso no puede dar lugar a consecuencias legales ni afectarle de ninguna otra manera.",
                 p2: "El procesamiento de datos personales puede delegarse a otros proveedores de servicios de envío masivo, procesadores y proveedores de servicios de TI y en la nube. Además, podemos delegar parte o la totalidad del procesamiento al procesador, al proveedor de servicios de envío masivo, al proveedor de servicios de TI y al proveedor de servicios en la nube. La selección de los procesadores se realiza con el mayor cuidado posible para que sus datos personales estén protegidos en todo momento durante su procesamiento.",
                 p3: "Para utilizar el Servicio, es necesario proporcionar sus datos personales a los Anunciantes.",
-                p4: "Los datos pueden transferirse a cualquier estado del mundo. Los Anunciantes y procesadores son los destinatarios de sus datos personales. Para completar el contrato entre nosotros, se requiere la transferencia de sus datos personales a los Anunciantes, según se especifica en los Términos. La transferencia de datos personales se realiza utilizando las precauciones suficientes para garantizar que sus datos personales estén debidamente protegidos.",
+                p4: "Los datos pueden transferirse a cualquier estado del mundo. Los Anunciantes y procesadores son los receptores de sus datos personales. Para completar el contrato entre nosotros, se requiere la transferencia de sus datos personales a los Anunciantes, según se especifica en los Términos. La transferencia de datos personales se realiza utilizando las precauciones suficientes para garantizar que sus datos personales estén debidamente protegidos.",
             },
             legalBasisAndPeriods: {
                 heading: "Base legal y períodos del procesamiento de datos personales",
@@ -421,8 +421,7 @@ AVISO DE REGULACIÓN EN USA: El comercio de Forex, CFDs y criptomonedas no está
         smallFormPrivacyText:
             "Your data is always protected with Coin Sin Limited. By completing this form, you agree to receive our marketing emails.",
         ageConfirmation: "I confirm I am of legal age.",
-        disclaimerFull: `IMPORTANT: Income and Legal Disclaimers. The income and earnings graphs created by smartbitboost.io, also known as "This Website", are used solely as ideal illustrations of your earning potential. The success of individuals in testimonials and other examples are exceptional results, and therefore are not intended to guarantee that you or others will achieve the same. Individual results will depend on how you use smartbitboost.io. For whatever you do, this website has no responsibility. You should always act with caution and due diligence because you assume full responsibility for your actions and decisions when using products and services. You agree that in no way will this website be responsible for the results of your use of our services. See our terms of use for information on our disclaimers and other restrictions. While trading can generate notable benefits, it also carries the risk of losing invested capital in part or in full, so you should consider whether you can afford to invest. ©2025
-USA REGULATORY NOTICE: Forex, CFD, and cryptocurrency trading is not under any US regulation. Cryptocurrency investment is not regulated or supervised by any US or financial agency. Any unregulated trading by US residents is considered illegal. This website does not accept US clients or US citizens. This website has no responsibility for the actions of clients located in or with US citizenship. Clients located within the United States or with US citizenship assume full responsibility for their actions and decisions when using products and services from this Website. In any and all circumstances, the choice to use the Website, the Service and/or the Software is under the sole responsibility of the User, who must comply with current legislation.`,
+        disclaimerFull: `IMPORTANT: Income and Legal Disclaimers. The income and earnings graphs created by smartbitboost.io, also known as "This Website", are used solely as ideal illustrations of your earning potential. The success of individuals in testimonials and other examples are exceptional results, and therefore are not intended to guarantee that you or others will achieve the same. Individual results will depend on how you use smartbitboost.io. For whatever you do, this website has no responsibility. You should always act with caution and due diligence because you assume full responsibility for your actions and decisions when using products and services. You agree that in no way will this website be responsible for the results of your use of our services. See our terms of use for information on our disclaimers and other restrictions. While trading can generate notable benefits, it also carries the risk of losing invested capital in part or in full, so you should consider whether you can afford to invest. ©2025USA REGULATORY NOTICE: Forex, CFD, and cryptocurrency trading is not under any US regulation. Cryptocurrency investment is not regulated or supervised by any US or financial agency. Any unregulated trading by US residents is considered illegal. This website does not accept US clients or US citizens. This website has no responsibility for the actions of clients located in or with US citizenship. Clients located within the United States or with US citizenship assume full responsibility for their actions and decisions when using products and services from this Website. In any and all circumstances, the choice to use the Website, the Service and/or the Software is under the sole responsibility of the User, who must comply with current legislation.`,
         privacyPolicyContent: {
             title: "Privacy Policy",
             general: {
@@ -477,13 +476,11 @@ USA REGULATORY NOTICE: Forex, CFD, and cryptocurrency trading is not under any U
                 p7: "We will provide any communication and any action for free, however, when required, we may charge you a reasonable fee, taking into account administrative costs and other features associated with the provision of information or refuse to act upon request.",
                 p8: "You can file a complaint related to the protection of personal data with the appropriate state body, request judicial protection if you believe that your rights have been violated. You can also file any complaint or request by contacting us.",
                 p9: "If you need more information about the relevant authorities in your country or any such information, do not hesitate to contact us.",
-                p10: "To contact our operator, please click here.",
-                copyright: "Copyright © 2023 product | All Rights Reserved",
+                copyright: "Copyright © 2023 producto | All Rights Reserved",
             },
         },
     },
 }
-
 const countryCodes = [
     { code: "+1", flag: "🇺🇸", country: "United States", name: "Estados Unidos", id: "us" },
     { code: "+1", flag: "🇨🇦", country: "Canada", name: "Canadá", id: "ca" },
@@ -497,7 +494,7 @@ const countryCodes = [
     { code: "+34", flag: "🇪🇸", country: "Spain", name: "España", id: "es" },
     { code: "+36", flag: "🇭🇺", country: "Hungary", name: "Hungría", id: "hu" },
     { code: "+39", flag: "🇮🇹", country: "Italy", name: "Italia", id: "it" },
-    { code: "+40", flag: "🇷🇴", country: "Romania", name: "Rumania", id: "ro" },
+    { code: "+40", flag: "🇷🇴", country: "Romania", name: "Rumanía", id: "ro" },
     { code: "+41", flag: "🇨🇭", country: "Switzerland", name: "Suiza", id: "ch" },
     { code: "+43", flag: "🇦🇹", country: "Austria", name: "Austria", id: "at" },
     { code: "+44", flag: "🇬🇧", country: "United Kingdom", name: "Reino Unido", id: "gb" },
@@ -704,14 +701,12 @@ const countryCodes = [
     { code: "+996", flag: "🇰🇬", country: "Kyrgyzstan", name: "Kirguistán", id: "kg" },
     { code: "+998", flag: "🇺🇿", country: "Uzbekistan", name: "Uzbekistán", id: "uz" },
 ]
-
 const platformNetBenefit = 466837090 // Static for this page
 const newUsersToday = 4000 // Static for this page
 
 export default function PrivacyPolicyPage() {
     const [language, setLanguage] = useState<"es" | "en">("es")
     const [countrySearch, setCountrySearch] = useState("") // Needed for Select component, even if not used for search on this page
-
     const t = translations[language]
 
     const handleLanguageChange = (newLanguage: string) => {
@@ -783,17 +778,14 @@ export default function PrivacyPolicyPage() {
                     </header>
                 </div>
             </div>
-
             {/* Main Content Area for Privacy Policy */}
-            <main className="max-w-4xl mx-auto px-4 py-8 sm:px-6 sm:py-12 text-white">
+            <main id="privacy-policy-section" className="max-w-4xl mx-auto px-4 py-8 sm:px-6 sm:py-12 text-white">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-12">{t.privacyPolicyContent.title}</h1>
-
                 <section className="space-y-8 text-lg leading-relaxed">
                     <h2 className="text-3xl font-bold text-orange-400 mb-4">{t.privacyPolicyContent.general.heading}</h2>
                     <p>{t.privacyPolicyContent.general.p1}</p>
                     <p>{t.privacyPolicyContent.general.p2}</p>
                     <p>{t.privacyPolicyContent.general.p3}</p>
-
                     <h2 className="text-3xl font-bold text-orange-400 mb-4">
                         {t.privacyPolicyContent.methodsAndPrinciples.heading}
                     </h2>
@@ -801,14 +793,12 @@ export default function PrivacyPolicyPage() {
                     <p>{t.privacyPolicyContent.methodsAndPrinciples.p2}</p>
                     <p>{t.privacyPolicyContent.methodsAndPrinciples.p3}</p>
                     <p>{t.privacyPolicyContent.methodsAndPrinciples.p4}</p>
-
                     <h2 className="text-3xl font-bold text-orange-400 mb-4">
                         {t.privacyPolicyContent.processedPersonalData.heading}
                     </h2>
                     <p>{t.privacyPolicyContent.processedPersonalData.p1}</p>
                     <p>{t.privacyPolicyContent.processedPersonalData.p2}</p>
                     <p>{t.privacyPolicyContent.processedPersonalData.p3}</p>
-
                     <h2 className="text-3xl font-bold text-orange-400 mb-4">
                         {t.privacyPolicyContent.methodsOfProcessing.heading}
                     </h2>
@@ -816,13 +806,11 @@ export default function PrivacyPolicyPage() {
                     <p>{t.privacyPolicyContent.methodsOfProcessing.p2}</p>
                     <p>{t.privacyPolicyContent.methodsOfProcessing.p3}</p>
                     <p>{t.privacyPolicyContent.methodsOfProcessing.p4}</p>
-
                     <h2 className="text-3xl font-bold text-orange-400 mb-4">
                         {t.privacyPolicyContent.legalBasisAndPeriods.heading}
                     </h2>
                     <p>{t.privacyPolicyContent.legalBasisAndPeriods.p1}</p>
                     <p>{t.privacyPolicyContent.legalBasisAndPeriods.p2}</p>
-
                     <h2 className="text-3xl font-bold text-orange-400 mb-4">
                         {t.privacyPolicyContent.dataSubjectRights.heading}
                     </h2>
@@ -840,17 +828,9 @@ export default function PrivacyPolicyPage() {
                     <p>{t.privacyPolicyContent.dataSubjectRights.p7}</p>
                     <p>{t.privacyPolicyContent.dataSubjectRights.p8}</p>
                     <p>{t.privacyPolicyContent.dataSubjectRights.p9}</p>
-                    <p>
-                        Para contactar a nuestro operador,{" "}
-                        <a href="#" className="text-orange-400 hover:underline">
-                            haga clic aquí
-                        </a>
-                        .
-                    </p>
                     <p className="text-sm text-white/70 mt-8">{t.privacyPolicyContent.dataSubjectRights.copyright}</p>
                 </section>
             </main>
-
             {/* Footer */}
             <footer className="bg-blue-900 text-white py-8 sm:py-12 mt-16 sm:mt-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
@@ -864,29 +844,24 @@ export default function PrivacyPolicyPage() {
                         <h3 className="text-lg font-bold text-orange-400 mb-2">Enlaces Rápidos</h3>
                         <ul className="space-y-2 text-sm">
                             <li>
-                                <a href="#" className="hover:text-orange-300 transition-colors duration-200">
+                                <Link href="/#registration-form" className="hover:text-orange-300 transition-colors duration-200">
                                     {t.footerContactanos}
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:text-orange-300 transition-colors duration-200">
+                                <Link href="#privacy-policy-section" className="hover:text-orange-300 transition-colors duration-200">
                                     {t.footerPrivacidad}
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:text-orange-300 transition-colors duration-200">
+                                <Link href="/terms" className="hover:text-orange-300 transition-colors duration-200">
                                     {t.footerTerminos}
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:text-orange-300 transition-colors duration-200">
+                                <Link href="/disclaimer" className="hover:text-orange-300 transition-colors duration-200">
                                     {t.footerDescargo}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" className="hover:text-orange-300 transition-colors duration-200">
-                                    {t.footerAbuso}
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

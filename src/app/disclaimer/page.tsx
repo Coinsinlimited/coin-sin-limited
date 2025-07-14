@@ -765,7 +765,7 @@ export default function DisclaimerPage() {
                         <h3 className="text-lg font-bold text-orange-400 mb-2">Enlaces Rápidos</h3>
                         <ul className="space-y-2 text-sm">
                             <li>
-                                <a href="#" className="hover:text-orange-300 transition-colors duration-200">
+                                <a href="/#registration-form" className="hover:text-orange-300 transition-colors duration-200">
                                     {t.footerContactanos}
                                 </a>
                             </li>
