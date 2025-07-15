@@ -242,7 +242,6 @@ const translations = {
                 p7: "Proporcionaremos cualquier comunicación y cualquier acción de forma gratuita; sin embargo, cuando sea necesario, podemos cobrarle una tarifa razonable, teniendo en cuenta los costos administrativos y otras características asociadas con la provisión de información, o negarnos a actuar según la solicitud.",
                 p8: "Puede presentar una queja relacionada con la protección de datos personales ante el organismo estatal correspondiente, solicitar protección judicial si cree que sus derechos han sido violados. También puede presentar cualquier queja o solicitud poniéndose en contacto con nosotros.",
                 p9: "Si necesita más información sobre las autoridades relevantes en su país o cualquier otra información, no dude en contactarnos.",
-                p10: "Para contactar a nuestro operador, haga clic aquí.",
                 copyright: "Copyright © 2023 producto | Todos los derechos reservados",
             },
         },
@@ -476,11 +475,486 @@ const translations = {
                 p7: "We will provide any communication and any action for free, however, when required, we may charge you a reasonable fee, taking into account administrative costs and other features associated with the provision of information or refuse to act upon request.",
                 p8: "You can file a complaint related to the protection of personal data with the appropriate state body, request judicial protection if you believe that your rights have been violated. You can also file any complaint or request by contacting us.",
                 p9: "If you need more information about the relevant authorities in your country or any such information, do not hesitate to contact us.",
-                copyright: "Copyright © 2023 producto | All Rights Reserved",
+                copyright: "Copyright © 2023 product | All Rights Reserved",
+            },
+        },
+    },
+    ca: {
+        notification:
+            "Actua ara! Coin Sin Limited està accelerant els guanys dels participants! Assegura el teu lloc abans que caduqui la invitació Privada!",
+        platformBenefit: "Benefici NET d'Usuaris:",
+        userIncome: "Usuaris nous a la data",
+        mainTitle: "Ingressos intel·ligents cada dia per a la teva nova",
+        mainTitleHighlight: "vida sense estrès per sempre",
+        subtitle: "Els nostres usuaris solen fer x2, x5 i fins i tot x10 en inversions",
+        readyToJoin: "LLest per unir-te? Inicia el teu registre al sistema aquí i ara.",
+        motivationalText:
+            "TENS DRET A LA INDEPENDÈNCIA FINANCERA, I NO ÉS UN PRIVILEGI. ÉS EL TEU DRET, INDEPENDENTMENT DE LA TEVA EDAT, ASSOLIMENTS I ESTATUS SOCIAL.",
+        playVideo: "Reproduir Vídeo",
+        pauseVideo: "Pausar Vídeo",
+        improveLife: "MILLORA LA TEVA VIDA AVUI",
+        namePlaceholder: "El teu nom",
+        surnamePlaceholder: "El teu cognom",
+        emailPlaceholder: "El teu correu electrònic",
+        phonePlaceholder: "9 11 2345-6789",
+        registerButton: "Registra'm",
+        searchCountry: "Cercar país...",
+        termsText: "En registrar-te, acceptes i estàs d'acord amb els termes d'ús i la Política de privadesa del lloc.",
+        privacyText:
+            "Les teves dades sempre estan protegides amb Coin Sin Limited. En completar aquest formulari, acceptes rebre els nostres correus electrònics de màrqueting. Pots canviar d'opinió en qualsevol moment fent clic a l'enllaç per donar-te de baixa a la part inferior de qualsevol dels nostres correus electrònics.",
+        registrationSuccessTitle: "Moltes Gràcies per Registrar-te!",
+        noCountriesFound: "No s'han trobat països",
+        masterTradingTitle: "DOMINA EL TRADING DE CRIPTOMONEDES AMB EL NOSTRE",
+        masterTradingHighlight: "SISTEMA D'INVERSIÓ PER IA AMB UNA PRECISIÓ DEL 99.4%",
+        ctaParagraph1:
+            "Imagina una nova vida en la qual la feina esdevingui opcional, els estalvis ja no siguin necessaris i totes les teves factures es paguin sense esforç. Imagina la llibertat d'explorar, planificar un cotxe nou o fins i tot tenir una casa.",
+        ctaParagraph2:
+            "Ara imagina't mirant la pantalla del teu telèfon intel·ligent i sent testimoni d'un altre guany de 1.000$ sense esforç avui mateix. Sona atractiu, oi?",
+        ctaParagraph3:
+            "Coin Sin Limited ho fa possible. Com una plataforma d'inici impulsada per IA, empoderem els nous inversors perquè es submergeixin en el món de les inversions en criptomonedes, independentment de la seva experiència prèvia. En començar amb una inversió de només 250€, pots aprofitar l'oportunitat de multiplicar els teus guanys diaris per x5.",
+        ctaParagraph4:
+            "Llest per unir-te a nosaltres? Segueix les instruccions d'aquesta pàgina i emprèn el teu emocionant viatge cap a una vida estable i sense preocupacions, plena d'abundants plaers!",
+        startNowButton: "Comença ara",
+        advantagesTitle:
+            "AVANTATGES D'INVERTIR EN DIVISES POPULARS I INFORMACIÓ ESSENCIAL SOBRE LA PLATAFORMA COIN SIN LIMITED",
+        advantagesIntro:
+            "Invertir en divises digitals és una opció atractiva per als inversors. Les criptomonedes reuneixen totes les característiques necessàries per oferir una liquiditat estable. Dos factors clau determinen els beneficis d'aquest tipus d'inversions:",
+        growthPotentialTitle: "Potencial de creixement:",
+        growthPotentialText:
+            "Algunes criptomonedes ja han assolit un valor significatiu, però molts projectes tenen un gran potencial de desenvolupament. A causa de la seva creixent popularitat, el mercat de les criptomonedes atrau inversors que poden obtenir alts rendiments invertint en actius digitals.",
+        diversificationTitle: "Diversificació de la cartera:",
+        diversificationText:
+            "Les criptomonedes brinden l'oportunitat de diversificar la seva cartera de inversions. Proporcionen una classe d'actius alternativa que és independent dels mercats financers tradicionals. Invertir en criptomonedes ajuda a diversificar el risc i a protegir la cartera de possibles influències negatives en una àrea.",
+        focusOnPlatformTitle: "Centrem-nos ara en la plataforma Coin Sin Limited.",
+        focusOnPlatformText1:
+            "Per què la intel·ligència artificial (IA) és fonamental per al mercat d'inversió? La IA és més ràpida que el cervell humà i pot analitzar dades amb precisió, sempre que el sistema estigui configurat correctament. L'aprenentatge automàtic té tres avantatges significatius en el mercat d'inversió.",
+        focusOnPlatformText2:
+            "A més, la intel·ligència artificial opera en el mercat les 24/7 ara. Significa coneixement de la situació global en temps real, acumulació de coneixements sobre patrons i creació immediata d'estratègies rendibles. La plataforma Coin Sin Limited ofereix una rendibilitat eficaç d'assolir per als humans. És qüestió de temps que les màquines assumeixin plenament aquesta funció.",
+        focusOnPlatformText3:
+            "Un altre factor que fa atractiva la inversió al Canadà, Austràlia i altres països és l'educació. Moltes persones senten que un humà pot prendre decisions influït per les emocions, una màquina roman objectiva i racional. És fonamental no oblidar les emocions. Segregar la racionalitat de l'emoció és fonamental, però una realitat en l'esfera de la inversió, on tot es decideix basant-se en dades pures i previsions exactes.",
+        focusOnPlatformText4:
+            "A més, invertir abans d'obtenir ingressos és significativament diferent. Abans que una persona comenci a obtenir ingressos, gasta una quantitat significativa de diners en proves, la qual cosa té beneficis, a més d'adquirir experiència situacional i consciència de la inversió. En canvi, una màquina s'encarrega d'això molt més ràpid i requereix un desemborsament mínim per maximitzar els ingressos.",
+        nineReasonsIntro:
+            "Així doncs, tenim nou raons principals per les quals utilitzar la plataforma Coin Sin Limited és beneficiós, especialment per als operadors principiants:",
+        reason1:
+            "Les nostres eines de trading processen grans quantitats de dades de forma ràpida i eficient, la qual cosa li permet prendre decisions precises.",
+        reason2:
+            "El programari basat en intel·ligència artificial proporciona una anàlisi avançada del mercat amb dades i previsions precises.",
+        reason3:
+            "La intel·ligència artificial s'adapta a les condicions actuals del mercat, suggerint les millors estratègies d'inversió.",
+        reason4:
+            "Invertir amb un sistema basat en intel·ligència artificial no es veu afectat per errors humans i proporciona informació objectiva.",
+        reason5: "Invertir usant una màquina és més barat que prendre decisions humanes i genera més beneficis.",
+        reason6:
+            "La intel·ligència artificial requereix menys inversió inicial, la qual cosa augmenta l'eficiència de la inversió.",
+        reason7:
+            "Invertir amb eines basades en intel·ligència artificial fa que les inversions siguin assequibles al Canadà, Austràlia i altres països.",
+        reason8: "L'ús de la intel·ligència artificial augmenta la velocitat de la presa de decisions.",
+        reason9:
+            "La intel·ligència artificial proporciona una presa de decisions més ràpida per realitzar millors accions d'inversió.",
+        efficiencyGuarantee:
+            "Així, la intel·ligència artificial garanteix la rendibilitat de la inversió en assegurar una eficàcia dels sistemes d'almenys el 95%. La precisió depèn del sistema específic, però pot assolir per als humans entre el 95% i el 99,4%. L'eficiència dels nostres instruments de negociació basats en algoritmes Coin Sin Limited és del 99,4%.",
+        platformBenefitTitle: "COIN SIN LIMITED ÉS UNA PLATAFORMA QUE TREBALLA EN BENEFICI DE L'INVERSOR",
+        platformBenefitText1:
+            "Per als inversors novells, invertir en criptomonedes pot resultar increïblement complicat. Sovint, els principiants necessiten comprendre tots els secrets d'aquest àmbit per no perdre les seves petites inversions en el menor temps possible. Això els porta a perdre l'interès per les criptomonedes i per la inversió en general. No obstant això, necessiten adonar-se de les oportunitats potencials que estan perdent.",
+        platformBenefitText2:
+            "La plataforma Coin Sin Limited els permet fer realitat els seus somnis d'ingressos passius estables. Basat en intel·ligència artificial, aquest algoritme treballa contínuament, analitzant la situació del mercat, estudiant les tendències de les criptomonedes i realitzant operacions que gairebé sempre resulten rendibles. Milers de persones a tot el món ja han generat milers de milions de dòlars amb Coin Sin Limited.",
+        platformFeaturesTitle: "Les característiques de la plataforma Coin Sin Limited inclouen:",
+        feature1:
+            "Un profund coneixement del mercat de criptomonedes i de les tendències en el món dels actius digitals que estan fora de l'abast de la ment humana.",
+        feature2:
+            "El superordinador pot calcular milions de variacions cada segon i predir tendències amb la màxima precisió.",
+        feature3: "Operacions segures amb beneficis per a l'inversor.",
+        platformUnnoticedText:
+            "La plataforma Coin Sin Limited va passar desapercebuda en el moment del llançament del producte. No obstant això, està provocant la ira i el pànic de bancs centrals i governs de tot el món. Mentre els grans jugadors intenten aturar el projecte de la plataforma Coin Sin Limited, vostè pot començar a guanyar molts diners ara.",
+        investSmartTitle: "INVERTEIX EN CRIPTODIVISES DE FORMA INTEL·LIGENT AMB LA PLATAFORMA COIN SIN LIMITED",
+        investSmartText1:
+            "Els temps no són fàcils, i tot al nostre voltant va a poc a poc cap avall. Encara que la situació pot millorar en el futur, tothom hauria d'ocupar-se avui del seu futur per no dependre de factors externs. Les eines intel·ligents poden ajudar-te amb això.",
+        investSmartText2:
+            "La plataforma d'inversió Coin Sin Limited li permet fer-ho sense perdre temps estudiant el mercat de divises digitals. Pot començar a invertir avui mateix en països com el Canadà, Austràlia i altres. L'èxit està precalculat, i tot el que necessita és el desig d'unir-se.",
+        algorithmToolsIntro: "L'algoritme li proporciona les eines per ajudar-lo:",
+        tool1: "Evitar riscos i pèrdues innecessàries.",
+        tool2: "Obtenir ingressos gairebé totalment passius.",
+        tool3: "Treballar en el mercat amb una àmplia diversificació de la cartera i una reducció paral·lela del risc.",
+        tool4: "Rebre ingressos estables tant a curt com a llarg termini.",
+        finalInvitation:
+            "Per tant, el convidem a començar a escriure la primera pàgina de la seva història d'un inversor d'èxit avui després de llegir la revisió de Coin Sin Limited!",
+        potentialEarningsTitle: "QUÈ GUANYS POTENCIALS PUC ESPERAR EN INVERTIR AMB COIN SIN LIMITED?",
+        myInvestment: "La meva inversió:",
+        usagePeriod: "Període d'ús:",
+        days: "dies",
+        potentialProfit: "Guany Potencial",
+        startInvestingNowButton: "Començar a Invertir Ara!",
+        disclaimer:
+            "* Els resultats mostrats són estimacions basades en el rendiment històric de la plataforma. Les inversions comporten riscos.",
+        demoAccountTitle: "PROVA EL COMPTE DE DEMOSTRACIÓ DE COIN SIN LIMITED",
+        demoAccountText1:
+            "Sent-te lliure de l'alt cost d'entrada al món de la inversió! No necessites gastar desenes de milers de dòlars per entendre el comerç de criptomonedes, com funciona i què has de fer per evitar pèrdues. T'oferim l'oportunitat d'invertir fins i tot uns pocs centenars de dòlars i convertir-los en un negoci rendible.",
+        demoAccountText2:
+            "Prova una eina sense riscos per a un comerç rendible! Registra't, diposita almenys 250€ i obtén el teu primer benefici avui mateix. Simplement desplaça't fins a la part inferior de la pàgina i registra't.",
+        notScamTitle: "COIN SIN LIMITED NO ÉS UNA ESTAFA, I AQUESTA ÉS LA RAÓ",
+        notScamText1:
+            "És un projecte d'inversió automatitzat que ofereix l'oportunitat de guanyar diners invertint en criptomonedes populars i projectes prometedors en el món dels actius digitals. El sistema està controlat per enginyers informàtics i corredors registrats a CySEC. Corredors autoritzats realitzen els processos financers del sistema.",
+        notScamText2:
+            "Els usuaris tenen accés a un compte de demostració virtual on poden avaluar sense riscos les capacitats del sistema abans d'invertir fons reals. La protecció de l'usuari és el principal requisit del projecte. Els certificats SSL i el xifratge multicapa protegeixen de forma fiable totes les dades personals.",
+        notScamText3:
+            "Per seguretat, es recomana tancar la sessió després de cada ús i evitar la connexió al sistema des de xarxes públiques.",
+        notScamText4:
+            "Coin Sin Limited ofereix màxims beneficis i guanys sense riscos, i presenta proves de no frau. També trobaràs opinions sobre Coin Sin Limited a continuació.",
+        testimonialsTitle: "DESCOBREIX EL QUE DIUEN ELS MEMBRES DE",
+        testimonialsHighlight: "COIN SIN LIMITED",
+        testimonialsTitle2: "DIUEN SOBRE AQUESTA PLATAFORMA DE TRADING:",
+        tradingEasyTitle: "TRADING AMB COIN SIN LIMITED ÉS",
+        tradingEasyHighlight: "100% FÀCIL I CÒMODE!",
+        tradingEasyIntro:
+            "En enviar el formulari següent amb la teva informació precisa en aquesta pàgina web, desbloquejaràs ràpidament l'accés sense restriccions al nostre sistema de comerç de IA altament fiable, dedicat i imparcial. Uneix-te als més de 2.500 inversors astuts que ja s'estan beneficiant de les seves capacitats.",
+        featureAiSelectionsTitle: "SELECCIONS D'INVERSIÓ EXCLUSIVAMENT RENDIBLES REALITZADES PER IA",
+        featureAiSelectionsText:
+            "Enrere van quedar els dies en què les inversions estaven reservades per als rics. El nostre avançat sistema informàtic analitza meticulosament la liquiditat, la volatilitat i el volum d'operacions, la qual cosa garanteix decisions d'inversió òptimes. Gaudeix d'ingressos constants al teu compte a través d'accions d'empreses de primer nivell, recolzades per una impressionant garantia de precisió comercial del 99.4%.",
+        featureAutoTradingTitle: "FUNCIONALITAT DE COMERÇ AUTOMÀTIC IMPECABLE",
+        featureAutoTradingText:
+            "Experimenta la Conveniència de la nostra funció de trading automàtic, que et permet generar guanys sense esforç, fins i tot quan no estiguis al teu lloc de treball. No es requereix experiència comercial! Simplement fes la teva inversió inicial i observa com el saldo del teu compte creix constantment.",
+        featureSupportTitle: "SUPORT COMPLETO AL USUARI",
+        featureSupportText:
+            "Com a membre valuós de Coin Sin Limited, el nostre amigable gerent d'atenció al client està a la teva disposició, llest per atendre qualsevol consulta o inquietud que puguis tenir.",
+        featureCommunityTitle: "ACCÉS EXCLUSIU A UNA COMUNITAT ÚNICA",
+        featureCommunityText:
+            "Uneix-te a nostra prestigiosa comunitat Coin Sin Limited i obtén una membresía privilegiada. Considera't afortunat d'haver trobat l'oportunitat de registrar. Tingues en compte que, a causa de les limitacions de capacitat del sistema, només podem enviar invitacions a un número selecte de usuaris. Aprofita aquesta oportunitat per resoldre els teus problemes econòmics d'una vegada per totes.",
+        createAccountButton: "¡Crea el teu compte!",
+        howToStartTitle: "COM",
+        howToStartHighlight: "COMENÇAR?",
+        step1Title: "REGISTRE: COMPLETA EL FORMULARI A CONTINUACIÓN",
+        step1Description:
+            "El formulari de registre està en aquesta pàgina. Completa el formulari per convertir-te en membre. Una vegada que el teu registre sigui aprovat, automàticament et convertiràs en un nou participant de Coin Sin Limited.",
+        step2Title: "DEPOSITA €250 O MÁS",
+        step2Description:
+            "Com en qualsevol empresa, necessites un capital inicial. L'avantatge de la plataforma Coin Sin Limited és que només requereix una modesta inversió inicial. Simplement diposita €250 o més per començar a guanyar diners.",
+        step3Title: "ESTIGUES ATENT AL TEU TELÈFON... ¡PODRIES REBRE UNA TRUCADA!",
+        step3Description:
+            "Després de realitzar un pagament, el nostre gerent es posarà en contacte amb tu per confirmar-ho tot i activar el teu compte. Si tens alguna pregunta, el gerent et proporcionarà respostes detallades per ajudar-te. Tingues en compte que la trucada pot provenir d'un número no identificat.",
+        faqTitle: "PREGUNTES",
+        faqHighlight: "FREQUENTS",
+        finalSectionTitle: "APROFITA LA OPORTUNITAT DE CONVERTIR-TE EN UN INVERSOR INTEL·LIGENT AVUI I...",
+        finalSectionSubtitle: "...DESENCADENA UN MÓN DE POSSIBILITATS, ¡CON UN MÍNIMO DE $1,000 EN TU CUENTA CADA DÍA!",
+        finalSectionText:
+            "Actúa ahora proporcionando tu nombre completo y correo electrónico en el formulario a continuación, y desbloquea la oportunidad más excepcional y exclusiva para generar ingresos sustanciales sin esfuerzo. Deja que la IA se encargue del trabajo duro mientras tú obtienes beneficios tangibles al instante. ¡No te lo pierdas!",
+        footerCompanyInfo:
+            "Coin Sin Limited es una empresa especializada en proporcionar información y herramientas para la inversión y el trading de criptomonedas, basada en inteligencia artificial.",
+        footerContactanos: "Contacta'ns",
+        footerPrivacidad: "Privadesa",
+        footerTerminos: "Termes",
+        footerDescargo: "Exempció de Responsabilitat",
+        footerAbuso: "Report d'Abús",
+        footerEmailLabel: "Email:",
+        footerCopyright: "Tots els drets reservats.",
+        smallFormNamePlaceholder: "El teu nom",
+        smallFormSurnamePlaceholder: "El teu cognom",
+        smallFormEmailPlaceholder: "El teu correu electrònic",
+        smallFormPhonePlaceholder: "9 11 2345-6789",
+        smallFormRegisterButton: "Registra'm",
+        smallFormTermsText:
+            "En registrar-te, acceptes i estàs d'acord amb els termes d'ús i la Política de privadesa del lloc.",
+        smallFormPrivacyText:
+            "Les teves dades sempre estan protegides amb Coin Sin Limited. En completar aquest formulari, acceptes rebre els nostres correus electrònics de màrqueting.",
+        ageConfirmation: "Confirmo que sóc major d'edat.",
+        disclaimerFull: `IMPORTANT: Exempcions de Responsabilitat d'Ingressos i Legals. Les gràfiques d'ingressos i guanys creades per smartbitboost.io, també conegut com "Aquest Lloc Web", s'utilitzen únicament com a il·lustracions ideals del seu potencial de guanys. L'èxit de les persones en testimonis i altres exemples són resultats excepcionals, per la qual cosa no estan destinats a garantir que vostè o altres aconseguiran el mateix. Els resultats individuals dependran de com utilitzi smartbitboost.io. Per la qual cosa faci, aquest lloc web no té responsabilitat. Sempre ha d'actuar amb precaució i diligència deguda perquè assumeix tota la responsabilitat per les seves accions i decisions en utilitzar productes i serveis. Accepta que de cap manera aquest lloc web serà responsable dels resultats del seu ús dels nostres serveis. Consulteu els nostres termes d'ús per obtenir informació sobre les nostres exempcions de responsabilitat i altres restriccions. Si bé el comerç pot generar beneficis notables, també comporta el risc de perdre el capital invertit en part o en la seva totalitat, per la qual cosa ha de considerar si pot permetre's invertir. ©2025AVÍS DE REGULACIÓ ALS EUA: El comerç de Forex, CFDs i criptomonedes no està sota cap regulació nord-americana. La inversió en criptomonedes no està regulada ni supervisada per cap agència financera o dels EUA. Qualsevol comerç que no sigui regulat per residents nord-americans es considera il·legal. Aquest lloc web no accepta clients nord-americans o ciutadans nord-americans. Aquest lloc web no té responsabilitat per les accions dels clients ubicats o amb ciutadania nord-americana. Els clients ubicats dins dels Estats Units o amb ciutadania nord-americana assumeixen tota la responsabilitat per les seves accions i decisions en utilitzar productes i serveis d'aquest Lloc Web. En qualsevol i totes les circumstàncies, la elecció d'utilitzar el Lloc Web, el Servei i/o el Programari és sota la total responsabilitat de l'Usuari, qui ha de complir amb la legislació vigent.`,
+        privacyPolicyContent: {
+            title: "Política de Privadesa",
+            general: {
+                heading: "General",
+                p1: "Rebem les seves dades personals per a l'ús del Lloc Web i/o Servei. La informació detallada sobre el processament de les seves dades personals es proporciona en aquesta Política de Privadesa.",
+                p2: "Aquesta pàgina l'informa sobre les nostres polítiques pel que fa a la recopilació, ús i divulgació de dades personals quan vostè, com a Usuari d'aquest Lloc Web (d'ara endavant, «Vostè» o «Usuari»), utilitza aquest Lloc Web.",
+                p3: "En utilitzar el Lloc Web, vostè accepta la recopilació i l'ús d'informació d'acord amb aquesta política. A menys que es defineixi el contrari en aquesta Política de Privadesa, els termes utilitzats en aquesta Política de Privadesa tenen el mateix significat que en els nostres termes d'ús del Lloc Web.",
+            },
+            methodsAndPrinciples: {
+                heading: "Mètodes i principis del processament de dades personals",
+                p1: "Respectem la seva seguretat i processem la seva pròpia informació amb dignitat, legalment i d'acord amb aquesta Política de Privadesa i la llei pertinent. En cas que es trobi a la Unió Europea, processem les seves dades personals segons el Reglament (UE) 2016/679 del Parlament Europeu i del Consell de 27 d'abril de 2016 relatiu a la protecció de les persones físiques pel que fa al tractament de dades personals i a la lliure circulació d'aquestes dades, i pel qual es deroga la Directiva 95/46/CE (Reglament General de Protecció de Dades; “RGPD”).",
+                p2: "Per evitar la divulgació i l'ús no autoritzats de dades personals que no tenen l'autoritat per divulgar aquestes dades, així com per prevenir altres tipus de violacions de seguretat de les dades personals que s'estan processant, hem desenvolupat mesures tècniques i organitzatives adequades.",
+                p3: "En cas que es produeixi alguna violació de la seguretat de les dades personals processades, que impliqui un alt risc per als seus drets i llibertats, l'informarem immediatament a la nostra adreça de correu electrònic.",
+                p4: "Si no ha donat el seu consentiment previ, no processarem les seves dades personals.",
+            },
+            processedPersonalData: {
+                heading: "Dades personals processades",
+                p1: "El processament de dades personals es produeix després que s'introdueixen al formulari de registre al Lloc Web. En enviar el formulari de registre, vostè accepta celebrar un acord amb nosaltres sota els termes dels quals facilitem la comunicació entre el proveïdor de Productes i/o Serveis (Anunciant) i vostè, per tal de processar la seva sol·licitud per celebrar un acord amb l'Anunciant per a la compra de Serveis o Productes anunciats al Lloc Web.",
+                p2: "Les adreces IP i les cookies dels usuaris del nostre lloc web són recopilades i processades per nosaltres. Les cookies són petits fragments de dades enviats per un servidor web i emmagatzemats al seu ordinador; aquestes dades ens ajuden a millorar l'experiència del nostre lloc web. Pot rebutjar les cookies deshabilitant-les a la configuració del seu navegador web; no obstant això, restringir l'ús de cookies pot afectar el funcionament del nostre lloc web.",
+                p3: "Vostè confirma que totes les dades personals que proporciona estan actualitzades, són veraces i correctes. Vostè és responsable de qualsevol dany causat per la provisió d'informació personal incorrecta.",
+            },
+            methodsOfProcessing: {
+                heading: "Mètodes de processament de dades personals",
+                p1: "El processament de dades personals es realitza automàticament. El processament de dades personals és automàtic; aquest procés no pot donar lloc a conseqüències legals ni afectar-lo de cap altra manera.",
+                p2: "El processament de dades personals pot delegar-se a altres proveïdors de serveis d'enviament massiu, processadors i proveïdors de serveis de TI i al núvol. A més, podem delegar part o la totalitat del processament al processador, al proveïdor de serveis d'enviament massiu, al proveïdor de serveis de TI i al proveïdor de serveis al núvol. La selecció dels processadors es realitza amb la màxima cura possible perquè les seves dades personals estiguin protegides en tot moment durant el seu processament.",
+                p3: "Per utilitzar el Servei, és necessari proporcionar les seves dades personals als Anunciants.",
+                p4: "Les dades poden transferir-se a qualsevol estat del món. Els Anunciants i processadors són els receptors de les seves dades personals. Per completar el contracte entre nosaltres, es requereix la transferència de les seves dades personals als Anunciants, segons s'especifica en els Termes. La transferència de dades personals es realitza utilitzant les precaucions suficients per garantir que les seves dades personals estiguin degudament protegides.",
+            },
+            legalBasisAndPeriods: {
+                heading: "Base legal i períodes del processament de dades personals",
+                p1: "Per brindar-li Serveis de qualitat, necessitem processar les dades personals que ens va proporcionar al formulari de registre o que ens va proporcionar de qualsevol altra manera. El processament de dades es realitza durant el període en què li brindem serveis d'acord amb els Termes.",
+                p2: "L'adreça IP, l'adreça de correu electrònic i la informació derivada de les cookies es processen per enviar-li notificacions de serveis i productes relacionats amb el Lloc Web, així com informació sobre oportunitats comercials que puguin interessar-li. Entre les ofertes comercials, pot trobar anunciants o altres socis comercials nostres. El processament de dades personals es realitza segons el seu consentiment (marcat al formulari de registre). Vostè té dret a retirar el seu consentiment per a la recopilació de dades personals sense afectar la legalitat del processament basat en aquest consentiment abans de la seva revocació, així com el processament realitzat sobre altres bases legals que no siguin el seu consentiment. El processament de la seva adreça de correu electrònic per a aquesta finalitat es processarà fins que retiri el seu consentiment.",
+            },
+            dataSubjectRights: {
+                heading: "Drets de l'interessat",
+                p1: "En cas que el RGPD sigui aplicable, vostè té els següents drets de l'interessat, entre d'altres:",
+                list: [
+                    "– Dret d'accés a les dades personals (Article 15 del RGPD);",
+                    "– Dret de rectificació (Article 16 del RGPD);",
+                    "– Dret de supressió (Article 17 del RGPD);",
+                    "– Dret a la limitació del tractament (Article 18 del RGPD);",
+                    "– Dret a la portabilitat de les dades (Article 20 del RGPD);",
+                    "– Dret d'oposició (Article 21 del RGPD);",
+                    "– Dret a no ser objecte d'una decisió basada únicament en el tractament automatitzat, inclosa l'elaboració de perfils, que produeixi efectes jurídics en vostè o l'afecti significativament de forma similar (Article 22 del RGPD);",
+                    "– Dret a presentar una reclamació davant una autoritat de control (Article 77 del RGPD).",
+                ],
+                p2: "Declarem que no som responsables del tractament en el sentit del reglament RGPD, ja que no determinem els fins i mitjans del tractament de dades personals, la qual cosa recau sota la responsabilitat de l'Anunciant.",
+                p3: "Cal assenyalar que en els casos en què no estem obligats a estar subjectes al RGPD, no estem obligats a complir amb aquests drets. No obstant això, fins i tot en aquest cas, farem tot el possible per satisfer la seva queixa o sol·licitud. Abans d'actuar sobre la seva sol·licitud, és possible que hagi de verificar la seva identitat; aquesta mesura és necessària per protegir les seves dades personals, per la qual cosa no compartim les seves dades personals amb tercers. Si es nega a proporcionar-nos informació que ens permeti identificar-lo, no podrem processar la seva sol·licitud.",
+                p4: "Aquesta Política de Privadesa pot ser modificada o complementada per nosaltres unilateralment de tant en tant. La nova edició de la Política de Privadesa entra en vigor des del moment de la seva publicació al Lloc Web.",
+                p5: "Tingueu en compte que si continueu utilitzant el Lloc Web i el Servei després de qualsevol canvi de la Política de Privadesa, significa que esteu d'acord i consentiu a estar subjecte a la nova Política de Privadesa. Si no esteu d'acord amb cap canvi en aquesta Política de Privadesa i no desitgeu que la vostra informació estigui subjecta a ella, haureu de deixar d'utilitzar el Lloc Web i el Servei.",
+                p6: "Una resposta a la seva sol·licitud es pot rebre dins dels 40 (quaranta) dies hàbils a partir del moment en què la rebem. En una situació en què sigui impossible processar la seva sol·licitud, definitivament l'hi notificarem. Per a la comunicació utilitzem mitjans electrònics de comunicació, per exemple, correu electrònic o missatgeria; si preferiu un mètode de comunicació diferent, notifiqueu-nos-ho.",
+                p7: "Proporcionarem qualsevol comunicació i qualsevol acció de forma gratuïta; no obstant això, quan sigui necessari, podem cobrar-li una tarifa raonable, tenint en compte els costos administratius i altres característiques associades amb la provisió d'informació, o negar-nos a actuar segons la sol·licitud.",
+                p8: "Pot presentar una queixa relacionada amb la protecció de dades personals davant l'organisme estatal corresponent, sol·licitar protecció judicial si creu que els seus drets han estat violats. També pot presentar qualsevol queixa o sol·licitud posant-se en contacte amb nosaltres.",
+                p9: "Si necessita més informació sobre les autoritats rellevants al seu país o qualsevol altra informació, no dubti a contactar-nos.",
+                copyright: "Copyright © 2023 producte | Tots els drets reservats",
+            },
+        },
+    },
+    it: {
+        notification:
+            "Agisci ora! Coin Sin Limited sta accelerando i guadagni dei partecipanti! Assicurati il tuo posto prima che l'invito privato scada!",
+        platformBenefit: "Beneficio NETTO Utenti:",
+        userIncome: "Nuovi utenti ad oggi",
+        mainTitle: "Entrate intelligenti ogni giorno per la tua nuova",
+        mainTitleHighlight: "vita senza stress per sempre",
+        subtitle: "I nostri utenti di solito fanno x2, x5 e persino x10 sugli investimenti",
+        readyToJoin: "PRONTO AD UNIRTI? INIZIA LA TUA REGISTRAZIONE AL SISTEMA QUI E ORA.",
+        motivationalText:
+            "HAI IL DIRITTO ALL'INDIPENDENZA FINANZIARIA, E NON È UN PRIVILEGIO. È UN TUO DIRITTO, INDIPENDENTEMENTE DALLA TUA ETÀ, DAI TUOI RISULTATI E DAL TUO STATUS SOCIALE.",
+        playVideo: "Riproduci Video",
+        pauseVideo: "Metti in Pausa Video",
+        improveLife: "MIGLIORA LA TUO VITA OGGI",
+        namePlaceholder: "Il tuo nome",
+        surnamePlaceholder: "Il tuo cognome",
+        emailPlaceholder: "La tua email",
+        phonePlaceholder: "9 11 2345-6789",
+        registerButton: "Registrami",
+        searchCountry: "Cerca paese...",
+        termsText: "Registrandoti, accetti e sei d'accordo con i termini d'uso e la Politica sulla privacy del sito.",
+        privacyText:
+            "I tuoi dati sono sempre protetti con Coin Sin Limited. Completando questo modulo, accetti di ricevere le nostre email di marketing. Puoi cambiare idea in qualsiasi momento cliccando sul link di disiscrizione in fondo a qualsiasi nostra email.",
+        registrationSuccessTitle: "Grazie per la Registrazione!",
+        noCountriesFound: "Nessun paese trovato",
+        masterTradingTitle: "PADRONEGGIA IL TRADING DI CRIPTOVALUTE CON IL NOSTRO",
+        masterTradingHighlight: "SISTEMA DI INVESTIMENTO AI CON UNA PRECISIONE DEL 99.4%",
+        ctaParagraph1:
+            "Immagina una nuova vita in cui il lavoro diventa facoltativo, i risparmi non sono più necessari e tutte le tue bollette sono pagate senza sforzo. Immagina la libertà di esplorare, pianificare una nuova auto o persino possedere una casa.",
+        ctaParagraph2:
+            "Ora immagina di guardare lo schermo del tuo smartphone e di assistere a un altro guadagno di 1.000$ senza sforzo oggi stesso. Sembra allettante, vero?",
+        ctaParagraph3:
+            "Coin Sin Limited lo rende possibile. Come piattaforma di avvio basata sull'IA, diamo potere ai nuovi investitori di immergersi nel mondo degli investimenti in criptovalute, indipendentemente dalla loro esperienza precedente. Iniziando con un investimento di soli 250€, puoi cogliere l'opportunità di moltiplicare i tuoi guadagni giornalieri per x5.",
+        ctaParagraph4:
+            "Pronto a unirti a noi? Segui le istruzioni su questa pagina e intraprendi il tuo emozionante viaggio verso una vita stabile e senza preoccupazioni, piena di abbondanti piaceri!",
+        startNowButton: "Inizia Ora",
+        advantagesTitle:
+            "VANTAGGI DI INVESTIRE IN VALUTE POPOLARI E INFORMAZIONI ESSENZIALI SULLA PIATTAFORMA COIN SIN LIMITED",
+        advantagesIntro:
+            "Investire in valute digitali è un'opzione attraente per gli investitori. Le criptovalute riuniscono tutte le caratteristiche necessarie per offrire una liquidità stabile. Due fattori chiave determinano i benefici di questo tipo di investimenti:",
+        growthPotentialTitle: "Potenziale di crescita:",
+        growthPotentialText:
+            "Alcune criptovalute hanno già raggiunto un valore significativo, ma molti progetti hanno un grande potenziale di sviluppo. Grazie alla loro crescente popolarità, il mercato delle criptovalute attrae investitori che possono ottenere alti rendimenti investendo in asset digitali.",
+        diversificationTitle: "Diversificazione del portafoglio:",
+        diversificationText:
+            "Le criptovalute offrono l'opportunità di diversificare il tuo portafoglio di investimenti. Forniscono una classe di asset alternativa che è indipendente dai mercati finanziari tradizionali. Investire in criptovalute aiuta a diversificare il rischio e a proteggere il portafoglio da potenziali influenze negative in un'area.",
+        focusOnPlatformTitle: "Concentriamoci ora sulla piattaforma Coin Sin Limited.",
+        focusOnPlatformText1:
+            "Perché l'intelligenza artificiale (IA) è fondamentale per il mercato degli investimenti? L'IA è più veloce del cervello umano e può analizzare i dati con precisione, a condizione che il sistema sia configurato correttamente. L'apprendimento automatico ha tre vantaggi significativi nel mercato degli investimenti.",
+        focusOnPlatformText2:
+            "Inoltre, l'intelligenza artificiale opera nel mercato 24 ore su 24, 7 giorni su 7. Significa consapevolezza della situazione globale in tempo reale, accumulo di conoscenze sui modelli e creazione immediata di strategie redditizie. La piattaforma Coin Sin Limited offre una redditività efficace raggiungibile dagli esseri umani. È solo questione di tempo prima che le macchine assumano pienamente questa funzione.",
+        focusOnPlatformText3:
+            "Un altro fattore che rende attraente l'investimento in Canada, Australia e altri paesi è l'istruzione. Molte persone sentono che un essere umano può prendere decisioni influenzate dalle emozioni, una macchina rimane obiettiva e razionale. È essenziale non dimenticare le emozioni. Separare la razionalità dall'emozione è fondamentale, ma una realizzazione nella sfera degli investimenti, dove tutto è deciso in base a dati puri e previsioni esatte.",
+        focusOnPlatformText4:
+            "Inoltre, investire prima di guadagnare un reddito è significativamente diverso. Prima che una persona inizi a guadagnare un reddito, spende una quantità significativa di denaro per i test, il che ha dei benefici, oltre ad acquisire esperienza situazionale e consapevolezza degli investimenti. Al contrario, una macchina gestisce questo molto più velocemente e richiede un esborso minimo per massimizzare il reddito.",
+        nineReasonsIntro:
+            "Quindi, abbiamo nove ragioni principali per cui l'utilizzo della piattaforma Coin Sin Limited è vantaggioso, soprattutto per i trader principianti:",
+        reason1:
+            "I nostri strumenti di trading elaborano grandi quantità di dati in modo rapido ed efficiente, consentendoti di prendere decisioni accurate.",
+        reason2:
+            "Il software basato sull'intelligenza artificiale fornisce un'analisi di mercato avanzata con dati e previsioni accurate.",
+        reason3:
+            "L'intelligenza artificiale si adatta alle attuali condizioni di mercato, suggerendo le migliori strategie di investimento.",
+        reason4:
+            "Investire con un sistema basato sull'IA non è influenzato dagli errori umani e fornisce informazioni oggettive.",
+        reason5: "Investire usando una macchina è più economico che prendere decisioni umane e genera più profitti.",
+        reason6:
+            "L'intelligenza artificiale richiede un investimento iniziale inferiore, il che aumenta l'efficienza dell'investimento.",
+        reason7:
+            "Investire con strumenti basati sull'IA rende gli investimenti accessibili in Canada, Australia e altri paesi.",
+        reason8: "L'uso dell'intelligenza artificiale aumenta la velocità del processo decisionale.",
+        reason9:
+            "L'intelligenza artificiale fornisce un processo decisionale più rapido per migliori azioni di investimento.",
+        efficiencyGuarantee:
+            "Pertanto, l'intelligenza artificiale garantisce la redditività degli investimenti assicurando un'efficacia del sistema di almento il 95%. La precisione dipende dal sistema specifico, ma può raggiungere tra il 95% e il 99,4% per gli esseri umani. L'efficienza dei nostri strumenti di trading basati su algoritmi Coin Sin Limited è del 99,4%.",
+        platformBenefitTitle: "COIN SIN LIMITED È UNA PIATTAFORMA CHE LAVORA A BENEFICIO DELL'INVESTITORE",
+        platformBenefitText1:
+            "Per gli investitori principianti, investire in criptovalute può essere incredibilmente complicato. Spesso, i principianti devono comprendere tutti i dettagli di questo campo per non perdere i loro piccoli investimenti nel più breve tempo possibile. Questo li porta a perdere interesse per le criptovalute e per gli investimenti in generale. Tuttavia, devono rendersi conto delle opportunità potenziali che stanno perdendo.",
+        platformBenefitText2:
+            "La piattaforma Coin Sin Limited consente loro di realizzare i loro sogni di reddito passivo stabile. Basato sull'intelligenza artificiale, questo algoritmo lavora continuamente, analizzando la situazione del mercato, studiando le tendenze delle criptovalute ed eseguendo operazioni che quasi sempre si traducono in profitti. Migliaia di persone in tutto il mondo hanno già generato miliardi di dollari con Coin Sin Limited.",
+        platformFeaturesTitle: "Le caratteristiche della piattaforma Coin Sin Limited includono:",
+        feature1:
+            "Una profonda comprensione del mercato delle criptovalute e delle tendenze nel mondo degli asset digitali che sono al di là della portata della mente umana.",
+        feature2:
+            "Il supercomputer può calcolare milioni di variazioni ogni secondo e prevedere le tendenze con la massima precisione.",
+        feature3: "Operazioni sicure con benefici per l'investitore.",
+        platformUnnoticedText:
+            "La piattaforma Coin Sin Limited è passata inosservata al momento del lancio del prodotto. Tuttavia, sta causando rabbia e panico tra le banche centrali e i governi di tutto il mondo. Mentre i grandi attori cercano di fermare il progetto della piattaforma Coin Sin Limited, puoi iniziare a guadagnare un sacco di soldi ora.",
+        investSmartTitle: "INVESTI IN CRIPTOVALUTE IN MODO INTELLIGENTE CON LA PIATTAFORMA COIN SIN LIMITED",
+        investSmartText1:
+            "I tempi non sono facili, e tutto intorno a noi sta lentamente andando giù. Anche se la situazione potrebbe migliorare in futuro, tutti dovrebbero prendersi cura del proprio futuro oggi per non dipendere da fattori esterni. Gli strumenti intelligenti possono aiutarti in questo.",
+        investSmartText2:
+            "La piattaforma di investimento Coin Sin Limited ti consente di farlo senza perdere tempo a studiare il mercato delle valute digitali. Puoi iniziare a investire oggi stesso in paesi come Canada, Australia e altri. Il successo è pre-calcolato, e tutto ciò di cui hai bisogno è il desiderio di unirti.",
+        algorithmToolsIntro: "L'algoritmo ti fornisce gli strumenti per aiutarti:",
+        tool1: "Evitare rischi e perdite inutili.",
+        tool2: "Ottenere un reddito quasi totalmente passivo.",
+        tool3: "Lavorare nel mercado con un'ampia diversificazione del portafoglio e una parallela riduzione del rischio.",
+        tool4: "Ricevere un reddito stabile sia a breve che a lungo termine.",
+        finalInvitation:
+            "Pertanto, ti invitiamo a iniziare a scrivere la prima pagina della tua storia di successo come investitore oggi dopo aver letto la recensione de Coin Sin Limited!",
+        potentialEarningsTitle: "QUALI GUADAGNI POTENZIALI POSSO ASPETTARMI INVESTENDO CON COIN SIN LIMITED?",
+        myInvestment: "Il mio investimento:",
+        usagePeriod: "Periodo de utilizzo:",
+        days: "giorni",
+        potentialProfit: "Profitto Potenziale",
+        startInvestingNowButton: "Inizia a Investire Ora!",
+        disclaimer:
+            "* I risultati mostrati sono stime basate sulle prestazioni storiche della piattaforma. Gli investimenti comportano rischi.",
+        demoAccountTitle: "PROVA L'ACCOUNT DEMO DI COIN SIN LIMITED",
+        demoAccountText1:
+            "Sentiti libero dall'alto costo di ingresso nel mondo degli investimenti! Non hai bisogno di spendere decine di migliaia di dollari per capire il trading di criptovalute, come funziona e cosa devi fare per evitare perdite. Ti offriamo l'opportunità di investire anche poche centinaia di dollari e trasformarli in un'attività redditizia.",
+        demoAccountText2:
+            "Prova uno strumento senza rischi per un trading redditizio! Registrati, deposita almeno 250€ e ottieni il tuo primo profitto oggi stesso. Scorri semplicemente fino alla fine della pagina e registrati.",
+        notScamTitle: "COIN SIN LIMITED NON È UNA TRUFFA, ED ECCO PERCHÉ",
+        notScamText1:
+            "È un progetto di investimento automatizzato che offre l'opportunità di guadagnare denaro investendo in criptovalute popolari e progetti promettenti nel mondo degli asset digitali. Il sistema è controllato da ingegneri informatici e broker registrati presso CySEC. I broker autorizzati eseguono i processi finanziari nel sistema.",
+        notScamText2:
+            "Gli utenti hanno accesso a un account demo virtuale dove possono valutare le capacità del sistema senza rischi prima di investire fondi reali. La protezione dell'utente è il requisito principale del progetto. SSL certificates e la crittografia multilivello proteggono in modo affidabile tutti i dati personali.",
+        notScamText3:
+            "Per sicurezza, si consiglia di disconnettersi dopo ogni utilizzo ed evitare di connettersi al sistema da reti pubbliche.",
+        notScamText4:
+            "Coin Sin Limited offre massimi benefici e guadagni senza rischi, e presenta prove di non frode. Troverai anche opinioni su Coin Sin Limited di seguito.",
+        testimonialsTitle: "SCOPRI COSA DICONO I MEMBRI DI",
+        testimonialsHighlight: "COIN SIN LIMITED",
+        testimonialsTitle2: "DICONO DI QUESTA PIATTAFORMA DI TRADING:",
+        tradingEasyTitle: "TRADING CON COIN SIN LIMITED È",
+        tradingEasyHighlight: "100% FACILE E CONFORTEVOLE!",
+        tradingEasyIntro:
+            "Inviando il modulo sottostante con le tue informazioni accurate su questo sito web, sbloccherai rapidamente l'accesso illimitato al nostro sistema di trading AI altamente affidabile, dedicato e imparziale. Unisciti agli oltre 2.500 investitori astuti che stanno già beneficiando delle sue capacità.",
+        featureAiSelectionsTitle: "SELEZIONI DI INVESTIMENTO ESCLUSIVAMENTE REDDITIZIE EFFETTUATE DALL'IA",
+        featureAiSelectionsText:
+            "Sono finiti i giorni in cui gli investimenti erano riservati per i ricchi. Il nostro avanzato sistema informatico analizza meticolosamente liquidità, volatilità e volume di trading, il che garantisce decisioni di investimento ottimali. Goditi un reddito costante sul tuo conto tramite azioni di aziende di prim'ordine, supportate da un'impressionante garanzia di precisione di trading del 99.4%.",
+        featureAutoTradingTitle: "FUNZIONALITÀ DI TRADING AUTOMATICO IMPECABILE",
+        featureAutoTradingText:
+            "Sperimenta la comodità della nostra funzione di trading automatico, che ti consente di generare profitti senza sforzo, anche quando non sei alla tua postazione di lavoro. Nessuna esperienza di trading richiesta! Effettua semplicemente il tuo investimento iniziale e osserva il saldo del tuo conto crescere costantemente.",
+        featureSupportTitle: "SUPPORTO UTENTE COMPLETO",
+        featureSupportText:
+            "Come membro prezioso de Coin Sin Limited, il nostro amichevole responsabile del servizio clienti è a tua disposizione, pronto a rispondere a qualsiasi domanda o preoccupazione tu possa avere.",
+        featureCommunityTitle: "ACCESSO ESCLUSIVO A UNA COMUNITÀ UNICA",
+        featureCommunityText:
+            "Unisciti alla nostra prestigiosa comunità Coin Sin Limited e ottieni un'iscrizione privilegiata. Considerati fortunato di aver trovato l'opportunità di registrarti. Tieni presente che, a causa delle limitazioni di capacità del sistema, possiamo inviare inviti solo a un numero selezionato di utenti. Approfitta di questa opportunità per risolvere i tuoi problemi finanziari una volta per tutte.",
+        createAccountButton: "Crea il tuo account!",
+        howToStartTitle: "COME",
+        howToStartHighlight: "INIZIARE?",
+        step1Title: "REGISTRAZIONE: COMPLETA IL MODULO SOTTO",
+        step1Description:
+            "Il modulo di registrazione è su questa pagina. Completa il modulo per diventare un membro. Una volta che la tua registrazione sarà approvata, diventerai automaticamente un nuovo partecipante di Coin Sin Limited.",
+        step2Title: "DEPOSITA €250 O PIÙ",
+        step2Description:
+            "Come in qualsiasi attività commerciale, hai bisogno di capitale iniziale. L'vantaggio della piattaforma Coin Sin Limited è che richiede solo un modesto investimento iniziale. Ti basta depositare 250€ o più per iniziare a guadagnare denaro.",
+        step3Title: "RESTA SINTONIZZATO SUL TUO TELEFONO... POTRESTI RICEVERE UNA CHIAMATA!",
+        step3Description:
+            "Dopo aver effettuato un pagamento, il nostro responsabile ti contatterà per confermare tutto e attivare il tuo account. Se hai domande, il responsabile ti fornirà risposte dettagliate per aiutarti. Tenere presente che la chiamata potrebbe provenire da un número non identificato.",
+        faqTitle: "DOMANDE",
+        faqHighlight: "FREQUENTI",
+        finalSectionTitle: "COGLI L'OPPORTUNITÀ DI DIVENTARE UN INVESTITORE INTELLIGENTE OGGI E...",
+        finalSectionSubtitle: "...SCATENA UN MONDO DI POSSIBILITÀ, CON UN MINIMO DI $1,000 SUL TUO CONTO OGNI GIORNO!",
+        finalSectionText:
+            "Agisci ora fornendo il tuo nome completo e la tua email nel modulo sottostante, e sblocca l'opportunità più eccezionale ed esclusiva per generare un reddito sostanziale senza sforzo. Lascia che l'IA si occupi del lavoro duro mentre tu raccogli benefici tangibili all'istante. Non perdere l'occasione!",
+        footerCompanyInfo:
+            "Coin Sin Limited è un'azienda specializzata nella fornitura di informazioni e strumenti per l'investimento e il trading di criptovalute, basati sull'intelligenza artificiale.",
+        footerContactanos: "Contattaci",
+        footerPrivacidad: "Privacy",
+        footerTerminos: "Termini",
+        footerDescargo: "Disclaimer",
+        footerAbuso: "Segnalazione Abuso",
+        footerEmailLabel: "Email:",
+        footerCopyright: "Tutti i diritti riservati.",
+        smallFormNamePlaceholder: "Il tuo nome",
+        smallFormSurnamePlaceholder: "Il tuo cognome",
+        smallFormEmailPlaceholder: "La tua email",
+        smallFormPhonePlaceholder: "9 11 2345-6789",
+        smallFormRegisterButton: "Registrami",
+        smallFormTermsText:
+            "Registrandoti, accetti e sei d'accordo con i termini d'uso e la Politica sulla privacy del sito.",
+        smallFormPrivacyText:
+            "I tuoi dati sono sempre protetti con Coin Sin Limited. Completando questo modulo, accetti di ricevere le nostre email di marketing.",
+        ageConfirmation: "Confermo di essere maggiorenne.",
+        disclaimerFull: `IMPORTANT: Esclusioni di Responsabilità su Redditi e Legali. I grafici di reddito e guadagni creati da smartbitboost.io, noto anche come "Questo Sito Web", sono utilizzati unicamente come illustrazioni ideali del tuo potenziale di guadagno. Il successo degli individui nelle testimonianze e in altri esempi sono risultati eccezionali, e pertanto non intendono garantire che tu o altri otterrete lo stesso. I risultati individuali dipenderanno da come utilizzi smartbitboost.io. Per qualsiasi cosa tu faccia, questo sito web non ha responsabilità. Dovresti sempre agire con cautela e dovuta diligenza perché ti assumi la piena responsabilità delle tue azioni e decisioni quando utilizzi prodotti e servizi. Accetti che in nessun modo questo sito web sarà responsabile dei risultati del tuo utilizzo dei nostri servizi. Consulta i nostri termini d'uso per informazioni sulle nostre esclusioni di responsabilità e altre restrizioni. Sebbene el trading possa generare notevoli benefici, comporta anche il rischio di perdere il capitale investito en parte o per intero, quindi dovresti considerare se puoi permetterti di investire. ©2025AVVISO REGOLATORIO USA: Il trading de Forex, CFD e criptovalute non è soggetto ad alcuna regolamentazione USA. L'investimento in criptovalute non è regolamentato o supervisionato da alcuna agenzia finanziaria o USA. Qualsiasi trading non regolamentato da residenti USA è considerado ilegal. Este sitio web non accetta clienti o cittadini USA. Este sitio web non ha responsabilità per le azioni dei clienti situati o con cittadinanza statunitense. I clienti situati negli Stati Uniti o con cittadinanza statunitense si assumono la piena responsabilità delle loro azioni e decisioni quando utilizzano prodotti e servizi da este Sito Web. In qualsiasi circostanza, la scelta di utilizzare il Sito Web, el Servizio e/o el Programma è sotto la sola responsabilità dell'Utente, che deve rispettare la legislazione vigente.`,
+        privacyPolicyContent: {
+            title: "Informativa sulla Privacy",
+            general: {
+                heading: "Generale",
+                p1: "Riceviamo i tuoi dati personali per l'utilizzo del Sito Web e/o del Servizio. Informazioni dettagliate sul trattamento dei tuoi dati personali sono fornite in questa Informativa sulla Privacy.",
+                p2: "Questa pagina ti informa sulle nostre politiche riguardanti la raccolta, l'uso e la divulgazione dei dati personali quando tu, come Utente di questo Sito Web (di seguito «Tu» o «Utente»), utilizzi questo Sito Web.",
+                p3: "Utilizzando il Sito Web, accetti la raccolta e l'uso delle informazioni in conformità con questa politica. Salvo diversa definizione in questa Informativa sulla Privacy, i termini utilizzati in questa Informativa sulla Privacy hanno gli stessi significati dei nostri termini di utilizzo del Sito Web.",
+            },
+            methodsAndPrinciples: {
+                heading: "Metodi e principi del trattamento dei dati personali",
+                p1: "Onoriamo la tua sicurezza e trattiamo le tue informazioni con dignità, legalmente e in conformità con questa Informativa sulla Privacy e la legge pertinente. Nel caso in cui ti trovi nell'Unione Europea, trattiamo i tuoi dati personali secondo il Regolamento (UE) 2016/679 del Parlamento Europeo e del Consiglio del 27 aprile 2016 relativo alla protezione delle persone fisiche con riguardo al trattamento dei dati personali, nonché alla libera circolazione di tali dati e che abroga la direttiva 95/46/CE (Regolamento generale sulla protezione dei dati; “GDPR”).",
+                p2: "Al fine di evitare la divulgazione e l'uso non autorizzati di dati personali che non hanno l'autorità per divulgare tali dati, nonché per prevenire altri tipi di violazioni della sicurezza dei dati personali in fase di elaborazione, abbiamo sviluppato misure tecniche e organizzative appropriate.",
+                p3: "Nel caso in cui si verifichi una violazione della sicurezza dei dati personali trattati, che comporti un rischio elevato per i tuoi diritti e libertà, ti informeremo immediatamente al nostro indirizzo email.",
+                p4: "Se non hai dato il tuo previo consenso, non tratteremo i tuoi dati personali.",
+            },
+            processedPersonalData: {
+                heading: "Dati personali trattati",
+                p1: "Il trattamento dei dati personali avviene dopo che sono stati inseriti nel modulo di registrazione sul Sito Web. Inviando il modulo di registrazione, accetti di concludere un accordo con noi in base al quale facilitiamo la comunicazione tra il fornitore di Prodotti e/o Servizi (Inserzionista) e te, al fine di elaborare la tua richiesta di conclusione di un accordo con l'Inserzionista per l'acquisto di Servizi o Prodotti pubblicizzati sul Sito Web.",
+                p2: "Gli indirizzi IP e i cookie degli utenti del nostro sito web vengono raccolti e trattati da noi. I cookie sono piccoli frammenti di dati inviati da un server web e memorizzati sul tuo computer; questi dati ci aiutano a migliorare l'esperienza del nostro sito web. Puoi rifiutare i cookie disabilitandoli nelle impostazioni del tuo browser web; tuttavia, la restrizione dell'uso dei cookie potrebbe influire sul funzionamento del nostro sito web.",
+                p3: "Confermi che tutti i dati personali che fornisci sono aggiornati, veritieri e corretti. Sei responsabile di eventuali danni causati dalla fornitura di informazioni personali errate.",
+            },
+            methodsOfProcessing: {
+                heading: "Metodi di trattamento dei dati personali",
+                p1: "Il trattamento dei dati personali viene effettuato automaticamente. Il trattamento dei dati personali è automatico; questo processo non può portare a conseguenze legali o in altro modo influenzarti.",
+                p2: "Il trattamento dei dati personali può essere delegato ad altri fornitori di servizi di mailing di massa, processori e fornitori di servizi IT e cloud. Inoltre, possiamo delegare parte o tutto il trattamento al processore, al fornitore di servizi di mailing di massa, al fornitore di servizi IT e al fornitore di servizi cloud. La selezione dei processori viene effettuata con la massima cura possibile in modo che i tuoi dati personali siano protetti in ogni momento durante il loro trattamento.",
+                p3: "Per utilizzare il Servizio, è necessario fornire i tuoi dati personali agli Inserzionisti.",
+                p4: "I dati possono essere trasferiti in qualsiasi stato del mondo. Inserzionisti e processori sono i destinatari dei tuoi dati personali. Per completare il contratto tra noi, è richiesto il trasferimento dei tuoi dati personali agli Inserzionisti, come specificato nei Termini. Il trasferimento dei dati personali avviene utilizzando precauzioni sufficienti per garantire che i tuoi dati personali siano adeguatamente protetti.",
+            },
+            legalBasisAndPeriods: {
+                heading: "Base giuridica e periodi del trattamento dei dati personali",
+                p1: "Al fine di fornirti Servizi di qualità, dobbiamo trattare i dati personali che ci hai fornito nel modulo di registrazione o che ci hai fornito in qualsiasi altro modo. Il trattamento dei dati viene eseguito durante il periodo in cui ti forniamo servizi in conformità con i Termini.",
+                p2: "L'indirizzo IP, l'indirizzo email e le informazioni derivate dai cookie vengono trattati per inviarti notifiche di servizi e prodotti relativi al Sito Web, nonché informazioni su opportunità commerciali che potrebbero interessarti. Tra le offerte commerciali, puoi trovare inserzionisti o altri nostri partner commerciali. Il trattamento dei dati personali viene effettuato in base al tuo consenso (contrassegno nel modulo di registrazione). Hai il diritto di revocare il tuo consenso alla raccolta dei dati personali senza pregiudicare la liceità del trattamento basato su tale consenso prima della sua revoca, nonché il trattamento eseguito su altre basi giuridiche diverse dal tuo consenso. Il trattamento del tuo indirizzo email per questo scopo verrà elaborato fino a quando non revocherai il tuo consenso.",
+            },
+            dataSubjectRights: {
+                heading: "Diritti dell'interessato",
+                p1: "Nel caso in cui il GDPR sia applicabile, hai i seguenti diritti dell'interessato, ma non limitati a:",
+                list: [
+                    "– Diritto di accesso ai dati personali (Articolo 15 del GDPR);",
+                    "– Diritto di rettifica (Articolo 16 del GDPR);",
+                    "– Diritto alla cancellazione (Articolo 17 del GDPR);",
+                    "– Diritto alla limitazione del trattamento (Articolo 18 del GDPR);",
+                    "– Diritto alla portabilità dei dati (Articolo 20 del GDPR);",
+                    "– Diritto di opposizione (Articolo 21 del GDPR);",
+                    "– Diritto di non essere soggetto a una decisione basata unicamente sul trattamento automatizzato, inclusa la profilazione, che produca effetti giuridici che ti riguardano o che incida in modo analogo significativamente sulla tua persona (Articolo 22 del GDPR);",
+                    "– Diritto di proporre reclamo a un'autorità di controllo (Articolo 77 del GDPR).",
+                ],
+                p2: "Dichiariamo di non essere titolari del trattamento ai sensi del regolamento GDPR, in quanto non determiniamo le finalità e i mezzi del trattamento dei dati personali, che ricade sotto la responsabilità dell'Inserzionista.",
+                p3: "Va notato che nei casi in cui non siamo tenuti a essere soggetti al GDPR, non siamo tenuti a rispettare questi diritti. Tuttavia, anche in questo caso, faremo del nostro meglio per soddisfare il tuo reclamo o richiesta. Prima di agire sulla tua richiesta, potremmo aver bisogno di verificare la tua identità; questa misura è necessaria per proteggere i tuoi dati personali, pertanto non condividiamo i tuoi dati personali con terze parti. Se ti rifiuti di fornirci informazioni che ci consentano di identificarti, non saremo in grado di elaborare la tua richiesta.",
+                p4: "Questa Informativa sulla Privacy può essere modificata o integrata da noi unilateralmente di volta in volta. La nuova edizione dell'Informativa sulla Privacy entra in vigore dal momento della loro pubblicazione sul Sito Web.",
+                p5: "Si prega di notare che se si continua a utilizzare il Sito Web e il Servizio dopo qualsiasi modifica dell'Informativa sulla Privacy, significa che si accetta e si acconsente di essere vincolati dalla nuova Informativa sulla Privacy. Se non si è d'accordo con le modifiche a questa Informativa sulla Privacy e non si desidera che le proprie informazioni siano soggette ad essa, sarà necessario interrompere l'utilizzo del Sito Web e del Servizio.",
+                p6: "Una risposta alla tua richiesta può essere ricevuta entro 40 (quaranta) giorni lavorativi dal momento in cui la riceviamo. In una situazione in cui è impossibile elaborare la tua richiesta, ti informeremo sicuramente. Per la comunicazione utilizziamo mezzi elettronici di comunicazione, ad esempio e-mail o messenger; se preferisci un metodo di comunicazione diverso, ti preghiamo di comunicarcelo.",
+                p7: "Forniremo qualsiasi comunicazione e qualsiasi azione gratuitamente; tuttavia, quando richiesto, potremmo addebitarti una tariffa ragionevole, tenendo conto dei costi amministrativi e di altre caratteristiche associate alla fornitura di informazioni o rifiutare di agire su richiesta.",
+                p8: "Puoi presentare un reclamo relativo alla protezione dei dati personali all'organismo statale competente, richiedere protezione giudiziaria se ritieni che i tuoi diritti siano stati violati. Puoi anche presentare qualsiasi reclamo o richiesta contattandoci.",
+                p9: "Se hai bisogno di maggiori informazioni sulle autorità competenti nel tuo paese o qualsiasi altra informazione, non esitare a contattarci.",
+                copyright: "Copyright © 2023 prodotto | Tutti i diritti riservati",
             },
         },
     },
 }
+
 const countryCodes = [
     { code: "+1", flag: "🇺🇸", country: "United States", name: "Estados Unidos", id: "us" },
     { code: "+1", flag: "🇨🇦", country: "Canada", name: "Canadá", id: "ca" },
@@ -701,16 +1175,20 @@ const countryCodes = [
     { code: "+996", flag: "🇰🇬", country: "Kyrgyzstan", name: "Kirguistán", id: "kg" },
     { code: "+998", flag: "🇺🇿", country: "Uzbekistan", name: "Uzbekistán", id: "uz" },
 ]
+
 const platformNetBenefit = 466837090 // Static for this page
 const newUsersToday = 4000 // Static for this page
 
+type Language = "es" | "en" | "ca" | "it"
+
 export default function PrivacyPolicyPage() {
-    const [language, setLanguage] = useState<"es" | "en">("es")
+    const [language, setLanguage] = useState<Language>("es")
     const [countrySearch, setCountrySearch] = useState("") // Needed for Select component, even if not used for search on this page
+
     const t = translations[language]
 
     const handleLanguageChange = (newLanguage: string) => {
-        setLanguage(newLanguage as "es" | "en")
+        setLanguage(newLanguage as Language)
     }
 
     const filteredCountries = useMemo(() => {
@@ -772,6 +1250,8 @@ export default function PrivacyPolicyPage() {
                                 <SelectContent>
                                     <SelectItem value="es">🇪🇸 Español</SelectItem>
                                     <SelectItem value="en">🇺🇸 English</SelectItem>
+                                    <SelectItem value="ca">CAT Català</SelectItem>
+                                    <SelectItem value="it">🇮🇹 Italiano</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
