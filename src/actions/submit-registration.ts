@@ -1,101 +1,84 @@
 "use server"
 
-// Define el tipo para el estado de la respuesta del formulario
-export type RegistrationState = {
-    success: boolean
-    message: string
-    errors: {
-        name?: string[]
-        surname?: string[]
-        email?: string[]
-        phone?: string[]
-        dateOfBirth?: string[] // ¡Añadido el campo dateOfBirth a los errores!
-        countryCode?: string[]
-        language?: string[]
-        _form?: string[] // Para errores generales del formulario
-    }
-}
+import { z } from "zod"
+import nodemailer from "nodemailer" // Importa nodemailer
 
-// Estado inicial del formulario
-export const initialState: RegistrationState = {
-    success: false,
-    message: "",
-    errors: {},
-}
+const registrationSchema = z.object({
+    name: z.string().min(1, "Name is required"),
+    surname: z.string().min(1, "Surname is required"),
+    email: z.string().email("Invalid email address"),
+    phone: z.string().min(8, "Phone number is required and must be at least 8 digits"),
+    dateOfBirth: z.string().min(1, "Date of birth is required"),
+    countryCode: z.string().min(1, "Country code is required"),
+    language: z.string().min(1, "Language is required"),
+})
 
-export async function submitRegistration(
-    prevState: RegistrationState, // El estado anterior del formulario
-    formData: FormData, // Los datos del formulario enviados
-): Promise<RegistrationState> {
-    const name = formData.get("name") as string
-    const surname = formData.get("surname") as string
-    const email = formData.get("email") as string
-    const phone = formData.get("phone") as string
-    const dateOfBirth = formData.get("dateOfBirth") as string // Obtener la fecha de nacimiento
-    const countryCode = formData.get("countryCode") as string
-    const language = formData.get("language") as string
+export async function submitRegistration(prevState: any, formData: FormData) {
+    const rawFormData = Object.fromEntries(formData.entries())
 
-    const errors: RegistrationState["errors"] = {}
+    const validatedFields = registrationSchema.safeParse(rawFormData)
 
-    // Validaciones básicas
-    if (!name || name.trim().length < 2) {
-        errors.name = ["El nombre debe tener al menos 2 caracteres."]
-    }
-    if (!surname || surname.trim().length < 2) {
-        errors.surname = ["El apellido debe tener al menos 2 caracteres."]
-    }
-    if (!email || !email.includes("@")) {
-        errors.email = ["Por favor, introduce una dirección de correo electrónico válida."]
-    }
-    if (!phone || phone.trim().length < 8) {
-        errors.phone = ["El número de teléfono debe tener al menos 8 dígitos."]
-    }
-    if (!dateOfBirth) {
-        errors.dateOfBirth = ["La fecha de nacimiento es obligatoria."]
-    } else {
-        // Validación de edad (ejemplo: mayor de 18 años)
-        const today = new Date()
-        const birthDate = new Date(dateOfBirth)
-        let age = today.getFullYear() - birthDate.getFullYear()
-        const m = today.getMonth() - birthDate.getMonth()
-        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-            age--
-        }
-        if (age < 18) {
-            errors.dateOfBirth = ["Debes tener al menos 18 años para registrarte."]
-        }
-    }
-    if (!countryCode) {
-        errors.countryCode = ["El código de país es obligatorio."]
-    }
-
-    // Si hay errores, devolver el estado con los errores
-    if (Object.keys(errors).length > 0) {
+    if (!validatedFields.success) {
         return {
             success: false,
-            message: "El registro falló debido a errores de validación.",
-            errors,
+            message: "Validation failed.",
+            errors: validatedFields.error.flatten().fieldErrors,
         }
     }
 
-    // Simular una llamada a la API o una operación de base de datos
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    const { name, surname, email, phone, dateOfBirth, countryCode, language } = validatedFields.data
 
-    // En una aplicación real, guardarías los datos aquí
-    console.log("Datos de registro:", {
-        name,
-        surname,
-        email,
-        phone,
-        dateOfBirth,
-        countryCode,
-        language,
+    // Configura el transportador de Nodemailer para Hotmail/Outlook
+    const transporter = nodemailer.createTransport({
+        host: "smtp.office365.com", // Servidor SMTP de Hotmail/Outlook
+        port: 587,
+        secure: false, // Usa TLS, no SSL directo en este puerto
+        auth: {
+            user: process.env.EMAIL_USER, // Tu dirección de correo Hotmail (remitente)
+            pass: process.env.EMAIL_PASS, // Tu contraseña de Hotmail o contraseña de aplicación
+        },
+        tls: {
+            ciphers: "SSLv3", // Puede ser necesario para algunos servidores SMTP
+        },
     })
 
-    // Devolver el estado de éxito
-    return {
-        success: true,
-        message: `¡Muchas gracias, ${name}! Tu registro está completo.`,
-        errors: {}, // Limpiar errores en caso de éxito
+    // Opciones del correo electrónico
+    const mailOptions = {
+        from: "coinsinlimited@hotmail.com", // La dirección de correo desde la que se envía
+        to: "coinsinlimited@hotmail.com", // La dirección de correo a la que quieres que lleguen los datos (tu Hotmail)
+        subject: "Nuevo Registro de Cliente en Coin Sin Limited", // Asunto del correo
+        html: `
+      <h1>Nuevo Registro de Cliente</h1>
+      <p>Se ha recibido un nuevo registro a través del formulario de Coin Sin Limited con los siguientes datos:</p>
+      <ul>
+        <li><strong>Nombre:</strong> ${name}</li>
+        <li><strong>Apellido:</strong> ${surname}</li>
+        <li><strong>Email:</strong> ${email}</li>
+        <li><strong>Teléfono:</strong> ${countryCode} ${phone}</li>
+        <li><strong>Fecha de Nacimiento:</strong> ${dateOfBirth}</li>
+        <li><strong>Idioma del Formulario:</strong> ${language}</li>
+      </ul>
+      <p>Por favor, contacta a este cliente lo antes posible.</p>
+    `,
+    }
+
+    try {
+        // Envía el correo electrónico
+        await transporter.sendMail(mailOptions)
+        console.log("Email sent successfully")
+        return {
+            success: true,
+            message: "¡Registro exitoso! Nos pondremos en contacto contigo pronto.",
+            errors: {},
+        }
+    } catch (error: any) {
+        console.error("Error sending email:", error)
+        return {
+            success: false,
+            message: "Hubo un error al procesar tu registro. Por favor, inténtalo de nuevo más tarde.",
+            errors: {
+                _form: [error.message || "Failed to send email."],
+            },
+        }
     }
 }
