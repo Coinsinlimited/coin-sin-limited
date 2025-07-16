@@ -25,7 +25,7 @@ import {
 } from "lucide-react"
 import { useFormState } from "react-dom"
 import { submitRegistration } from "@/actions/submit-registration"
-import Link from "next/link" // Import Link for the terms button
+import Link from "next/link"
 
 import { SubmitButton, SmallSubmitButton } from "@/components/ui/submit-button"
 import DynamicCounters from "@/components/ui/dynamic-counters"
@@ -830,7 +830,7 @@ const translations: Record<Language, TranslationContent> = {
       "Come membro prezioso de Coin Sin Limited, il nostro amichevole responsabile del servizio clienti è a tua disposizione, pronto a rispondere a qualsiasi domanda o preoccupazione tu possa avere.",
     featureCommunityTitle: "ACCESSO ESCLUSIVO A UNA COMUNITÀ ÚNICA",
     featureCommunityText:
-      "Unisciti alla nostra prestigiosa comunità Coin Sin Limited e ottieni un'iscrizione privilegiata. Considerati fortunato di aver trovato l'opportunità di registrarti. Tieni presente che, a causa delle limitazioni di capacità del sistema, possiamo inviare inviti solo a un numero selezionato di utenti. Approfitta di questa opportunità per risolvere i tuoi problemi finanziari una volta per tutte.",
+      "Unisciti alla nostra prestigiosa comunità Coin Sin Limited e ottieni un'iscrizione privilegiata. Tieni presente che, a causa delle limitazioni di capacità del sistema, possiamo inviare inviti solo a un numero selezionato di utenti. Approfitta di questa opportunità per risolvere i tuoi problemi finanziari una volta per tutte.",
     createAccountButton: "Crea il tuo account!",
     howToStartTitle: "COME",
     howToStartHighlight: "INIZIARE?",
@@ -869,7 +869,7 @@ const translations: Record<Language, TranslationContent> = {
     smallFormPrivacyText:
       "I tuoi dati sono sempre protetti con Coin Sin Limited. Completando questo modulo, accetti di ricevere le nostre email di marketing.", // Modified
     ageConfirmation: "Confermo di essere maggiorenne.",
-    disclaimerFull: `IMPORTANT: Esclusioni di Responsabilità su Redditi e Legali. I grafici di reddito e guadagni creati da Coin Sin Limited, noto anche come "Questo Sito Web", sono utilizzati unicamente come illustrazioni ideali del tuo potenziale di guadagno. Il successo degli individui nelle testimonianze e in altri esempi sono risultati eccezionali, e pertanto non intendono garantire che tu o altri otterrete lo stesso. I risultati individuali dipenderanno da come utilizzi Coin Sin Limited. Per qualsiasi cosa tu faccia, questo sito web non ha responsabilità. Dovresti sempre agire con cautela e dovuta diligenza perché ti assumi la piena responsabilità delle tue azioni e decisioni quando utilizzi prodotti e servizi. Accetti che in nessun modo questo sito web sarà responsabile dei risultati del tuo utilizzo dei servizi. Consulta i nostri termini d'uso per informazioni sulle nostre esclusioni di responsabilità e altre restrizioni. Sebbene el trading possa generare notevoli benefici, comporta anche el riesgo de perder el capital invertito en parte o per intero, quindi dovresti considerare se puoi permetterti di investire. ©2025AVVISO REGOLATORIO USA: El trading de Forex, CFD e criptovalute non è soggetto ad alcuna regolamentazione USA. L'investimento in criptovalute non è regolamentato o supervisionato da alcuna agenzia finanziaria o USA. Qualsiasi trading non regolamentato da residenti USA è considerado ilegal. Este sitio web non accetta clienti o cittadini USA. Este sitio web non ha responsabilità per le azioni dei clienti situati o con cittadinanza statunitense. I clienti situati negli Stati Uniti o con cittadinanza statunitense si assumono la piena responsabilità delle loro azioni e decisioni quando utilizzano prodotti e servizi da este Sito Web. In qualsiasi circostanza, la scelta di utilizzare el Sito Web, el Servizio e/o el Programma è sotto la sola responsabilità dell'Utente, que debe respetar la legislación vigente.`,
+    disclaimerFull: `IMPORTANT: Esclusioni di Responsabilità su Redditi e Legali. I grafici di reddito e guadagni creati da Coin Sin Limited, noto anche come "Questo Sito Web", sono utilizzati unicamente come illustrazioni ideali del tuo potenziale di guadagno. Il successo degli individui nelle testimonianze e in altri esempi sono risultati eccezionali, e pertanto non intendono garantire che tu o altri otterrete lo stesso. I risultati individuali dipenderanno da come utilizzi Coin Sin Limited. Per qualsiasi cosa tu faccia, questo sito web non ha responsabilità. Dovresti sempre agire con cautela e dovuta diligenza perché ti assumi la piena responsabilità delle tue azioni e decisioni quando utilizzi prodotti e servizi. Accetti che in nessun modo questo sito web sarà responsabile dei risultati del tuo utilizzo dei servizi. Consulta i nostri termini d'uso per informazioni sulle nostre esclusioni di responsabilità e altre restrizioni. Sebbene el trading possa generare notevoli benefici, comporta anche el riesgo de perder el capital invertito en parte o per intero, quindi dovresti considerare se puoi permetterti di investire. ©2025AVVISO REGOLATORIO USA: El trading de Forex, CFD e criptovalute non è soggetto ad alcuna regolamentazione USA. L'investimento in criptovalute non è regolamentato o supervisionato da alcuna agenzia finanziaria o USA. Qualsiasi trading non regolamentato da residenti USA è considerado ilegal. Este sitio web non accetta clienti o cittadini USA. Este sitio web non ha responsabilità per le azioni dei clienti situati o con cittadinanza statunitense. I clienti situati negli Stati Uniti o con cittadinanza statunitense si assumono la piena responsabilità delle loro azioni y decisiones cuando utilizan productos y servicios da este Sito Web. In qualsiasi circostanza, la scelta di utilizzare el Sito Web, el Servizio e/o el Programma è sotto la sola responsabilità dell'Utente, que debe respetar la legislación vigente.`,
   },
 }
 // Testimonials data
@@ -1004,7 +1004,7 @@ const faqData = [
     answer: {
       es: "No hay límite en tus ganancias potenciales con Coin Sin Limited. Puedes ganar tanto como desees. Ten en cuenta que una mayor inversión inicial puede generar mayores ganancias.",
       en: "No, there is no limit to your potential earnings with Coin Sin Limited. You can earn as much as you want. Please note that a larger initial investment can lead to higher profits.",
-      ca: "No hi ha límit en els teus guanys potencials amb Coin Sin Limited. Pots guanyar tant com desitgis. Tingues en compte que una major inversió inicial pot generar majors guanys.",
+      ca: "No hi ha límit en els teus guanys potencials con Coin Sin Limited. Pots guanyar tant com desitgis. Tingues en compte que una major inversió inicial pot generar majors guanys.",
       it: "No, non c'è limite ai tuoi potenziali guadagni con Coin Sin Limited. Puoi guadagnare quanto desideri. Tieni presente che un investimento iniziale maggiore può portare a profitti più elevati.",
     },
   },
@@ -1317,7 +1317,7 @@ export default function CryptoLanding() {
     email: "",
     phone: "",
     dateOfBirth: "", // Nuevo estado para la fecha de nacimiento
-    countryCode: "", // Inicializar a vacío para que la detección de IP lo llene
+    countryCode: "+1-809", // Establecido por defecto a República Dominicana
   })
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null)
   const [calculatorData, setCalculatorData] = useState({
@@ -1362,30 +1362,31 @@ export default function CryptoLanding() {
       })
     }, 1000)
 
-    // Fetch country code based on IP
-    const fetchCountryCode = async () => {
-      try {
-        const response = await fetch("/api/get-country-code")
-        const data = await response.json()
-        if (data.countryCode) {
-          const detectedCode = countryCodes.find((c) => c.id === data.countryCode)
-          if (detectedCode) {
-            setFormData((prev) => ({ ...prev, countryCode: detectedCode.code }))
+    // Fetch country code based on IP, only if not already set by default or user
+    if (!formData.countryCode) {
+      const fetchCountryCode = async () => {
+        try {
+          const response = await fetch("/api/get-country-code")
+          const data = await response.json()
+          if (data.countryCode) {
+            const detectedCode = countryCodes.find((c) => c.id === data.countryCode)
+            if (detectedCode) {
+              setFormData((prev) => ({ ...prev, countryCode: detectedCode.code }))
+            }
           }
+        } catch (error) {
+          console.error("Error fetching country code:", error)
         }
-      } catch (error) {
-        console.error("Error fetching country code:", error)
       }
+      fetchCountryCode()
     }
-
-    fetchCountryCode()
 
     return () => {
       if (countdownIntervalRef.current) {
         clearInterval(countdownIntervalRef.current)
       }
     }
-  }, [])
+  }, [formData.countryCode]) // Depend on formData.countryCode to prevent re-fetching if already set
 
   // Format countdown time
   const formatCountdown = (ms: number) => {
@@ -1548,7 +1549,7 @@ export default function CryptoLanding() {
                           <iframe
                             className="absolute top-0 left-0 w-full h-full"
                             style={{ transform: "translateY(-10%) scale(1.2)" }} // Adjusted values for more cropping
-                            src="https://www.youtube.com/embed/I_vf6Crunxw?autoplay=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=I_vf6Crunxw&playsinline=1" // Removed mute=1, added playsinline
+                            src="https://www.youtube.com/embed/I_vf6Crunxw?autoplay=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=I_vf6Crunxw&playsinline=1&vq=hd1080" // Added vq=hd1080 for high quality
                             title="YouTube video player"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1559,11 +1560,7 @@ export default function CryptoLanding() {
                       <p className="text-white/80 text-xs">
                         {language === "es" ? "El video se reproduce automáticamente." : "Video plays automatically."}
                       </p>
-                      <p className="text-red-400 text-xs mt-1">
-                        {language === "es"
-                          ? "Nota: La reproducción automática con sonido puede ser bloqueada por algunos navegadores hasta que el usuario interactúe con la página."
-                          : "Note: Autoplay with sound may be blocked by some browsers until the user interacts with the page."}
-                      </p>
+                      {/* Removed the specific note about autoplay with sound */}
                     </div>
                   </div>
                   {/* Right Side - Registration Form */}
@@ -2438,63 +2435,67 @@ export default function CryptoLanding() {
                 </div>
               </div>
             </div>
+            {/* Footer - MOVED OUTSIDE THE MAX-WIDTH CONTAINER */}
+            <footer className="bg-blue-950/50 backdrop-blur-sm text-white py-8 sm:py-12 mt-16 sm:mt-20 w-full text-center">
+              <div className="max-w-7xl mx-auto px-4 sm:px-8">
+                <div className="flex flex-col md:flex-row justify-between items-center md:items-start border-b border-white/10 pb-8 mb-8">
+                  {/* Quick Links */}
+                  <div className="space-y-4 text-sm text-left md:text-left">
+                    <h3 className="text-lg font-bold text-orange-400 mb-2">Enlaces Rápidos</h3>
+                    <ul className="space-y-2 text-sm">
+                      <li>
+                        <a href="#registration-form" className="hover:text-orange-300 transition-colors duration-200">
+                          {t.footerContactanos}
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/privacy" className="hover:text-orange-300 transition-colors duration-200">
+                          {t.footerPrivacidad}
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/terms" className="hover:text-orange-300 transition-colors duration-200">
+                          {t.footerTerminos}
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/disclaimer" className="hover:text-orange-300 transition-colors duration-200">
+                          {t.footerDescargo}
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  {/* Logo and Company Info (centered) */}
+                  <div className="flex flex-col items-center space-y-4 text-sm mt-8 md:mt-0">
+                    <a href="#" className="inline-block">
+                      <img
+                        src="/logo.png"
+                        alt="Coin Sin Limited Logo"
+                        className="h-28 w-56 object-contain rounded-lg"
+                      />
+                    </a>
+                    <p className="leading-relaxed text-center">{t.footerCompanyInfo}</p>
+                  </div>
+                  {/* Contact Info */}
+                  <div className="space-y-4 text-sm text-right md:text-right mt-8 md:mt-0">
+                    <h3 className="text-lg font-bold text-orange-400 mb-2">Contacto</h3>
+                    <p>
+                      <span className="font-semibold">{t.footerEmailLabel}</span> support@coinsinlimited.com
+                    </p>
+                  </div>
+                </div>
+                <div className="pt-8">
+                  <div className="text-xs text-white/70 mb-4">
+                    <p>{t.footerCopyright}</p>
+                  </div>
+                  <div className="text-xs text-white/50 leading-relaxed">
+                    <p>{t.disclaimerFull}</p>
+                    <p className="mt-2">{t.officialRegistrationNumber}</p> {/* New line for registration number */}
+                  </div>
+                </div>
+              </div>
+            </footer>
           </div>
-          {/* Footer - MOVED OUTSIDE THE MAX-WIDTH CONTAINER */}
-          <footer className="bg-blue-950/50 backdrop-blur-sm text-white py-8 sm:py-12 mt-16 sm:mt-20 w-full text-center">
-            <div className="max-w-7xl mx-auto px-4 sm:px-8">
-              <div className="flex flex-col md:flex-row justify-between items-center md:items-start border-b border-white/10 pb-8 mb-8">
-                {/* Quick Links */}
-                <div className="space-y-4 text-sm text-left md:text-left">
-                  <h3 className="text-lg font-bold text-orange-400 mb-2">Enlaces Rápidos</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>
-                      <a href="#registration-form" className="hover:text-orange-300 transition-colors duration-200">
-                        {t.footerContactanos}
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/privacy" className="hover:text-orange-300 transition-colors duration-200">
-                        {t.footerPrivacidad}
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/terms" className="hover:text-orange-300 transition-colors duration-200">
-                        {t.footerTerminos}
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/disclaimer" className="hover:text-orange-300 transition-colors duration-200">
-                        {t.footerDescargo}
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                {/* Logo and Company Info (centered) */}
-                <div className="flex flex-col items-center space-y-4 text-sm mt-8 md:mt-0">
-                  <a href="#" className="inline-block">
-                    <img src="/logo.png" alt="Coin Sin Limited Logo" className="h-28 w-56 object-contain rounded-lg" />
-                  </a>
-                  <p className="leading-relaxed text-center">{t.footerCompanyInfo}</p>
-                </div>
-                {/* Contact Info */}
-                <div className="space-y-4 text-sm text-right md:text-right mt-8 md:mt-0">
-                  <h3 className="text-lg font-bold text-orange-400 mb-2">Contacto</h3>
-                  <p>
-                    <span className="font-semibold">{t.footerEmailLabel}</span> support@coinsinlimited.com
-                  </p>
-                </div>
-              </div>
-              <div className="pt-8">
-                <div className="text-xs text-white/70 mb-4">
-                  <p>{t.footerCopyright}</p>
-                </div>
-                <div className="text-xs text-white/50 leading-relaxed">
-                  <p>{t.disclaimerFull}</p>
-                  <p className="mt-2">{t.officialRegistrationNumber}</p> {/* New line for registration number */}
-                </div>
-              </div>
-            </div>
-          </footer>
         </div>
       </div>
     </div>
