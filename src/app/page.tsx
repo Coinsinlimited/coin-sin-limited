@@ -4,11 +4,10 @@ import type React from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { Checkbox } from "@/components/ui/checkbox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Checkbox } from "@/components/ui/checkbox"
 import {
   Shield,
-  Play,
   Info,
   User,
   Mail,
@@ -19,10 +18,6 @@ import {
   Percent,
   Headphones,
   Users,
-  Pause,
-  Volume2,
-  VolumeX,
-  Maximize,
   Calendar,
   Lock,
   DollarSign,
@@ -179,7 +174,7 @@ const translations = {
       "El formulario de registro está en esta página. Completa el formulario para convertirte en miembro. Una vez que tu registro sea aprobado, automáticamente te convertirás en un nuevo participante de Coin Sin Limited.",
     step2Title: "DEPOSITA €250 O MÁS",
     step2Description:
-      "Como en cualquier negocio, necesitas capital inicial. La ventaja de la plataforma Coin Sin Limited es que solo requiere una inversión inicial modesta. Simplemente deposita 250€ o más para empezar a ganar dinero.",
+      "Como en cualquier negocio, necesitas capital inicial. La ventaja de la plataforma Coin Sin Limited es que solo requiere una inversión inicial modest. Simplemente deposita 250€ o más para empezar a ganar dinero.",
     step3Title: "ESTATE ATENTO A TU TELÉFONO... ¡PODRÍAS RECIBIR UNA LLAMADA!",
     step3Description:
       "Después de hacer un pago, nuestro gestor se pondrá en contacto contigo para confirmar todo y activar tu cuenta. Si tienes alguna pregunta, el gestor te proporcionará respuestas detalladas para ayudarte. Ten en cuenta que la llamada puede provenir de un número no identificado.",
@@ -290,7 +285,7 @@ const translations = {
     feature1:
       "A deep understanding of the cryptocurrency market and trends in the world of digital assets that are beyond the reach of the human mind.",
     feature2:
-      "The supercomputer can calculate millions of variations every second and predict trends with maximum accuracy.",
+      "The supercomputer can calculate millions of variants every second and predict trends with maximum accuracy.",
     feature3: "Secure operations with benefits for the investor.",
     platformUnnoticedText:
       "The Coin Sin Limited platform went unnoticed at the time of product launch. However, it is causing anger and panic among central banks and governments around the world. While big players try to stop the Coin Sin Limited platform project, you can start earning big money now.",
@@ -393,7 +388,7 @@ const translations = {
     subtitle: "Els nostres usuaris solen fer x2, x5 i fins i tot x10 en inversions",
     readyToJoin: "LLest per unir-te? Inicia el teu registre al sistema aquí i ara.",
     motivationalText:
-      "TENS DRET A LA INDEPENDÈNCIA FINANCERA, I NO ÉS UN PRIVILEGI. ÉS EL TEU DRET, INDEPENDENTMENT DE LA TEVA EDAT, ASSOLIMENTS I ESTATUS SOCIAL.",
+      "TENS DRET A LA INDEPENDÈNCIA FINANCERA, I NO ÉS UN PRIVILEGI. ÉS EL TU DRET, INDEPENDENTMENT DE LA TEVA EDAT, ASSOLIMENTS I ESTATUS SOCIAL.",
     playVideo: "Reproduir Vídeo",
     pauseVideo: "Pausar Vídeo",
     improveLife: "MILLORA LA TEVA VIDA AVUI",
@@ -434,7 +429,7 @@ const translations = {
     focusOnPlatformText1:
       "Per què la intel·ligència artificial (IA) és fonamental per al mercat d'inversió? La IA és més ràpida que el cervell humà i pot analitzar dades amb precisió, sempre que el sistema estigui configurat correctament. L'aprenentatge automàtic té tres avantatges significatius en el mercat d'inversió.",
     focusOnPlatformText2:
-      "A més, la intel·ligència artificial opera en el mercat les 24/7 ara. Significa coneixement de la situació global en temps real, acumulació de coneixements sobre patrons i creació immediata d'estratègies rendibles. La plataforma Coin Sin Limited ofereix una rendibilitat eficaç d'assolir per als humans. És qüestió de temps que les màquines assumeixin plenament aquesta funció.",
+      "A més, la intel·ligència artificial opera en el mercat les 24/7 ara. Significa coneixement de la situació global en temps real, acumulació de coneixements sobre patrons i creació immediata d'estratègies rentables. La plataforma Coin Sin Limited ofereix una rendibilitat eficaç d'assolir per als humans. És qüestió de temps que les màquines assumeixin plenament aquesta funció.",
     focusOnPlatformText3:
       "Un altre factor que fa atractiva la inversió al Canadà, Austràlia i altres països és l'educació. Moltes persones senten que un humà pot prendre decisions influït per les emocions, una màquina roman objectiva i racional. És fonamental no oblidar les emocions. Segregar la racionalitat de l'emoció és fonamental, però una realitat en l'esfera de la inversió, on tot es decideix basant-se en dades pures i previsions exactes.",
     focusOnPlatformText4:
@@ -463,7 +458,7 @@ const translations = {
     platformBenefitText1:
       "Per als inversors novells, invertir en criptomonedes pot resultar increïblement complicat. Sovint, els principiants necessiten comprendre tots els secrets d'aquest àmbit per no perdre les seves petites inversions en el menor temps possible. Això els porta a perdre l'interès per les criptomonedes i per la inversió en general. No obstant això, necessiten adonar-se de les oportunitats potencials que estan perdent.",
     platformBenefitText2:
-      "La plataforma Coin Sin Limited els permet fer realitat els seus somnis d'ingressos passius estables. Basat en intel·ligència artificial, aquest algoritme treballa contínuament, analitzant la situació del mercat, estudiant les tendències de les criptomonedes i realitzant operacions que gairebé sempre resulten rendibles. Milers de persones a tot el món ja han generat milers de milions d'euros amb Coin Sin Limited.",
+      "La plataforma Coin Sin Limited els permet fer realitat els seus somnis d'ingressos passius estables. Basat en intel·ligència artificial, aquest algoritme treballa contínuament, analitzant la situació del mercat, estudiant les tendències de les criptomonedes i realitzant operacions que gairebé sempre resulten rentables. Milers de persones a tot el món ja han generat milers de milions d'euros amb Coin Sin Limited.",
     platformFeaturesTitle: "Les característiques de la plataforma Coin Sin Limited inclouen:",
     feature1:
       "Un profund coneixement del mercat de criptomonedes i de les tendències en el món dels actius digitals que estan fora de l'abast de la ment humana.",
@@ -481,7 +476,7 @@ const translations = {
     tool1: "Evitar riscos i pèrdues innecessàries.",
     tool2: "Obtenir ingressos gairebé totalment passius.",
     tool3: "Treballar en el mercat amb una àmplia diversificació de la cartera i una reducció paral·lela del risc.",
-    tool4: "Rebre ingressos estables tant a curt com a llarg termini.",
+    tool4: "Recibir ingressos estables tant a curt com a llarg termini.",
     finalInvitation:
       "Per tant, el convidem a començar a escriure la primera pàgina de la seva història d'un inversor d'èxit avui després de llegir la revisió de Coin Sin Limited!",
     potentialEarningsTitle: "QUÈ GUANYS POTENCIALS PUC ESPERAR EN INVERTIR AMB COIN SIN LIMITED?",
@@ -501,7 +496,7 @@ const translations = {
     notScamText3:
       "Per seguretat, es recomana tancar la sessió després de cada ús i evitar connectar-se al sistema des de xarxes públiques.",
     notScamText4:
-      "Coin Sin Limited ofereix màxims beneficis i guanys sense risc, i presenta proves de no frau. També trobaràs opinions sobre Coin Sin Limited a continuació.",
+      "Coin Sin Limited ofereix màxims beneficis i guanys sense risc, i presenta proves de no fraud. També trobaràs opinions sobre Coin Sin Limited a continuació.",
     testimonialsTitle: "DESCOBREIX EL QUE DIUEN ELS MEMBRES DE",
     testimonialsHighlight: "COIN SIN LIMITED",
     testimonialsTitle2: "DIUEN SOBRE AQUESTA PLATAFORMA DE TRADING:",
@@ -530,19 +525,19 @@ const translations = {
     step2Title: "DEPOSITA €250 O MÉS",
     step2Description:
       "Com en qualsevol negoci, necessites capital inicial. L'avantatge de la plataforma Coin Sin Limited és que només requereix una inversió inicial modesta. Simplement diposita 250€ o més per començar a guanyar diners.",
-    step3Title: "ESTIGUES ATENT AL TU TELÈFON... PODRIES REBRE UNA TRUCADA!",
+    step3Title: "RESTA SINTONITZAT SUL TU TELÈFON... POTRIES REBRE UNA TRUCADA!",
     step3Description:
-      "Després de fer un pagament, el nostre gestor es posarà en contacte amb tu per confirmar-ho tot i activar el teu compte. Si tens alguna pregunta, el gestor et proporcionarà respostes detallades per ajudar-te. Tingues en compte que la trucada pot provenir d'un número no identificat.",
+      "Després de fer un pagament, el nostre gestor es posarà en contacte amb tu per confirmar-ho tot i activar el teu compte. Si tens alguna pregunta, el gestor et proporcionarà respostes detallades per ajudar-te. Tenere presente que la trucada podria provenir d'un número no identificat.",
     faqTitle: "PREGUNTES",
     faqHighlight: "FREQUENTS",
-    finalSectionTitle: "APROFITA L'OPORTUNITAT DE CONVERTIR-TE EN UN INVERSOR INTEL·LIGENT AVUI I...",
-    finalSectionSubtitle: "...DESFERMA UN MÓN DE POSSIBILITATS, AMB UN MÍNIM DE 1.000€ AL TU COMPTE CADA DIA!",
+    finalSectionTitle: "COGLI L'OPPORTUNITÀ DI DIVENTARE UN INVESTITORE INTEL·LIGENT OGGI E...",
+    finalSectionSubtitle: "...SCATENA UN MÓN DE POSSIBILITÀ, CON UN MÍNIMO DE 1.000€ SUL TUO CONTO OGNI GIORNO!",
     finalSectionText:
-      "Actua ara proporcionant el teu nom complet i correu electrònic al formulari a continuació, i desbloqueja l'oportunitat més excepcional i exclusiva per generar ingressos substancials sense esforç. Deixa que la IA s'encarregui de la feina dura mentre tu obtens beneficis tangibles a l'instant. No t'ho perdis!",
+      "Agisci ora fornendo il tuo nome completo e la tua email nel formulario sottostante, e sblocca l'opportunità più eccezionale ed exclusiva per generare un reddito sostanziale senza sforzo. Lascia che l'IA si occupi del lavoro duro mientras tú recoges beneficios tangibili al instante. ¡No te lo pierdas!",
     footerCompanyInfo:
       "Coin Sin Limited és una empresa especialitzada en proporcionar informació i eines per a la inversió i el comerç de criptomonedes, basades en intel·ligència artificial.",
     footerContactanos: "Contacta'ns",
-    footerPrivacidad: "Privadesa", // Corrected key name
+    footerPrivacidad: "Privadesa",
     footerTerminos: "Termes",
     footerDescargo: "Exempció de Responsabilitat",
     footerEmailLabel: "Correu electrònic:",
@@ -572,7 +567,7 @@ const translations = {
     subtitle: "I nostri utenti di solito fanno x2, x5 e persino x10 sugli investimenti",
     readyToJoin: "PRONTO AD UNIRTI? INIZIA LA TUA REGISTRAZIONE AL SISTEMA QUI E ORA.",
     motivationalText:
-      "HAI IL DIRITTO ALL'INDIPENDENZA FINANZIARIA, E NON È UN PRIVILEGIO. È UN TUO DIRITTO, INDIPENDENTEMENTE DALLA TUA ETÀ, DAI TUOI RISULTATI E DAL TUO STATUS SOCIALE.",
+      "HAI IL DIRITTO ALL'INDIPENDENZA FINANCIARIA, E NON È UN PRIVILEGIO. È UN TUO DIRITTO, INDIPENDENTEMENTE DALLA TUA ETÀ, DAI TUOI RISULTATI E DAL TUO STATUS SOCIALE.",
     playVideo: "Riproduci Video",
     pauseVideo: "Metti in Pausa Video",
     improveLife: "MIGLIORA LA TUO VITA OGGI",
@@ -605,17 +600,17 @@ const translations = {
       "Investire in valute digitali è un'opzione attraente per gli investitori. Le criptovalute riuniscono tutte le caratteristiche necessarie per offrire una liquidità stabile. Due fattori chiave determinano i benefici di questo tipo di investimenti:",
     growthPotentialTitle: "Potenziale di crescita:",
     growthPotentialText:
-      "Alcune criptovalute hanno già raggiunto un valore significativo, ma molti progetti hanno un grande potenziale di sviluppo. Grazie alla loro crescente popolarità, il mercato delle criptovalute attrae investitori che possono ottenere alti rendimenti investendo in asset digitali.",
+      "Alcune criptovalute hanno già raggiunto un valor significativo, pero muchos proyectos tienen un gran potencial de desarrollo. Gracias a su creciente popularidad, el mercado de las criptovalute atrae a inversores que pueden obtener altos rendimenti invirtiendo en activos digitales.",
     diversificationTitle: "Diversificazione del portafoglio:",
     diversificationText:
-      "Le criptovalute offrono l'opportunità di diversificare il tuo portafoglio di investimenti. Forniscono una classe di asset alternativa che è indipendente dai mercati finanziari tradizionali. Investire in criptovalute aiuta a diversificare il rischio e a proteggere il portafoglio da potenziali influenze negative in un'area.",
+      "Le criptovalute offrono l'opportunità di diversificare il tuo portafoglio di investimenti. Forniscono una classe di asset alternativa che è indipendente dai mercati finanziari tradizionali. Investire in criptovalute aiuta a diversificare el riesgo y a proteggere el portafoglio da potenziali influenze negative in un'area.",
     focusOnPlatformTitle: "Concentriamoci ora sulla piattaforma Coin Sin Limited.",
     focusOnPlatformText1:
       "Perché l'intelligenza artificiale (IA) è fondamentale per il mercato degli investimenti? L'IA è più veloce del cervello umano e può analizzare i dati con precisione, a condizione che il sistema sia configurato correttamente. L'apprendimento automatico ha tre vantaggi significativi nel mercato degli investimenti.",
     focusOnPlatformText2:
       "Inoltre, l'intelligenza artificiale opera nel mercato 24 ore su 24, 7 giorni su 7. Significa consapevolezza della situazione globale in tempo reale, accumulo di conoscenze sui modelli e creazione immediata di strategie redditizie. La piattaforma Coin Sin Limited offre una redditività efficace raggiungibile dagli esseri umani. È solo questione di tempo prima che le macchine assumano pienamente questa funzione.",
     focusOnPlatformText3:
-      "Un altro fattore che rende attraente l'investimento in Canada, Australia e altri paesi è l'istruzione. Molte persone sentono che un essere umano può prendere decisioni influenzate dalle emozioni, una macchina rimane obiettiva e razionale. È essenziale non dimenticare le emozioni. Separare la razionalità dall'emozione è fondamentale, ma una realizzazione nella sfera degli investimenti, dove tutto è deciso in base a dati puri e previsioni esatte.",
+      "Un altro factor que hace atractiva la inversión en Canadá, Australia y otros países es la educación. Muchas personas sienten que un ser humano puede tomar decisiones influido por las emociones, una máquina permanece objetiva y racional. Es esencial no olvidar las emociones. Separar la razionalità de la emoción es fundamental, pero una realización en la esfera de la inversión, donde todo es decidido en base a dati puri y previsiones exactas.",
     focusOnPlatformText4:
       "Inoltre, investire prima di guadagnare un reddito è significativamente diverso. Prima che una persona inizi a guadagnare un reddito, spende una quantità significativa di denaro per i test, il che ha dei benefici, oltre ad acquisire esperienza situazionale e consapevolezza degli investimenti. Al contrario, una macchina gestisce questo molto più velocemente e richiede un esborso minimo per massimizzare il reddito.",
     nineReasonsIntro:
@@ -647,7 +642,7 @@ const translations = {
     feature1:
       "Una profonda comprensione del mercato delle criptovalute e delle tendenze nel mondo degli asset digitali che sono al di là della portata della mente umana.",
     feature2:
-      "Il supercomputer può calcolare milioni di variazioni ogni secondo e prevedere le tendenze con la massima precisione.",
+      "Il supercomputer può calcolare milioni di varianti ogni secondo e prevedere le tendenze con la massima precisione.",
     feature3: "Operazioni sicure con benefici per l'investitore.",
     platformUnnoticedText:
       "La piattaforma Coin Sin Limited è passata inosservata al momento del lancio del prodotto. Tuttavia, sta causando rabbia e panico tra le banche centrali e i governi di tutto il mondo. Mentre i grandi attori cercano di fermare il progetto della piattaforma Coin Sin Limited, puoi iniziare a guadagnare un sacco di soldi ora.",
@@ -655,7 +650,7 @@ const translations = {
     investSmartText1:
       "I tempi non sono facili, e tutto intorno a noi sta lentamente andando giù. Anche se la situazione potrebbe migliorare in futuro, tutti dovrebbero prendersi cura del proprio futuro oggi per non dipendere da fattori esterni. Gli strumenti intelligenti possono aiutarti in questo.",
     investSmartText2:
-      "La piattaforma di investimento Coin Sin Limited ti consente di farlo senza perdere tempo a studiare il mercato delle valute digitali. Puoi iniziare a investire oggi stesso in paesi come Canada, Australia e altri. Il successo è pre-calcolato, e tutto ciò di cui hai bisogno è il desiderio di unirti.",
+      "La piattaforma di investimento Coin Sin Limited ti consente di farlo senza perdere tempo a studiare il mercato delle valute digitali. Puoi iniziare a investire oggi stesso in paesi come Canada, Australia y otros. El éxito está pre-calculado, y todo lo que necesitas es el deseo de unirte.",
     algorithmToolsIntro: "L'algoritmo ti fornisce gli strumenti per aiutarti:",
     tool1: "Evitare rischi e perdite inutili.",
     tool2: "Ottenere un reddito quasi totalmente passivo.",
@@ -690,14 +685,14 @@ const translations = {
       "Inviando il modulo sottostante con le tue informazioni accurate su questo sito web, sbloccherai rapidamente l'accesso illimitato al nostro sistema di trading AI altamente affidabile, dedicato e imparziale. Unisciti agli oltre 2.500 investitori astuti che stanno già beneficiando delle sue capacità.",
     featureAiSelectionsTitle: "SELEZIONI DI INVESTIMENTO ESCLUSIVAMENTE REDDITIZIE EFFETTUATE DALL'IA",
     featureAiSelectionsText:
-      "Sono finiti i giorni in cui gli investimenti erano riservati per i ricchi. Il nostro avanzato sistema informatico analizza meticolosamente liquidità, volatilità e volume di trading, il che garantisce decisioni di investimento ottimali. Goditi un reddito costante sul tuo conto tramite azioni di aziende di prim'ordine, supportate da un'impressionante garanzia di precisione di trading del 99.4%.",
+      "Sono finiti i giorni in cui gli investimenti erano riservati per i ricchi. Il nostro avanzato sistema informatico analizza meticolosamente liquidità, volatilità e volume di trading, il che garantisce decisioni di investimento ottimali. Goditi un reddito costante sul tuo conto tramite azioni di aziende de primo livello, supportate da un'impressionante garanzia di precisione di trading del 99.4%.",
     featureAutoTradingTitle: "FUNZIONALITÀ DI TRADING AUTOMATICO IMPECABILE",
     featureAutoTradingText:
       "Sperimenta la comodità della nostra funzione di trading automatico, che ti consente di generare profitti senza sforzo, anche quando non sei alla tua postazione di lavoro. Nessuna esperienza di trading richiesta! Effettua semplicemente il tuo investimento iniziale e osserva il saldo del tuo conto crescere costantemente.",
     featureSupportTitle: "SUPPORTO UTENTE COMPLETO",
     featureSupportText:
       "Come membro prezioso de Coin Sin Limited, il nostro amichevole responsabile del servizio clienti è a tua disposizione, pronto a rispondere a qualsiasi domanda o preoccupazione tu possa avere.",
-    featureCommunityTitle: "ACCESSO ESCLUSIVO A UNA COMUNITÀ UNICA",
+    featureCommunityTitle: "ACCESSO ESCLUSIVO A UNA COMUNITÀ ÚNICA",
     featureCommunityText:
       "Unisciti alla nostra prestigiosa comunità Coin Sin Limited e ottieni un'iscrizione privilegiata. Considerati fortunato di aver trovato l'opportunità di registrarti. Tieni presente che, a causa delle limitazioni di capacità del sistema, possiamo inviare inviti solo a un numero selezionato di utenti. Approfitta di questa opportunità per risolvere i tuoi problemi finanziari una volta per tutte.",
     createAccountButton: "Crea il tuo account!",
@@ -705,21 +700,21 @@ const translations = {
     howToStartHighlight: "INIZIARE?",
     step1Title: "REGISTRAZIONE: COMPLETA IL MODULO SOTTO",
     step1Description:
-      "Il modulo di registrazione è su questa pagina. Completa il modulo per diventare un membro. Una volta che la tua registrazione sarà approvata, diventerai automaticamente un nuovo partecipante di Coin Sin Limited.",
+      "Il formulario di registrazione è su questa pagina. Completa il modulo per diventare un membro. Una volta che la tua registrazione sarà approvata, diventerai automaticamente un nuovo partecipante de Coin Sin Limited.",
     step2Title: "DEPOSITA €250 O PIÙ",
     step2Description:
       "Come in qualsiasi attività commerciale, hai bisogno di capitale iniziale. L'vantaggio della piattaforma Coin Sin Limited è che richiede solo un modesto investimento iniziale. Ti basta depositare 250€ o più per iniziare a guadagnare denaro.",
-    step3Title: "RESTA SINTONIZZATO SUL TUO TELEFONO... POTRESTI RICEVERE UNA CHIAMATA!",
+    step3Title: "RESTA SINTONIZZATO SUL TUO TELÉFONO... POTRESTI RICEVERE UNA CHIAMATA!",
     step3Description:
       "Dopo aver effettuato un pagamento, il nostro responsabile ti contatterà per confermare tutto e attivare il tuo account. Se hai domande, il responsabile ti fornirà risposte dettagliate per aiutarti. Tenere presente che la chiamata potrebbe provenire da un número non identificato.",
     faqTitle: "DOMANDE",
     faqHighlight: "FREQUENTI",
     finalSectionTitle: "COGLI L'OPPORTUNITÀ DI DIVENTARE UN INVESTITORE INTELLIGENTE OGGI E...",
-    finalSectionSubtitle: "...SCATENA UN MONDO DI POSSIBILITÀ, CON UN MINIMO DI 1.000€ SUL TUO CONTO OGNI GIORNO!",
+    finalSectionSubtitle: "...SCATENA UN MONDO DI POSSIBILITÀ, CON UN MÍNIMO DE 1.000€ SUL TUO CONTO OGNI GIORNO!",
     finalSectionText:
-      "Agisci ora fornendo il tuo nome completo e la tua email nel modulo sottostante, e sblocca l'opportunità più eccezionale ed esclusiva per generare un reddito sostanziale senza sforzo. Lascia che l'IA si occupi del lavoro duro mentre tu raccogli benefici tangibili all'istante. Non perdere l'occasione!",
+      "Agisci ora fornendo il tuo nome completo e la tua email nel modulo sottostante, e sblocca l'opportunità più eccezionale ed exclusiva per generare un reddito sostanziale senza sforzo. Lascia che l'IA si occupi del lavoro duro mientras tú recoges beneficios tangibili al instante. ¡No te lo pierdas!",
     footerCompanyInfo:
-      "Coin Sin Limited è un'azienda specializzata nella fornitura di informazioni e strumenti per l'investimento e il trading di criptovalute, basati sull'intelligenza artificiale.",
+      "Coin Sin Limited è un'azienda specializzata nella fornitura di informazioni e strumenti per l'investimento e il trading de criptovalute, basati sull'intelligenza artificiale.",
     footerContactanos: "Contattaci",
     footerPrivacidad: "Privacy",
     footerTerminos: "Termini",
@@ -738,7 +733,7 @@ const translations = {
     smallFormPrivacyText:
       "I tuoi dati sono sempre protetti con Coin Sin Limited. Completando questo modulo, accetti di ricevere le nostre email di marketing.",
     ageConfirmation: "Confermo di essere maggiorenne.",
-    disclaimerFull: `IMPORTANT: Esclusioni di Responsabilità su Redditi e Legali. I grafici di reddito e guadagni creati da Coin Sin Limited, noto anche come "Questo Sito Web", sono utilizzati unicamente come illustrazioni ideali del tuo potenziale di guadagno. Il successo degli individui nelle testimonianze e in altri esempi sono risultati eccezionali, e pertanto non intendono garantire che tu o altri otterrete lo stesso. I risultati individuali dipenderanno da come utilizzi Coin Sin Limited. Per qualsiasi cosa tu faccia, questo sito web non ha responsabilità. Dovresti sempre agire con cautela e dovuta diligenza perché ti assumi la piena responsabilità delle tue azioni e decisioni quando utilizzi prodotti e servizi. Accetti che in nessun modo questo sito web sarà responsabile dei risultati del tuo utilizzo dei nostri servizi. Consulta i nostri termini d'uso per informazioni sulle nostre esclusioni di responsabilità e altre restrizioni. Sebbene el trading possa generare notevoli benefici, comporta anche il rischio di perdere il capitale investito en parte o per intero, quindi dovresti considerare se puoi permetterti di investire. ©2025AVVISO REGOLATORIO USA: Il trading de Forex, CFD e criptovalute non è soggetto ad alcuna regolamentazione USA. L'investimento in criptovalute non è regolamentato o supervisionato da alcuna agenzia finanziaria o USA. Qualsiasi trading non regolamentato da residenti USA è considerado ilegal. Este sitio web non accetta clienti o cittadini USA. Este sitio web non ha responsabilità per le azioni dei clienti situati o con cittadinanza statunitense. I clienti situati negli Stati Uniti o con cittadinanza statunitense si assumono la piena responsabilità delle loro azioni e decisioni quando utilizzano prodotti e servizi da este Sito Web. In qualsiasi circostanza, la scelta di utilizzare il Sito Web, el Servizio e/o el Programma è sotto la sola responsabilità dell'Utente, che deve rispettare la legislazione vigente.`,
+    disclaimerFull: `IMPORTANT: Esclusioni di Responsabilità su Redditi e Legali. I grafici di reddito e guadagni creati da Coin Sin Limited, noto anche come "Questo Sito Web", sono utilizzati unicamente come illustrazioni ideali del tuo potenziale di guadagno. Il successo degli individui nelle testimonianze e in altri esempi sono risultati eccezionali, e pertanto non intendono garantire che tu o altri otterrete lo stesso. I risultati individuali dipenderanno da come utilizzi Coin Sin Limited. Per qualsiasi cosa tu faccia, questo sito web non ha responsabilità. Dovresti sempre agire con cautela e dovuta diligenza perché ti assumi la piena responsabilità delle tue azioni e decisioni quando utilizzi prodotti e servizi. Accetti che in nessun modo questo sito web sarà responsabile dei risultati del tuo utilizzo dei servizi. Consulta i nostri termini d'uso per informazioni sulle nostre esclusioni di responsabilità e altre restrizioni. Sebbene el trading possa generare notevoli benefici, comporta anche el riesgo de perder el capital invertido en parte o per intero, quindi dovresti considerare se puoi permetterti di investire. ©2025AVVISO REGOLATORIO USA: El trading de Forex, CFD e criptovalute non è soggetto ad alcuna regolamentazione USA. L'investimento in criptovalute non è regolamentato o supervisionato da alcuna agenzia finanziaria o USA. Qualsiasi trading non regolamentato da residenti USA è considerado ilegal. Este sitio web non accetta clienti o cittadini USA. Este sitio web non ha responsabilità per le azioni dei clienti situati o con cittadinanza statunitense. I clienti situati negli Stati Uniti o con cittadinanza statunitense si assumono la piena responsabilità delle loro azioni e decisioni quando utilizzano prodotti e servizi da este Sito Web. In qualsiasi circostanza, la scelta di utilizzare el Sito Web, el Servizio e/o el Programma è sotto la sola responsabilità dell'Utente, que debe respetar la legislación vigente.`,
   },
 }
 // Testimonials data
@@ -773,7 +768,7 @@ const testimonials = [
     text: {
       es: "Después de años de trabajo duro, buscaba una forma de asegurar mi jubilación. Coin Sin Limited ha sido la solución. La automatización y la precisión de la IA me permiten generar ganancias sin estrés. Es la mejor decisión financiera que he tomado.",
       en: "After years of hard work, I was looking for a way to secure my retirement. Coin Sin Limited has been the solution. The automation and AI precision allow me to generate profits without stress. It's the best financial decision I've ever taken.",
-      ca: "Després d'anys de feina dura, buscava una forma d'assegurar la meva jubilació. Coin Sin Limited ha estat la solució. L'automatització i la precisió de la IA em permeten generar guanys sense estrès. És la millor decisió financera que he pres.",
+      ca: "Després d'anys de feina dura, buscava una forma d'assegurar la meva jubilació. L'automatització i la precisió de la IA em permeten generar guanys sense estrès. És la millor decisió financera que he pres.",
       it: "Dopo anni di duro lavoro, cercavo un modo per assicurarmi la pensione. Coin Sin Limited è stata la soluzione. L'automazione e la precisione dell'IA mi permettono di generare profitti senza stress. È la migliore decisione finanziaria che abbia mai preso.",
     },
   },
@@ -827,7 +822,7 @@ const testimonials = [
       es: "Nunca pensé que a mi edad podría entender el mundo de las criptomonedas, pero Coin Sin Limited lo hizo posible. La plataforma es intuitiva y los resultados son consistentes. ¡Es una bendición para mi economía familiar!",
       en: "I never thought that at my age I could understand the world of cryptocurrencies, but Coin Sin Limited made it possible. The platform is intuitive and the results are consistent. It's a blessing for my family's economy!",
       ca: "Mai vaig pensar que a la meva edat podria entendre el món de les criptomonedes, però Coin Sin Limited ho va fer possible. La plataforma és intuitiva i els resultats són consistents. És una benedicció per a la meva economia familiar!",
-      it: "Non avrei mai pensato che alla mia età avrei potuto capire il mundo delle criptovalute, ma Coin Sin Limited lo ha reso possibile. La piattaforma è intuitiva e i risultati sono costanti. È una benedizione per la mia economia familiare!",
+      it: "Non avrei mai pensato che alla mia età avrei potuto capire el mundo delle criptovalute, ma Coin Sin Limited lo ha reso possibile. La piattaforma è intuitiva e i risultati sono costanti. È una benedizione per la mia economia familiare!",
     },
   },
 ]
@@ -1157,7 +1152,6 @@ const countryCodes = [
 // Define los valores específicos para la calculadora
 const investmentValues = [250, 5000, 25000, 50000, 100000]
 type Language = "es" | "en" | "ca" | "it"
-
 export default function CryptoLanding() {
   const [language, setLanguage] = useState<Language>("es")
   const [countrySearch, setCountrySearch] = useState("")
@@ -1172,10 +1166,6 @@ export default function CryptoLanding() {
     countryCode: "+34",
   })
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null)
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
-  const [volume, setVolume] = useState(0.5) // Estado para el volumen
-  const [isMuted, setIsMuted] = useState(false) // Estado para el mute
-  const videoRef = useRef<HTMLVideoElement>(null)
   const [calculatorData, setCalculatorData] = useState({
     investment: investmentValues[0], // Inicializar con el primer valor
     days: 10,
@@ -1184,7 +1174,6 @@ export default function CryptoLanding() {
   const [newUsersToday, setNewUsersToday] = useState(3984) // Changed initial value to 3984
   const [ageConfirmed, setAgeConfirmed] = useState(false)
   const [phoneError, setPhoneError] = useState<string | null>(null)
-
   const [registrationState, registrationAction] = useFormState(submitRegistration, {
     success: false,
     message: "",
@@ -1199,12 +1188,10 @@ export default function CryptoLanding() {
       _form: undefined,
     },
   })
-
   // Countdown timer state
   const initialCountdownTime = 5 * 60 * 1000 // 5 minutes in milliseconds
   const [countdownTime, setCountdownTime] = useState(initialCountdownTime)
   const countdownIntervalRef = useRef<NodeJS.Timeout | null>(null)
-
   useEffect(() => {
     // Start countdown timer
     countdownIntervalRef.current = setInterval(() => {
@@ -1217,15 +1204,12 @@ export default function CryptoLanding() {
         return prevTime - 1000
       })
     }, 1000)
-
     const benefitInterval = setInterval(() => {
       setPlatformNetBenefit((prev) => prev + Math.floor(Math.random() * 1000) + 100) // Increment by 100-1099
     }, 5000) // Update every 5 seconds
-
     const usersInterval = setInterval(() => {
       setNewUsersToday((prev) => prev + Math.floor(Math.random() * 5) + 1) // Increment by 1-5 users
     }, 10000) // Update every 10 seconds
-
     return () => {
       clearInterval(benefitInterval)
       clearInterval(usersInterval)
@@ -1234,7 +1218,6 @@ export default function CryptoLanding() {
       }
     }
   }, [])
-
   // Format countdown time
   const formatCountdown = (ms: number) => {
     const totalSeconds = Math.floor(ms / 1000)
@@ -1242,12 +1225,10 @@ export default function CryptoLanding() {
     const seconds = totalSeconds % 60
     return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
   }
-
   // Calculate return based on investment and days
   const calculateReturn = (investment: number, days: number) => {
     const initialDailyRate = 0.0936 // This rate ensures 250 -> 612 in 10 days
     const reducedDailyRate = 0.03 // A much lower rate for subsequent days
-
     if (days <= 10) {
       return Math.round(investment * Math.pow(1 + initialDailyRate, days))
     } else {
@@ -1256,13 +1237,11 @@ export default function CryptoLanding() {
       return Math.round(baseReturnAt10Days * Math.pow(1 + reducedDailyRate, remainingDays))
     }
   }
-
   // Calculate percentage gain
   const calculatePercentage = (investment: number, days: number) => {
     const returnAmount = calculateReturn(investment, days)
     return ((returnAmount - investment) / investment) * 100
   }
-
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => {
       // Ensure maxIndex is calculated correctly for the number of testimonials and items displayed
@@ -1270,50 +1249,13 @@ export default function CryptoLanding() {
       return prev + 3 > maxIndex ? 0 : prev + 3
     })
   }
-
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) => {
       const maxIndex = testimonials.length - 3 // Displaying 3 testimonials at a time
       return prev - 3 < 0 ? maxIndex : prev - 3
     })
   }
-
-  const toggleVideo = () => {
-    if (videoRef.current) {
-      if (isVideoPlaying) {
-        videoRef.current.pause()
-      } else {
-        videoRef.current.play()
-      }
-      setIsVideoPlaying(!isVideoPlaying)
-    }
-  }
-
-  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = Number.parseFloat(e.target.value)
-    if (videoRef.current) {
-      videoRef.current.volume = newVolume
-      setVolume(newVolume)
-      if (newVolume > 0 && isMuted) {
-        setIsMuted(false)
-      } else if (newVolume === 0 && !isMuted) {
-        setIsMuted(true)
-      }
-    }
-  }
-
-  const toggleFullScreen = () => {
-    if (videoRef.current) {
-      if (document.fullscreenElement) {
-        document.exitFullscreen()
-      } else {
-        videoRef.current.requestFullscreen()
-      }
-    }
-  }
-
   const t = translations[language]
-
   const filteredCountries = useMemo(() => {
     if (!countrySearch) return countryCodes
     const searchTerm = countrySearch.toLowerCase()
@@ -1324,7 +1266,6 @@ export default function CryptoLanding() {
         country.code.includes(searchTerm),
     )
   }, [countrySearch])
-
   const validatePhoneNumber = (phoneNumber: string) => {
     const commonPatterns = [
       /^(\d)\1+$/, // e.g., 1111111111
@@ -1338,48 +1279,29 @@ export default function CryptoLanding() {
     }
     return null
   }
-
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
     if (field === "phone") {
       setPhoneError(validatePhoneNumber(value))
     }
   }
-
   const handleLanguageChange = (newLanguage: string) => {
     setLanguage(newLanguage as Language)
   }
-
   const selectedCountry = countryCodes.find((c) => c.code === formData.countryCode)
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted
-      setIsMuted(!isMuted)
-      if (!isMuted) {
-        videoRef.current.volume = volume
-      } else {
-        videoRef.current.volume = 0
-      }
-    }
-  }
-
   // Handler for investment slider
   const handleInvestmentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const index = Number.parseInt(e.target.value)
     setCalculatorData((prev) => ({ ...prev, investment: investmentValues[index] }))
   }
-
   return (
     <div className="min-h-screen relative overflow-hidden bg-blue-950">
       {/* Section with background image 1 (image.jpg) */}
       <div className="relative z-10" aria-label="Background image of cryptocurrency charts">
         <div className="absolute inset-0 bg-[url('/images/image.jpg')] bg-cover bg-center blur-md"></div>
-        <div className="relative z-20">
+        <div className="relative z-20 min-h-screen flex flex-col">
           {/* Notification Bar */}
           <div className="relative z-20 bg-blue-600 text-white text-center py-0.5 px-4 text-sm">
-            {" "}
-            {/* Reduced py-1 to py-0.5 */}
             <div className="flex items-center justify-center gap-2">
               <Info className="w-4 h-4" />
               <span>{t.notification}</span>
@@ -1388,45 +1310,34 @@ export default function CryptoLanding() {
               </Badge>
             </div>
           </div>
-
           {/* Header */}
           <header className="relative z-20 grid grid-cols-[auto_1fr_auto] items-center py-1 px-2 sm:py-2 sm:px-4">
-            {" "}
-            {/* Reduced p-2 sm:p-4 to py-1 px-2 sm:py-2 sm:px-4 */}
             {/* Logo Column */}
             <div className="flex items-center gap-2">
-              {" "}
-              {/* Reduced gap */}
               <img
                 src="/logo.png"
                 alt="Coin Sin Limited Logo"
-                className="h-20 w-40 sm:h-24 sm:w-48 object-contain rounded-lg" // Increased logo size
+                className="h-28 w-56 sm:h-32 sm:w-64 object-contain rounded-lg" // Increased logo size
               />
             </div>
             {/* Counters Column (centered) */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2">
-              {" "}
-              {/* Reduced gap */}
               <div className="text-white text-xs text-center sm:text-left">
-                {" "}
-                {/* Reduced font size */}
                 <div className="text-orange-400 font-semibold">{t.platformBenefit}</div>
-                <div className="text-lg font-bold">€{platformNetBenefit.toLocaleString()}</div>{" "}
-                {/* Reduced font size */}
+                <div className="text-lg font-bold">€{platformNetBenefit.toLocaleString()}</div>
               </div>
               <div className="text-white text-xs text-center sm:text-left">
-                {" "}
-                {/* Reduced font size */}
                 <div className="text-orange-400 font-semibold">{t.userIncome}</div>
-                <div className="text-lg font-bold">{newUsersToday.toLocaleString()}</div> {/* Reduced font size */}
+                <div className="text-lg font-bold flex items-center justify-center sm:justify-start gap-1">
+                  <User className="w-4 h-4 text-white" /> {/* Added User icon */}
+                  {newUsersToday.toLocaleString()}
+                </div>
               </div>
             </div>
             {/* Language Selector Column */}
             <div className="flex justify-end">
               <Select value={language} onValueChange={handleLanguageChange}>
                 <SelectTrigger className="w-full sm:w-28 bg-white text-gray-900 [&>span]:text-gray-900 [&>span>span]:text-gray-900 [&>svg]:text-gray-900 h-8 text-sm">
-                  {" "}
-                  {/* Reduced width and height */}
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -1438,499 +1349,347 @@ export default function CryptoLanding() {
               </Select>
             </div>
           </header>
-
-          {/* Main Content (Hero section) */}
-          <div className="relative z-20 container mx-auto px-4 py-1 sm:px-6 sm:py-2">
+          {/* Main Content (Hero section, Video, Form) - Adjusted for higher visibility */}
+          <div className="container mx-auto px-4 py-4 sm:px-6 sm:py-4 flex-grow flex items-center justify-center">
             {" "}
-            {/* Reduced padding */}
-            <div className="text-center mb-1 sm:mb-2">
+            {/* Changed items-start to items-center and added justify-center */}
+            <div className="w-full max-w-6xl">
               {" "}
-              {/* Reduced margin-bottom */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-0.5 sm:mb-1 leading-tight">
-                {" "}
-                {/* Increased font size */}
-                {t.mainTitle}
-                <br />
-                <span className="text-orange-400">{t.mainTitleHighlight}</span>
-              </h1>
-              <p className="text-xs sm:text-sm text-gray-300 mb-1 sm:mb-2">{t.subtitle}</p>{" "}
-              {/* Further reduced font size */}
+              {/* Changed max-w-7xl to max-w-6xl for smaller interface */}
+              {/* Moved "READY TO JOIN" banner here */}
+              <div className="bg-blue-700/50 text-white p-3 rounded-lg flex items-center gap-2 mb-4 animate-in slide-in-from-left-5 duration-700">
+                <Info className="w-4 h-4" />
+                <span className="font-semibold text-sm">{t.readyToJoin}</span>
+              </div>
+              <div className="rounded-2xl p-4 sm:p-6 shadow-2xl border border-blue-400/20 animate-in slide-in-from-bottom-5 duration-700 glowing-form-shadow">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
+                  {/* Left Side - Video/Content */}
+                  <div className="lg:col-span-2 pt-0">
+                    <div className="text-center space-y-4">
+                      <div className="inline-flex items-center justify-center w-14 h-14 bg-orange-500/20 rounded-full mb-2 animate-pulse">
+                        <Shield className="w-7 h-7 text-orange-400" />
+                      </div>
+                      <div className="w-16 h-1 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto rounded-full animate-in slide-in-from-left-5 duration-500 delay-300"></div>
+                      {/* YouTube Video Player */}
+                      <div className="relative bg-transparent rounded-xl overflow-hidden glowing-form-shadow">
+                        <iframe
+                          className="w-full aspect-video object-cover"
+                          src="https://www.youtube.com/embed/I_vf6Crunxw?autoplay=1&controls=1&modestbranding=1&vq=hd1080&loop=1&playlist=I_vf6Crunxw"
+                          title="YouTube video player"
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                        ></iframe>
+                      </div>
+                      <p className="text-white/80 text-xs">
+                        {language === "es" ? "El video se reproduce automáticamente." : "Video plays automatically."}
+                      </p>
+                    </div>
+                  </div>
+                  {/* Right Side - Registration Form */}
+                  <div id="registration-form" className="space-y-4">
+                    {registrationState.success && (
+                      <div className="text-center space-y-4 animate-in fade-in-50 duration-500">
+                        <div className="inline-flex items-center justify-center w-16 h-16 bg-green-500/20 rounded-full mb-2">
+                          <svg className="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                              fillRule="evenodd"
+                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                        <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">{t.registrationSuccessTitle}</h2>
+                        <p className="text-white/90 text-sm sm:text-base">{registrationState.message}</p>
+                        <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto rounded-full"></div>
+                      </div>
+                    )}
+                    {registrationState.errors?._form && (
+                      <div className="text-red-400 text-xs text-center">{registrationState.errors._form[0]}</div>
+                    )}
+                    {!registrationState.success && (
+                      <>
+                        <div className="text-center mb-6">
+                          <div className="inline-flex items-center justify-center w-14 h-14 bg-orange-500/20 rounded-full mb-2 animate-pulse">
+                            <img
+                              src="/logo.png"
+                              alt="Coin Sin Limited Logo"
+                              className="h-10 w-20 object-contain rounded-lg" // Reduced logo size
+                            />
+                          </div>
+                          <h2 className="text-xl sm:text-2xl font-bold text-white mb-1 animate-in fade-in-50 duration-500 delay-200">
+                            {t.improveLife}
+                          </h2>
+                          <div className="w-16 h-1 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto rounded-full animate-in slide-in-from-left-5 duration-500 delay-300"></div>
+                        </div>
+                        <form className="space-y-3" action={registrationAction}>
+                          {/* Name Field */}
+                          <div className="relative group animate-in slide-in-from-left-3 duration-500 delay-100">
+                            <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 group-focus-within:text-blue-500 transition-colors duration-200 z-10">
+                              <User className="w-4 h-4" />
+                            </div>
+                            <Input
+                              name="name"
+                              placeholder={t.namePlaceholder}
+                              value={formData.name}
+                              onChange={(e) => handleInputChange("name", e.target.value)}
+                              required
+                              className="w-full bg-white/95 backdrop-blur-sm border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 pr-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
+                            />
+                            {formData.name && (
+                              <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
+                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              </div>
+                            )}
+                          </div>
+                          {/* Surname Field */}
+                          <div className="relative group animate-in slide-in-from-left-3 duration-500 delay-200">
+                            <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 group-focus-within:text-blue-500 transition-colors duration-200 z-10">
+                              <User className="w-4 h-4" />
+                            </div>
+                            <Input
+                              name="surname"
+                              placeholder={t.surnamePlaceholder}
+                              value={formData.surname}
+                              onChange={(e) => handleInputChange("surname", e.target.value)}
+                              required
+                              className="w-full bg-white/95 backdrop-blur-sm border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 pr-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
+                            />
+                            {formData.surname && (
+                              <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
+                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              </div>
+                            )}
+                          </div>
+                          {/* Email Field */}
+                          <div className="relative group animate-in slide-in-from-left-3 duration-500 delay-300">
+                            <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 group-focus-within:text-blue-500 transition-colors duration-200 z-10">
+                              <Mail className="w-4 h-4" />
+                            </div>
+                            <Input
+                              name="email"
+                              type="email"
+                              placeholder={t.emailPlaceholder}
+                              value={formData.email}
+                              onChange={(e) => handleInputChange("email", e.target.value)}
+                              required
+                              className="w-full bg-white/95 backdrop-blur-sm border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 pr-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
+                            />
+                            {formData.email && formData.email.includes("@") && (
+                              <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
+                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              </div>
+                            )}
+                          </div>
+                          {/* Date of Birth Field */}
+                          <div className="relative group animate-in slide-in-from-left-3 duration-500 delay-350">
+                            <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 group-focus-within:text-blue-500 transition-colors duration-200 z-10">
+                              <Calendar className="w-4 h-4" />
+                            </div>
+                            <Input
+                              name="dateOfBirth"
+                              type="date"
+                              placeholder={t.dobPlaceholder}
+                              value={formData.dateOfBirth}
+                              onChange={(e) => handleInputChange("dateOfBirth", e.target.value)}
+                              required
+                              className="w-full bg-white/95 backdrop-blur-sm border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 pr-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
+                            />
+                            {formData.dateOfBirth && (
+                              <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
+                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              </div>
+                            )}
+                          </div>
+                          {/* Phone Field - Unified */}
+                          <div className="flex animate-in slide-in-from-left-3 duration-500 delay-400 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus-within:scale-[1.02] focus-within:bg-white overflow-hidden">
+                            <div className="relative w-1/3">
+                              <Select
+                                name="countryCode"
+                                value={formData.countryCode}
+                                onValueChange={(value) => handleInputChange("countryCode", value)}
+                                open={isCountrySelectOpen}
+                                onOpenChange={setIsCountrySelectOpen}
+                              >
+                                <SelectTrigger className="w-full bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 border-r border-gray-300 h-10 text-white rounded-l-xl rounded-r-none text-sm flex items-center justify-start pl-3 min-h-[40px]">
+                                  <SelectValue>
+                                    <div className="flex items-center gap-1">
+                                      <span className="text-xs font-semibold">
+                                        {selectedCountry?.id.toUpperCase()} {selectedCountry?.code}
+                                      </span>
+                                    </div>
+                                  </SelectValue>
+                                </SelectTrigger>
+                                <SelectContent className="w-[var(--radix-popper-anchor-width)] max-h-60 rounded-xl border-0 shadow-2xl bg-white/95 backdrop-blur-sm">
+                                  <div className="p-2 border-b border-gray-100">
+                                    <div className="relative">
+                                      <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400 w-3 h-3" />
+                                      <Input
+                                        placeholder={t.searchCountry}
+                                        value={countrySearch}
+                                        onChange={(e) => setCountrySearch(e.target.value)}
+                                        className="pl-8 h-8 text-xs rounded-lg border border-gray-200 focus:border-blue-400 transition-colors duration-200 w-full"
+                                        onClick={(e) => e.stopPropagation()}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="max-h-40 overflow-y-auto">
+                                    {filteredCountries.map((country) => (
+                                      <SelectItem
+                                        key={country.id}
+                                        value={country.code}
+                                        className="hover:bg-blue-50 transition-colors duration-150 cursor-pointer"
+                                      >
+                                        <div className="flex items-center gap-2 py-0.5">
+                                          <span className="text-base">{country.flag}</span>
+                                          <span className="text-xs font-semibold">{country.code}</span>
+                                          <span className="text-xs text-gray-600">
+                                            {language === "es" ? country.name : country.country}
+                                          </span>
+                                        </div>
+                                      </SelectItem>
+                                    ))}
+                                    {filteredCountries.length === 0 && (
+                                      <div className="p-2 text-xs text-gray-500 text-center">{t.noCountriesFound}</div>
+                                    )}
+                                  </div>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                            <div className="relative flex-1 group">
+                              <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 group-focus-within:text-blue-500 transition-colors duration-200 z-10">
+                                <Phone className="w-4 h-4" />
+                              </div>
+                              <Input
+                                name="phone"
+                                placeholder={t.phonePlaceholder}
+                                value={formData.phone}
+                                onChange={(e) => handleInputChange("phone", e.target.value)}
+                                required
+                                className="w-full bg-white/95 backdrop-blur-sm border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 pr-10 rounded-r-xl rounded-l-none min-h-[40px]"
+                              />
+                              {formData.phone && !phoneError && formData.phone.length >= 8 && (
+                                <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
+                                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                      fillRule="evenodd"
+                                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    />
+                                  </svg>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          {phoneError && <p className="text-red-400 text-xs text-left mt-1">{phoneError}</p>}
+                          <input type="hidden" name="language" value={language} />
+                          {/* Register Button */}
+                          <div className="animate-in slide-in-from-bottom-3 duration-500 delay-500">
+                            <SubmitButton language={language} disabled={!ageConfirmed || !!phoneError}>
+                              {t.registerButton}
+                            </SubmitButton>
+                          </div>
+                          {/* Age Confirmation Checkbox */}
+                          <div className="flex items-start gap-3 text-xs text-white animate-in fade-in-50 duration-500 delay-600">
+                            <div className="relative">
+                              <Checkbox
+                                id="age-confirm"
+                                checked={ageConfirmed}
+                                onCheckedChange={(checked) => setAgeConfirmed(!!checked)}
+                                required
+                                className="mt-0.5 border-white/30 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 transition-all duration-200 hover:scale-110"
+                              />
+                            </div>
+                            <label
+                              htmlFor="age-confirm"
+                              className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
+                            >
+                              <Shield className="w-3 h-3 inline mr-1 text-orange-400 align-middle" />
+                              {t.ageConfirmation}
+                            </label>
+                          </div>
+                          {/* Terms Checkbox */}
+                          <div className="flex items-start gap-3 text-xs text-white animate-in fade-in-50 duration-500 delay-600">
+                            <div className="relative">
+                              <Checkbox
+                                id="terms"
+                                required
+                                className="mt-0.5 border-white/30 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 transition-all duration-200 hover:scale-110"
+                              />
+                            </div>
+                            <label
+                              htmlFor="terms"
+                              className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
+                            >
+                              <Shield className="w-3 h-3 inline mr-1 text-orange-400 align-middle" />
+                              {t.termsText}
+                            </label>
+                          </div>
+                          {/* Privacy Text */}
+                          <div className="text-xs text-white/80 leading-relaxed animate-in fade-in-50 duration-500 delay-700 bg-white/5 p-3 rounded-lg border border-white/10">
+                            <div className="flex items-start gap-1">
+                              <svg
+                                className="w-3 h-3 text-blue-300 mt-0.5 flex-shrink-0"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                  clipRule="evenodd"
+                                />
+                              </svg>
+                              <span>{t.privacyText}</span>
+                            </div>
+                          </div>
+                        </form>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+              {/* Text that was moved - now below the video/form container */}
+              <div className="text-center mt-8 sm:mt-10">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 sm:mb-2 leading-tight">
+                  {t.mainTitle}
+                  <br />
+                  <span className="text-orange-400">{t.mainTitleHighlight}</span>
+                </h1>
+                <p className="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-4">{t.subtitle}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
       {/* FIN DEL DIV CON LA IMAGEN DE FONDO 1 */}
-
       {/* New wrapper for image2.jpg, starting from "READY TO JOIN" and going down */}
+      {/* This div will hold image2.jpg as its background */}
       <div className="relative z-0">
-        {" "}
-        {/* This div will hold image2.jpg as its background */}
-        <div className="absolute inset-0 bg-[url('/images/image2.jpg')] bg-cover bg-center opacity-10 blur-sm"></div>{" "}
-        {/* The image2.jpg background */}
+        <div className="absolute inset-0 bg-[url('/images/image2.jpg')] bg-cover bg-center opacity-10 blur-sm"></div>
         <div className="relative z-10 max-w-7xl mx-auto">
-          {/* Moved "READY TO JOIN" banner here, outside the grid */}
-          <div className="bg-blue-700/50 text-white p-3 rounded-lg flex items-center gap-2 mb-4 animate-in slide-in-from-left-5 duration-700">
-            {" "}
-            {/* Reduced padding and gap, mb-6 to mb-4 */}
-            <Info className="w-4 h-4" /> {/* Reduced icon size */}
-            <span className="font-semibold text-sm">{t.readyToJoin}</span> {/* Reduced font size */}
-          </div>
-
-          <div className="rounded-2xl p-4 sm:p-6 shadow-2xl border border-blue-400/20 animate-in slide-in-from-bottom-5 duration-700 glowing-form-shadow">
-            {" "}
-            {/* Reduced padding */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
-              {" "}
-              {/* Reduced gap */}
-              {/* Left Side - Video/Content */}
-              <div className="lg:col-span-2 pt-0">
-                {" "}
-                <div className="text-center space-y-4">
-                  {" "}
-                  {/* Reduced space-y */}
-                  <div className="inline-flex items-center justify-center w-14 h-14 bg-orange-500/20 rounded-full mb-2 animate-pulse">
-                    {" "}
-                    {/* Reduced size */}
-                    <Shield className="w-7 h-7 text-orange-400" /> {/* Reduced icon size */}
-                  </div>
-                  <div className="w-16 h-1 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto rounded-full animate-in slide-in-from-left-5 duration-500 delay-300"></div>{" "}
-                  {/* Reduced width */}
-                  {/* Video Player */}
-                  <div className="relative bg-transparent rounded-xl overflow-hidden glowing-form-shadow">
-                    <video
-                      ref={videoRef}
-                      src="/videos/crypto-demo.mp4" // Referencia al video subido a Vercel Blob
-                      className="w-full aspect-video object-cover" // Changed to aspect-video for wider view
-                      loop
-                      onPlay={() => setIsVideoPlaying(true)}
-                      onPause={() => setIsVideoPlaying(false)}
-                      onVolumeChange={(e) => {
-                        setVolume(e.currentTarget.volume)
-                        setIsMuted(e.currentTarget.muted)
-                      }}
-                      autoPlay // Added autoPlay
-                      muted={isMuted} // Ensure muted state is applied
-                    >
-                      {language === "es"
-                        ? "Tu navegador no soporta la etiqueta de video."
-                        : "Your browser no longer supports the video tag."}
-                    </video>
-                    {/* Custom Play/Pause Button */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Button
-                        onClick={toggleVideo}
-                        size="lg"
-                        className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white h-12 w-12 sm:h-14 sm:w-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 group relative overflow-hidden"
-                      >
-                        {" "}
-                        {/* Reduced size */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                        <div className="relative flex items-center justify-center">
-                          {isVideoPlaying ? (
-                            <Pause className="w-6 h-6 sm:w-7 sm:h-7 group-hover:scale-110 transition-transform duration-300" />
-                          ) : (
-                            <Play className="w-6 h-6 sm:w-7 sm:h-7 group-hover:scale-110 transition-transform duration-300" />
-                          )}
-                        </div>
-                      </Button>
-                    </div>
-                    {/* Video Controls (Volume, Fullscreen) */}
-                    <div className="absolute bottom-1 left-1 right-1 sm:bottom-2 sm:left-2 sm:right-2 flex items-center justify-between bg-black/50 p-1 rounded-lg">
-                      {" "}
-                      {/* Reduced padding */}
-                      <div className="flex items-center gap-1">
-                        {" "}
-                        {/* Reduced gap */}
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={toggleMute}
-                          className="text-white hover:bg-white/20 w-7 h-7"
-                        >
-                          {" "}
-                          {/* Reduced size */}
-                          {isMuted || volume === 0 ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}{" "}
-                          {/* Reduced icon size */}
-                        </Button>
-                        <input
-                          type="range"
-                          min="0"
-                          max="1"
-                          step="0.01"
-                          value={volume}
-                          onChange={handleVolumeChange}
-                          className="w-16 sm:w-20 h-1 bg-gray-400 rounded-lg appearance-none cursor-pointer"
-                        />{" "}
-                        {/* Reduced width */}
-                      </div>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={toggleFullScreen}
-                        className="text-white hover:bg-white/20 w-7 h-7"
-                      >
-                        {" "}
-                        {/* Reduced size */}
-                        <Maximize className="w-4 h-4" /> {/* Reduced icon size */}
-                      </Button>
-                    </div>
-                  </div>
-                  <p className="text-white/80 text-xs">{isVideoPlaying ? t.pauseVideo : t.playVideo}</p>{" "}
-                  {/* Reduced font size */}
-                </div>
-              </div>
-              {/* Right Side - Registration Form */}
-              <div id="registration-form" className="space-y-4">
-                {" "}
-                {/* Reduced space-y */}
-                {registrationState.success && (
-                  <div className="text-center space-y-4 animate-in fade-in-50 duration-500">
-                    {" "}
-                    {/* Reduced space-y */}
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-green-500/20 rounded-full mb-2">
-                      {" "}
-                      {/* Reduced size */}
-                      <svg className="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                        {" "}
-                        {/* Reduced icon size */}
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">{t.registrationSuccessTitle}</h2>{" "}
-                    {/* Reduced font size */}
-                    <p className="text-white/90 text-sm sm:text-base">{registrationState.message}</p>{" "}
-                    {/* Reduced font size */}
-                    <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto rounded-full"></div>{" "}
-                    {/* Reduced width */}
-                  </div>
-                )}
-                {registrationState.errors?._form && (
-                  <div className="text-red-400 text-xs text-center">{registrationState.errors._form[0]}</div>
-                )}
-                {!registrationState.success && (
-                  <>
-                    <div className="text-center mb-6">
-                      {" "}
-                      {/* Reduced margin-bottom */}
-                      <div className="inline-flex items-center justify-center w-14 h-14 bg-orange-500/20 rounded-full mb-2 animate-pulse">
-                        {" "}
-                        {/* Reduced size */}
-                        <img
-                          src="/logo.png"
-                          alt="Coin Sin Limited Logo"
-                          className="h-10 w-20 object-contain rounded-lg" // Reduced logo size
-                        />
-                      </div>
-                      <h2 className="text-xl sm:text-2xl font-bold text-white mb-1 animate-in fade-in-50 duration-500 delay-200">
-                        {" "}
-                        {/* Reduced font size and margin */}
-                        {t.improveLife}
-                      </h2>
-                      <div className="w-16 h-1 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto rounded-full animate-in slide-in-from-left-5 duration-500 delay-300"></div>{" "}
-                      {/* Reduced width */}
-                    </div>
-                    <form className="space-y-3" action={registrationAction}>
-                      {" "}
-                      {/* Reduced space-y */}
-                      {/* Name Field */}
-                      <div className="relative group animate-in slide-in-from-left-3 duration-500 delay-100">
-                        <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 group-focus-within:text-blue-500 transition-colors duration-200 z-10">
-                          <User className="w-4 h-4" /> {/* Reduced icon size */}
-                        </div>
-                        <Input
-                          name="name"
-                          placeholder={t.namePlaceholder}
-                          value={formData.name}
-                          onChange={(e) => handleInputChange("name", e.target.value)}
-                          required
-                          className="w-full bg-white/95 backdrop-blur-sm border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 pr-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
-                        />
-                        {formData.name && (
-                          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
-                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                              {" "}
-                              {/* Reduced icon size */}
-                              <path
-                                fillRule="evenodd"
-                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                          </div>
-                        )}
-                      </div>
-                      {/* Surname Field */}
-                      <div className="relative group animate-in slide-in-from-left-3 duration-500 delay-200">
-                        <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 group-focus-within:text-blue-500 transition-colors duration-200 z-10">
-                          <User className="w-4 h-4" /> {/* Reduced icon size */}
-                        </div>
-                        <Input
-                          name="surname"
-                          placeholder={t.surnamePlaceholder}
-                          value={formData.surname}
-                          onChange={(e) => handleInputChange("surname", e.target.value)}
-                          required
-                          className="w-full bg-white/95 backdrop-blur-sm border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 pr-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
-                        />
-                        {formData.surname && (
-                          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
-                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                              {" "}
-                              {/* Reduced icon size */}
-                              <path
-                                fillRule="evenodd"
-                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                          </div>
-                        )}
-                      </div>
-                      {/* Email Field */}
-                      <div className="relative group animate-in slide-in-from-left-3 duration-500 delay-300">
-                        <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 group-focus-within:text-blue-500 transition-colors duration-200 z-10">
-                          <Mail className="w-4 h-4" /> {/* Reduced icon size */}
-                        </div>
-                        <Input
-                          name="email"
-                          type="email"
-                          placeholder={t.emailPlaceholder}
-                          value={formData.email}
-                          onChange={(e) => handleInputChange("email", e.target.value)}
-                          required
-                          className="w-full bg-white/95 backdrop-blur-sm border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 pr-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
-                        />
-                        {formData.email && formData.email.includes("@") && (
-                          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
-                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                              {" "}
-                              {/* Reduced icon size */}
-                              <path
-                                fillRule="evenodd"
-                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                          </div>
-                        )}
-                      </div>
-                      {/* Date of Birth Field */}
-                      <div className="relative group animate-in slide-in-from-left-3 duration-500 delay-350">
-                        <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 group-focus-within:text-blue-500 transition-colors duration-200 z-10">
-                          <Calendar className="w-4 h-4" /> {/* Reduced icon size */}
-                        </div>
-                        <Input
-                          name="dateOfBirth"
-                          type="date"
-                          placeholder={t.dobPlaceholder}
-                          value={formData.dateOfBirth}
-                          onChange={(e) => handleInputChange("dateOfBirth", e.target.value)}
-                          required
-                          className="w-full bg-white/95 backdrop-blur-sm border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 pr-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:scale-[1.02] focus:bg-white group"
-                        />
-                        {formData.dateOfBirth && (
-                          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
-                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                              {" "}
-                              {/* Reduced icon size */}
-                              <path
-                                fillRule="evenodd"
-                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                          </div>
-                        )}
-                      </div>
-                      {/* Phone Field - Unified */}
-                      <div className="flex animate-in slide-in-from-left-3 duration-500 delay-400 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus-within:scale-[1.02] focus-within:bg-white overflow-hidden">
-                        <div className="relative w-1/3">
-                          <Select
-                            name="countryCode"
-                            value={formData.countryCode}
-                            onValueChange={(value) => handleInputChange("countryCode", value)}
-                            open={isCountrySelectOpen}
-                            onOpenChange={setIsCountrySelectOpen}
-                          >
-                            <SelectTrigger className="w-full bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 border-r border-gray-300 h-10 text-white rounded-l-xl rounded-r-none text-sm flex items-center justify-start pl-3 min-h-[40px]">
-                              {" "}
-                              {/* Reduced height */}
-                              <SelectValue>
-                                <div className="flex items-center gap-1">
-                                  {" "}
-                                  {/* Reduced gap */}
-                                  <span className="text-xs font-semibold">
-                                    {" "}
-                                    {/* Reduced font size */}
-                                    {selectedCountry?.id.toUpperCase()} {selectedCountry?.code}
-                                  </span>
-                                </div>
-                              </SelectValue>
-                            </SelectTrigger>
-                            <SelectContent className="w-[var(--radix-popper-anchor-width)] max-h-60 rounded-xl border-0 shadow-2xl bg-white/95 backdrop-blur-sm">
-                              {" "}
-                              {/* Reduced max-height */}
-                              <div className="p-2 border-b border-gray-100">
-                                {" "}
-                                {/* Reduced padding */}
-                                <div className="relative">
-                                  <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400 w-3 h-3" />{" "}
-                                  {/* Reduced icon size */}
-                                  <Input
-                                    placeholder={t.searchCountry}
-                                    value={countrySearch}
-                                    onChange={(e) => setCountrySearch(e.target.value)}
-                                    className="pl-8 h-8 text-xs rounded-lg border border-gray-200 focus:border-blue-400 transition-colors duration-200 w-full"
-                                    onClick={(e) => e.stopPropagation()}
-                                  />{" "}
-                                  {/* Reduced padding, height, font size */}
-                                </div>
-                              </div>
-                              <div className="max-h-40 overflow-y-auto">
-                                {" "}
-                                {/* Reduced max-height */}
-                                {filteredCountries.map((country) => (
-                                  <SelectItem
-                                    key={country.id}
-                                    value={country.code}
-                                    className="hover:bg-blue-50 transition-colors duration-150 cursor-pointer"
-                                  >
-                                    <div className="flex items-center gap-2 py-0.5">
-                                      {" "}
-                                      {/* Reduced padding */}
-                                      <span className="text-base">{country.flag}</span> {/* Reduced font size */}
-                                      <span className="text-xs font-semibold">{country.code}</span>{" "}
-                                      {/* Reduced font size */}
-                                      <span className="text-xs text-gray-600">
-                                        {" "}
-                                        {/* Reduced font size */}
-                                        {language === "es" ? country.name : country.country}
-                                      </span>
-                                    </div>
-                                  </SelectItem>
-                                ))}
-                                {filteredCountries.length === 0 && (
-                                  <div className="p-2 text-xs text-gray-500 text-center">{t.noCountriesFound}</div>
-                                )}{" "}
-                                {/* Reduced padding and font size */}
-                              </div>
-                            </SelectContent>
-                          </Select>
-                        </div>
-                        <div className="relative flex-1 group">
-                          <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 group-focus-within:text-blue-500 transition-colors duration-200 z-10">
-                            <Phone className="w-4 h-4" /> {/* Reduced icon size */}
-                          </div>
-                          <Input
-                            name="phone"
-                            placeholder={t.phonePlaceholder}
-                            value={formData.phone}
-                            onChange={(e) => handleInputChange("phone", e.target.value)}
-                            required
-                            className="w-full bg-white/95 backdrop-blur-sm border-0 h-10 text-gray-900 placeholder:text-gray-500 pl-10 pr-10 rounded-r-xl rounded-l-none min-h-[40px]"
-                          />
-                          {formData.phone && !phoneError && formData.phone.length >= 8 && (
-                            <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 animate-in zoom-in-50 duration-200">
-                              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                {" "}
-                                {/* Reduced icon size */}
-                                <path
-                                  fillRule="evenodd"
-                                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                      {phoneError && <p className="text-red-400 text-xs text-left mt-1">{phoneError}</p>}{" "}
-                      {/* Reduced font size */}
-                      <input type="hidden" name="language" value={language} />
-                      {/* Register Button */}
-                      <div className="animate-in slide-in-from-bottom-3 duration-500 delay-500">
-                        <SubmitButton language={language} disabled={!ageConfirmed || !!phoneError}>
-                          {t.registerButton}
-                        </SubmitButton>
-                      </div>
-                      {/* Age Confirmation Checkbox */}
-                      <div className="flex items-start gap-3 text-xs text-white animate-in fade-in-50 duration-500 delay-600">
-                        {" "}
-                        {/* Reduced gap */}
-                        <div className="relative">
-                          <Checkbox
-                            id="age-confirm"
-                            checked={ageConfirmed}
-                            onCheckedChange={(checked) => setAgeConfirmed(!!checked)}
-                            required
-                            className="mt-0.5 border-white/30 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 transition-all duration-200 hover:scale-110"
-                          />{" "}
-                          {/* Adjusted margin-top */}
-                        </div>
-                        <label
-                          htmlFor="age-confirm"
-                          className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
-                        >
-                          <Shield className="w-3 h-3 inline mr-1 text-orange-400 align-middle" />{" "}
-                          {/* Reduced icon size and margin */}
-                          {t.ageConfirmation}
-                        </label>
-                      </div>
-                      {/* Terms Checkbox */}
-                      <div className="flex items-start gap-3 text-xs text-white animate-in fade-in-50 duration-500 delay-600">
-                        {" "}
-                        {/* Reduced gap */}
-                        <div className="relative">
-                          <Checkbox
-                            id="terms"
-                            required
-                            className="mt-0.5 border-white/30 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 transition-all duration-200 hover:scale-110"
-                          />{" "}
-                          {/* Adjusted margin-top */}
-                        </div>
-                        <label
-                          htmlFor="terms"
-                          className="leading-relaxed cursor-pointer hover:text-orange-200 transition-colors duration-200"
-                        >
-                          <Shield className="w-3 h-3 inline mr-1 text-orange-400 align-middle" />{" "}
-                          {/* Reduced icon size and margin */}
-                          {t.termsText}
-                        </label>
-                      </div>
-                      {/* Privacy Text */}
-                      <div className="text-xs text-white/80 leading-relaxed animate-in fade-in-50 duration-500 delay-700 bg-white/5 p-3 rounded-lg border border-white/10">
-                        {" "}
-                        {/* Reduced padding */}
-                        <div className="flex items-start gap-1">
-                          {" "}
-                          {/* Reduced gap */}
-                          <svg
-                            className="w-3 h-3 text-blue-300 mt-0.5 flex-shrink-0"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            {" "}
-                            {/* Reduced icon size */}
-                            <path
-                              fillRule="evenodd"
-                              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                          <span>{t.privacyText}</span>
-                        </div>
-                      </div>
-                    </form>
-                  </>
-                )}
-              </div>
-            </div>
-          </div>
-
           {/* Investment Calculator Section - REMOVED ITS INTERNAL BACKGROUND IMAGE */}
           <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20 relative">
             <div className="relative z-10 max-w-4xl mx-auto">
@@ -1970,7 +1729,6 @@ export default function CryptoLanding() {
                           </div>
                         </div>
                       </div>
-
                       {/* Time Period */}
                       <div className="space-y-4">
                         <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -2002,7 +1760,6 @@ export default function CryptoLanding() {
                         </div>
                       </div>
                     </div>
-
                     {/* Right Side - Result */}
                     <div className="flex justify-center">
                       <div className="bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl p-6 sm:p-8 text-center w-full max-w-[280px] sm:max-w-none">
@@ -2016,7 +1773,6 @@ export default function CryptoLanding() {
                       </div>
                     </div>
                   </div>
-
                   <div className="mt-6 sm:mt-8 text-center">
                     <Button
                       onClick={() => {
@@ -2050,7 +1806,6 @@ export default function CryptoLanding() {
                   </div>
                 </div>
               </div>
-
               {/* Demo Account Section */}
               <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
                 <div className="max-w-6xl mx-auto px-4 sm:px-8">
@@ -2085,7 +1840,6 @@ export default function CryptoLanding() {
                   </div>
                 </div>
               </div>
-
               {/* Testimonials Section with Grid Layout */}
               <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-8 relative">
@@ -2093,7 +1847,6 @@ export default function CryptoLanding() {
                     {t.testimonialsTitle} <span className="text-orange-400">{t.testimonialsHighlight}</span>{" "}
                     {t.testimonialsTitle2}
                   </h2>
-
                   {/* Testimonials Grid with Navigation */}
                   <div className="relative">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -2112,7 +1865,6 @@ export default function CryptoLanding() {
                         </div>
                       ))}
                     </div>
-
                     {/* Navigation Arrows */}
                     <Button
                       onClick={prevTestimonial}
@@ -2126,7 +1878,6 @@ export default function CryptoLanding() {
                     >
                       <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
                     </Button>
-
                     {/* Dots Indicator */}
                     <div className="flex justify-center gap-2 mt-6">
                       {Array.from({ length: Math.ceil(testimonials.length / 3) }).map((_, index) => (
@@ -2142,7 +1893,6 @@ export default function CryptoLanding() {
                     </div>
                   </div>
                 </div>
-
                 {/* New Trading Features Section */}
                 <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
                   <div className="max-w-6xl mx-auto px-4 sm:px-8 relative">
@@ -2161,7 +1911,6 @@ export default function CryptoLanding() {
                     <p className="text-base sm:text-lg text-white/90 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed">
                       {t.tradingEasyIntro}
                     </p>
-
                     {/* Features Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
                       {/* Feature 1 */}
@@ -2178,7 +1927,6 @@ export default function CryptoLanding() {
                         </div>
                         <p className="text-white text-sm leading-relaxed text-left">{t.featureAiSelectionsText}</p>
                       </div>
-
                       {/* Feature 2 */}
                       <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-right-5 duration-700 delay-300">
                         <div className="flex items-start gap-4 mb-6">
@@ -2193,7 +1941,6 @@ export default function CryptoLanding() {
                         </div>
                         <p className="text-white text-sm leading-relaxed text-left">{t.featureAutoTradingText}</p>
                       </div>
-
                       {/* Feature 3 */}
                       <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-left-5 duration-700 delay-400">
                         <div className="flex items-start gap-4 mb-6">
@@ -2208,7 +1955,6 @@ export default function CryptoLanding() {
                         </div>
                         <p className="text-white text-sm leading-relaxed text-left">{t.featureSupportText}</p>
                       </div>
-
                       {/* Feature 4 */}
                       <div className="bg-blue-800/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-blue-600/30 animate-in slide-in-from-right-5 duration-700 delay-500">
                         <div className="flex items-start gap-4 mb-6">
@@ -2224,7 +1970,6 @@ export default function CryptoLanding() {
                         <p className="text-white text-sm leading-relaxed text-left">{t.featureCommunityText}</p>
                       </div>
                     </div>
-
                     {/* CTA Button */}
                     <div className="animate-in slide-in-from-bottom-5 duration-700 delay-600">
                       <Button
@@ -2255,7 +2000,6 @@ export default function CryptoLanding() {
                     </div>
                   </div>
                 </div>
-
                 {/* How to Start Section */}
                 <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
                   <div className="max-w-6xl mx-auto px-4 sm:px-8">
@@ -2277,7 +2021,6 @@ export default function CryptoLanding() {
                         <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step1Title}</h3>
                         <p className="text-white/80 text-sm leading-relaxed">{t.step1Description}</p>
                       </div>
-
                       {/* Step 2 */}
                       <div className="text-center animate-in slide-in-from-bottom-5 duration-700 delay-300">
                         <div className="mb-6">
@@ -2293,7 +2036,6 @@ export default function CryptoLanding() {
                         <h3 className="text-lg sm:text-xl font-bold text-white mb-4">{t.step2Title}</h3>
                         <p className="text-white/80 text-sm leading-relaxed">{t.step2Description}</p>
                       </div>
-
                       {/* Step 3 */}
                       <div className="text-center animate-in slide-in-from-right-5 duration-700 delay-400">
                         <div className="mb-6">
@@ -2311,7 +2053,6 @@ export default function CryptoLanding() {
                     </div>
                   </div>
                 </div>
-
                 {/* FAQ Section */}
                 <div className="text-center mb-12 sm:mb-16 mt-16 sm:mt-20">
                   <div className="max-w-4xl mx-auto px-4 sm:px-8 relative">
@@ -2354,7 +2095,6 @@ export default function CryptoLanding() {
                     </div>
                   </div>
                 </div>
-
                 {/* Final Section with Smaller Form */}
                 <div className="mb-12 sm:mb-16 mt-16 sm:mt-20">
                   <div className="max-w-7xl mx-auto px-4 sm:px-8">
@@ -2367,7 +2107,6 @@ export default function CryptoLanding() {
                         <div className="text-white text-lg font-semibold mb-4">{t.finalSectionSubtitle}</div>
                         <p className="text-white/90 leading-relaxed">{t.finalSectionText}</p>
                       </div>
-
                       {/* Right Side - Smaller Form */}
                       <div className="animate-in slide-in-from-right-5 duration-700">
                         <div className="bg-blue-600/90 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-blue-400/20">
@@ -2531,65 +2270,66 @@ export default function CryptoLanding() {
               </div>
             </div>
           </div>
-
           {/* Footer - MOVED OUTSIDE THE MAX-WIDTH CONTAINER */}
-          <footer className="bg-blue-900 text-white py-8 sm:py-12 mt-16 sm:mt-20 w-full">
-            <div className="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
-              {/* Company Info */}
-              <div className="space-y-4 text-sm">
-                <a href="#" className="block">
-                  {" "}
-                  {/* Made logo clickable */}
-                  <img
-                    src="/logo.png"
-                    alt="Coin Sin Limited Logo"
-                    className="h-24 w-48 object-contain rounded-lg mb-2" // Increased logo size
-                  />
-                </a>
-                <p className="leading-relaxed">{t.footerCompanyInfo}</p>
+          <footer className="bg-blue-950/50 backdrop-blur-sm text-white py-8 sm:py-12 mt-16 sm:mt-20 w-full">
+            <div className="max-w-7xl mx-auto px-4 sm:px-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 border-b border-white/10 pb-8 mb-8">
+                {/* Company Info */}
+                <div className="space-y-4 text-sm">
+                  <a href="#" className="block">
+                    {" "}
+                    {/* Made logo clickable */}
+                    <img
+                      src="/logo.png"
+                      alt="Coin Sin Limited Logo"
+                      className="h-28 w-56 object-contain rounded-lg mb-2" // Adjusted logo size
+                    />
+                  </a>
+                  <p className="leading-relaxed">{t.footerCompanyInfo}</p>
+                </div>
+                {/* Quick Links */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-bold text-orange-400 mb-2">Enlaces Rápidos</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li>
+                      <a href="#registration-form" className="hover:text-orange-300 transition-colors duration-200">
+                        {t.footerContactanos}
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/privacy" className="hover:text-orange-300 transition-colors duration-200">
+                        {t.footerPrivacidad}
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/terms" className="hover:text-orange-300 transition-colors duration-200">
+                        {t.footerTerminos}
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/disclaimer" className="hover:text-orange-300 transition-colors duration-200">
+                        {t.footerDescargo}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                {/* Contact Info */}
+                <div className="space-y-4 text-sm">
+                  <h3 className="text-lg font-bold text-orange-400 mb-2">Contacto</h3>
+                  <p>
+                    <span className="font-semibold">{t.footerEmailLabel}</span> support@coinsinlimited.com
+                  </p>
+                </div>
               </div>
-
-              {/* Quick Links */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-bold text-orange-400 mb-2">Enlaces Rápidos</h3>
-                <ul className="space-y-2 text-sm">
-                  <li>
-                    <a href="#registration-form" className="hover:text-orange-300 transition-colors duration-200">
-                      {t.footerContactanos}
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/privacy" className="hover:text-orange-300 transition-colors duration-200">
-                      {t.footerPrivacidad}
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/terms" className="hover:text-orange-300 transition-colors duration-200">
-                      {t.footerTerminos}
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/disclaimer" className="hover:text-orange-300 transition-colors duration-200">
-                      {t.footerDescargo}
-                    </a>
-                  </li>
-                </ul>
+              <div className="pt-8 text-center">
+                <div className="text-xs text-white/70 mb-4">
+                  <p>{t.footerCopyright}</p>
+                </div>
+                <div className="text-xs text-white/50 leading-relaxed text-left">
+                  <p>{t.disclaimerFull}</p>
+                  <p className="mt-2">{t.officialRegistrationNumber}</p> {/* New line for registration number */}
+                </div>
               </div>
-
-              {/* Contact Info */}
-              <div className="space-y-4 text-sm">
-                <h3 className="text-lg font-bold text-orange-400 mb-2">Contacto</h3>
-                <p>
-                  <span className="font-semibold">{t.footerEmailLabel}</span> info@coinsinlimited.com
-                </p>
-              </div>
-            </div>
-            <div className="text-xs text-white/70 mt-8 text-center px-4 sm:px-8">
-              <p>{t.footerCopyright}</p>
-            </div>
-            <div className="text-xs text-white/50 mt-4 text-center px-4 sm:px-8 leading-relaxed">
-              <p>{t.disclaimerFull}</p>
-              <p className="mt-2">{t.officialRegistrationNumber}</p> {/* New line for registration number */}
             </div>
           </footer>
         </div>
