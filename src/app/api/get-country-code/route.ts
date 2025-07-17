@@ -1,35 +1,30 @@
-import { type NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 
-export async function GET(request: NextRequest) {
-    // Attempt to get the IP address from various headers
-    const ip = request.ip || request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip")
-
-    if (!ip) {
-        return NextResponse.json({ error: "Unable to determine IP address" }, { status: 400 })
-    }
-
+// Este es un manejador de ruta (Route Handler) de Next.js.
+// Actúa como un endpoint de API en tu aplicación.
+export async function GET(request: Request) {
     try {
-        // Use a public IP geolocation API. Be mindful of rate limits for production.
-        // For Vercel deployments, `request.geo` is often available and more reliable.
-        // If `request.geo` is available, use it directly.
-        if (request.geo) {
-            return NextResponse.json({ countryCode: request.geo.country })
-        }
+        // Obtenemos la dirección IP del usuario de los encabezados de la solicitud.
+        // Vercel automáticamente rellena 'x-forwarded-for' o 'x-real-ip' con la IP del cliente.
+        const ip = request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip") || "127.0.0.1"
+        console.log(`[API Route] IP detectada: ${ip}`) // Log para depuración
 
-        // Fallback to an external API if not deployed on Vercel or geo is not available
-        const response = await fetch(`https://ipapi.co/${ip}/json/`)
-        if (!response.ok) {
-            throw new Error(`Failed to fetch IP info: ${response.statusText}`)
-        }
+        // Usamos una API de geolocalización IP gratuita (ip-api.com) para obtener el código de país.
+        // Nota: Para producción, considera un servicio más robusto y con límites de tasa.
+        const response = await fetch(`http://ip-api.com/json/${ip}?fields=countryCode`)
         const data = await response.json()
 
-        if (data.country_code) {
-            return NextResponse.json({ countryCode: data.country_code })
+        if (data.countryCode) {
+            console.log(`[API Route] Código de país detectado: ${data.countryCode}`) // Log para depuración
+            return NextResponse.json({ countryCode: data.countryCode })
         } else {
-            return NextResponse.json({ error: "Country code not found for IP" }, { status: 404 })
+            // Si no se puede determinar el código de país, devolvemos un error 404.
+            console.log("[API Route] No se pudo determinar el código de país.") // Log para depuración
+            return NextResponse.json({ error: "No se pudo determinar el código de país" }, { status: 404 })
         }
     } catch (error) {
-        console.error("Error in get-country-code API:", error)
-        return NextResponse.json({ error: "Internal server error" }, { status: 500 })
+        // Manejo de errores en caso de que la solicitud falle.
+        console.error("[API Route] Error al obtener el código de país:", error) // Log para depuración
+        return NextResponse.json({ error: "Error interno del servidor" }, { status: 500 })
     }
 }
