@@ -1,4 +1,5 @@
 "use client"
+
 import { useState, useMemo, useRef, useEffect } from "react"
 import type React from "react"
 import { Button } from "@/components/ui/button"
@@ -688,7 +689,7 @@ const translations: Record<Language, TranslationContent> = {
     smallFormPrivacyText:
       "I tuoi dati sono sempre protetti con Coin Sin Limited. Completando questo modulo, accetti di ricevere le nostre email di marketing.", // Modified
     ageConfirmation: "Confermo di essere maggiorente.",
-    disclaimerFull: `IMPORTANT: Esclusioni di Responsabilità su Redditi e Legali. I grafici di reddito e guadagni creati da Coin Sin Limited, noto anche come "Questo Sito Web", sono utilizzati unicamente come illustrazioni ideali del tuo potenziale di guadagno. Il successo degli individui nelle testimonianze e in altri esempi sono risultati eccezionali, e pertanto non intendono garantire che tu o altri otterrete lo stesso. I risultati individuali dipenderanno da come utilizzi Coin Sin Limited. Per qualsiasi cosa tu faccia, questo sito web non ha responsabilità. Dovresti sempre agire con cautela e dovuta diligenza perché ti assumi la piena responsabilità delle tue azioni e decisioni quando utilizzi prodotti e servizi. Accetti che in nessun modo questo sito web sarà responsabile dei risultati del tuo utilizzo dei servizi. Consulta i nostri termini d'uso per informazioni sulle nostre esclusioni di responsabilità e altre restrizioni. Sebbene el trading possa generare notevoli benefici, comporta anche el riesgo de perder el capital investitto en parte o per intero, quindi dovresti considerare se puoi permetterti di investire. ©2025AVVISO REGOLATORIO USA: El trading de Forex, CFD e criptovalute non è soggetto ad alcuna regolamentazione USA. L'investimento in criptovalute non è regolamentato o supervisionato da alcuna agenzia finanziaria o USA. Qualsiasi trading non regolamentato da residenti USA è considerado ilegal. Este sitio web non accetta clienti o cittadini USA. Este sitio web non ha responsabilità per le acciones dei clienti situati o con cittadinanza statunitense. I clienti situati negli Stati Uniti o con cittadinanza statunitense si assumono la piena responsabilità delle loro azioni y decisiones cuando utilizan productos y servicios da este Sito Web. In qualsiasi circostanza, la scelta di utilizzare el Sito Web, el Servizio e/o el Programma è sotto la sola responsabilità dell'Utente, que debe respetar la legislación vigente.`,
+    disclaimerFull: `IMPORTANT: Esclusioni di Responsabilità su Redditi e Legali. I grafici di reddito e guadagni creati da Coin Sin Limited, noto anche come "Questo Sito Web", sono utilizzati unicamente come illustrazioni ideali del tuo potenziale di guadagno. Il successo degli individui nelle testimonianze e in altri esempi sono risultati eccezionali, e pertanto non intendono garantire che tu o altri otterrete lo stesso. I risultati individuali dipenderanno da come utilizzi Coin Sin Limited. Per qualsiasi cosa tu faccia, questo sito web non ha responsabilità. Dovresti sempre agire con cautela e dovuta diligenza perché ti assumi la piena responsabilità delle tue azioni e decisioni quando utilizzi prodotti e servizi. Accetti che in nessun modo questo sito web sarà responsabile dei risultati del tuo utilizzo dei servizi. Consulta i nostri termini d'uso per informazioni sulle nostre esclusioni di responsabilità e altre restrizioni. Sebbene el trading possa generare notevoli benefici, comporta anche el riesgo de perder el capital investitto en parte o per intero, quindi dovresti considerare se puoi permetterti di investire. ©2025AVVISO REGOLATORIO USA: El trading de Forex, CFD e criptovalute non è soggetto ad alcuna regolamentazione USA. L'investimento in criptovalute non è regolamentato o supervisionato da alcuna agenzia finanziaria o USA. Qualsiasi trading non regolamentato da residenti USA è considerado ilegal. Este sitio web non accetta clienti o cittadini USA. Este sitio web non ha responsabilità per le acciones dei clienti situati o con cittadinanza statunitense. I clienti situati negli Stati Uniti o con cittadinanza statunitense si assumono la piena responsabilità delle loro acciones y decisiones cuando utilizan productos y servicios da este Sito Web. In qualsiasi circostanza, la scelta di utilizzare el Sito Web, el Servizio e/o el Programma è sotto la sola responsabilità dell'Utente, que debe respetar la legislación vigente.`,
   },
   it: {
     notification: "",
@@ -1215,7 +1216,7 @@ const countryCodes = [
   { id: "TT", code: "+1-868", flag: "🇹🇹", country: "Trinidad and Tobago", name: "Trinidad y Tobago" },
   { id: "TN", code: "+216", flag: "🇹🇳", country: "Tunisia", name: "Túnez" },
   { id: "TR", code: "+90", flag: "🇹🇷", country: "Turkey", name: "Turquía" },
-  { id: "TM", code: "+993", flag: "🇹🇲", country: "Turkmenistan", name: "Turkmenistán" },
+  { id: "TM", code: "+993", flag: "🇹🇲", country: "Turkmenistán", name: "Turkmenistán" },
   { id: "TC", code: "+1-649", flag: "🇹🇨", country: "Turks and Caicos Islands", name: "Islas Turcas y Caicos" },
   { id: "TV", code: "+688", flag: "🇹🇻", country: "Tuvalu", name: "Tuvalu" },
   { id: "UG", code: "+256", flag: "🇺🇬", country: "Uganda", name: "Uganda" },
@@ -1276,9 +1277,11 @@ export default function CryptoLanding() {
     investment: 250, // Inicializar con el valor mínimo
     days: 10,
   })
+
   // Inicializa useFormState con el tipo FormState
   const [ageConfirmed, setAgeConfirmed] = useState(false)
   const [phoneError, setPhoneError] = useState<string | null>(null)
+
   const [registrationState, registrationAction] = useFormState<FormState, FormData>(submitRegistration, {
     success: false,
     message: "",
@@ -1361,6 +1364,7 @@ export default function CryptoLanding() {
   const calculateReturn = (investment: number, days: number) => {
     const initialDailyRate = 0.0936 // Esta tasa asegura 250 -> 612 en 10 días
     const reducedDailyRate = 0.03 // Una tasa mucho más baja para los días siguientes
+
     if (days <= 10) {
       return Math.round(investment * Math.pow(1 + initialDailyRate, days))
     } else {
@@ -1399,7 +1403,7 @@ export default function CryptoLanding() {
     return countryCodes.filter(
       (country) =>
         country.country.toLowerCase().includes(searchTerm) ||
-        country.name.toLowerCase().includes(searchTerm) ||
+        (country.name?.toLowerCase() ?? "").includes(searchTerm) || // FIX: Added optional chaining and nullish coalescing
         country.code.includes(searchTerm),
     )
   }, [countrySearch])
@@ -1531,6 +1535,7 @@ export default function CryptoLanding() {
                         <Shield className="w-7 h-7 text-orange-400" />
                       </div>
                       <div className="w-16 h-1 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto rounded-full animate-in slide-in-from-left-5 duration-500 delay-300"></div>
+
                       {/* YouTube Video Player with cropping */}
                       <div className="relative bg-transparent rounded-xl overflow-hidden glowing-form-shadow">
                         <div className="relative w-full" style={{ paddingTop: "56.25%", overflow: "hidden" }}>
@@ -1581,6 +1586,7 @@ export default function CryptoLanding() {
                         <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto rounded-full"></div>
                       </div>
                     )}
+
                     {!registrationState.success && (
                       <>
                         <div className="text-center mb-6">
@@ -1597,6 +1603,7 @@ export default function CryptoLanding() {
                           </h2>
                           <div className="w-16 h-1 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto rounded-full animate-in slide-in-from-left-5 duration-500 delay-300"></div>
                         </div>
+
                         <form className="space-y-3" action={registrationAction}>
                           {/* Name Field */}
                           <div className="relative group animate-in slide-in-from-left-3 duration-500 delay-100">
@@ -1789,7 +1796,9 @@ export default function CryptoLanding() {
                             </div>
                           </div>
                           {phoneError && <p className="text-red-400 text-xs text-left mt-1">{phoneError}</p>}
+
                           <input type="hidden" name="language" value={language} />
+
                           {/* Register Button */}
                           <div className="animate-in slide-in-from-bottom-3 duration-500 delay-500">
                             <SubmitButton language={language} disabled={!ageConfirmed || !!phoneError}>
@@ -2048,6 +2057,7 @@ export default function CryptoLanding() {
                     {t.testimonialsTitle} <span className="text-orange-400">{t.testimonialsHighlight}</span>{" "}
                     {t.testimonialsTitle2}{" "}
                   </h2>
+
                   {/* Testimonials Grid with Navigation */}
                   <div className="relative">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -2066,6 +2076,7 @@ export default function CryptoLanding() {
                         </div>
                       ))}
                     </div>
+
                     {/* Navigation Arrows */}
                     <Button
                       onClick={prevTestimonial}
@@ -2079,6 +2090,7 @@ export default function CryptoLanding() {
                     >
                       <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
                     </Button>
+
                     {/* Dots Indicator */}
                     <div className="flex justify-center gap-2 mt-6">
                       {Array.from({ length: Math.ceil(testimonials.length / 3) }).map((_, index) => (
@@ -2455,7 +2467,9 @@ export default function CryptoLanding() {
                             </div>
                           </div>
                           {phoneError && <p className="text-red-400 text-sm text-left mt-1">{phoneError}</p>}
+
                           <input type="hidden" name="language" value={language} />
+
                           <SmallSubmitButton language={language} disabled={!ageConfirmed || !!phoneError}>
                             {" "}
                             {t.smallFormRegisterButton}{" "}
@@ -2597,6 +2611,7 @@ export default function CryptoLanding() {
                   </p>
                 </div>
               </div>
+
               <div className="pt-8">
                 <div className="text-xs text-white/70 mb-4">
                   <p>{t.footerCopyright}</p>
